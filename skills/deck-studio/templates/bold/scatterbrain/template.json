@@ -1,0 +1,55 @@
+{
+  "slug": "scatterbrain",
+  "name": "Scatterbrain",
+  "family": "bold",
+  "tone": [
+    "creative-workshop",
+    "tactile",
+    "playful"
+  ],
+  "formality": "low",
+  "density": "medium",
+  "scheme": "light",
+  "best_for": [
+    "Creative workshops and brainstorming recaps",
+    "Tactile findings and idea-cluster presentations"
+  ],
+  "avoid_for": [
+    "Contexts that demand precision and institutional weight — the post-it sticky-note aesthetic intentionally reads as warm and unfinished"
+  ],
+  "weak_cases": [
+    "Overlapping notes reduce reading clarity; chart geometry must encode the actual values rather than preserve specimen shapes."
+  ],
+  "visual_signature": "Pastel sticky notes on cork or paper, soft shadows, thumbtacks, tape and Shrikhand display.",
+  "paths": {
+    "metadata": "templates/bold/scatterbrain/template.json",
+    "preview": "templates/bold/scatterbrain/preview.md",
+    "design": "templates/bold/scatterbrain/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "maturity": "recipe",
+  "supported_layouts": [
+    "sticky-note grid",
+    "chart with legend",
+    "photo with notes",
+    "timeline rows",
+    "paired comparison"
+  ],
+  "language_posture": "Chunky display, slab body and handwriting have different roles; another script needs deliberate equivalents, without adding Latin margin notes the audience did not request.",
+  "assets": {
+    "fonts": [
+      "Shrikhand",
+      "Zilla Slab",
+      "Caveat"
+    ],
+    "font_delivery": "external",
+    "images": "Optional source photo in a Polaroid-style frame; backgrounds, pins and tape can be built in CSS/SVG."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "slug": "boardroom-dossier",
+  "name": "Boardroom Dossier",
+  "family": "house",
+  "tone": [
+    "sober",
+    "evidence-led",
+    "decisive"
+  ],
+  "formality": "high",
+  "density": "high",
+  "scheme": "mixed",
+  "best_for": [
+    "board updates",
+    "investor memos",
+    "strategy reviews",
+    "risk briefings"
+  ],
+  "avoid_for": [
+    "playful launches",
+    "brand personality decks"
+  ],
+  "weak_cases": [
+    "single-emotion keynote moments",
+    "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+  ],
+  "visual_signature": "navy dossier pages, strict rules, red/amber/green decision marks, serif headlines with mono evidence labels",
+  "paths": {
+    "metadata": "templates/house/boardroom-dossier/template.json",
+    "preview": "templates/house/boardroom-dossier/preview.md",
+    "preview_html": "templates/house/boardroom-dossier/preview.html",
+    "design": "templates/house/boardroom-dossier/design.md",
+    "tokens": "templates/house/boardroom-dossier/tokens.css",
+    "layouts": "templates/house/boardroom-dossier/layouts.md"
+  },
+  "provenance": {
+    "source": "decks house template",
+    "license": "MIT",
+    "copyright": "2026 Tiziano AI",
+    "adaptation": "original owned template created for gaps in inherited template coverage"
+  },
+  "maturity": "starter",
+  "supported_layouts": [
+    "title",
+    "statement",
+    "two-column",
+    "claim with evidence"
+  ],
+  "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+  "assets": {
+    "fonts": [
+      "IBM Plex Sans",
+      "Source Serif 4",
+      "IBM Plex Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required for the starter; source meaningful images if the content calls for them."
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "slug": "retro-zine",
+  "name": "Retro Zine",
+  "family": "bold",
+  "tone": [
+    "small-press",
+    "tactile",
+    "editorial"
+  ],
+  "formality": "medium-low",
+  "density": "medium-high",
+  "scheme": "light",
+  "best_for": [
+    "Small-press and cultural presentations",
+    "Tactile research or programme narratives"
+  ],
+  "avoid_for": [
+    "Contexts that demand digital-native polish or fast modern-tech energy — the layered zine aesthetic intentionally feels handmade"
+  ],
+  "weak_cases": [
+    "Source-size body copy is too small to assume projector readability; many annotations compete with evidence."
+  ],
+  "visual_signature": "Khaki/forest Risograph, condensed display, handwritten notes, tape and paper-offset blocks.",
+  "paths": {
+    "metadata": "templates/bold/retro-zine/template.json",
+    "preview": "templates/bold/retro-zine/preview.md",
+    "design": "templates/bold/retro-zine/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "editorial columns",
+    "collage",
+    "ledger",
+    "statement"
+  ],
+  "language_posture": "Condensed uppercase, drop caps and handwriting do not transfer mechanically; use script-appropriate hierarchy.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Bebas Neue",
+      "Space Grotesk",
+      "Caveat",
+      "JetBrains Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

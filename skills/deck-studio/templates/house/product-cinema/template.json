@@ -1,0 +1,59 @@
+{
+  "slug": "product-cinema",
+  "name": "Product Cinema",
+  "family": "house",
+  "tone": [
+    "clear",
+    "aspirational",
+    "specific"
+  ],
+  "formality": "medium",
+  "density": "low",
+  "scheme": "dark",
+  "best_for": [
+    "product launches",
+    "feature narratives",
+    "customer demos",
+    "portfolio reveals"
+  ],
+  "avoid_for": [
+    "regulatory details",
+    "table-first work"
+  ],
+  "weak_cases": [
+    "long bullet lists",
+    "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+  ],
+  "visual_signature": "wide film frames, product-light gradients, caption bars, hero visuals as the evidence surface",
+  "paths": {
+    "metadata": "templates/house/product-cinema/template.json",
+    "preview": "templates/house/product-cinema/preview.md",
+    "preview_html": "templates/house/product-cinema/preview.html",
+    "design": "templates/house/product-cinema/design.md",
+    "tokens": "templates/house/product-cinema/tokens.css",
+    "layouts": "templates/house/product-cinema/layouts.md"
+  },
+  "provenance": {
+    "source": "decks house template",
+    "license": "MIT",
+    "copyright": "2026 Tiziano AI",
+    "adaptation": "original owned template created for gaps in inherited template coverage"
+  },
+  "maturity": "starter",
+  "supported_layouts": [
+    "title",
+    "statement",
+    "two-column",
+    "claim with evidence"
+  ],
+  "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+  "assets": {
+    "fonts": [
+      "Manrope",
+      "Cormorant Garamond",
+      "IBM Plex Mono"
+    ],
+    "font_delivery": "external",
+    "images": "Requires meaningful supplied product imagery for its hero-image premise; the starter includes no product image."
+  }
+}

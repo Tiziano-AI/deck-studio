@@ -1,0 +1,53 @@
+{
+  "slug": "cartesian",
+  "name": "Cartesian",
+  "family": "bold",
+  "tone": [
+    "museum",
+    "architecture",
+    "quiet"
+  ],
+  "formality": "high",
+  "density": "low",
+  "scheme": "light",
+  "best_for": [
+    "Architecture and museum narratives",
+    "Quiet research or boutique-brand presentations"
+  ],
+  "avoid_for": [
+    "Decks that need visual heat, multiple accents, or a sense of urgency — the warm-neutral palette is intentionally low-energy"
+  ],
+  "weak_cases": [
+    "Dashboard density and many chart categories fight the sparse monograph hierarchy."
+  ],
+  "visual_signature": "Stone and ink, true circles, sharp rectangles and restrained drafting geometry.",
+  "paths": {
+    "metadata": "templates/bold/cartesian/template.json",
+    "preview": "templates/bold/cartesian/preview.md",
+    "design": "templates/bold/cartesian/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "agenda rows",
+    "timeline",
+    "simple chart",
+    "portrait grid"
+  ],
+  "language_posture": "Preserve serif/sans roles where possible; inspect wider glyphs and long labels against circular geometry.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Playfair Display",
+      "Inter"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

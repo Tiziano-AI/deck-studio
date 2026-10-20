@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "deck-studio",
+  "version": "0.1.1",
+  "description": "Shape, create, revise and publish audience-ready communication decks.",
+  "author": {
+    "name": "Tiziano AI",
+    "url": "https://github.com/Tiziano-AI"
+  },
+  "homepage": "https://github.com/Tiziano-AI/deck-studio",
+  "repository": "https://github.com/Tiziano-AI/deck-studio",
+  "license": "MIT",
+  "keywords": ["decks", "presentations", "communication", "html", "pdf"],
+  "extensions": {
+    "com.openai": {
+      "requires_local_executor": true,
+      "interface": {
+        "displayName": "Deck Studio",
+        "shortDescription": "Create and refine communication decks",
+        "longDescription": "Turn notes, approved content or an existing deck into audience-ready local HTML and PDF, with 56 visual systems and rendered inspection. Requires a local executor, Node.js 20+, npm, Python 3.9+ and explicit package-owned Chromium setup. PDF pages are slide images, not editable or searchable text. Optional self-hosted galleries use your own library, access policy and gateway; installation publishes nothing and includes no hosted account. Removing the plugin preserves your decks and independently running services.",
+        "developerName": "Tiziano AI",
+        "websiteURL": "https://github.com/Tiziano-AI/deck-studio",
+        "category": "Productivity",
+        "defaultPrompt": [
+          "Use Deck Studio to shape my material into a clear, well-designed deck for its audience."
+        ]
+      }
+    }
+  }
+}

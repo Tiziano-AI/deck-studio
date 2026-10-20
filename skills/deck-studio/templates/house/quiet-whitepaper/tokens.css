@@ -1,0 +1,11 @@
+:root {
+  --ws-paper: #FBFAF6;
+  --ws-ink: #17202A;
+  --ws-muted: #69727E;
+  --ws-blue: #244A7F;
+  --ws-rule: #D8D6CE;
+  --ws-quote: #EFECE4;
+  --ws-font-display: "Source Serif 4", Georgia, serif;
+  --ws-font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --ws-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}

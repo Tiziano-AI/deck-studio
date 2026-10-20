@@ -1,0 +1,49 @@
+{
+  "slug": "terminal-green",
+  "name": "Terminal Green",
+  "family": "safe-presets",
+  "tone": [
+    "developer",
+    "hacker"
+  ],
+  "formality": "medium",
+  "density": "high",
+  "scheme": "dark",
+  "best_for": [
+    "developer talks",
+    "ops reports",
+    "CLI/tooling launches"
+  ],
+  "avoid_for": [
+    "emotional consumer stories"
+  ],
+  "weak_cases": [
+    "Mono prose and scanlines can fatigue reading; syntax color must retain adequate contrast."
+  ],
+  "visual_signature": "terminal green monochrome language with mono hierarchy",
+  "paths": {
+    "metadata": "templates/safe-presets/terminal-green/template.json",
+    "preview": "templates/safe-presets/terminal-green/preview.md",
+    "design": "templates/safe-presets/terminal-green/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+  },
+  "supported_layouts": [
+    "terminal frame",
+    "code"
+  ],
+  "maturity": "preset",
+  "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+  "assets": {
+    "fonts": [
+      "JetBrains Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+  }
+}

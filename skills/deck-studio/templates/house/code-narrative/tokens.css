@@ -1,0 +1,13 @@
+:root {
+  --ws-bg: #0C0F14;
+  --ws-panel: #141922;
+  --ws-ink: #E9EEF5;
+  --ws-muted: #8B95A7;
+  --ws-cyan: #64D2FF;
+  --ws-lime: #B7F36B;
+  --ws-pink: #FF6B9A;
+  --ws-font-display: "Geist", system-ui, sans-serif;
+  --ws-font-body: "Geist", system-ui, sans-serif;
+  --ws-font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --ws-font-editorial: "Source Serif 4", Georgia, serif;
+}

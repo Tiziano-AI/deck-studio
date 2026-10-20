@@ -1,0 +1,59 @@
+{
+  "slug": "data-room-grid",
+  "name": "Data Room Grid",
+  "family": "house",
+  "tone": [
+    "precise",
+    "operator",
+    "credible"
+  ],
+  "formality": "high",
+  "density": "high",
+  "scheme": "light",
+  "best_for": [
+    "metrics reviews",
+    "due diligence",
+    "comparison tables",
+    "operating plans"
+  ],
+  "avoid_for": [
+    "emotional storytelling",
+    "visual-only keynote"
+  ],
+  "weak_cases": [
+    "pure manifesto statements",
+    "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+  ],
+  "visual_signature": "light grid, compact captions, strong table rhythm, restrained blue/green emphasis",
+  "paths": {
+    "metadata": "templates/house/data-room-grid/template.json",
+    "preview": "templates/house/data-room-grid/preview.md",
+    "preview_html": "templates/house/data-room-grid/preview.html",
+    "design": "templates/house/data-room-grid/design.md",
+    "tokens": "templates/house/data-room-grid/tokens.css",
+    "layouts": "templates/house/data-room-grid/layouts.md"
+  },
+  "provenance": {
+    "source": "decks house template",
+    "license": "MIT",
+    "copyright": "2026 Tiziano AI",
+    "adaptation": "original owned template created for gaps in inherited template coverage"
+  },
+  "maturity": "starter",
+  "supported_layouts": [
+    "title",
+    "statement",
+    "two-column",
+    "claim with evidence"
+  ],
+  "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+  "assets": {
+    "fonts": [
+      "Geist",
+      "IBM Plex Mono",
+      "Source Serif 4"
+    ],
+    "font_delivery": "external",
+    "images": "No image required for the starter; source meaningful images if the content calls for them."
+  }
+}

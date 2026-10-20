@@ -1,0 +1,52 @@
+{
+  "slug": "capsule",
+  "name": "Capsule",
+  "family": "bold",
+  "tone": [
+    "literary-pop",
+    "memphis"
+  ],
+  "formality": "medium-low",
+  "density": "medium",
+  "scheme": "light",
+  "best_for": [
+    "Creative brand and editorial narratives",
+    "Playful structured product explainers"
+  ],
+  "avoid_for": [
+    "Contexts that require traditional institutional weight — the capsule shapes and pastel pops actively soften authority"
+  ],
+  "weak_cases": [
+    "Floating pill decoration crowds dense data; many linked nodes overload the rounded shape vocabulary."
+  ],
+  "visual_signature": "Bodoni display, outlined pills, warm/cool candy surfaces and hard-shadow lift.",
+  "paths": {
+    "metadata": "templates/bold/capsule/template.json",
+    "preview": "templates/bold/capsule/preview.md",
+    "design": "templates/bold/capsule/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "pill statistics",
+    "step nodes",
+    "orbit diagram",
+    "visual frame"
+  ],
+  "language_posture": "High-contrast serif display and compact pills need re-fit for other scripts and longer translations.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Bodoni Moda",
+      "Space Grotesk"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

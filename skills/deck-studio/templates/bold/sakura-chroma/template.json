@@ -1,0 +1,54 @@
+{
+  "slug": "sakura-chroma",
+  "name": "Sakura Chroma",
+  "family": "bold",
+  "tone": [
+    "product-catalogue",
+    "retro-print"
+  ],
+  "formality": "low",
+  "density": "medium-high",
+  "scheme": "light",
+  "best_for": [
+    "Retro product catalogues",
+    "Spec-led launches with concise data"
+  ],
+  "avoid_for": [
+    "Decks that need restrained, corporate, or quiet typography — the bold condensed lockups, ribbon stripes, and primary-colour palette are intentionally loud and product-page-y"
+  ],
+  "weak_cases": [
+    "Seals can imply authority; equalizer segment counts must encode real values rather than ornament."
+  ],
+  "visual_signature": "Warm cream and brown ink, petal clusters, diagonal ribbons and mono spec rows.",
+  "paths": {
+    "metadata": "templates/bold/sakura-chroma/template.json",
+    "preview": "templates/bold/sakura-chroma/preview.md",
+    "design": "templates/bold/sakura-chroma/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "product-card grid",
+    "spec ledger",
+    "dashboard",
+    "equalizer chart"
+  ],
+  "language_posture": "Japanese accents require meaningful approved text; named Noto Sans JP does not establish whole-deck language support.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Big Shoulders Display",
+      "Albert Sans",
+      "JetBrains Mono",
+      "Noto Sans JP"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

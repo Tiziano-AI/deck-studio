@@ -1,0 +1,53 @@
+{
+  "slug": "mat",
+  "name": "Mat",
+  "family": "bold",
+  "tone": [
+    "industrial-product",
+    "restrained"
+  ],
+  "formality": "medium",
+  "density": "low-medium",
+  "scheme": "mixed",
+  "best_for": [
+    "Industrial-design and boutique-product launches",
+    "Material-led product comparisons"
+  ],
+  "avoid_for": [
+    "Contexts that need fast tech energy or institutional restraint — the muted sage and burnt-orange palette is intentionally warm and slow"
+  ],
+  "weak_cases": [
+    "Many small metrics or weak product imagery flatten the material/product focus."
+  ],
+  "visual_signature": "Heavy mixed-case Bricolage, dark forest, wood-brown glow and cream inset paper.",
+  "paths": {
+    "metadata": "templates/bold/mat/template.json",
+    "preview": "templates/bold/mat/preview.md",
+    "design": "templates/bold/mat/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "product image",
+    "stat cells",
+    "paired comparison",
+    "information card"
+  ],
+  "language_posture": "Replacing the sans roles with a serif changes its industrial register; verify script support while preserving role contrast.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Bricolage Grotesque",
+      "DM Sans",
+      "DM Mono"
+    ],
+    "font_delivery": "external",
+    "images": "Optional product image is a strong fit; deliver actual approved imagery, not a placeholder."
+  }
+}

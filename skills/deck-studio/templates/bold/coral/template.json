@@ -1,0 +1,53 @@
+{
+  "slug": "coral",
+  "name": "Coral",
+  "family": "bold",
+  "tone": [
+    "magazine",
+    "sports-poster"
+  ],
+  "formality": "medium",
+  "density": "medium-high",
+  "scheme": "mixed",
+  "best_for": [
+    "Sports, travel and magazine storytelling",
+    "Graphic comparisons and sectional narratives"
+  ],
+  "avoid_for": [
+    "Contexts that should feel quiet or institutional — the coral accent and oversized Bebas Neue commit hard to a confident magazine voice"
+  ],
+  "weak_cases": [
+    "Long headings and many competing regions dilute the poster hierarchy."
+  ],
+  "visual_signature": "Condensed uppercase display with coral/ink/cream regions and restrained hatch texture.",
+  "paths": {
+    "metadata": "templates/bold/coral/template.json",
+    "preview": "templates/bold/coral/preview.md",
+    "design": "templates/bold/coral/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "two-region comparison",
+    "three-region editorial",
+    "timeline",
+    "bar chart",
+    "pull quote"
+  ],
+  "language_posture": "Condensation and uppercase are central; non-Latin substitutions must be rebalanced rather than width-matched.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Bebas Neue",
+      "Inter"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

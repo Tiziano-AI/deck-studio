@@ -1,0 +1,42 @@
+# Notebook Tabs
+
+### 5. Notebook Tabs
+
+**Vibe:** Editorial, organized, elegant, tactile
+
+**Layout:** Cream paper card on dark background. Colorful tabs on right edge.
+
+**Typography:**
+- Display: `Bodoni Moda` (400/700) — classic editorial
+- Body: `DM Sans` (400/500)
+
+**Colors:**
+```css
+:root {
+    --bg-outer: #2d2d2d;
+    --bg-page: #f8f6f1;
+    --text-primary: #1a1a1a;
+    --tab-1: #98d4bb; /* Mint */
+    --tab-2: #c7b8ea; /* Lavender */
+    --tab-3: #f4b8c5; /* Pink */
+    --tab-4: #a8d8ea; /* Sky */
+    --tab-5: #ffe6a7; /* Cream */
+}
+```
+
+**Signature Elements:**
+- Paper container with subtle shadow
+- Colorful section tabs on right edge (vertical text)
+- Binder hole decorations on left
+- Tab labels use fixed stage sizes (start around 24px); widen or reflow long labels, never viewport-based shrinking. Use horizontal labels when rotation obstructs reading.
+
+
+## Fixed-stage adaptation
+
+Use the canonical 1920x1080 runtime (`runtime/deck-stage.css` and `runtime/deck-stage.js`), `body[data-web-slides-studio]`, `.deck-viewport`, `.deck-stage`, `.slide`, and the existing `WebSlidesStudio` API. Preserve palette, typography roles, and signature elements with fixed pixel/rem coordinates, never a second scaler or viewport-sized internals. Keep preset names and workflow notes outside the slide.
+
+This is a design recipe, not a bundled layout or font package. Confirm named font files, weights, styles, and required language glyphs before rendering; load them locally for delivery. A fallback is a visible design change, not an equivalent face. Judge fit with actual loaded fonts.
+
+When style comparison is useful, use representative locked content with identical meaning across candidates; a title alone need not expose the hardest layout. This recipe imposes no fixed preview count or human approval gate. Preserve claims, qualifications, evidence, order, and ask. Recompose or split crowded material without dropping content; return meaning-changing edits to content approval.
+
+Use only supplied numbers, quotations, attributions, logos, and real destinations. Decorative tabs or pills must not masquerade as controls. Add an action only when it works; never invent a QR code, byline, metric, or status to fill the layout. Keep sources readable and encode meaning in words or shapes as well as color.

@@ -1,0 +1,53 @@
+{
+  "slug": "biennale-yellow",
+  "name": "Biennale Yellow",
+  "family": "bold",
+  "tone": [
+    "exhibition-editorial",
+    "literary"
+  ],
+  "formality": "high",
+  "density": "medium",
+  "scheme": "light",
+  "best_for": [
+    "Exhibition and cultural programmes",
+    "Literary proposals and curated itineraries"
+  ],
+  "avoid_for": [
+    "Decks that need visual punch or saturated multi-color energy — the warm-paper canvas and one-yellow palette are intentionally quiet and atmospheric"
+  ],
+  "weak_cases": [
+    "Dense dashboard cells crowd the literary spacing; faint atmosphere is not a data encoding."
+  ],
+  "visual_signature": "Parchment, indigo hairlines, yellow sun bloom and serif/italic hierarchy.",
+  "paths": {
+    "metadata": "templates/bold/biennale-yellow/template.json",
+    "preview": "templates/bold/biennale-yellow/preview.md",
+    "design": "templates/bold/biennale-yellow/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "programme strands",
+    "itinerary ledger",
+    "statement",
+    "bar comparison"
+  ],
+  "language_posture": "Serif/italic contrast needs an intentional equivalent in other scripts; inspect mixed-script baselines.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Instrument Serif",
+      "Archivo",
+      "JetBrains Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

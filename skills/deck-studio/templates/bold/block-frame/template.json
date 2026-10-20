@@ -1,0 +1,53 @@
+{
+  "slug": "block-frame",
+  "name": "BlockFrame",
+  "family": "bold",
+  "tone": [
+    "neobrutalist",
+    "zine",
+    "playful"
+  ],
+  "formality": "medium-low",
+  "density": "high",
+  "scheme": "light",
+  "best_for": [
+    "Creative launches and studio presentations",
+    "Graphic product and feature explainers"
+  ],
+  "avoid_for": [
+    "Contexts that require quiet institutional restraint or traditional weight (regulated disclosures, formal legal briefs)"
+  ],
+  "weak_cases": [
+    "Stacking every card adds noise; long small text loses hierarchy inside nested frames."
+  ],
+  "visual_signature": "Thick coupled borders and hard shadows, tilted objects and border-only secondary cards.",
+  "paths": {
+    "metadata": "templates/bold/block-frame/template.json",
+    "preview": "templates/bold/block-frame/preview.md",
+    "design": "templates/bold/block-frame/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "nested feature cards",
+    "numbered lists",
+    "metric tiles",
+    "tilted callouts"
+  ],
+  "language_posture": "The voice relies more on border and object geometry than letterforms; still verify chosen fonts and line breaks.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Inter",
+      "Space Grotesk"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

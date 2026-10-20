@@ -1,0 +1,58 @@
+{
+  "slug": "code-narrative",
+  "name": "Code Narrative",
+  "family": "house",
+  "tone": [
+    "hands-on",
+    "clear",
+    "credible"
+  ],
+  "formality": "medium",
+  "density": "medium-high",
+  "scheme": "dark",
+  "best_for": [
+    "developer talks",
+    "architecture walkthroughs",
+    "tool launches",
+    "incident learnings"
+  ],
+  "avoid_for": [
+    "nontechnical board decks"
+  ],
+  "weak_cases": [
+    "soft brand storytelling",
+    "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+  ],
+  "visual_signature": "dark editor canvas, syntax-color accents, large argument headline, terminal evidence strips",
+  "paths": {
+    "metadata": "templates/house/code-narrative/template.json",
+    "preview": "templates/house/code-narrative/preview.md",
+    "preview_html": "templates/house/code-narrative/preview.html",
+    "design": "templates/house/code-narrative/design.md",
+    "tokens": "templates/house/code-narrative/tokens.css",
+    "layouts": "templates/house/code-narrative/layouts.md"
+  },
+  "provenance": {
+    "source": "decks house template",
+    "license": "MIT",
+    "copyright": "2026 Tiziano AI",
+    "adaptation": "original owned template created for gaps in inherited template coverage"
+  },
+  "maturity": "starter",
+  "supported_layouts": [
+    "title",
+    "statement",
+    "two-column",
+    "claim with evidence"
+  ],
+  "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+  "assets": {
+    "fonts": [
+      "JetBrains Mono",
+      "Geist",
+      "Source Serif 4"
+    ],
+    "font_delivery": "external",
+    "images": "No image required for the starter; source meaningful images if the content calls for them."
+  }
+}

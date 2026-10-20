@@ -1,0 +1,50 @@
+{
+  "slug": "vintage-editorial",
+  "name": "Vintage Editorial",
+  "family": "safe-presets",
+  "tone": [
+    "witty",
+    "editorial"
+  ],
+  "formality": "medium",
+  "density": "medium",
+  "scheme": "light",
+  "best_for": [
+    "manifestos",
+    "brand point-of-view",
+    "culture talks"
+  ],
+  "avoid_for": [
+    "neutral operating reviews"
+  ],
+  "weak_cases": [
+    "Personality depends on display type; the preset supplies no dense evidence composition."
+  ],
+  "visual_signature": "cream editorial surface with geometric accents and serif display type",
+  "paths": {
+    "metadata": "templates/safe-presets/vintage-editorial/template.json",
+    "preview": "templates/safe-presets/vintage-editorial/preview.md",
+    "design": "templates/safe-presets/vintage-editorial/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+  },
+  "supported_layouts": [
+    "centered statement",
+    "framed callout"
+  ],
+  "maturity": "preset",
+  "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+  "assets": {
+    "fonts": [
+      "Fraunces",
+      "Work Sans"
+    ],
+    "font_delivery": "external",
+    "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+  }
+}

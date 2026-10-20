@@ -1,0 +1,53 @@
+{
+  "slug": "long-table",
+  "name": "Long Table",
+  "family": "bold",
+  "tone": [
+    "programme",
+    "supper-club",
+    "risograph"
+  ],
+  "formality": "medium",
+  "density": "medium",
+  "scheme": "light",
+  "best_for": [
+    "Event programmes and schedules",
+    "Food, culture and curated creative presentations"
+  ],
+  "avoid_for": [
+    "Decks that need corporate polish, technical density, or a cold / minimalist register — the rust-red palette and bold serif mix are intentionally warm and people-facing"
+  ],
+  "weak_cases": [
+    "Long technical paragraphs or code do not fit its curated programme rhythm."
+  ],
+  "visual_signature": "Rust on buttery paper, uppercase Bricolage, Fraunces italic and dotted print texture.",
+  "paths": {
+    "metadata": "templates/bold/long-table/template.json",
+    "preview": "templates/bold/long-table/preview.md",
+    "design": "templates/bold/long-table/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "schedule ledger",
+    "course groups",
+    "outlined cards",
+    "statement"
+  ],
+  "language_posture": "Uppercase display and italic body are distinctive; another script needs separate hierarchy and spacing choices.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Fraunces",
+      "Bricolage Grotesque"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

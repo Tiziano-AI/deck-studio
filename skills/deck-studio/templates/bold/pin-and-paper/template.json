@@ -1,0 +1,53 @@
+{
+  "slug": "pin-and-paper",
+  "name": "Pin & Paper",
+  "family": "bold",
+  "tone": [
+    "fieldwork",
+    "workshop",
+    "research-notebook"
+  ],
+  "formality": "medium",
+  "density": "medium",
+  "scheme": "light",
+  "best_for": [
+    "Fieldwork and workshop findings",
+    "Research-notebook narratives with actual annotations"
+  ],
+  "avoid_for": [
+    "Decks that need to feel digital-native polished or rigorously data-driven — handwritten Caveat is intentionally informal"
+  ],
+  "weak_cases": [
+    "Too little source material leaves empty cards; mandatory-looking annotations must not invent personal voice."
+  ],
+  "visual_signature": "Cream cards on yellow, hard blue lift, tilted safety pins and marginal handwriting.",
+  "paths": {
+    "metadata": "templates/bold/pin-and-paper/template.json",
+    "preview": "templates/bold/pin-and-paper/preview.md",
+    "design": "templates/bold/pin-and-paper/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "pinned evidence cards",
+    "comparison table",
+    "handwritten callout"
+  ],
+  "language_posture": "Handwriting is a significant dependency; substitutions can lose the notebook voice and require a new emphasis treatment.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Space Grotesk",
+      "Caveat",
+      "DM Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

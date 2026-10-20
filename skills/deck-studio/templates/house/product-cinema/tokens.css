@@ -1,0 +1,12 @@
+:root {
+  --ws-bg: #080A0D;
+  --ws-ink: #F4F1E9;
+  --ws-muted: #9DA4AD;
+  --ws-blue: #6BA6FF;
+  --ws-violet: #9B7CFF;
+  --ws-line: #2B3038;
+  --ws-font-display: "Manrope", system-ui, sans-serif;
+  --ws-font-body: "Manrope", system-ui, sans-serif;
+  --ws-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --ws-font-editorial: "Cormorant Garamond", Georgia, serif;
+}

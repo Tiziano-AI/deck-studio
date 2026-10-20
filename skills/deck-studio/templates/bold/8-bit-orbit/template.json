@@ -1,0 +1,54 @@
+{
+  "slug": "8-bit-orbit",
+  "name": "8-Bit Orbit",
+  "family": "bold",
+  "tone": [
+    "arcade-tech",
+    "playful"
+  ],
+  "formality": "low",
+  "density": "medium",
+  "scheme": "dark",
+  "best_for": [
+    "Gaming and indie-tool demos",
+    "Retro-tech talks and hackathon presentations"
+  ],
+  "avoid_for": [
+    "Contexts where the dark neon palette would actively work against the message — quiet institutional finance disclosures, healthcare patient-facing materials, traditional luxury"
+  ],
+  "weak_cases": [
+    "Long prose fights the pixel rhythm; many series exhaust the neon accents."
+  ],
+  "visual_signature": "Pixel-grid HUD, stepped zero-blur shadows, bracket frames, neon on navy.",
+  "paths": {
+    "metadata": "templates/bold/8-bit-orbit/template.json",
+    "preview": "templates/bold/8-bit-orbit/preview.md",
+    "design": "templates/bold/8-bit-orbit/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "feature cards",
+    "metric blocks",
+    "pixel bar charts",
+    "timeline rails",
+    "quote"
+  ],
+  "language_posture": "Pixel display and mono label rhythm may not transfer to another script; choose and inspect script-appropriate faces.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Tektur",
+      "Chakra Petch",
+      "Space Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No photography required; CSS/SVG grid, stars and brackets carry the identity."
+  }
+}

@@ -1,0 +1,20 @@
+# Canonical build-context filter. Copy to the clean export root before building.
+**
+!LICENSE
+!publisher/
+!publisher/static-server/
+!publisher/static-server/Dockerfile
+!publisher/static-server/package.json
+!publisher/static-server/src/
+!publisher/static-server/src/**
+!publisher/static-server/ui/
+!publisher/static-server/ui/**
+!skills/
+!skills/deck-studio/
+!skills/deck-studio/scripts/
+!skills/deck-studio/scripts/release_admission.py
+!skills/deck-studio/scripts/proof_identity.py
+!skills/deck-studio/scripts/validate_deck.py
+!skills/deck-studio/scripts/release_store.py
+!skills/deck-studio/scripts/delivery_profile.mjs
+**/*.test.mjs

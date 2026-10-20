@@ -1,0 +1,15 @@
+{
+  "name": "@tiziano-ai/decks",
+  "version": "0.1.1",
+  "private": true,
+  "type": "module",
+  "description": "Deck Studio: shape, create, revise and publish audience-ready communication decks.",
+  "license": "MIT",
+  "scripts": {
+    "validate": "python3 scripts/validate_product.py",
+    "runtime:check": "node skills/deck-studio/scripts/setup_runtime.mjs --check",
+    "runtime:setup": "node skills/deck-studio/scripts/setup_runtime.mjs --install",
+    "test:setup": "node --test scripts/test_setup_runtime.mjs"
+  },
+  "workspaces": ["skills/deck-studio"]
+}

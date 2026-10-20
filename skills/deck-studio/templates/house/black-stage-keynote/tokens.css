@@ -1,0 +1,11 @@
+:root {
+  --ws-black: #050505;
+  --ws-white: #F7F5EF;
+  --ws-beam: #FF4D2E;
+  --ws-muted: #8C8C86;
+  --ws-line: #2A2A2A;
+  --ws-font-display: "Satoshi", system-ui, sans-serif;
+  --ws-font-body: "Satoshi", system-ui, sans-serif;
+  --ws-font-editorial: "Fraunces", Georgia, serif;
+  --ws-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}

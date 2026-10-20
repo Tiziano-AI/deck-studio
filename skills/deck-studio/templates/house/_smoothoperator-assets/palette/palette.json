@@ -1,0 +1,117 @@
+{
+  "generated_on": "2026-03-27",
+  "source_of_truth": {
+    "light_tokens": "templates/house/smooth-operator-light/tokens.css",
+    "dark_tokens": "templates/house/smooth-operator-dark/tokens.css"
+  },
+  "semantic_palettes": {
+    "light": {
+      "background": {
+        "semantic_token": "--background",
+        "source_token": "--base-100",
+        "value": "oklch(0.9703 0.0084 281.74)"
+      },
+      "foreground": {
+        "semantic_token": "--foreground",
+        "source_token": "--base-800",
+        "value": "oklch(0.2638 0.0399 288.01)"
+      },
+      "card": {
+        "semantic_token": "--card",
+        "source_token": "--color-white",
+        "value": "oklch(1 0 0)"
+      },
+      "primary": {
+        "semantic_token": "--primary",
+        "source_token": "--primary-700",
+        "value": "oklch(0.5314 0.1384 355.11)"
+      },
+      "secondary": {
+        "semantic_token": "--secondary",
+        "source_token": "--secondary-400",
+        "value": "oklch(0.811 0.0589 201.14)"
+      },
+      "muted": {
+        "semantic_token": "--muted",
+        "source_token": "--base-100",
+        "value": "oklch(0.9703 0.0084 281.74)"
+      },
+      "border": {
+        "semantic_token": "--border",
+        "source_token": "--base-200",
+        "value": "oklch(0.9309 0.0168 282.31)"
+      },
+      "ring": {
+        "semantic_token": "--ring",
+        "source_token": "--primary-700",
+        "value": "oklch(0.5314 0.1384 355.11)"
+      }
+    },
+    "dark": {
+      "background": {
+        "semantic_token": "--background",
+        "source_token": "--base-1000",
+        "value": "oklch(0.0781 0.0294 290.82)"
+      },
+      "foreground": {
+        "semantic_token": "--foreground",
+        "source_token": "--base-200",
+        "value": "oklch(0.9309 0.0168 282.31)"
+      },
+      "card": {
+        "semantic_token": "--card",
+        "source_token": "--base-900",
+        "value": "oklch(0.2083 0.0347 289.9)"
+      },
+      "primary": {
+        "semantic_token": "--primary",
+        "source_token": "--primary-700",
+        "value": "oklch(0.5314 0.1384 355.11)"
+      },
+      "secondary": {
+        "semantic_token": "--secondary",
+        "source_token": "--secondary-400",
+        "value": "oklch(0.811 0.0589 201.14)"
+      },
+      "muted": {
+        "semantic_token": "--muted",
+        "source_token": "--base-800",
+        "value": "oklch(0.2638 0.0399 288.01)"
+      },
+      "border": {
+        "semantic_token": "--border",
+        "source_token": "--base-700",
+        "value": "oklch(0.3722 0.0441 286.47)"
+      },
+      "ring": {
+        "semantic_token": "--ring",
+        "source_token": "--primary-700",
+        "value": "oklch(0.5314 0.1384 355.11)"
+      }
+    }
+  },
+  "supporting_ramps": {
+    "base": {
+      "--base-100": "oklch(0.9703 0.0084 281.74)",
+      "--base-200": "oklch(0.9309 0.0168 282.31)",
+      "--base-700": "oklch(0.3722 0.0441 286.47)",
+      "--base-800": "oklch(0.2638 0.0399 288.01)",
+      "--base-900": "oklch(0.2083 0.0347 289.9)",
+      "--base-1000": "oklch(0.0781 0.0294 290.82)"
+    },
+    "primary": {
+      "--primary-300": "oklch(0.8233 0.0748 344.64)",
+      "--primary-500": "oklch(0.6565 0.1503 348.73)",
+      "--primary-700": "oklch(0.5314 0.1384 355.11)"
+    },
+    "secondary": {
+      "--secondary-300": "oklch(0.8611 0.0504 198.03)",
+      "--secondary-400": "oklch(0.811 0.0589 201.14)",
+      "--secondary-500": "oklch(0.7107 0.0545 203.05)"
+    },
+    "neutrals": {
+      "--color-white": "oklch(1 0 0)",
+      "--color-black": "oklch(0 0 0)"
+    }
+  }
+}

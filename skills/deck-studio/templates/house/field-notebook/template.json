@@ -1,0 +1,59 @@
+{
+  "slug": "field-notebook",
+  "name": "Field Notebook",
+  "family": "house",
+  "tone": [
+    "grounded",
+    "warm",
+    "careful"
+  ],
+  "formality": "medium-high",
+  "density": "medium",
+  "scheme": "light",
+  "best_for": [
+    "user research",
+    "qualitative synthesis",
+    "field reports",
+    "service design"
+  ],
+  "avoid_for": [
+    "hard sales pitches",
+    "neon tech demos"
+  ],
+  "weak_cases": [
+    "dense financial models",
+    "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+  ],
+  "visual_signature": "warm notebook paper, margin notes, taped evidence frames, humane serif/sans mix",
+  "paths": {
+    "metadata": "templates/house/field-notebook/template.json",
+    "preview": "templates/house/field-notebook/preview.md",
+    "preview_html": "templates/house/field-notebook/preview.html",
+    "design": "templates/house/field-notebook/design.md",
+    "tokens": "templates/house/field-notebook/tokens.css",
+    "layouts": "templates/house/field-notebook/layouts.md"
+  },
+  "provenance": {
+    "source": "decks house template",
+    "license": "MIT",
+    "copyright": "2026 Tiziano AI",
+    "adaptation": "original owned template created for gaps in inherited template coverage"
+  },
+  "maturity": "starter",
+  "supported_layouts": [
+    "title",
+    "statement",
+    "two-column",
+    "claim with evidence"
+  ],
+  "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+  "assets": {
+    "fonts": [
+      "Lora",
+      "DM Sans",
+      "IBM Plex Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required for the starter; source meaningful images if the content calls for them."
+  }
+}

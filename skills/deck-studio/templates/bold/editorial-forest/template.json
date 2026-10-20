@@ -1,0 +1,52 @@
+{
+  "slug": "editorial-forest",
+  "name": "Editorial Forest",
+  "family": "bold",
+  "tone": [
+    "literary-quarterly",
+    "quiet"
+  ],
+  "formality": "medium",
+  "density": "medium",
+  "scheme": "mixed",
+  "best_for": [
+    "Literary reports and quarterly reviews",
+    "Quiet single-subject research narratives"
+  ],
+  "avoid_for": [
+    "Contexts that need to feel urgent, punchy, or sales-driven — the palette and rhythm are intentionally quiet"
+  ],
+  "weak_cases": [
+    "Many small technical panels weaken the single-subject editorial rhythm; low-contrast fills need inspection."
+  ],
+  "visual_signature": "Source Serif optical hierarchy, green/pink/oat paper and filled-versus-outlined tiles.",
+  "paths": {
+    "metadata": "templates/bold/editorial-forest/template.json",
+    "preview": "templates/bold/editorial-forest/preview.md",
+    "design": "templates/bold/editorial-forest/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "topic tiles",
+    "step tiles",
+    "metadata pairs",
+    "bar chart"
+  ],
+  "language_posture": "Serif optical sizing and mono labels require intentional script-specific substitutes, not synthetic equivalence.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Source Serif 4",
+      "JetBrains Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

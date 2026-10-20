@@ -1,0 +1,14 @@
+{
+  "name": "deck-studio",
+  "displayName": "Deck Studio",
+  "version": "0.1.1",
+  "description": "Shape, create, revise and publish audience-ready communication decks.",
+  "author": {
+    "name": "Tiziano AI",
+    "url": "https://github.com/Tiziano-AI"
+  },
+  "homepage": "https://github.com/Tiziano-AI/deck-studio",
+  "repository": "https://github.com/Tiziano-AI/deck-studio",
+  "license": "MIT",
+  "keywords": ["decks", "presentations", "communication", "html", "pdf"]
+}

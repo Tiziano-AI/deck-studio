@@ -1,0 +1,53 @@
+{
+  "slug": "bold-poster",
+  "name": "Bold Poster",
+  "family": "bold",
+  "tone": [
+    "poster-editorial",
+    "assertive"
+  ],
+  "formality": "medium",
+  "density": "mixed",
+  "scheme": "light",
+  "best_for": [
+    "Editorial campaigns",
+    "Factual spreads alternating with emphatic statements"
+  ],
+  "avoid_for": [
+    "Decks that need to communicate dense information per slide — the layout is built around a few large statements, not paragraphs of detail"
+  ],
+  "weak_cases": [
+    "Long headlines weaken the display treatment; dense prose needs a factual spread rather than a statement frame."
+  ],
+  "visual_signature": "Shrikhand display, tomato red and newsprint grids alternate dense spreads with spare statements.",
+  "paths": {
+    "metadata": "templates/bold/bold-poster/template.json",
+    "preview": "templates/bold/bold-poster/preview.md",
+    "design": "templates/bold/bold-poster/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "bordered factual grids",
+    "pillar columns",
+    "hero numeral",
+    "rotated statement"
+  ],
+  "language_posture": "Shrikhand letterforms drive the identity; another script needs a deliberate display adaptation, not assumed equivalence.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Shrikhand",
+      "Libre Baskerville",
+      "Space Grotesk"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

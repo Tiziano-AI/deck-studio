@@ -1,0 +1,49 @@
+{
+  "slug": "electric-studio",
+  "name": "Electric Studio",
+  "family": "safe-presets",
+  "tone": [
+    "professional",
+    "high-contrast"
+  ],
+  "formality": "medium-high",
+  "density": "medium",
+  "scheme": "mixed",
+  "best_for": [
+    "professional pitches",
+    "agency decks",
+    "executive updates"
+  ],
+  "avoid_for": [
+    "soft or handmade stories"
+  ],
+  "weak_cases": [
+    "Panel split is a seed; detailed tables and diagrams need their own composition."
+  ],
+  "visual_signature": "hard white/blue split with minimal confident spacing",
+  "paths": {
+    "metadata": "templates/safe-presets/electric-studio/template.json",
+    "preview": "templates/safe-presets/electric-studio/preview.md",
+    "design": "templates/safe-presets/electric-studio/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+  },
+  "supported_layouts": [
+    "two-panel split",
+    "hero quote"
+  ],
+  "maturity": "preset",
+  "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+  "assets": {
+    "fonts": [
+      "Manrope"
+    ],
+    "font_delivery": "external",
+    "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+  }
+}

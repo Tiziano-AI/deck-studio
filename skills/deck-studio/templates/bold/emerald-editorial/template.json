@@ -1,0 +1,52 @@
+{
+  "slug": "emerald-editorial",
+  "name": "Emerald Editorial",
+  "family": "bold",
+  "tone": [
+    "fashion-editorial",
+    "dramatic"
+  ],
+  "formality": "medium-high",
+  "density": "low-medium",
+  "scheme": "mixed",
+  "best_for": [
+    "Fashion and cultural launches",
+    "Dramatic type-led editorial presentations"
+  ],
+  "avoid_for": [
+    "Contexts that need to read as quiet, neutral, or institutionally restrained — the emerald field is too saturated to disappear into the background"
+  ],
+  "weak_cases": [
+    "Dense technical text and photo-led narratives compete with giant numerals and heavy rules."
+  ],
+  "visual_signature": "Heavy Bodoni mastheads, emerald/navy/paper rectangles and bilateral double rules.",
+  "paths": {
+    "metadata": "templates/bold/emerald-editorial/template.json",
+    "preview": "templates/bold/emerald-editorial/preview.md",
+    "design": "templates/bold/emerald-editorial/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "agenda rows",
+    "section numeral",
+    "inverse tiles",
+    "bar chart"
+  ],
+  "language_posture": "Bodoni contrast and huge numerals are identity-bearing; verify alternative script weights and visual balance.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Bodoni Moda",
+      "Manrope"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

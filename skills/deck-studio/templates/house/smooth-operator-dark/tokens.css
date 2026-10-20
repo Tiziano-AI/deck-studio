@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "SO Raleway";
+  src: url("../_smoothoperator-assets/fonts/raleway-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SO Raleway";
+  src: url("../_smoothoperator-assets/fonts/raleway-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SO Raleway";
+  src: url("../_smoothoperator-assets/fonts/raleway-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SO Victor Mono";
+  src: url("../_smoothoperator-assets/fonts/victor-mono-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --so-base-100: oklch(0.9703 0.0084 281.74);
+  --so-base-200: oklch(0.9309 0.0168 282.31);
+  --so-base-300: oklch(0.8708 0.0252 283.4);
+  --so-base-700: oklch(0.3722 0.0441 286.47);
+  --so-base-800: oklch(0.2638 0.0399 288.01);
+  --so-base-900: oklch(0.2083 0.0347 289.9);
+  --so-base-950: oklch(0.1292 0.0315 290.68);
+  --so-base-1000: oklch(0.0781 0.0294 290.82);
+  --so-primary-300: oklch(0.8233 0.0748 344.64);
+  --so-primary-400: oklch(0.719 0.1257 347.27);
+  --so-primary-500: oklch(0.6565 0.1503 348.73);
+  --so-primary-700: oklch(0.5314 0.1384 355.11);
+  --so-secondary-300: oklch(0.8611 0.0504 198.03);
+  --so-secondary-400: oklch(0.811 0.0589 201.14);
+  --so-secondary-500: oklch(0.7107 0.0545 203.05);
+  --so-page: var(--so-base-1000);
+  --so-card: var(--so-base-900);
+  --so-ink: var(--so-base-200);
+  --so-muted: var(--so-base-300);
+  --so-border: var(--so-base-700);
+  --so-ring: var(--so-primary-700);
+  --so-radius: 30px;
+  --so-radius-large: 52px;
+  --so-font-sans: "SO Raleway", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --so-font-mono: "SO Victor Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}

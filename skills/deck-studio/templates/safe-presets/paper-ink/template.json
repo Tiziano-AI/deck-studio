@@ -1,0 +1,50 @@
+{
+  "slug": "paper-ink",
+  "name": "Paper & Ink",
+  "family": "safe-presets",
+  "tone": [
+    "literary",
+    "thoughtful"
+  ],
+  "formality": "high",
+  "density": "medium",
+  "scheme": "light",
+  "best_for": [
+    "reading decks",
+    "essays",
+    "policy memos"
+  ],
+  "avoid_for": [
+    "high-energy launches"
+  ],
+  "weak_cases": [
+    "This is a typographic seed; dense technical or chart layouts are not documented."
+  ],
+  "visual_signature": "warm paper, ink typography, subtle editorial rules",
+  "paths": {
+    "metadata": "templates/safe-presets/paper-ink/template.json",
+    "preview": "templates/safe-presets/paper-ink/preview.md",
+    "design": "templates/safe-presets/paper-ink/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+  },
+  "supported_layouts": [
+    "pull quote",
+    "editorial opener"
+  ],
+  "maturity": "preset",
+  "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+  "assets": {
+    "fonts": [
+      "Cormorant Garamond",
+      "Source Serif 4"
+    ],
+    "font_delivery": "external",
+    "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+  }
+}

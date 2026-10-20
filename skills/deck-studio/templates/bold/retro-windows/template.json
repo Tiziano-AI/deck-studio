@@ -1,0 +1,54 @@
+{
+  "slug": "retro-windows",
+  "name": "Retro Windows",
+  "family": "bold",
+  "tone": [
+    "software-nostalgia",
+    "technical"
+  ],
+  "formality": "low",
+  "density": "high",
+  "scheme": "light",
+  "best_for": [
+    "Deliberately nostalgic software presentations",
+    "Desktop-scale technical dashboards"
+  ],
+  "avoid_for": [
+    "Decks that need to read as modern, elegant, or institutionally credible — the Win95 chrome will always read as a costume"
+  ],
+  "weak_cases": [
+    "Tiny controls and dense chrome are risky in projected decks; decorative controls must not imply working interaction."
+  ],
+  "visual_signature": "Raised/sunken bevels, white content wells, gray chrome and active-window hierarchy.",
+  "paths": {
+    "metadata": "templates/bold/retro-windows/template.json",
+    "preview": "templates/bold/retro-windows/preview.md",
+    "design": "templates/bold/retro-windows/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "window dashboard",
+    "tree list",
+    "table",
+    "group box",
+    "progress panel"
+  ],
+  "language_posture": "Native UI fonts vary by platform; pixel accent faces may lack needed glyphs and must be tested.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "MS Sans Serif",
+      "Press Start 2P",
+      "VT323"
+    ],
+    "font_delivery": "mixed",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

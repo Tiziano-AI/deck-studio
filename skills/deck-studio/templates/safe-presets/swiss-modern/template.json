@@ -1,0 +1,49 @@
+{
+  "slug": "swiss-modern",
+  "name": "Swiss Modern",
+  "family": "safe-presets",
+  "tone": [
+    "precise",
+    "graphic"
+  ],
+  "formality": "high",
+  "density": "medium-high",
+  "scheme": "light",
+  "best_for": [
+    "strategy decks",
+    "consulting, reports",
+    "public-sector material"
+  ],
+  "avoid_for": [
+    "playful youth brands"
+  ],
+  "weak_cases": [
+    "The grid is a visual seed, without a documented matrix or chart grammar."
+  ],
+  "visual_signature": "grid-first Swiss restraint with disciplined typography",
+  "paths": {
+    "metadata": "templates/safe-presets/swiss-modern/template.json",
+    "preview": "templates/safe-presets/swiss-modern/preview.md",
+    "design": "templates/safe-presets/swiss-modern/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+  },
+  "supported_layouts": [
+    "asymmetric grid title"
+  ],
+  "maturity": "preset",
+  "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+  "assets": {
+    "fonts": [
+      "Archivo",
+      "Nunito"
+    ],
+    "font_delivery": "external",
+    "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+  }
+}

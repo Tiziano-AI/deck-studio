@@ -1,0 +1,67 @@
+{
+  "slug": "smooth-operator-light",
+  "name": "Smooth Operator Light",
+  "family": "house",
+  "tone": [
+    "operator-grade",
+    "trustworthy",
+    "precise"
+  ],
+  "formality": "high",
+  "density": "high",
+  "scheme": "light",
+  "best_for": [
+    "SmoothOperator board updates",
+    "workflow strategy decks",
+    "evidence-system explainers",
+    "customer onboarding dossiers"
+  ],
+  "avoid_for": [
+    "pure cinematic launch reveals",
+    "non-SmoothOperator brand work",
+    "playful consumer storytelling"
+  ],
+  "weak_cases": [
+    "low-text stage keynote moments",
+    "photo-led campaigns"
+  ],
+  "visual_signature": "ivory evidence surface, Raleway authority, Victor Mono audit rails, magenta/cyan brand signals",
+  "paths": {
+    "metadata": "templates/house/smooth-operator-light/template.json",
+    "preview": "templates/house/smooth-operator-light/preview.md",
+    "preview_html": "templates/house/smooth-operator-light/preview.html",
+    "design": "templates/house/smooth-operator-light/design.md",
+    "tokens": "templates/house/smooth-operator-light/tokens.css",
+    "layouts": "templates/house/smooth-operator-light/layouts.md"
+  },
+  "provenance": {
+    "source": "decks house template",
+    "license": "MIT",
+    "copyright": "2026 Tiziano AI",
+    "adaptation": "original Deck Studio composition based on SmoothOperator brand assets; package-local owners are listed below, not live product evidence"
+  },
+  "brand_asset_provenance": {
+    "distribution_owner": "Deck Studio bundled SmoothOperator brand assets",
+    "template": "templates/house/smooth-operator-light/design.md",
+    "tokens": "templates/house/smooth-operator-light/tokens.css",
+    "palette": "templates/house/_smoothoperator-assets/palette/palette.json",
+    "font_manifest": "templates/house/_smoothoperator-assets/fonts/font-manifest.json",
+    "logo": "templates/house/_smoothoperator-assets/logo/smoothoperator-icon.svg"
+  },
+  "maturity": "developed",
+  "supported_layouts": [
+    "evidence ledger",
+    "workflow map",
+    "comparison",
+    "operator brief"
+  ],
+  "language_posture": "Bundled font files do not establish coverage for the audience's language. Verify glyphs and mixed-script labels before using the brand stack.",
+  "assets": {
+    "fonts": [
+      "SO Raleway",
+      "SO Victor Mono"
+    ],
+    "font_delivery": "bundled",
+    "images": "Bundled SmoothOperator logo and palette; use only for authorized brand work."
+  }
+}

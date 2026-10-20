@@ -1,0 +1,53 @@
+{
+  "slug": "neo-grid-bold",
+  "name": "Neo-Grid Bold",
+  "family": "bold",
+  "tone": [
+    "poster-editorial",
+    "dense",
+    "assertive"
+  ],
+  "formality": "medium",
+  "density": "high",
+  "scheme": "light",
+  "best_for": [
+    "Dense editorial and product reports",
+    "Comparison matrices with short labels"
+  ],
+  "avoid_for": [
+    "Contexts that need to feel quiet, traditional, or warm — the neon-yellow accent and uppercase display commit to a confident editorial voice"
+  ],
+  "weak_cases": [
+    "Long labels can collide with fixed spans; typography and panels must be composed together."
+  ],
+  "visual_signature": "Paper/ink/lemon panel adjacency with heavy uppercase type locked to grid spans.",
+  "paths": {
+    "metadata": "templates/bold/neo-grid-bold/template.json",
+    "preview": "templates/bold/neo-grid-bold/preview.md",
+    "design": "templates/bold/neo-grid-bold/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "twelve-by-eight panel grid",
+    "comparison matrix",
+    "table",
+    "bar chart"
+  ],
+  "language_posture": "Uppercase and compact Latin headings do not predict other-script fit; recompose spans around actual text.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Space Grotesk",
+      "JetBrains Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

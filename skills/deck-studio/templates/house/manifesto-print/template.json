@@ -1,0 +1,58 @@
+{
+  "slug": "manifesto-print",
+  "name": "Manifesto Print",
+  "family": "house",
+  "tone": [
+    "sharp",
+    "direct",
+    "public"
+  ],
+  "formality": "medium",
+  "density": "medium-low",
+  "scheme": "light",
+  "best_for": [
+    "manifestos",
+    "strategic narratives",
+    "opinionated pitches",
+    "culture decks"
+  ],
+  "avoid_for": [
+    "neutral status reporting"
+  ],
+  "weak_cases": [
+    "many small charts",
+    "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+  ],
+  "visual_signature": "oversized print headlines, red rule marks, newspaper energy without faux nostalgia",
+  "paths": {
+    "metadata": "templates/house/manifesto-print/template.json",
+    "preview": "templates/house/manifesto-print/preview.md",
+    "preview_html": "templates/house/manifesto-print/preview.html",
+    "design": "templates/house/manifesto-print/design.md",
+    "tokens": "templates/house/manifesto-print/tokens.css",
+    "layouts": "templates/house/manifesto-print/layouts.md"
+  },
+  "provenance": {
+    "source": "decks house template",
+    "license": "MIT",
+    "copyright": "2026 Tiziano AI",
+    "adaptation": "original owned template created for gaps in inherited template coverage"
+  },
+  "maturity": "starter",
+  "supported_layouts": [
+    "title",
+    "statement",
+    "two-column",
+    "claim with evidence"
+  ],
+  "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+  "assets": {
+    "fonts": [
+      "Oswald",
+      "Source Serif 4",
+      "IBM Plex Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required for the starter; source meaningful images if the content calls for them."
+  }
+}

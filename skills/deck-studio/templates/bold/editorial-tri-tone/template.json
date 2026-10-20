@@ -1,0 +1,54 @@
+{
+  "slug": "editorial-tri-tone",
+  "name": "Editorial Tri-Tone",
+  "family": "bold",
+  "tone": [
+    "arts-editorial",
+    "warm"
+  ],
+  "formality": "medium-high",
+  "density": "medium",
+  "scheme": "mixed",
+  "best_for": [
+    "Arts and independent-publication presentations",
+    "Warm editorial product narratives"
+  ],
+  "avoid_for": [
+    "Decks that need to read as soft or comforting — the burgundy/pink/cream tri-tone is intentionally high-contrast and styled"
+  ],
+  "weak_cases": [
+    "Three colors cannot distinguish unlimited series; inline font switches may complicate dense multilingual copy."
+  ],
+  "visual_signature": "Pink, butter and burgundy with grotesque/serif inline contrast and mono colophon.",
+  "paths": {
+    "metadata": "templates/bold/editorial-tri-tone/template.json",
+    "preview": "templates/bold/editorial-tri-tone/preview.md",
+    "design": "templates/bold/editorial-tri-tone/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "value cards",
+    "stat breakdown",
+    "timeline ribbon",
+    "endorsement",
+    "chart card"
+  ],
+  "language_posture": "Latin roman/italic and face-switch emphasis may not transfer; define emphasis for the audience's script.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Bricolage Grotesque",
+      "Instrument Serif",
+      "JetBrains Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

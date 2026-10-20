@@ -1,0 +1,54 @@
+{
+  "slug": "blue-professional",
+  "name": "Blue Professional",
+  "family": "bold",
+  "tone": [
+    "executive",
+    "research",
+    "restrained"
+  ],
+  "formality": "medium-high",
+  "density": "high",
+  "scheme": "light",
+  "best_for": [
+    "Executive and research briefings",
+    "Metric reviews and ranked comparisons"
+  ],
+  "avoid_for": [
+    "Contexts where the deck should feel hot, playful, or intentionally informal — the cool electric-blue restraint will read as overly polished"
+  ],
+  "weak_cases": [
+    "Single-hue charts need labels or another encoding for multiple categories; never invent metrics to fill panels."
+  ],
+  "visual_signature": "Soft cobalt surfaces, rounded tinted panels and restrained sans hierarchy.",
+  "paths": {
+    "metadata": "templates/bold/blue-professional/template.json",
+    "preview": "templates/bold/blue-professional/preview.md",
+    "design": "templates/bold/blue-professional/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "dashboard metrics",
+    "ranked bars",
+    "detail grids",
+    "step sequences",
+    "split highlight"
+  ],
+  "language_posture": "Sans roles can be adapted across scripts; named Latin faces do not establish coverage.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Space Grotesk",
+      "Inter"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

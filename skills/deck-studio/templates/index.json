@@ -1,0 +1,3033 @@
+{
+  "schema_version": 2,
+  "product": "decks",
+  "skill": "deck-studio",
+  "template_count": 56,
+  "families": {
+    "bold": 34,
+    "safe-presets": 12,
+    "house": 10
+  },
+  "selection_contract": {
+    "start": "Use templates/README.md to shortlist by tone, density and supported layouts; use this JSON for exact filtering.",
+    "depth": "Read shortlisted previews when a visual choice is useful; read the selected full design recipe before building.",
+    "family": "Family records provenance, not a safe/bold/wildcard selection quota.",
+    "maturity": "Recipe means substantial guidance; preset means visual seed; starter means preliminary house scaffolding; developed means specific house guidance/assets. None is rendered acceptance.",
+    "assets": "Localize external fonts used. System and bundled fonts still require checks with actual audience text.",
+    "visible_slide_rule": "Keep template names, slugs, paths and option labels outside audience slide content."
+  },
+  "templates": [
+    {
+      "slug": "8-bit-orbit",
+      "name": "8-Bit Orbit",
+      "family": "bold",
+      "tone": [
+        "arcade-tech",
+        "playful"
+      ],
+      "formality": "low",
+      "density": "medium",
+      "scheme": "dark",
+      "best_for": [
+        "Gaming and indie-tool demos",
+        "Retro-tech talks and hackathon presentations"
+      ],
+      "avoid_for": [
+        "Contexts where the dark neon palette would actively work against the message — quiet institutional finance disclosures, healthcare patient-facing materials, traditional luxury"
+      ],
+      "weak_cases": [
+        "Long prose fights the pixel rhythm; many series exhaust the neon accents."
+      ],
+      "visual_signature": "Pixel-grid HUD, stepped zero-blur shadows, bracket frames, neon on navy.",
+      "paths": {
+        "metadata": "templates/bold/8-bit-orbit/template.json",
+        "preview": "templates/bold/8-bit-orbit/preview.md",
+        "design": "templates/bold/8-bit-orbit/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "feature cards",
+        "metric blocks",
+        "pixel bar charts",
+        "timeline rails",
+        "quote"
+      ],
+      "language_posture": "Pixel display and mono label rhythm may not transfer to another script; choose and inspect script-appropriate faces.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Tektur",
+          "Chakra Petch",
+          "Space Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No photography required; CSS/SVG grid, stars and brackets carry the identity."
+      }
+    },
+    {
+      "slug": "biennale-yellow",
+      "name": "Biennale Yellow",
+      "family": "bold",
+      "tone": [
+        "exhibition-editorial",
+        "literary"
+      ],
+      "formality": "high",
+      "density": "medium",
+      "scheme": "light",
+      "best_for": [
+        "Exhibition and cultural programmes",
+        "Literary proposals and curated itineraries"
+      ],
+      "avoid_for": [
+        "Decks that need visual punch or saturated multi-color energy — the warm-paper canvas and one-yellow palette are intentionally quiet and atmospheric"
+      ],
+      "weak_cases": [
+        "Dense dashboard cells crowd the literary spacing; faint atmosphere is not a data encoding."
+      ],
+      "visual_signature": "Parchment, indigo hairlines, yellow sun bloom and serif/italic hierarchy.",
+      "paths": {
+        "metadata": "templates/bold/biennale-yellow/template.json",
+        "preview": "templates/bold/biennale-yellow/preview.md",
+        "design": "templates/bold/biennale-yellow/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "programme strands",
+        "itinerary ledger",
+        "statement",
+        "bar comparison"
+      ],
+      "language_posture": "Serif/italic contrast needs an intentional equivalent in other scripts; inspect mixed-script baselines.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Instrument Serif",
+          "Archivo",
+          "JetBrains Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "black-stage-keynote",
+      "name": "Black Stage Keynote",
+      "family": "house",
+      "tone": [
+        "confident",
+        "dramatic",
+        "quiet"
+      ],
+      "formality": "medium-high",
+      "density": "low",
+      "scheme": "dark",
+      "best_for": [
+        "keynotes",
+        "launch reveals",
+        "founder narratives",
+        "big ideas"
+      ],
+      "avoid_for": [
+        "dense appendices",
+        "table-heavy reports"
+      ],
+      "weak_cases": [
+        "multi-column detail",
+        "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+      ],
+      "visual_signature": "black theatre space, oversized white type, one precise color beam, cinematic pacing",
+      "paths": {
+        "metadata": "templates/house/black-stage-keynote/template.json",
+        "preview": "templates/house/black-stage-keynote/preview.md",
+        "preview_html": "templates/house/black-stage-keynote/preview.html",
+        "design": "templates/house/black-stage-keynote/design.md",
+        "tokens": "templates/house/black-stage-keynote/tokens.css",
+        "layouts": "templates/house/black-stage-keynote/layouts.md"
+      },
+      "provenance": {
+        "source": "decks house template",
+        "license": "MIT",
+        "copyright": "2026 Tiziano AI",
+        "adaptation": "original owned template created for gaps in inherited template coverage"
+      },
+      "maturity": "starter",
+      "supported_layouts": [
+        "title",
+        "statement",
+        "two-column",
+        "claim with evidence"
+      ],
+      "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+      "assets": {
+        "fonts": [
+          "Satoshi",
+          "Fraunces",
+          "IBM Plex Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required for the starter; source meaningful images if the content calls for them."
+      }
+    },
+    {
+      "slug": "block-frame",
+      "name": "BlockFrame",
+      "family": "bold",
+      "tone": [
+        "neobrutalist",
+        "zine",
+        "playful"
+      ],
+      "formality": "medium-low",
+      "density": "high",
+      "scheme": "light",
+      "best_for": [
+        "Creative launches and studio presentations",
+        "Graphic product and feature explainers"
+      ],
+      "avoid_for": [
+        "Contexts that require quiet institutional restraint or traditional weight (regulated disclosures, formal legal briefs)"
+      ],
+      "weak_cases": [
+        "Stacking every card adds noise; long small text loses hierarchy inside nested frames."
+      ],
+      "visual_signature": "Thick coupled borders and hard shadows, tilted objects and border-only secondary cards.",
+      "paths": {
+        "metadata": "templates/bold/block-frame/template.json",
+        "preview": "templates/bold/block-frame/preview.md",
+        "design": "templates/bold/block-frame/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "nested feature cards",
+        "numbered lists",
+        "metric tiles",
+        "tilted callouts"
+      ],
+      "language_posture": "The voice relies more on border and object geometry than letterforms; still verify chosen fonts and line breaks.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Inter",
+          "Space Grotesk"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "blue-professional",
+      "name": "Blue Professional",
+      "family": "bold",
+      "tone": [
+        "executive",
+        "research",
+        "restrained"
+      ],
+      "formality": "medium-high",
+      "density": "high",
+      "scheme": "light",
+      "best_for": [
+        "Executive and research briefings",
+        "Metric reviews and ranked comparisons"
+      ],
+      "avoid_for": [
+        "Contexts where the deck should feel hot, playful, or intentionally informal — the cool electric-blue restraint will read as overly polished"
+      ],
+      "weak_cases": [
+        "Single-hue charts need labels or another encoding for multiple categories; never invent metrics to fill panels."
+      ],
+      "visual_signature": "Soft cobalt surfaces, rounded tinted panels and restrained sans hierarchy.",
+      "paths": {
+        "metadata": "templates/bold/blue-professional/template.json",
+        "preview": "templates/bold/blue-professional/preview.md",
+        "design": "templates/bold/blue-professional/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "dashboard metrics",
+        "ranked bars",
+        "detail grids",
+        "step sequences",
+        "split highlight"
+      ],
+      "language_posture": "Sans roles can be adapted across scripts; named Latin faces do not establish coverage.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Space Grotesk",
+          "Inter"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "boardroom-dossier",
+      "name": "Boardroom Dossier",
+      "family": "house",
+      "tone": [
+        "sober",
+        "evidence-led",
+        "decisive"
+      ],
+      "formality": "high",
+      "density": "high",
+      "scheme": "mixed",
+      "best_for": [
+        "board updates",
+        "investor memos",
+        "strategy reviews",
+        "risk briefings"
+      ],
+      "avoid_for": [
+        "playful launches",
+        "brand personality decks"
+      ],
+      "weak_cases": [
+        "single-emotion keynote moments",
+        "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+      ],
+      "visual_signature": "navy dossier pages, strict rules, red/amber/green decision marks, serif headlines with mono evidence labels",
+      "paths": {
+        "metadata": "templates/house/boardroom-dossier/template.json",
+        "preview": "templates/house/boardroom-dossier/preview.md",
+        "preview_html": "templates/house/boardroom-dossier/preview.html",
+        "design": "templates/house/boardroom-dossier/design.md",
+        "tokens": "templates/house/boardroom-dossier/tokens.css",
+        "layouts": "templates/house/boardroom-dossier/layouts.md"
+      },
+      "provenance": {
+        "source": "decks house template",
+        "license": "MIT",
+        "copyright": "2026 Tiziano AI",
+        "adaptation": "original owned template created for gaps in inherited template coverage"
+      },
+      "maturity": "starter",
+      "supported_layouts": [
+        "title",
+        "statement",
+        "two-column",
+        "claim with evidence"
+      ],
+      "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+      "assets": {
+        "fonts": [
+          "IBM Plex Sans",
+          "Source Serif 4",
+          "IBM Plex Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required for the starter; source meaningful images if the content calls for them."
+      }
+    },
+    {
+      "slug": "bold-poster",
+      "name": "Bold Poster",
+      "family": "bold",
+      "tone": [
+        "poster-editorial",
+        "assertive"
+      ],
+      "formality": "medium",
+      "density": "mixed",
+      "scheme": "light",
+      "best_for": [
+        "Editorial campaigns",
+        "Factual spreads alternating with emphatic statements"
+      ],
+      "avoid_for": [
+        "Decks that need to communicate dense information per slide — the layout is built around a few large statements, not paragraphs of detail"
+      ],
+      "weak_cases": [
+        "Long headlines weaken the display treatment; dense prose needs a factual spread rather than a statement frame."
+      ],
+      "visual_signature": "Shrikhand display, tomato red and newsprint grids alternate dense spreads with spare statements.",
+      "paths": {
+        "metadata": "templates/bold/bold-poster/template.json",
+        "preview": "templates/bold/bold-poster/preview.md",
+        "design": "templates/bold/bold-poster/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "bordered factual grids",
+        "pillar columns",
+        "hero numeral",
+        "rotated statement"
+      ],
+      "language_posture": "Shrikhand letterforms drive the identity; another script needs a deliberate display adaptation, not assumed equivalence.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Shrikhand",
+          "Libre Baskerville",
+          "Space Grotesk"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "bold-signal",
+      "name": "Bold Signal",
+      "family": "safe-presets",
+      "tone": [
+        "confident",
+        "modern"
+      ],
+      "formality": "medium",
+      "density": "medium",
+      "scheme": "dark",
+      "best_for": [
+        "keynote openers",
+        "launch decks",
+        "confident pitches"
+      ],
+      "avoid_for": [
+        "quiet research memos"
+      ],
+      "weak_cases": [
+        "Colored focal card supplies hierarchy but is not a documented dense evidence layout."
+      ],
+      "visual_signature": "dark gradient with a single loud card and oversized numbering",
+      "paths": {
+        "metadata": "templates/safe-presets/bold-signal/template.json",
+        "preview": "templates/safe-presets/bold-signal/preview.md",
+        "design": "templates/safe-presets/bold-signal/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+      },
+      "supported_layouts": [
+        "accent card with anchored title"
+      ],
+      "maturity": "preset",
+      "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+      "assets": {
+        "fonts": [
+          "Archivo Black",
+          "Space Grotesk"
+        ],
+        "font_delivery": "external",
+        "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+      }
+    },
+    {
+      "slug": "broadside",
+      "name": "Broadside",
+      "family": "bold",
+      "tone": [
+        "manifesto",
+        "public-address"
+      ],
+      "formality": "medium-high",
+      "density": "low-medium",
+      "scheme": "dark",
+      "best_for": [
+        "Manifestos and public-address presentations",
+        "Forceful pitches with concise evidence"
+      ],
+      "avoid_for": [
+        "Decks that need to feel quiet, warm, or institutionally traditional — the dark canvas with fire-orange accent commits to drama"
+      ],
+      "weak_cases": [
+        "Long evidence paragraphs undermine the declaration rhythm; faded supporting lists still need legibility."
+      ],
+      "visual_signature": "Lowercase sans declarations, uppercase mono chrome, dark documentation and orange declaration.",
+      "paths": {
+        "metadata": "templates/bold/broadside/template.json",
+        "preview": "templates/bold/broadside/preview.md",
+        "design": "templates/bold/broadside/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "oversized statement",
+        "paired comparison",
+        "metric strip",
+        "bar comparison"
+      ],
+      "language_posture": "Lowercase/uppercase contrast is not portable to caseless scripts; replace the role distinction consciously.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Barlow",
+          "IBM Plex Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "capsule",
+      "name": "Capsule",
+      "family": "bold",
+      "tone": [
+        "literary-pop",
+        "memphis"
+      ],
+      "formality": "medium-low",
+      "density": "medium",
+      "scheme": "light",
+      "best_for": [
+        "Creative brand and editorial narratives",
+        "Playful structured product explainers"
+      ],
+      "avoid_for": [
+        "Contexts that require traditional institutional weight — the capsule shapes and pastel pops actively soften authority"
+      ],
+      "weak_cases": [
+        "Floating pill decoration crowds dense data; many linked nodes overload the rounded shape vocabulary."
+      ],
+      "visual_signature": "Bodoni display, outlined pills, warm/cool candy surfaces and hard-shadow lift.",
+      "paths": {
+        "metadata": "templates/bold/capsule/template.json",
+        "preview": "templates/bold/capsule/preview.md",
+        "design": "templates/bold/capsule/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "pill statistics",
+        "step nodes",
+        "orbit diagram",
+        "visual frame"
+      ],
+      "language_posture": "High-contrast serif display and compact pills need re-fit for other scripts and longer translations.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Bodoni Moda",
+          "Space Grotesk"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "cartesian",
+      "name": "Cartesian",
+      "family": "bold",
+      "tone": [
+        "museum",
+        "architecture",
+        "quiet"
+      ],
+      "formality": "high",
+      "density": "low",
+      "scheme": "light",
+      "best_for": [
+        "Architecture and museum narratives",
+        "Quiet research or boutique-brand presentations"
+      ],
+      "avoid_for": [
+        "Decks that need visual heat, multiple accents, or a sense of urgency — the warm-neutral palette is intentionally low-energy"
+      ],
+      "weak_cases": [
+        "Dashboard density and many chart categories fight the sparse monograph hierarchy."
+      ],
+      "visual_signature": "Stone and ink, true circles, sharp rectangles and restrained drafting geometry.",
+      "paths": {
+        "metadata": "templates/bold/cartesian/template.json",
+        "preview": "templates/bold/cartesian/preview.md",
+        "design": "templates/bold/cartesian/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "agenda rows",
+        "timeline",
+        "simple chart",
+        "portrait grid"
+      ],
+      "language_posture": "Preserve serif/sans roles where possible; inspect wider glyphs and long labels against circular geometry.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Playfair Display",
+          "Inter"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "cobalt-grid",
+      "name": "Cobalt Grid",
+      "family": "bold",
+      "tone": [
+        "trend-report",
+        "editorial-technical"
+      ],
+      "formality": "high",
+      "density": "high",
+      "scheme": "light",
+      "best_for": [
+        "Trend reports and editorial research",
+        "Structured index and ledger narratives"
+      ],
+      "avoid_for": [
+        "Decks that need warmth, multi-colour energy, or a casual / playful voice — the strict cobalt + cream + grid palette is intentionally austere"
+      ],
+      "weak_cases": [
+        "Two inks limit categorical encoding; pixel counts must represent values and decorative mosaics are not QR codes."
+      ],
+      "visual_signature": "Permanent graph paper, cream/cobalt printing and serif/sans/mono hierarchy.",
+      "paths": {
+        "metadata": "templates/bold/cobalt-grid/template.json",
+        "preview": "templates/bold/cobalt-grid/preview.md",
+        "design": "templates/bold/cobalt-grid/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "index rows",
+        "ledger",
+        "pixel-stack bars",
+        "manifesto",
+        "quote"
+      ],
+      "language_posture": "Mono catalogue labels and serif emphasis need script-aware equivalents; grids cannot compensate for unsupported glyphs.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Newsreader",
+          "Hanken Grotesk",
+          "DM Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "code-narrative",
+      "name": "Code Narrative",
+      "family": "house",
+      "tone": [
+        "hands-on",
+        "clear",
+        "credible"
+      ],
+      "formality": "medium",
+      "density": "medium-high",
+      "scheme": "dark",
+      "best_for": [
+        "developer talks",
+        "architecture walkthroughs",
+        "tool launches",
+        "incident learnings"
+      ],
+      "avoid_for": [
+        "nontechnical board decks"
+      ],
+      "weak_cases": [
+        "soft brand storytelling",
+        "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+      ],
+      "visual_signature": "dark editor canvas, syntax-color accents, large argument headline, terminal evidence strips",
+      "paths": {
+        "metadata": "templates/house/code-narrative/template.json",
+        "preview": "templates/house/code-narrative/preview.md",
+        "preview_html": "templates/house/code-narrative/preview.html",
+        "design": "templates/house/code-narrative/design.md",
+        "tokens": "templates/house/code-narrative/tokens.css",
+        "layouts": "templates/house/code-narrative/layouts.md"
+      },
+      "provenance": {
+        "source": "decks house template",
+        "license": "MIT",
+        "copyright": "2026 Tiziano AI",
+        "adaptation": "original owned template created for gaps in inherited template coverage"
+      },
+      "maturity": "starter",
+      "supported_layouts": [
+        "title",
+        "statement",
+        "two-column",
+        "claim with evidence"
+      ],
+      "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+      "assets": {
+        "fonts": [
+          "JetBrains Mono",
+          "Geist",
+          "Source Serif 4"
+        ],
+        "font_delivery": "external",
+        "images": "No image required for the starter; source meaningful images if the content calls for them."
+      }
+    },
+    {
+      "slug": "coral",
+      "name": "Coral",
+      "family": "bold",
+      "tone": [
+        "magazine",
+        "sports-poster"
+      ],
+      "formality": "medium",
+      "density": "medium-high",
+      "scheme": "mixed",
+      "best_for": [
+        "Sports, travel and magazine storytelling",
+        "Graphic comparisons and sectional narratives"
+      ],
+      "avoid_for": [
+        "Contexts that should feel quiet or institutional — the coral accent and oversized Bebas Neue commit hard to a confident magazine voice"
+      ],
+      "weak_cases": [
+        "Long headings and many competing regions dilute the poster hierarchy."
+      ],
+      "visual_signature": "Condensed uppercase display with coral/ink/cream regions and restrained hatch texture.",
+      "paths": {
+        "metadata": "templates/bold/coral/template.json",
+        "preview": "templates/bold/coral/preview.md",
+        "design": "templates/bold/coral/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "two-region comparison",
+        "three-region editorial",
+        "timeline",
+        "bar chart",
+        "pull quote"
+      ],
+      "language_posture": "Condensation and uppercase are central; non-Latin substitutions must be rebalanced rather than width-matched.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Bebas Neue",
+          "Inter"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "creative-mode",
+      "name": "Creative Mode",
+      "family": "bold",
+      "tone": [
+        "punk-zine",
+        "creative-product"
+      ],
+      "formality": "medium",
+      "density": "medium-high",
+      "scheme": "light",
+      "best_for": [
+        "Creative-product and process explainers",
+        "Punk or neobrutalist studio presentations"
+      ],
+      "avoid_for": [
+        "Contexts that demand institutional restraint and a quiet authority — the saturated multi-accent palette will read as expressive, not formal"
+      ],
+      "weak_cases": [
+        "Dense factual detail can disappear amid accent collision; shadows need separation from data marks."
+      ],
+      "visual_signature": "Heavy ink outlines, hard offset shadows, uppercase display and colliding flat accents.",
+      "paths": {
+        "metadata": "templates/bold/creative-mode/template.json",
+        "preview": "templates/bold/creative-mode/preview.md",
+        "design": "templates/bold/creative-mode/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "stat cells",
+        "process cards",
+        "comparison table",
+        "stacked-block diagram"
+      ],
+      "language_posture": "Uppercase display and mono metadata may lose contrast in other scripts; structural blocks can preserve the hierarchy.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Archivo Black",
+          "Space Grotesk",
+          "JetBrains Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "creative-voltage",
+      "name": "Creative Voltage",
+      "family": "safe-presets",
+      "tone": [
+        "creative",
+        "energetic",
+        "retro-modern"
+      ],
+      "formality": "medium-low",
+      "density": "medium",
+      "scheme": "dark",
+      "best_for": [
+        "creative work",
+        "brand launches",
+        "event talks"
+      ],
+      "avoid_for": [
+        "formal board material"
+      ],
+      "weak_cases": [
+        "Neon and halftone compete with small evidence; no handwriting font is supplied by the named pairing."
+      ],
+      "visual_signature": "electric blue, neon yellow, halftone texture, mono accents",
+      "paths": {
+        "metadata": "templates/safe-presets/creative-voltage/template.json",
+        "preview": "templates/safe-presets/creative-voltage/preview.md",
+        "design": "templates/safe-presets/creative-voltage/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+      },
+      "supported_layouts": [
+        "two-panel split"
+      ],
+      "maturity": "preset",
+      "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+      "assets": {
+        "fonts": [
+          "Syne",
+          "Space Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+      }
+    },
+    {
+      "slug": "daisy-days",
+      "name": "Daisy Days",
+      "family": "bold",
+      "tone": [
+        "storybook",
+        "friendly",
+        "playful"
+      ],
+      "formality": "low",
+      "density": "low-medium",
+      "scheme": "light",
+      "best_for": [
+        "Friendly educational and creative narratives",
+        "Playful community or consumer presentations"
+      ],
+      "avoid_for": [
+        "Contexts where the audience explicitly expects authority and precision — the hand-drawn pastel SVG decorations are the opposite of buttoned-up"
+      ],
+      "weak_cases": [
+        "Decoration reduces available evidence space; many technical labels clash with the storybook scale."
+      ],
+      "visual_signature": "Rounded type, pastel fields, charcoal outlines and a coherent sticker/doodle vocabulary.",
+      "paths": {
+        "metadata": "templates/bold/daisy-days/template.json",
+        "preview": "templates/bold/daisy-days/preview.md",
+        "design": "templates/bold/daisy-days/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "centered statement",
+        "rounded feature cards",
+        "step circles",
+        "avatar row"
+      ],
+      "language_posture": "Rounded Latin display is characterful but not proof of script support; choose equivalent friendliness and re-fit.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Fredoka One",
+          "Quicksand"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "dark-botanical",
+      "name": "Dark Botanical",
+      "family": "safe-presets",
+      "tone": [
+        "premium",
+        "artistic",
+        "quiet"
+      ],
+      "formality": "high",
+      "density": "low",
+      "scheme": "dark",
+      "best_for": [
+        "premium storytelling",
+        "culture decks",
+        "founder narrative"
+      ],
+      "avoid_for": [
+        "dense financial appendix"
+      ],
+      "weak_cases": [
+        "Atmospheric corners and serif scale suit sparse content, not dashboard detail."
+      ],
+      "visual_signature": "dark gallery surface with soft abstract botanical color fields",
+      "paths": {
+        "metadata": "templates/safe-presets/dark-botanical/template.json",
+        "preview": "templates/safe-presets/dark-botanical/preview.md",
+        "design": "templates/safe-presets/dark-botanical/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+      },
+      "supported_layouts": [
+        "centered title",
+        "quote"
+      ],
+      "maturity": "preset",
+      "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+      "assets": {
+        "fonts": [
+          "Cormorant",
+          "IBM Plex Sans"
+        ],
+        "font_delivery": "external",
+        "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+      }
+    },
+    {
+      "slug": "data-room-grid",
+      "name": "Data Room Grid",
+      "family": "house",
+      "tone": [
+        "precise",
+        "operator",
+        "credible"
+      ],
+      "formality": "high",
+      "density": "high",
+      "scheme": "light",
+      "best_for": [
+        "metrics reviews",
+        "due diligence",
+        "comparison tables",
+        "operating plans"
+      ],
+      "avoid_for": [
+        "emotional storytelling",
+        "visual-only keynote"
+      ],
+      "weak_cases": [
+        "pure manifesto statements",
+        "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+      ],
+      "visual_signature": "light grid, compact captions, strong table rhythm, restrained blue/green emphasis",
+      "paths": {
+        "metadata": "templates/house/data-room-grid/template.json",
+        "preview": "templates/house/data-room-grid/preview.md",
+        "preview_html": "templates/house/data-room-grid/preview.html",
+        "design": "templates/house/data-room-grid/design.md",
+        "tokens": "templates/house/data-room-grid/tokens.css",
+        "layouts": "templates/house/data-room-grid/layouts.md"
+      },
+      "provenance": {
+        "source": "decks house template",
+        "license": "MIT",
+        "copyright": "2026 Tiziano AI",
+        "adaptation": "original owned template created for gaps in inherited template coverage"
+      },
+      "maturity": "starter",
+      "supported_layouts": [
+        "title",
+        "statement",
+        "two-column",
+        "claim with evidence"
+      ],
+      "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+      "assets": {
+        "fonts": [
+          "Geist",
+          "IBM Plex Mono",
+          "Source Serif 4"
+        ],
+        "font_delivery": "external",
+        "images": "No image required for the starter; source meaningful images if the content calls for them."
+      }
+    },
+    {
+      "slug": "editorial-forest",
+      "name": "Editorial Forest",
+      "family": "bold",
+      "tone": [
+        "literary-quarterly",
+        "quiet"
+      ],
+      "formality": "medium",
+      "density": "medium",
+      "scheme": "mixed",
+      "best_for": [
+        "Literary reports and quarterly reviews",
+        "Quiet single-subject research narratives"
+      ],
+      "avoid_for": [
+        "Contexts that need to feel urgent, punchy, or sales-driven — the palette and rhythm are intentionally quiet"
+      ],
+      "weak_cases": [
+        "Many small technical panels weaken the single-subject editorial rhythm; low-contrast fills need inspection."
+      ],
+      "visual_signature": "Source Serif optical hierarchy, green/pink/oat paper and filled-versus-outlined tiles.",
+      "paths": {
+        "metadata": "templates/bold/editorial-forest/template.json",
+        "preview": "templates/bold/editorial-forest/preview.md",
+        "design": "templates/bold/editorial-forest/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "topic tiles",
+        "step tiles",
+        "metadata pairs",
+        "bar chart"
+      ],
+      "language_posture": "Serif optical sizing and mono labels require intentional script-specific substitutes, not synthetic equivalence.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Source Serif 4",
+          "JetBrains Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "editorial-tri-tone",
+      "name": "Editorial Tri-Tone",
+      "family": "bold",
+      "tone": [
+        "arts-editorial",
+        "warm"
+      ],
+      "formality": "medium-high",
+      "density": "medium",
+      "scheme": "mixed",
+      "best_for": [
+        "Arts and independent-publication presentations",
+        "Warm editorial product narratives"
+      ],
+      "avoid_for": [
+        "Decks that need to read as soft or comforting — the burgundy/pink/cream tri-tone is intentionally high-contrast and styled"
+      ],
+      "weak_cases": [
+        "Three colors cannot distinguish unlimited series; inline font switches may complicate dense multilingual copy."
+      ],
+      "visual_signature": "Pink, butter and burgundy with grotesque/serif inline contrast and mono colophon.",
+      "paths": {
+        "metadata": "templates/bold/editorial-tri-tone/template.json",
+        "preview": "templates/bold/editorial-tri-tone/preview.md",
+        "design": "templates/bold/editorial-tri-tone/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "value cards",
+        "stat breakdown",
+        "timeline ribbon",
+        "endorsement",
+        "chart card"
+      ],
+      "language_posture": "Latin roman/italic and face-switch emphasis may not transfer; define emphasis for the audience's script.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Bricolage Grotesque",
+          "Instrument Serif",
+          "JetBrains Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "electric-studio",
+      "name": "Electric Studio",
+      "family": "safe-presets",
+      "tone": [
+        "professional",
+        "high-contrast"
+      ],
+      "formality": "medium-high",
+      "density": "medium",
+      "scheme": "mixed",
+      "best_for": [
+        "professional pitches",
+        "agency decks",
+        "executive updates"
+      ],
+      "avoid_for": [
+        "soft or handmade stories"
+      ],
+      "weak_cases": [
+        "Panel split is a seed; detailed tables and diagrams need their own composition."
+      ],
+      "visual_signature": "hard white/blue split with minimal confident spacing",
+      "paths": {
+        "metadata": "templates/safe-presets/electric-studio/template.json",
+        "preview": "templates/safe-presets/electric-studio/preview.md",
+        "design": "templates/safe-presets/electric-studio/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+      },
+      "supported_layouts": [
+        "two-panel split",
+        "hero quote"
+      ],
+      "maturity": "preset",
+      "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+      "assets": {
+        "fonts": [
+          "Manrope"
+        ],
+        "font_delivery": "external",
+        "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+      }
+    },
+    {
+      "slug": "emerald-editorial",
+      "name": "Emerald Editorial",
+      "family": "bold",
+      "tone": [
+        "fashion-editorial",
+        "dramatic"
+      ],
+      "formality": "medium-high",
+      "density": "low-medium",
+      "scheme": "mixed",
+      "best_for": [
+        "Fashion and cultural launches",
+        "Dramatic type-led editorial presentations"
+      ],
+      "avoid_for": [
+        "Contexts that need to read as quiet, neutral, or institutionally restrained — the emerald field is too saturated to disappear into the background"
+      ],
+      "weak_cases": [
+        "Dense technical text and photo-led narratives compete with giant numerals and heavy rules."
+      ],
+      "visual_signature": "Heavy Bodoni mastheads, emerald/navy/paper rectangles and bilateral double rules.",
+      "paths": {
+        "metadata": "templates/bold/emerald-editorial/template.json",
+        "preview": "templates/bold/emerald-editorial/preview.md",
+        "design": "templates/bold/emerald-editorial/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "agenda rows",
+        "section numeral",
+        "inverse tiles",
+        "bar chart"
+      ],
+      "language_posture": "Bodoni contrast and huge numerals are identity-bearing; verify alternative script weights and visual balance.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Bodoni Moda",
+          "Manrope"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "field-notebook",
+      "name": "Field Notebook",
+      "family": "house",
+      "tone": [
+        "grounded",
+        "warm",
+        "careful"
+      ],
+      "formality": "medium-high",
+      "density": "medium",
+      "scheme": "light",
+      "best_for": [
+        "user research",
+        "qualitative synthesis",
+        "field reports",
+        "service design"
+      ],
+      "avoid_for": [
+        "hard sales pitches",
+        "neon tech demos"
+      ],
+      "weak_cases": [
+        "dense financial models",
+        "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+      ],
+      "visual_signature": "warm notebook paper, margin notes, taped evidence frames, humane serif/sans mix",
+      "paths": {
+        "metadata": "templates/house/field-notebook/template.json",
+        "preview": "templates/house/field-notebook/preview.md",
+        "preview_html": "templates/house/field-notebook/preview.html",
+        "design": "templates/house/field-notebook/design.md",
+        "tokens": "templates/house/field-notebook/tokens.css",
+        "layouts": "templates/house/field-notebook/layouts.md"
+      },
+      "provenance": {
+        "source": "decks house template",
+        "license": "MIT",
+        "copyright": "2026 Tiziano AI",
+        "adaptation": "original owned template created for gaps in inherited template coverage"
+      },
+      "maturity": "starter",
+      "supported_layouts": [
+        "title",
+        "statement",
+        "two-column",
+        "claim with evidence"
+      ],
+      "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+      "assets": {
+        "fonts": [
+          "Lora",
+          "DM Sans",
+          "IBM Plex Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required for the starter; source meaningful images if the content calls for them."
+      }
+    },
+    {
+      "slug": "grove",
+      "name": "Grove",
+      "family": "bold",
+      "tone": [
+        "literary",
+        "boutique",
+        "quiet"
+      ],
+      "formality": "medium-high",
+      "density": "low",
+      "scheme": "mixed",
+      "best_for": [
+        "Boutique-brand and literary narratives",
+        "Sparse thought-led presentations"
+      ],
+      "avoid_for": [
+        "Decks that need neon energy or rapid-fire pop — the forest-green canvas and Playfair serif commit to a slow, classical voice"
+      ],
+      "weak_cases": [
+        "Light small text and air-dependent composition are weak for projected dense material."
+      ],
+      "visual_signature": "Light Playfair/Jost typography, rare terracotta italic emphasis and watermark numerals.",
+      "paths": {
+        "metadata": "templates/bold/grove/template.json",
+        "preview": "templates/bold/grove/preview.md",
+        "design": "templates/bold/grove/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "chapter opener",
+        "quote",
+        "sparse statistics",
+        "image with caption"
+      ],
+      "language_posture": "Italic and light Latin typography cannot be assumed equivalent in other scripts; adapt weight and emphasis.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Playfair Display",
+          "Jost",
+          "JetBrains Mono"
+        ],
+        "font_delivery": "external",
+        "images": "Optional quiet editorial image; sparse type-led pages do not require one."
+      }
+    },
+    {
+      "slug": "long-table",
+      "name": "Long Table",
+      "family": "bold",
+      "tone": [
+        "programme",
+        "supper-club",
+        "risograph"
+      ],
+      "formality": "medium",
+      "density": "medium",
+      "scheme": "light",
+      "best_for": [
+        "Event programmes and schedules",
+        "Food, culture and curated creative presentations"
+      ],
+      "avoid_for": [
+        "Decks that need corporate polish, technical density, or a cold / minimalist register — the rust-red palette and bold serif mix are intentionally warm and people-facing"
+      ],
+      "weak_cases": [
+        "Long technical paragraphs or code do not fit its curated programme rhythm."
+      ],
+      "visual_signature": "Rust on buttery paper, uppercase Bricolage, Fraunces italic and dotted print texture.",
+      "paths": {
+        "metadata": "templates/bold/long-table/template.json",
+        "preview": "templates/bold/long-table/preview.md",
+        "design": "templates/bold/long-table/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "schedule ledger",
+        "course groups",
+        "outlined cards",
+        "statement"
+      ],
+      "language_posture": "Uppercase display and italic body are distinctive; another script needs separate hierarchy and spacing choices.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Fraunces",
+          "Bricolage Grotesque"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "manifesto-print",
+      "name": "Manifesto Print",
+      "family": "house",
+      "tone": [
+        "sharp",
+        "direct",
+        "public"
+      ],
+      "formality": "medium",
+      "density": "medium-low",
+      "scheme": "light",
+      "best_for": [
+        "manifestos",
+        "strategic narratives",
+        "opinionated pitches",
+        "culture decks"
+      ],
+      "avoid_for": [
+        "neutral status reporting"
+      ],
+      "weak_cases": [
+        "many small charts",
+        "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+      ],
+      "visual_signature": "oversized print headlines, red rule marks, newspaper energy without faux nostalgia",
+      "paths": {
+        "metadata": "templates/house/manifesto-print/template.json",
+        "preview": "templates/house/manifesto-print/preview.md",
+        "preview_html": "templates/house/manifesto-print/preview.html",
+        "design": "templates/house/manifesto-print/design.md",
+        "tokens": "templates/house/manifesto-print/tokens.css",
+        "layouts": "templates/house/manifesto-print/layouts.md"
+      },
+      "provenance": {
+        "source": "decks house template",
+        "license": "MIT",
+        "copyright": "2026 Tiziano AI",
+        "adaptation": "original owned template created for gaps in inherited template coverage"
+      },
+      "maturity": "starter",
+      "supported_layouts": [
+        "title",
+        "statement",
+        "two-column",
+        "claim with evidence"
+      ],
+      "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+      "assets": {
+        "fonts": [
+          "Oswald",
+          "Source Serif 4",
+          "IBM Plex Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required for the starter; source meaningful images if the content calls for them."
+      }
+    },
+    {
+      "slug": "mat",
+      "name": "Mat",
+      "family": "bold",
+      "tone": [
+        "industrial-product",
+        "restrained"
+      ],
+      "formality": "medium",
+      "density": "low-medium",
+      "scheme": "mixed",
+      "best_for": [
+        "Industrial-design and boutique-product launches",
+        "Material-led product comparisons"
+      ],
+      "avoid_for": [
+        "Contexts that need fast tech energy or institutional restraint — the muted sage and burnt-orange palette is intentionally warm and slow"
+      ],
+      "weak_cases": [
+        "Many small metrics or weak product imagery flatten the material/product focus."
+      ],
+      "visual_signature": "Heavy mixed-case Bricolage, dark forest, wood-brown glow and cream inset paper.",
+      "paths": {
+        "metadata": "templates/bold/mat/template.json",
+        "preview": "templates/bold/mat/preview.md",
+        "design": "templates/bold/mat/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "product image",
+        "stat cells",
+        "paired comparison",
+        "information card"
+      ],
+      "language_posture": "Replacing the sans roles with a serif changes its industrial register; verify script support while preserving role contrast.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Bricolage Grotesque",
+          "DM Sans",
+          "DM Mono"
+        ],
+        "font_delivery": "external",
+        "images": "Optional product image is a strong fit; deliver actual approved imagery, not a placeholder."
+      }
+    },
+    {
+      "slug": "monochrome",
+      "name": "Monochrome",
+      "family": "bold",
+      "tone": [
+        "analytical-editorial",
+        "literary",
+        "quiet"
+      ],
+      "formality": "high",
+      "density": "low-medium",
+      "scheme": "light",
+      "best_for": [
+        "Quiet analytical and research narratives",
+        "Literary presentations with simple evidence"
+      ],
+      "avoid_for": [
+        "Decks that need visual personality or color-led storytelling — the all-ink palette is intentionally austere"
+      ],
+      "weak_cases": [
+        "Many categorical series cannot rely on color; small light text needs intended-size inspection."
+      ],
+      "visual_signature": "Light Jost, Lora insight/quote voice, mono metadata and hairlines instead of color.",
+      "paths": {
+        "metadata": "templates/bold/monochrome/template.json",
+        "preview": "templates/bold/monochrome/preview.md",
+        "design": "templates/bold/monochrome/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "insight cards",
+        "quote",
+        "vertical timeline",
+        "simple statistics"
+      ],
+      "language_posture": "Maintain sans/serif/mono role contrast with tested script-appropriate fonts; avoid assuming matching light weights.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Jost",
+          "JetBrains Mono",
+          "Lora"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "neo-grid-bold",
+      "name": "Neo-Grid Bold",
+      "family": "bold",
+      "tone": [
+        "poster-editorial",
+        "dense",
+        "assertive"
+      ],
+      "formality": "medium",
+      "density": "high",
+      "scheme": "light",
+      "best_for": [
+        "Dense editorial and product reports",
+        "Comparison matrices with short labels"
+      ],
+      "avoid_for": [
+        "Contexts that need to feel quiet, traditional, or warm — the neon-yellow accent and uppercase display commit to a confident editorial voice"
+      ],
+      "weak_cases": [
+        "Long labels can collide with fixed spans; typography and panels must be composed together."
+      ],
+      "visual_signature": "Paper/ink/lemon panel adjacency with heavy uppercase type locked to grid spans.",
+      "paths": {
+        "metadata": "templates/bold/neo-grid-bold/template.json",
+        "preview": "templates/bold/neo-grid-bold/preview.md",
+        "design": "templates/bold/neo-grid-bold/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "twelve-by-eight panel grid",
+        "comparison matrix",
+        "table",
+        "bar chart"
+      ],
+      "language_posture": "Uppercase and compact Latin headings do not predict other-script fit; recompose spans around actual text.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Space Grotesk",
+          "JetBrains Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "neon-cyber",
+      "name": "Neon Cyber",
+      "family": "safe-presets",
+      "tone": [
+        "futuristic",
+        "technical"
+      ],
+      "formality": "medium-low",
+      "density": "medium",
+      "scheme": "dark",
+      "best_for": [
+        "security talks",
+        "developer demos",
+        "AI systems"
+      ],
+      "avoid_for": [
+        "calm HR or legal decks"
+      ],
+      "weak_cases": [
+        "Glow and particles provide atmosphere, not a documented layout system."
+      ],
+      "visual_signature": "dark neon grid, luminous accents, technical atmosphere",
+      "paths": {
+        "metadata": "templates/safe-presets/neon-cyber/template.json",
+        "preview": "templates/safe-presets/neon-cyber/preview.md",
+        "design": "templates/safe-presets/neon-cyber/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+      },
+      "supported_layouts": [
+        "type-led title"
+      ],
+      "maturity": "preset",
+      "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+      "assets": {
+        "fonts": [
+          "Clash Display",
+          "Satoshi"
+        ],
+        "font_delivery": "external",
+        "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+      }
+    },
+    {
+      "slug": "notebook-tabs",
+      "name": "Notebook Tabs",
+      "family": "safe-presets",
+      "tone": [
+        "editorial",
+        "organized",
+        "tactile"
+      ],
+      "formality": "medium",
+      "density": "medium-high",
+      "scheme": "light",
+      "best_for": [
+        "workshops",
+        "education",
+        "research synthesis"
+      ],
+      "avoid_for": [
+        "severe keynote minimalism"
+      ],
+      "weak_cases": [
+        "Tabs reduce body width; long section labels and dense evidence require re-fit."
+      ],
+      "visual_signature": "cream page with colorful tab system and binder details",
+      "paths": {
+        "metadata": "templates/safe-presets/notebook-tabs/template.json",
+        "preview": "templates/safe-presets/notebook-tabs/preview.md",
+        "design": "templates/safe-presets/notebook-tabs/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+      },
+      "supported_layouts": [
+        "tabbed paper panel"
+      ],
+      "maturity": "preset",
+      "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+      "assets": {
+        "fonts": [
+          "Bodoni Moda",
+          "DM Sans"
+        ],
+        "font_delivery": "external",
+        "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+      }
+    },
+    {
+      "slug": "paper-ink",
+      "name": "Paper & Ink",
+      "family": "safe-presets",
+      "tone": [
+        "literary",
+        "thoughtful"
+      ],
+      "formality": "high",
+      "density": "medium",
+      "scheme": "light",
+      "best_for": [
+        "reading decks",
+        "essays",
+        "policy memos"
+      ],
+      "avoid_for": [
+        "high-energy launches"
+      ],
+      "weak_cases": [
+        "This is a typographic seed; dense technical or chart layouts are not documented."
+      ],
+      "visual_signature": "warm paper, ink typography, subtle editorial rules",
+      "paths": {
+        "metadata": "templates/safe-presets/paper-ink/template.json",
+        "preview": "templates/safe-presets/paper-ink/preview.md",
+        "design": "templates/safe-presets/paper-ink/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+      },
+      "supported_layouts": [
+        "pull quote",
+        "editorial opener"
+      ],
+      "maturity": "preset",
+      "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+      "assets": {
+        "fonts": [
+          "Cormorant Garamond",
+          "Source Serif 4"
+        ],
+        "font_delivery": "external",
+        "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+      }
+    },
+    {
+      "slug": "pastel-geometry",
+      "name": "Pastel Geometry",
+      "family": "safe-presets",
+      "tone": [
+        "friendly",
+        "organized"
+      ],
+      "formality": "medium",
+      "density": "medium",
+      "scheme": "light",
+      "best_for": [
+        "product explainers",
+        "team updates",
+        "teaching"
+      ],
+      "avoid_for": [
+        "hard-nosed investor material"
+      ],
+      "weak_cases": [
+        "Pill ornaments occupy the edge without adding evidence structure; dense layouts are not documented."
+      ],
+      "visual_signature": "soft card geometry, pastel pills, approachable hierarchy",
+      "paths": {
+        "metadata": "templates/safe-presets/pastel-geometry/template.json",
+        "preview": "templates/safe-presets/pastel-geometry/preview.md",
+        "design": "templates/safe-presets/pastel-geometry/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+      },
+      "supported_layouts": [
+        "rounded content card"
+      ],
+      "maturity": "preset",
+      "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+      "assets": {
+        "fonts": [
+          "Plus Jakarta Sans"
+        ],
+        "font_delivery": "external",
+        "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+      }
+    },
+    {
+      "slug": "peoples-platform",
+      "name": "People's Platform (Block & Bold)",
+      "family": "bold",
+      "tone": [
+        "campaign",
+        "collective",
+        "public-address"
+      ],
+      "formality": "medium-low",
+      "density": "medium-high",
+      "scheme": "light",
+      "best_for": [
+        "Campaigns and collective manifestos",
+        "Public-address narratives with emphatic figures"
+      ],
+      "avoid_for": [
+        "Contexts where institutional restraint is the actual goal — the saturated political-poster palette commits hard to expressive energy"
+      ],
+      "weak_cases": [
+        "Long technical prose weakens the rallying hierarchy; handwritten additions must come from approved content."
+      ],
+      "visual_signature": "Slab display, handwritten interruption, condensed prose and printed letter shadows.",
+      "paths": {
+        "metadata": "templates/bold/peoples-platform/template.json",
+        "preview": "templates/bold/peoples-platform/preview.md",
+        "design": "templates/bold/peoples-platform/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "pillar columns",
+        "KPI cards",
+        "timeline",
+        "paired comparison",
+        "quote stamp"
+      ],
+      "language_posture": "Slab display, brush handwriting and condensation may lose their register in other scripts; adapt explicitly.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Alfa Slab One",
+          "Caveat Brush",
+          "Archivo Narrow",
+          "DM Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "pin-and-paper",
+      "name": "Pin & Paper",
+      "family": "bold",
+      "tone": [
+        "fieldwork",
+        "workshop",
+        "research-notebook"
+      ],
+      "formality": "medium",
+      "density": "medium",
+      "scheme": "light",
+      "best_for": [
+        "Fieldwork and workshop findings",
+        "Research-notebook narratives with actual annotations"
+      ],
+      "avoid_for": [
+        "Decks that need to feel digital-native polished or rigorously data-driven — handwritten Caveat is intentionally informal"
+      ],
+      "weak_cases": [
+        "Too little source material leaves empty cards; mandatory-looking annotations must not invent personal voice."
+      ],
+      "visual_signature": "Cream cards on yellow, hard blue lift, tilted safety pins and marginal handwriting.",
+      "paths": {
+        "metadata": "templates/bold/pin-and-paper/template.json",
+        "preview": "templates/bold/pin-and-paper/preview.md",
+        "design": "templates/bold/pin-and-paper/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "pinned evidence cards",
+        "comparison table",
+        "handwritten callout"
+      ],
+      "language_posture": "Handwriting is a significant dependency; substitutions can lose the notebook voice and require a new emphasis treatment.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Space Grotesk",
+          "Caveat",
+          "DM Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "pink-script",
+      "name": "Pink Script — After Hours",
+      "family": "bold",
+      "tone": [
+        "luxury",
+        "lyrical-editorial"
+      ],
+      "formality": "medium-high",
+      "density": "low",
+      "scheme": "dark",
+      "best_for": [
+        "Luxury and fashion presentations",
+        "Lyrical type-led editorial narratives"
+      ],
+      "avoid_for": [
+        "Daytime corporate-professional and traditional B2B contexts where the dark canvas with hot-pink accent reads as too styled or too expressive"
+      ],
+      "weak_cases": [
+        "Detailed matrices are secondary to the hero; glow and subtle chrome need contrast inspection."
+      ],
+      "visual_signature": "Upright DM Serif display, pink hero glow, warm off-center light and faint internal frame.",
+      "paths": {
+        "metadata": "templates/bold/pink-script/template.json",
+        "preview": "templates/bold/pink-script/preview.md",
+        "design": "templates/bold/pink-script/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "hero statement",
+        "stat row",
+        "callout rail",
+        "comparison matrix"
+      ],
+      "language_posture": "Despite its name this is not a handwriting font system; the upright serif's character still needs script-aware adaptation.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "DM Serif Display",
+          "Inter",
+          "JetBrains Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "playful",
+      "name": "Playful",
+      "family": "bold",
+      "tone": [
+        "independent-studio",
+        "warm",
+        "creative"
+      ],
+      "formality": "low",
+      "density": "low-medium",
+      "scheme": "light",
+      "best_for": [
+        "Independent-studio presentations",
+        "Warm creative stories and process explainers"
+      ],
+      "avoid_for": [
+        "Contexts where institutional credibility matters more than warmth — the peach palette is intentionally informal"
+      ],
+      "weak_cases": [
+        "Strong peach tonality can clash with supplied imagery; dense tables disrupt organic framing."
+      ],
+      "visual_signature": "Double-outline offsets, small alternating rotations and constrained peach/ink scribbles.",
+      "paths": {
+        "metadata": "templates/bold/playful/template.json",
+        "preview": "templates/bold/playful/preview.md",
+        "design": "templates/bold/playful/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "organic image frame",
+        "rotated cards",
+        "step nodes",
+        "bar chart"
+      ],
+      "language_posture": "No handwriting face is required; retain outline/shape relationships while testing glyphs and wraps.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Syne",
+          "Space Grotesk"
+        ],
+        "font_delivery": "external",
+        "images": "Optional imagery must work with peach/ink surfaces and organic masks."
+      }
+    },
+    {
+      "slug": "product-cinema",
+      "name": "Product Cinema",
+      "family": "house",
+      "tone": [
+        "clear",
+        "aspirational",
+        "specific"
+      ],
+      "formality": "medium",
+      "density": "low",
+      "scheme": "dark",
+      "best_for": [
+        "product launches",
+        "feature narratives",
+        "customer demos",
+        "portfolio reveals"
+      ],
+      "avoid_for": [
+        "regulatory details",
+        "table-first work"
+      ],
+      "weak_cases": [
+        "long bullet lists",
+        "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+      ],
+      "visual_signature": "wide film frames, product-light gradients, caption bars, hero visuals as the evidence surface",
+      "paths": {
+        "metadata": "templates/house/product-cinema/template.json",
+        "preview": "templates/house/product-cinema/preview.md",
+        "preview_html": "templates/house/product-cinema/preview.html",
+        "design": "templates/house/product-cinema/design.md",
+        "tokens": "templates/house/product-cinema/tokens.css",
+        "layouts": "templates/house/product-cinema/layouts.md"
+      },
+      "provenance": {
+        "source": "decks house template",
+        "license": "MIT",
+        "copyright": "2026 Tiziano AI",
+        "adaptation": "original owned template created for gaps in inherited template coverage"
+      },
+      "maturity": "starter",
+      "supported_layouts": [
+        "title",
+        "statement",
+        "two-column",
+        "claim with evidence"
+      ],
+      "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+      "assets": {
+        "fonts": [
+          "Manrope",
+          "Cormorant Garamond",
+          "IBM Plex Mono"
+        ],
+        "font_delivery": "external",
+        "images": "Requires meaningful supplied product imagery for its hero-image premise; the starter includes no product image."
+      }
+    },
+    {
+      "slug": "quiet-whitepaper",
+      "name": "Quiet Whitepaper",
+      "family": "house",
+      "tone": [
+        "patient",
+        "precise",
+        "trustworthy"
+      ],
+      "formality": "high",
+      "density": "high",
+      "scheme": "light",
+      "best_for": [
+        "async reading decks",
+        "policy briefs",
+        "technical strategy",
+        "research-backed proposals"
+      ],
+      "avoid_for": [
+        "high-energy stage talks"
+      ],
+      "weak_cases": [
+        "dramatic launch reveal",
+        "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+      ],
+      "visual_signature": "whitepaper restraint, wide margins, blue-black typography, citations as first-class chrome",
+      "paths": {
+        "metadata": "templates/house/quiet-whitepaper/template.json",
+        "preview": "templates/house/quiet-whitepaper/preview.md",
+        "preview_html": "templates/house/quiet-whitepaper/preview.html",
+        "design": "templates/house/quiet-whitepaper/design.md",
+        "tokens": "templates/house/quiet-whitepaper/tokens.css",
+        "layouts": "templates/house/quiet-whitepaper/layouts.md"
+      },
+      "provenance": {
+        "source": "decks house template",
+        "license": "MIT",
+        "copyright": "2026 Tiziano AI",
+        "adaptation": "original owned template created for gaps in inherited template coverage"
+      },
+      "maturity": "starter",
+      "supported_layouts": [
+        "title",
+        "statement",
+        "two-column",
+        "claim with evidence"
+      ],
+      "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+      "assets": {
+        "fonts": [
+          "Source Serif 4",
+          "IBM Plex Sans",
+          "IBM Plex Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required for the starter; source meaningful images if the content calls for them."
+      }
+    },
+    {
+      "slug": "raw-grid",
+      "name": "Raw Grid",
+      "family": "bold",
+      "tone": [
+        "software-native",
+        "neobrutalist",
+        "direct"
+      ],
+      "formality": "medium-low",
+      "density": "medium",
+      "scheme": "light",
+      "best_for": [
+        "Software and founder presentations",
+        "Direct comparisons, tables and process diagrams"
+      ],
+      "avoid_for": [
+        "Contexts that need to feel soft, warm, or intentionally quiet — the brutalist borders and offset shadows commit to a graphic voice"
+      ],
+      "weak_cases": [
+        "Extra gaps break shared borders; too much content per region erases the direct hierarchy."
+      ],
+      "visual_signature": "Shared thick borders are the layout; pastel panels and deliberately native system type.",
+      "paths": {
+        "metadata": "templates/bold/raw-grid/template.json",
+        "preview": "templates/bold/raw-grid/preview.md",
+        "design": "templates/bold/raw-grid/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "touching-border comparison",
+        "table",
+        "metric boxes",
+        "connector diagram"
+      ],
+      "language_posture": "System fallback differs by OS and script; inspect the delivery environment rather than promise identical rendering.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Segoe UI"
+        ],
+        "font_delivery": "system",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "retro-windows",
+      "name": "Retro Windows",
+      "family": "bold",
+      "tone": [
+        "software-nostalgia",
+        "technical"
+      ],
+      "formality": "low",
+      "density": "high",
+      "scheme": "light",
+      "best_for": [
+        "Deliberately nostalgic software presentations",
+        "Desktop-scale technical dashboards"
+      ],
+      "avoid_for": [
+        "Decks that need to read as modern, elegant, or institutionally credible — the Win95 chrome will always read as a costume"
+      ],
+      "weak_cases": [
+        "Tiny controls and dense chrome are risky in projected decks; decorative controls must not imply working interaction."
+      ],
+      "visual_signature": "Raised/sunken bevels, white content wells, gray chrome and active-window hierarchy.",
+      "paths": {
+        "metadata": "templates/bold/retro-windows/template.json",
+        "preview": "templates/bold/retro-windows/preview.md",
+        "design": "templates/bold/retro-windows/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "window dashboard",
+        "tree list",
+        "table",
+        "group box",
+        "progress panel"
+      ],
+      "language_posture": "Native UI fonts vary by platform; pixel accent faces may lack needed glyphs and must be tested.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "MS Sans Serif",
+          "Press Start 2P",
+          "VT323"
+        ],
+        "font_delivery": "mixed",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "retro-zine",
+      "name": "Retro Zine",
+      "family": "bold",
+      "tone": [
+        "small-press",
+        "tactile",
+        "editorial"
+      ],
+      "formality": "medium-low",
+      "density": "medium-high",
+      "scheme": "light",
+      "best_for": [
+        "Small-press and cultural presentations",
+        "Tactile research or programme narratives"
+      ],
+      "avoid_for": [
+        "Contexts that demand digital-native polish or fast modern-tech energy — the layered zine aesthetic intentionally feels handmade"
+      ],
+      "weak_cases": [
+        "Source-size body copy is too small to assume projector readability; many annotations compete with evidence."
+      ],
+      "visual_signature": "Khaki/forest Risograph, condensed display, handwritten notes, tape and paper-offset blocks.",
+      "paths": {
+        "metadata": "templates/bold/retro-zine/template.json",
+        "preview": "templates/bold/retro-zine/preview.md",
+        "design": "templates/bold/retro-zine/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "editorial columns",
+        "collage",
+        "ledger",
+        "statement"
+      ],
+      "language_posture": "Condensed uppercase, drop caps and handwriting do not transfer mechanically; use script-appropriate hierarchy.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Bebas Neue",
+          "Space Grotesk",
+          "Caveat",
+          "JetBrains Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "sakura-chroma",
+      "name": "Sakura Chroma",
+      "family": "bold",
+      "tone": [
+        "product-catalogue",
+        "retro-print"
+      ],
+      "formality": "low",
+      "density": "medium-high",
+      "scheme": "light",
+      "best_for": [
+        "Retro product catalogues",
+        "Spec-led launches with concise data"
+      ],
+      "avoid_for": [
+        "Decks that need restrained, corporate, or quiet typography — the bold condensed lockups, ribbon stripes, and primary-colour palette are intentionally loud and product-page-y"
+      ],
+      "weak_cases": [
+        "Seals can imply authority; equalizer segment counts must encode real values rather than ornament."
+      ],
+      "visual_signature": "Warm cream and brown ink, petal clusters, diagonal ribbons and mono spec rows.",
+      "paths": {
+        "metadata": "templates/bold/sakura-chroma/template.json",
+        "preview": "templates/bold/sakura-chroma/preview.md",
+        "design": "templates/bold/sakura-chroma/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "product-card grid",
+        "spec ledger",
+        "dashboard",
+        "equalizer chart"
+      ],
+      "language_posture": "Japanese accents require meaningful approved text; named Noto Sans JP does not establish whole-deck language support.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Big Shoulders Display",
+          "Albert Sans",
+          "JetBrains Mono",
+          "Noto Sans JP"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "scatterbrain",
+      "name": "Scatterbrain",
+      "family": "bold",
+      "tone": [
+        "creative-workshop",
+        "tactile",
+        "playful"
+      ],
+      "formality": "low",
+      "density": "medium",
+      "scheme": "light",
+      "best_for": [
+        "Creative workshops and brainstorming recaps",
+        "Tactile findings and idea-cluster presentations"
+      ],
+      "avoid_for": [
+        "Contexts that demand precision and institutional weight — the post-it sticky-note aesthetic intentionally reads as warm and unfinished"
+      ],
+      "weak_cases": [
+        "Overlapping notes reduce reading clarity; chart geometry must encode the actual values rather than preserve specimen shapes."
+      ],
+      "visual_signature": "Pastel sticky notes on cork or paper, soft shadows, thumbtacks, tape and Shrikhand display.",
+      "paths": {
+        "metadata": "templates/bold/scatterbrain/template.json",
+        "preview": "templates/bold/scatterbrain/preview.md",
+        "design": "templates/bold/scatterbrain/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "maturity": "recipe",
+      "supported_layouts": [
+        "sticky-note grid",
+        "chart with legend",
+        "photo with notes",
+        "timeline rows",
+        "paired comparison"
+      ],
+      "language_posture": "Chunky display, slab body and handwriting have different roles; another script needs deliberate equivalents, without adding Latin margin notes the audience did not request.",
+      "assets": {
+        "fonts": [
+          "Shrikhand",
+          "Zilla Slab",
+          "Caveat"
+        ],
+        "font_delivery": "external",
+        "images": "Optional source photo in a Polaroid-style frame; backgrounds, pins and tape can be built in CSS/SVG."
+      }
+    },
+    {
+      "slug": "signal",
+      "name": "Signal",
+      "family": "bold",
+      "tone": [
+        "intelligence-briefing",
+        "literary",
+        "restrained"
+      ],
+      "formality": "high",
+      "density": "low-medium",
+      "scheme": "mixed",
+      "best_for": [
+        "Intelligence briefings and quarterly reviews",
+        "Quiet editorial narratives with concise evidence"
+      ],
+      "avoid_for": [
+        "Contexts that should feel hot, fast, or intentionally playful — the navy + gold restraint commits to a sober voice"
+      ],
+      "weak_cases": [
+        "Edge-to-edge detail conflicts with breathing space; low-opacity chrome needs real legibility checks."
+      ],
+      "visual_signature": "Navy/cream dual surfaces, serif roman/italic contrast, precise gold and hairlines.",
+      "paths": {
+        "metadata": "templates/bold/signal/template.json",
+        "preview": "templates/bold/signal/preview.md",
+        "design": "templates/bold/signal/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "editorial split",
+        "sparse metric",
+        "comparison",
+        "fullbleed image"
+      ],
+      "language_posture": "Roman/italic distinction needs a script-appropriate emphasis role; mixed-script line metrics need inspection.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Source Serif 4",
+          "DM Sans",
+          "IBM Plex Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "smooth-operator-dark",
+      "name": "Smooth Operator Dark",
+      "family": "house",
+      "tone": [
+        "confident",
+        "operator-grade",
+        "cinematic"
+      ],
+      "formality": "medium-high",
+      "density": "medium",
+      "scheme": "dark",
+      "best_for": [
+        "SmoothOperator launch narratives",
+        "architecture keynotes",
+        "control-plane demos",
+        "workflow capability reveals"
+      ],
+      "avoid_for": [
+        "dense appendices",
+        "print-first board packets",
+        "non-SmoothOperator brand work"
+      ],
+      "weak_cases": [
+        "many small tables",
+        "legal or compliance fine print"
+      ],
+      "visual_signature": "nocturnal control plane, gradient S/O mark, glass cockpit panels, magenta/cyan signal beams",
+      "paths": {
+        "metadata": "templates/house/smooth-operator-dark/template.json",
+        "preview": "templates/house/smooth-operator-dark/preview.md",
+        "preview_html": "templates/house/smooth-operator-dark/preview.html",
+        "design": "templates/house/smooth-operator-dark/design.md",
+        "tokens": "templates/house/smooth-operator-dark/tokens.css",
+        "layouts": "templates/house/smooth-operator-dark/layouts.md"
+      },
+      "provenance": {
+        "source": "decks house template",
+        "license": "MIT",
+        "copyright": "2026 Tiziano AI",
+        "adaptation": "original Deck Studio composition based on SmoothOperator brand assets; package-local owners are listed below, not live product evidence"
+      },
+      "brand_asset_provenance": {
+        "distribution_owner": "Deck Studio bundled SmoothOperator brand assets",
+        "template": "templates/house/smooth-operator-dark/design.md",
+        "tokens": "templates/house/smooth-operator-dark/tokens.css",
+        "palette": "templates/house/_smoothoperator-assets/palette/palette.json",
+        "font_manifest": "templates/house/_smoothoperator-assets/fonts/font-manifest.json",
+        "logo": "templates/house/_smoothoperator-assets/logo/smoothoperator-icon.svg"
+      },
+      "maturity": "developed",
+      "supported_layouts": [
+        "title",
+        "architecture reveal",
+        "run flow",
+        "product cockpit"
+      ],
+      "language_posture": "Bundled font files do not establish coverage for the audience's language. Verify glyphs and mixed-script labels before using the brand stack.",
+      "assets": {
+        "fonts": [
+          "SO Raleway",
+          "SO Victor Mono"
+        ],
+        "font_delivery": "bundled",
+        "images": "Bundled SmoothOperator logo and palette; use only for authorized brand work."
+      }
+    },
+    {
+      "slug": "smooth-operator-light",
+      "name": "Smooth Operator Light",
+      "family": "house",
+      "tone": [
+        "operator-grade",
+        "trustworthy",
+        "precise"
+      ],
+      "formality": "high",
+      "density": "high",
+      "scheme": "light",
+      "best_for": [
+        "SmoothOperator board updates",
+        "workflow strategy decks",
+        "evidence-system explainers",
+        "customer onboarding dossiers"
+      ],
+      "avoid_for": [
+        "pure cinematic launch reveals",
+        "non-SmoothOperator brand work",
+        "playful consumer storytelling"
+      ],
+      "weak_cases": [
+        "low-text stage keynote moments",
+        "photo-led campaigns"
+      ],
+      "visual_signature": "ivory evidence surface, Raleway authority, Victor Mono audit rails, magenta/cyan brand signals",
+      "paths": {
+        "metadata": "templates/house/smooth-operator-light/template.json",
+        "preview": "templates/house/smooth-operator-light/preview.md",
+        "preview_html": "templates/house/smooth-operator-light/preview.html",
+        "design": "templates/house/smooth-operator-light/design.md",
+        "tokens": "templates/house/smooth-operator-light/tokens.css",
+        "layouts": "templates/house/smooth-operator-light/layouts.md"
+      },
+      "provenance": {
+        "source": "decks house template",
+        "license": "MIT",
+        "copyright": "2026 Tiziano AI",
+        "adaptation": "original Deck Studio composition based on SmoothOperator brand assets; package-local owners are listed below, not live product evidence"
+      },
+      "brand_asset_provenance": {
+        "distribution_owner": "Deck Studio bundled SmoothOperator brand assets",
+        "template": "templates/house/smooth-operator-light/design.md",
+        "tokens": "templates/house/smooth-operator-light/tokens.css",
+        "palette": "templates/house/_smoothoperator-assets/palette/palette.json",
+        "font_manifest": "templates/house/_smoothoperator-assets/fonts/font-manifest.json",
+        "logo": "templates/house/_smoothoperator-assets/logo/smoothoperator-icon.svg"
+      },
+      "maturity": "developed",
+      "supported_layouts": [
+        "evidence ledger",
+        "workflow map",
+        "comparison",
+        "operator brief"
+      ],
+      "language_posture": "Bundled font files do not establish coverage for the audience's language. Verify glyphs and mixed-script labels before using the brand stack.",
+      "assets": {
+        "fonts": [
+          "SO Raleway",
+          "SO Victor Mono"
+        ],
+        "font_delivery": "bundled",
+        "images": "Bundled SmoothOperator logo and palette; use only for authorized brand work."
+      }
+    },
+    {
+      "slug": "soft-editorial",
+      "name": "Soft Editorial",
+      "family": "bold",
+      "tone": [
+        "magazine",
+        "warm",
+        "research"
+      ],
+      "formality": "high",
+      "density": "medium-high",
+      "scheme": "light",
+      "best_for": [
+        "Design-research and literary presentations",
+        "Warm reading-first evidence cards"
+      ],
+      "avoid_for": [
+        "Decks that need visual heat or punch — the warm-paper palette and Cormorant serif are intentionally quiet"
+      ],
+      "weak_cases": [
+        "Dense interiors still need space between cards; decorative pastel cannot silently become status color."
+      ],
+      "visual_signature": "Cream paper, translucent rounded cards, pastel fills and gentle serif italic emphasis.",
+      "paths": {
+        "metadata": "templates/bold/soft-editorial/template.json",
+        "preview": "templates/bold/soft-editorial/preview.md",
+        "design": "templates/bold/soft-editorial/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "rounded matrix",
+        "step grid",
+        "long quote",
+        "editorial opener"
+      ],
+      "language_posture": "Italic serif emphasis and drop caps are not universally portable; substitute deliberate script-aware treatments.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Cormorant Garamond",
+          "Work Sans"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "split-pastel",
+      "name": "Split Pastel",
+      "family": "safe-presets",
+      "tone": [
+        "friendly",
+        "playful"
+      ],
+      "formality": "medium-low",
+      "density": "low",
+      "scheme": "light",
+      "best_for": [
+        "light launch decks",
+        "creative concepts",
+        "social products"
+      ],
+      "avoid_for": [
+        "institutional or legal decks"
+      ],
+      "weak_cases": [
+        "Badges and color split suit few elements; long copy or detailed tables need a new layout."
+      ],
+      "visual_signature": "peach/lavender split with playful badge language",
+      "paths": {
+        "metadata": "templates/safe-presets/split-pastel/template.json",
+        "preview": "templates/safe-presets/split-pastel/preview.md",
+        "design": "templates/safe-presets/split-pastel/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+      },
+      "supported_layouts": [
+        "two-color split",
+        "callout"
+      ],
+      "maturity": "preset",
+      "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+      "assets": {
+        "fonts": [
+          "Outfit"
+        ],
+        "font_delivery": "external",
+        "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+      }
+    },
+    {
+      "slug": "stencil-tablet",
+      "name": "Stencil & Tablet",
+      "family": "bold",
+      "tone": [
+        "industrial-poster",
+        "loud"
+      ],
+      "formality": "medium-high",
+      "density": "high",
+      "scheme": "light",
+      "best_for": [
+        "Industrial and retro-print launches",
+        "Loud metric and process presentations"
+      ],
+      "avoid_for": [
+        "Contexts that demand digital-native polish or playful pop — the stencil-cut display and earth-tone palette commit to a deliberate analog feel"
+      ],
+      "weak_cases": [
+        "Long prose competes with giant numerals; busy tablets can obscure distinctions between metrics."
+      ],
+      "visual_signature": "Stencil-scale type and saturated rounded tablets make color blocks the layout.",
+      "paths": {
+        "metadata": "templates/bold/stencil-tablet/template.json",
+        "preview": "templates/bold/stencil-tablet/preview.md",
+        "design": "templates/bold/stencil-tablet/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "tablet stat grid",
+        "process nodes",
+        "timeline",
+        "matrix",
+        "giant section numeral"
+      ],
+      "language_posture": "Stencil breaks and condensed uppercase are Latin-specific identity cues; substitution changes the voice and needs preview.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Stardos Stencil",
+          "Bowlby One",
+          "Barlow Condensed",
+          "Inter"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "studio",
+      "name": "Studio",
+      "family": "bold",
+      "tone": [
+        "design-studio",
+        "manifesto",
+        "severe"
+      ],
+      "formality": "medium",
+      "density": "low",
+      "scheme": "dark",
+      "best_for": [
+        "Design-studio and agency presentations",
+        "Sparse manifestos and dramatic reveals"
+      ],
+      "avoid_for": [
+        "Contexts that should feel quiet or institutional — the black-and-electric-yellow palette is the loudest in the library"
+      ],
+      "weak_cases": [
+        "Paragraph-heavy slides and many competing objects defeat the single massive headline."
+      ],
+      "visual_signature": "Barlow graphic mass, acid-yellow/near-black inversion and flat hairlines.",
+      "paths": {
+        "metadata": "templates/bold/studio/template.json",
+        "preview": "templates/bold/studio/preview.md",
+        "design": "templates/bold/studio/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "type-led statement",
+        "image cover",
+        "paired comparison",
+        "sparse metrics"
+      ],
+      "language_posture": "Uppercase graphic mass does not transfer unchanged to caseless scripts; choose actual text and weight before fitting.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Barlow",
+          "IBM Plex Mono"
+        ],
+        "font_delivery": "external",
+        "images": "Optional cover imagery supports one dominant headline; no decorative asset is required."
+      }
+    },
+    {
+      "slug": "swiss-modern",
+      "name": "Swiss Modern",
+      "family": "safe-presets",
+      "tone": [
+        "precise",
+        "graphic"
+      ],
+      "formality": "high",
+      "density": "medium-high",
+      "scheme": "light",
+      "best_for": [
+        "strategy decks",
+        "consulting, reports",
+        "public-sector material"
+      ],
+      "avoid_for": [
+        "playful youth brands"
+      ],
+      "weak_cases": [
+        "The grid is a visual seed, without a documented matrix or chart grammar."
+      ],
+      "visual_signature": "grid-first Swiss restraint with disciplined typography",
+      "paths": {
+        "metadata": "templates/safe-presets/swiss-modern/template.json",
+        "preview": "templates/safe-presets/swiss-modern/preview.md",
+        "design": "templates/safe-presets/swiss-modern/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+      },
+      "supported_layouts": [
+        "asymmetric grid title"
+      ],
+      "maturity": "preset",
+      "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+      "assets": {
+        "fonts": [
+          "Archivo",
+          "Nunito"
+        ],
+        "font_delivery": "external",
+        "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+      }
+    },
+    {
+      "slug": "terminal-green",
+      "name": "Terminal Green",
+      "family": "safe-presets",
+      "tone": [
+        "developer",
+        "hacker"
+      ],
+      "formality": "medium",
+      "density": "high",
+      "scheme": "dark",
+      "best_for": [
+        "developer talks",
+        "ops reports",
+        "CLI/tooling launches"
+      ],
+      "avoid_for": [
+        "emotional consumer stories"
+      ],
+      "weak_cases": [
+        "Mono prose and scanlines can fatigue reading; syntax color must retain adequate contrast."
+      ],
+      "visual_signature": "terminal green monochrome language with mono hierarchy",
+      "paths": {
+        "metadata": "templates/safe-presets/terminal-green/template.json",
+        "preview": "templates/safe-presets/terminal-green/preview.md",
+        "design": "templates/safe-presets/terminal-green/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+      },
+      "supported_layouts": [
+        "terminal frame",
+        "code"
+      ],
+      "maturity": "preset",
+      "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+      "assets": {
+        "fonts": [
+          "JetBrains Mono"
+        ],
+        "font_delivery": "external",
+        "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+      }
+    },
+    {
+      "slug": "vellum",
+      "name": "Vellum",
+      "family": "bold",
+      "tone": [
+        "gallery-essay",
+        "intimate",
+        "still"
+      ],
+      "formality": "high",
+      "density": "low",
+      "scheme": "dark",
+      "best_for": [
+        "Gallery and essay-like presentations",
+        "Intimate sparse narratives and quotations"
+      ],
+      "avoid_for": [
+        "Contexts that need visual heat or pop — the navy + warm-yellow Cormorant aesthetic is intentionally low-tempo"
+      ],
+      "weak_cases": [
+        "Dense or long content crowds structural empty space; dusty annotation colors need legibility checks."
+      ],
+      "visual_signature": "Periwinkle field, yellow italic serif and small typewriter pin-note; intentionally still.",
+      "paths": {
+        "metadata": "templates/bold/vellum/template.json",
+        "preview": "templates/bold/vellum/preview.md",
+        "design": "templates/bold/vellum/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides bold-template-pack",
+        "source_repo": "zarazhangrui/frontend-slides",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+      },
+      "supported_layouts": [
+        "centered statement",
+        "quote",
+        "sparse statistics",
+        "paired comparison"
+      ],
+      "language_posture": "Italic serif personality and typewriter labels need script-aware alternatives; a substitute is a new visual interpretation.",
+      "maturity": "recipe",
+      "assets": {
+        "fonts": [
+          "Cormorant Garamond",
+          "DM Sans",
+          "Courier Prime"
+        ],
+        "font_delivery": "external",
+        "images": "No image required; type, shapes and surface treatments can carry the system."
+      }
+    },
+    {
+      "slug": "vintage-editorial",
+      "name": "Vintage Editorial",
+      "family": "safe-presets",
+      "tone": [
+        "witty",
+        "editorial"
+      ],
+      "formality": "medium",
+      "density": "medium",
+      "scheme": "light",
+      "best_for": [
+        "manifestos",
+        "brand point-of-view",
+        "culture talks"
+      ],
+      "avoid_for": [
+        "neutral operating reviews"
+      ],
+      "weak_cases": [
+        "Personality depends on display type; the preset supplies no dense evidence composition."
+      ],
+      "visual_signature": "cream editorial surface with geometric accents and serif display type",
+      "paths": {
+        "metadata": "templates/safe-presets/vintage-editorial/template.json",
+        "preview": "templates/safe-presets/vintage-editorial/preview.md",
+        "design": "templates/safe-presets/vintage-editorial/design.md"
+      },
+      "provenance": {
+        "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+        "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+        "license": "MIT",
+        "copyright": "2025 Zara Zhang",
+        "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+      },
+      "supported_layouts": [
+        "centered statement",
+        "framed callout"
+      ],
+      "maturity": "preset",
+      "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+      "assets": {
+        "fonts": [
+          "Fraunces",
+          "Work Sans"
+        ],
+        "font_delivery": "external",
+        "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "daisy-days",
+  "name": "Daisy Days",
+  "family": "bold",
+  "tone": [
+    "storybook",
+    "friendly",
+    "playful"
+  ],
+  "formality": "low",
+  "density": "low-medium",
+  "scheme": "light",
+  "best_for": [
+    "Friendly educational and creative narratives",
+    "Playful community or consumer presentations"
+  ],
+  "avoid_for": [
+    "Contexts where the audience explicitly expects authority and precision — the hand-drawn pastel SVG decorations are the opposite of buttoned-up"
+  ],
+  "weak_cases": [
+    "Decoration reduces available evidence space; many technical labels clash with the storybook scale."
+  ],
+  "visual_signature": "Rounded type, pastel fields, charcoal outlines and a coherent sticker/doodle vocabulary.",
+  "paths": {
+    "metadata": "templates/bold/daisy-days/template.json",
+    "preview": "templates/bold/daisy-days/preview.md",
+    "design": "templates/bold/daisy-days/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "centered statement",
+    "rounded feature cards",
+    "step circles",
+    "avatar row"
+  ],
+  "language_posture": "Rounded Latin display is characterful but not proof of script support; choose equivalent friendliness and re-fit.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Fredoka One",
+      "Quicksand"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

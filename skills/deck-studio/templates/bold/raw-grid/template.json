@@ -1,0 +1,52 @@
+{
+  "slug": "raw-grid",
+  "name": "Raw Grid",
+  "family": "bold",
+  "tone": [
+    "software-native",
+    "neobrutalist",
+    "direct"
+  ],
+  "formality": "medium-low",
+  "density": "medium",
+  "scheme": "light",
+  "best_for": [
+    "Software and founder presentations",
+    "Direct comparisons, tables and process diagrams"
+  ],
+  "avoid_for": [
+    "Contexts that need to feel soft, warm, or intentionally quiet — the brutalist borders and offset shadows commit to a graphic voice"
+  ],
+  "weak_cases": [
+    "Extra gaps break shared borders; too much content per region erases the direct hierarchy."
+  ],
+  "visual_signature": "Shared thick borders are the layout; pastel panels and deliberately native system type.",
+  "paths": {
+    "metadata": "templates/bold/raw-grid/template.json",
+    "preview": "templates/bold/raw-grid/preview.md",
+    "design": "templates/bold/raw-grid/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "touching-border comparison",
+    "table",
+    "metric boxes",
+    "connector diagram"
+  ],
+  "language_posture": "System fallback differs by OS and script; inspect the delivery environment rather than promise identical rendering.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Segoe UI"
+    ],
+    "font_delivery": "system",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

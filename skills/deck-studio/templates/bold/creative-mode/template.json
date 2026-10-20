@@ -1,0 +1,53 @@
+{
+  "slug": "creative-mode",
+  "name": "Creative Mode",
+  "family": "bold",
+  "tone": [
+    "punk-zine",
+    "creative-product"
+  ],
+  "formality": "medium",
+  "density": "medium-high",
+  "scheme": "light",
+  "best_for": [
+    "Creative-product and process explainers",
+    "Punk or neobrutalist studio presentations"
+  ],
+  "avoid_for": [
+    "Contexts that demand institutional restraint and a quiet authority — the saturated multi-accent palette will read as expressive, not formal"
+  ],
+  "weak_cases": [
+    "Dense factual detail can disappear amid accent collision; shadows need separation from data marks."
+  ],
+  "visual_signature": "Heavy ink outlines, hard offset shadows, uppercase display and colliding flat accents.",
+  "paths": {
+    "metadata": "templates/bold/creative-mode/template.json",
+    "preview": "templates/bold/creative-mode/preview.md",
+    "design": "templates/bold/creative-mode/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "stat cells",
+    "process cards",
+    "comparison table",
+    "stacked-block diagram"
+  ],
+  "language_posture": "Uppercase display and mono metadata may lose contrast in other scripts; structural blocks can preserve the hierarchy.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Archivo Black",
+      "Space Grotesk",
+      "JetBrains Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

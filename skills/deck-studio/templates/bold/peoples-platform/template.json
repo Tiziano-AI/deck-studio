@@ -1,0 +1,56 @@
+{
+  "slug": "peoples-platform",
+  "name": "People's Platform (Block & Bold)",
+  "family": "bold",
+  "tone": [
+    "campaign",
+    "collective",
+    "public-address"
+  ],
+  "formality": "medium-low",
+  "density": "medium-high",
+  "scheme": "light",
+  "best_for": [
+    "Campaigns and collective manifestos",
+    "Public-address narratives with emphatic figures"
+  ],
+  "avoid_for": [
+    "Contexts where institutional restraint is the actual goal — the saturated political-poster palette commits hard to expressive energy"
+  ],
+  "weak_cases": [
+    "Long technical prose weakens the rallying hierarchy; handwritten additions must come from approved content."
+  ],
+  "visual_signature": "Slab display, handwritten interruption, condensed prose and printed letter shadows.",
+  "paths": {
+    "metadata": "templates/bold/peoples-platform/template.json",
+    "preview": "templates/bold/peoples-platform/preview.md",
+    "design": "templates/bold/peoples-platform/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "pillar columns",
+    "KPI cards",
+    "timeline",
+    "paired comparison",
+    "quote stamp"
+  ],
+  "language_posture": "Slab display, brush handwriting and condensation may lose their register in other scripts; adapt explicitly.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Alfa Slab One",
+      "Caveat Brush",
+      "Archivo Narrow",
+      "DM Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "slug": "neon-cyber",
+  "name": "Neon Cyber",
+  "family": "safe-presets",
+  "tone": [
+    "futuristic",
+    "technical"
+  ],
+  "formality": "medium-low",
+  "density": "medium",
+  "scheme": "dark",
+  "best_for": [
+    "security talks",
+    "developer demos",
+    "AI systems"
+  ],
+  "avoid_for": [
+    "calm HR or legal decks"
+  ],
+  "weak_cases": [
+    "Glow and particles provide atmosphere, not a documented layout system."
+  ],
+  "visual_signature": "dark neon grid, luminous accents, technical atmosphere",
+  "paths": {
+    "metadata": "templates/safe-presets/neon-cyber/template.json",
+    "preview": "templates/safe-presets/neon-cyber/preview.md",
+    "design": "templates/safe-presets/neon-cyber/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+  },
+  "supported_layouts": [
+    "type-led title"
+  ],
+  "maturity": "preset",
+  "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+  "assets": {
+    "fonts": [
+      "Clash Display",
+      "Satoshi"
+    ],
+    "font_delivery": "external",
+    "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+  }
+}

@@ -1,0 +1,12 @@
+:root {
+  --ws-paper: #F7F8F4;
+  --ws-ink: #172026;
+  --ws-grid: #D6DCD2;
+  --ws-blue: #2457C5;
+  --ws-green: #23745B;
+  --ws-amber: #B7791F;
+  --ws-font-display: "Geist", system-ui, sans-serif;
+  --ws-font-body: "Geist", system-ui, sans-serif;
+  --ws-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --ws-font-editorial: "Source Serif 4", Georgia, serif;
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "playful",
+  "name": "Playful",
+  "family": "bold",
+  "tone": [
+    "independent-studio",
+    "warm",
+    "creative"
+  ],
+  "formality": "low",
+  "density": "low-medium",
+  "scheme": "light",
+  "best_for": [
+    "Independent-studio presentations",
+    "Warm creative stories and process explainers"
+  ],
+  "avoid_for": [
+    "Contexts where institutional credibility matters more than warmth — the peach palette is intentionally informal"
+  ],
+  "weak_cases": [
+    "Strong peach tonality can clash with supplied imagery; dense tables disrupt organic framing."
+  ],
+  "visual_signature": "Double-outline offsets, small alternating rotations and constrained peach/ink scribbles.",
+  "paths": {
+    "metadata": "templates/bold/playful/template.json",
+    "preview": "templates/bold/playful/preview.md",
+    "design": "templates/bold/playful/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "organic image frame",
+    "rotated cards",
+    "step nodes",
+    "bar chart"
+  ],
+  "language_posture": "No handwriting face is required; retain outline/shape relationships while testing glyphs and wraps.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Syne",
+      "Space Grotesk"
+    ],
+    "font_delivery": "external",
+    "images": "Optional imagery must work with peach/ink surfaces and organic masks."
+  }
+}

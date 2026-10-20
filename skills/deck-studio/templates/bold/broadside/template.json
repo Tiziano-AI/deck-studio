@@ -1,0 +1,52 @@
+{
+  "slug": "broadside",
+  "name": "Broadside",
+  "family": "bold",
+  "tone": [
+    "manifesto",
+    "public-address"
+  ],
+  "formality": "medium-high",
+  "density": "low-medium",
+  "scheme": "dark",
+  "best_for": [
+    "Manifestos and public-address presentations",
+    "Forceful pitches with concise evidence"
+  ],
+  "avoid_for": [
+    "Decks that need to feel quiet, warm, or institutionally traditional — the dark canvas with fire-orange accent commits to drama"
+  ],
+  "weak_cases": [
+    "Long evidence paragraphs undermine the declaration rhythm; faded supporting lists still need legibility."
+  ],
+  "visual_signature": "Lowercase sans declarations, uppercase mono chrome, dark documentation and orange declaration.",
+  "paths": {
+    "metadata": "templates/bold/broadside/template.json",
+    "preview": "templates/bold/broadside/preview.md",
+    "design": "templates/bold/broadside/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "oversized statement",
+    "paired comparison",
+    "metric strip",
+    "bar comparison"
+  ],
+  "language_posture": "Lowercase/uppercase contrast is not portable to caseless scripts; replace the role distinction consciously.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Barlow",
+      "IBM Plex Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

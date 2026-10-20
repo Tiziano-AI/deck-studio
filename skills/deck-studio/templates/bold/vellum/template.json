@@ -1,0 +1,54 @@
+{
+  "slug": "vellum",
+  "name": "Vellum",
+  "family": "bold",
+  "tone": [
+    "gallery-essay",
+    "intimate",
+    "still"
+  ],
+  "formality": "high",
+  "density": "low",
+  "scheme": "dark",
+  "best_for": [
+    "Gallery and essay-like presentations",
+    "Intimate sparse narratives and quotations"
+  ],
+  "avoid_for": [
+    "Contexts that need visual heat or pop — the navy + warm-yellow Cormorant aesthetic is intentionally low-tempo"
+  ],
+  "weak_cases": [
+    "Dense or long content crowds structural empty space; dusty annotation colors need legibility checks."
+  ],
+  "visual_signature": "Periwinkle field, yellow italic serif and small typewriter pin-note; intentionally still.",
+  "paths": {
+    "metadata": "templates/bold/vellum/template.json",
+    "preview": "templates/bold/vellum/preview.md",
+    "design": "templates/bold/vellum/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "centered statement",
+    "quote",
+    "sparse statistics",
+    "paired comparison"
+  ],
+  "language_posture": "Italic serif personality and typewriter labels need script-aware alternatives; a substitute is a new visual interpretation.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Cormorant Garamond",
+      "DM Sans",
+      "Courier Prime"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

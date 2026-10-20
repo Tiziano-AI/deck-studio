@@ -1,0 +1,54 @@
+{
+  "slug": "grove",
+  "name": "Grove",
+  "family": "bold",
+  "tone": [
+    "literary",
+    "boutique",
+    "quiet"
+  ],
+  "formality": "medium-high",
+  "density": "low",
+  "scheme": "mixed",
+  "best_for": [
+    "Boutique-brand and literary narratives",
+    "Sparse thought-led presentations"
+  ],
+  "avoid_for": [
+    "Decks that need neon energy or rapid-fire pop — the forest-green canvas and Playfair serif commit to a slow, classical voice"
+  ],
+  "weak_cases": [
+    "Light small text and air-dependent composition are weak for projected dense material."
+  ],
+  "visual_signature": "Light Playfair/Jost typography, rare terracotta italic emphasis and watermark numerals.",
+  "paths": {
+    "metadata": "templates/bold/grove/template.json",
+    "preview": "templates/bold/grove/preview.md",
+    "design": "templates/bold/grove/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "chapter opener",
+    "quote",
+    "sparse statistics",
+    "image with caption"
+  ],
+  "language_posture": "Italic and light Latin typography cannot be assumed equivalent in other scripts; adapt weight and emphasis.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Playfair Display",
+      "Jost",
+      "JetBrains Mono"
+    ],
+    "font_delivery": "external",
+    "images": "Optional quiet editorial image; sparse type-led pages do not require one."
+  }
+}

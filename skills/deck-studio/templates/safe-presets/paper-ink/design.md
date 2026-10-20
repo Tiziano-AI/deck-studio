@@ -1,0 +1,22 @@
+# Paper & Ink
+
+### 12. Paper & Ink
+
+**Vibe:** Editorial, literary, thoughtful
+
+**Typography:** `Cormorant Garamond` + `Source Serif 4`
+
+**Colors:** Warm cream (#faf9f7), charcoal (#1a1a1a), crimson accent (#c41e3a)
+
+**Signature:** Drop caps, pull quotes, elegant horizontal rules
+
+
+## Fixed-stage adaptation
+
+Use the canonical 1920x1080 runtime (`runtime/deck-stage.css` and `runtime/deck-stage.js`), `body[data-web-slides-studio]`, `.deck-viewport`, `.deck-stage`, `.slide`, and the existing `WebSlidesStudio` API. Preserve palette, typography roles, and signature elements with fixed pixel/rem coordinates, never a second scaler or viewport-sized internals. Keep preset names and workflow notes outside the slide.
+
+This is a design recipe, not a bundled layout or font package. Confirm named font files, weights, styles, and required language glyphs before rendering; load them locally for delivery. A fallback is a visible design change, not an equivalent face. Judge fit with actual loaded fonts.
+
+When style comparison is useful, use representative locked content with identical meaning across candidates; a title alone need not expose the hardest layout. This recipe imposes no fixed preview count or human approval gate. Preserve claims, qualifications, evidence, order, and ask. Recompose or split crowded material without dropping content; return meaning-changing edits to content approval.
+
+Use only supplied numbers, quotations, attributions, logos, and real destinations. Decorative tabs or pills must not masquerade as controls. Add an action only when it works; never invent a QR code, byline, metric, or status to fill the layout. Keep sources readable and encode meaning in words or shapes as well as color.

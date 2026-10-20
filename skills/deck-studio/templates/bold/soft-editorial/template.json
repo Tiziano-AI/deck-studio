@@ -1,0 +1,53 @@
+{
+  "slug": "soft-editorial",
+  "name": "Soft Editorial",
+  "family": "bold",
+  "tone": [
+    "magazine",
+    "warm",
+    "research"
+  ],
+  "formality": "high",
+  "density": "medium-high",
+  "scheme": "light",
+  "best_for": [
+    "Design-research and literary presentations",
+    "Warm reading-first evidence cards"
+  ],
+  "avoid_for": [
+    "Decks that need visual heat or punch — the warm-paper palette and Cormorant serif are intentionally quiet"
+  ],
+  "weak_cases": [
+    "Dense interiors still need space between cards; decorative pastel cannot silently become status color."
+  ],
+  "visual_signature": "Cream paper, translucent rounded cards, pastel fills and gentle serif italic emphasis.",
+  "paths": {
+    "metadata": "templates/bold/soft-editorial/template.json",
+    "preview": "templates/bold/soft-editorial/preview.md",
+    "design": "templates/bold/soft-editorial/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "rounded matrix",
+    "step grid",
+    "long quote",
+    "editorial opener"
+  ],
+  "language_posture": "Italic serif emphasis and drop caps are not universally portable; substitute deliberate script-aware treatments.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Cormorant Garamond",
+      "Work Sans"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "slug": "smooth-operator-dark",
+  "name": "Smooth Operator Dark",
+  "family": "house",
+  "tone": [
+    "confident",
+    "operator-grade",
+    "cinematic"
+  ],
+  "formality": "medium-high",
+  "density": "medium",
+  "scheme": "dark",
+  "best_for": [
+    "SmoothOperator launch narratives",
+    "architecture keynotes",
+    "control-plane demos",
+    "workflow capability reveals"
+  ],
+  "avoid_for": [
+    "dense appendices",
+    "print-first board packets",
+    "non-SmoothOperator brand work"
+  ],
+  "weak_cases": [
+    "many small tables",
+    "legal or compliance fine print"
+  ],
+  "visual_signature": "nocturnal control plane, gradient S/O mark, glass cockpit panels, magenta/cyan signal beams",
+  "paths": {
+    "metadata": "templates/house/smooth-operator-dark/template.json",
+    "preview": "templates/house/smooth-operator-dark/preview.md",
+    "preview_html": "templates/house/smooth-operator-dark/preview.html",
+    "design": "templates/house/smooth-operator-dark/design.md",
+    "tokens": "templates/house/smooth-operator-dark/tokens.css",
+    "layouts": "templates/house/smooth-operator-dark/layouts.md"
+  },
+  "provenance": {
+    "source": "decks house template",
+    "license": "MIT",
+    "copyright": "2026 Tiziano AI",
+    "adaptation": "original Deck Studio composition based on SmoothOperator brand assets; package-local owners are listed below, not live product evidence"
+  },
+  "brand_asset_provenance": {
+    "distribution_owner": "Deck Studio bundled SmoothOperator brand assets",
+    "template": "templates/house/smooth-operator-dark/design.md",
+    "tokens": "templates/house/smooth-operator-dark/tokens.css",
+    "palette": "templates/house/_smoothoperator-assets/palette/palette.json",
+    "font_manifest": "templates/house/_smoothoperator-assets/fonts/font-manifest.json",
+    "logo": "templates/house/_smoothoperator-assets/logo/smoothoperator-icon.svg"
+  },
+  "maturity": "developed",
+  "supported_layouts": [
+    "title",
+    "architecture reveal",
+    "run flow",
+    "product cockpit"
+  ],
+  "language_posture": "Bundled font files do not establish coverage for the audience's language. Verify glyphs and mixed-script labels before using the brand stack.",
+  "assets": {
+    "fonts": [
+      "SO Raleway",
+      "SO Victor Mono"
+    ],
+    "font_delivery": "bundled",
+    "images": "Bundled SmoothOperator logo and palette; use only for authorized brand work."
+  }
+}

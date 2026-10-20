@@ -1,0 +1,49 @@
+{
+  "slug": "bold-signal",
+  "name": "Bold Signal",
+  "family": "safe-presets",
+  "tone": [
+    "confident",
+    "modern"
+  ],
+  "formality": "medium",
+  "density": "medium",
+  "scheme": "dark",
+  "best_for": [
+    "keynote openers",
+    "launch decks",
+    "confident pitches"
+  ],
+  "avoid_for": [
+    "quiet research memos"
+  ],
+  "weak_cases": [
+    "Colored focal card supplies hierarchy but is not a documented dense evidence layout."
+  ],
+  "visual_signature": "dark gradient with a single loud card and oversized numbering",
+  "paths": {
+    "metadata": "templates/safe-presets/bold-signal/template.json",
+    "preview": "templates/safe-presets/bold-signal/preview.md",
+    "design": "templates/safe-presets/bold-signal/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+  },
+  "supported_layouts": [
+    "accent card with anchored title"
+  ],
+  "maturity": "preset",
+  "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+  "assets": {
+    "fonts": [
+      "Archivo Black",
+      "Space Grotesk"
+    ],
+    "font_delivery": "external",
+    "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+  }
+}

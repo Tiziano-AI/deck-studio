@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../../runtime/deck-stage.css">
+<title>SmoothOperator light preview skeleton</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  html,
+  body {
+    margin: 0;
+    background: #111;
+  }
+
+  .frame {
+    position: relative;
+    box-sizing: border-box;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background:
+      linear-gradient(90deg, color-mix(in oklch, var(--so-border) 52%, transparent) 1px, transparent 1px),
+      linear-gradient(0deg, color-mix(in oklch, var(--so-border) 52%, transparent) 1px, transparent 1px),
+      radial-gradient(circle at 84% 18%, color-mix(in oklch, var(--so-secondary-300) 30%, transparent), transparent 28%),
+      radial-gradient(circle at 16% 8%, color-mix(in oklch, var(--so-primary-300) 18%, transparent), transparent 32%),
+      var(--so-page);
+    background-size: 96px 96px, 96px 96px, auto, auto, auto;
+    color: var(--so-ink);
+    font-family: var(--so-font-sans);
+    padding: 92px 108px;
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .logo {
+    width: 78px;
+    height: 78px;
+    border-radius: 22px;
+    box-shadow: 0 20px 60px color-mix(in oklch, var(--so-primary-500) 18%, transparent);
+  }
+
+  .product {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+  }
+
+  .mono {
+    font-family: var(--so-font-mono);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--so-muted);
+  }
+
+  .pill {
+    border: 1px solid color-mix(in oklch, var(--so-primary-500) 26%, transparent);
+    border-radius: 999px;
+    background: color-mix(in oklch, var(--so-card) 82%, var(--so-primary-300));
+    padding: 14px 22px;
+    color: var(--so-primary-700);
+  }
+
+  .main {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) 560px;
+    gap: 72px;
+    align-items: end;
+    height: calc(100% - 110px);
+    padding-top: 76px;
+  }
+
+  h1 {
+    max-width: 1040px;
+    margin: 0;
+    font-size: 126px;
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+
+  .lede {
+    max-width: 900px;
+    margin: 36px 0 0;
+    font-size: 36px;
+    line-height: 1.32;
+    color: color-mix(in oklch, var(--so-ink) 82%, var(--so-muted));
+  }
+
+  .rule {
+    width: 560px;
+    height: 8px;
+    margin-top: 48px;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--so-primary-700), var(--so-primary-300), var(--so-secondary-400));
+  }
+
+  .panel {
+    border: 1px solid var(--so-border);
+    border-radius: var(--so-radius-large);
+    background: color-mix(in oklch, var(--so-card) 94%, var(--so-page));
+    box-shadow:
+      0 32px 80px color-mix(in oklch, var(--so-base-800) 10%, transparent),
+      inset 0 1px 0 color-mix(in oklch, white 74%, transparent);
+    padding: 34px;
+  }
+
+  .panel h2 {
+    margin: 0 0 28px;
+    font-size: 31px;
+    letter-spacing: -0.02em;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 132px 1fr;
+    gap: 18px;
+    align-items: start;
+    border-top: 1px solid var(--so-border);
+    padding: 24px 0;
+  }
+
+  .row:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .key {
+    font-family: var(--so-font-mono);
+    font-size: 17px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--so-primary-700);
+  }
+
+  .value {
+    font-size: 25px;
+    line-height: 1.25;
+  }
+</style>
+</head>
+<body data-web-slides-studio>
+<div class="deck-viewport"><div class="deck-stage">
+<div class="slide frame active" data-title="A control surface for governed agent work">
+  <header class="topbar">
+    <div class="brand">
+      <img class="logo" src="../_smoothoperator-assets/logo/smoothoperator-icon.svg" alt="">
+      <div>
+        <div class="product">SmoothOperator</div>
+        <div class="mono">Workflow / evidence / outputs</div>
+      </div>
+    </div>
+    <div class="mono pill">Workflow design</div>
+  </header>
+  <main class="main">
+    <section>
+      <p class="mono">Operator brief</p>
+      <h1>A control surface for governed agent work.</h1>
+      <p class="lede">Connect workflows, evidence, and outputs in one readable operator view.</p>
+      <div class="rule"></div>
+    </section>
+    <aside class="panel">
+      <h2>Operator view</h2>
+      <div class="row"><div class="key">Workflow</div><div class="value">Show the work and its next action.</div></div>
+      <div class="row"><div class="key">Evidence</div><div class="value">Connect each claim to its support.</div></div>
+      <div class="row"><div class="key">Outputs</div><div class="value">Make the resulting artifacts easy to find.</div></div>
+    </aside>
+  </main>
+</div>
+</div></div>
+<script src="../../../runtime/deck-stage.js"></script>
+</body>
+</html>

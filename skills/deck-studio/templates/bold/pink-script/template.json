@@ -1,0 +1,53 @@
+{
+  "slug": "pink-script",
+  "name": "Pink Script — After Hours",
+  "family": "bold",
+  "tone": [
+    "luxury",
+    "lyrical-editorial"
+  ],
+  "formality": "medium-high",
+  "density": "low",
+  "scheme": "dark",
+  "best_for": [
+    "Luxury and fashion presentations",
+    "Lyrical type-led editorial narratives"
+  ],
+  "avoid_for": [
+    "Daytime corporate-professional and traditional B2B contexts where the dark canvas with hot-pink accent reads as too styled or too expressive"
+  ],
+  "weak_cases": [
+    "Detailed matrices are secondary to the hero; glow and subtle chrome need contrast inspection."
+  ],
+  "visual_signature": "Upright DM Serif display, pink hero glow, warm off-center light and faint internal frame.",
+  "paths": {
+    "metadata": "templates/bold/pink-script/template.json",
+    "preview": "templates/bold/pink-script/preview.md",
+    "design": "templates/bold/pink-script/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "hero statement",
+    "stat row",
+    "callout rail",
+    "comparison matrix"
+  ],
+  "language_posture": "Despite its name this is not a handwriting font system; the upright serif's character still needs script-aware adaptation.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "DM Serif Display",
+      "Inter",
+      "JetBrains Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

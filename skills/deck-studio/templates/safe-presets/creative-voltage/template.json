@@ -1,0 +1,50 @@
+{
+  "slug": "creative-voltage",
+  "name": "Creative Voltage",
+  "family": "safe-presets",
+  "tone": [
+    "creative",
+    "energetic",
+    "retro-modern"
+  ],
+  "formality": "medium-low",
+  "density": "medium",
+  "scheme": "dark",
+  "best_for": [
+    "creative work",
+    "brand launches",
+    "event talks"
+  ],
+  "avoid_for": [
+    "formal board material"
+  ],
+  "weak_cases": [
+    "Neon and halftone compete with small evidence; no handwriting font is supplied by the named pairing."
+  ],
+  "visual_signature": "electric blue, neon yellow, halftone texture, mono accents",
+  "paths": {
+    "metadata": "templates/safe-presets/creative-voltage/template.json",
+    "preview": "templates/safe-presets/creative-voltage/preview.md",
+    "design": "templates/safe-presets/creative-voltage/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+  },
+  "supported_layouts": [
+    "two-panel split"
+  ],
+  "maturity": "preset",
+  "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+  "assets": {
+    "fonts": [
+      "Syne",
+      "Space Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+  }
+}

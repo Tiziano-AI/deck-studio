@@ -1,0 +1,82 @@
+{
+  "source_of_truth": {
+    "inventory": "templates/house/_smoothoperator-assets/fonts/font-manifest.json",
+    "light_font_faces": "templates/house/smooth-operator-light/tokens.css",
+    "dark_font_faces": "templates/house/smooth-operator-dark/tokens.css"
+  },
+  "families": [
+    {
+      "family": "SO Raleway",
+      "role": ["sans", "display"],
+      "copyright": "Copyright 2010 The Raleway Project Authors (impallari@gmail.com), with Reserved Font Name \"Raleway\".",
+      "license": "SIL Open Font License 1.1",
+      "license_file": "Raleway-OFL.txt",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/main/ofl/raleway/OFL.txt",
+      "metadata_source": "https://raw.githubusercontent.com/google/fonts/main/ofl/raleway/METADATA.pb",
+      "included_files": [
+        {
+          "file": "raleway-400-normal.woff2",
+          "weight": 400,
+          "style": "normal"
+        },
+        {
+          "file": "raleway-500-normal.woff2",
+          "weight": 500,
+          "style": "normal"
+        },
+        {
+          "file": "raleway-600-normal.woff2",
+          "weight": 600,
+          "style": "normal"
+        },
+        {
+          "file": "raleway-700-normal.woff2",
+          "weight": 700,
+          "style": "normal"
+        },
+        {
+          "file": "raleway-italic-shared.woff2",
+          "weight": [400, 500, 600, 700],
+          "style": "italic"
+        }
+      ]
+    },
+    {
+      "family": "SO Victor Mono",
+      "role": ["mono"],
+      "copyright": "Copyright 2023 The Victor Mono Project Authors (https://github.com/rubjo/victor-mono-font)",
+      "license": "SIL Open Font License 1.1",
+      "license_file": "Victor-Mono-OFL.txt",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/main/ofl/victormono/OFL.txt",
+      "metadata_source": "https://raw.githubusercontent.com/google/fonts/main/ofl/victormono/METADATA.pb",
+      "included_files": [
+        {
+          "file": "victor-mono-400-normal.woff2",
+          "weight": 400,
+          "style": "normal"
+        },
+        {
+          "file": "victor-mono-500-normal.woff2",
+          "weight": 500,
+          "style": "normal"
+        },
+        {
+          "file": "victor-mono-600-normal.woff2",
+          "weight": 600,
+          "style": "normal"
+        },
+        {
+          "file": "victor-mono-italic-shared.woff2",
+          "weight": [400, 500, 600],
+          "style": "italic"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "This manifest inventories the bundled SmoothOperator brand font assets; the package-local token stylesheets own their use in these templates, not a live product shell.",
+    "Copyright records embedded in the font files match the accompanying family notices. These references do not establish an original download URL or an unmodified upstream binary.",
+    "Copy each used font family's copyright and full license notice with its files when producing a standalone deck.",
+    "Italic assets are recorded as one shared WOFF2 per family. The deck token stylesheets load only their explicitly declared normal faces; additional faces need their own verified declarations."
+  ]
+}

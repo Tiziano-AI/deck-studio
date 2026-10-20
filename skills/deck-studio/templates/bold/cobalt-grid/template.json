@@ -1,0 +1,54 @@
+{
+  "slug": "cobalt-grid",
+  "name": "Cobalt Grid",
+  "family": "bold",
+  "tone": [
+    "trend-report",
+    "editorial-technical"
+  ],
+  "formality": "high",
+  "density": "high",
+  "scheme": "light",
+  "best_for": [
+    "Trend reports and editorial research",
+    "Structured index and ledger narratives"
+  ],
+  "avoid_for": [
+    "Decks that need warmth, multi-colour energy, or a casual / playful voice — the strict cobalt + cream + grid palette is intentionally austere"
+  ],
+  "weak_cases": [
+    "Two inks limit categorical encoding; pixel counts must represent values and decorative mosaics are not QR codes."
+  ],
+  "visual_signature": "Permanent graph paper, cream/cobalt printing and serif/sans/mono hierarchy.",
+  "paths": {
+    "metadata": "templates/bold/cobalt-grid/template.json",
+    "preview": "templates/bold/cobalt-grid/preview.md",
+    "design": "templates/bold/cobalt-grid/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "index rows",
+    "ledger",
+    "pixel-stack bars",
+    "manifesto",
+    "quote"
+  ],
+  "language_posture": "Mono catalogue labels and serif emphasis need script-aware equivalents; grids cannot compensate for unsupported glyphs.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Newsreader",
+      "Hanken Grotesk",
+      "DM Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

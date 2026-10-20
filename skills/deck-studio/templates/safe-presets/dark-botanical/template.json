@@ -1,0 +1,51 @@
+{
+  "slug": "dark-botanical",
+  "name": "Dark Botanical",
+  "family": "safe-presets",
+  "tone": [
+    "premium",
+    "artistic",
+    "quiet"
+  ],
+  "formality": "high",
+  "density": "low",
+  "scheme": "dark",
+  "best_for": [
+    "premium storytelling",
+    "culture decks",
+    "founder narrative"
+  ],
+  "avoid_for": [
+    "dense financial appendix"
+  ],
+  "weak_cases": [
+    "Atmospheric corners and serif scale suit sparse content, not dashboard detail."
+  ],
+  "visual_signature": "dark gallery surface with soft abstract botanical color fields",
+  "paths": {
+    "metadata": "templates/safe-presets/dark-botanical/template.json",
+    "preview": "templates/safe-presets/dark-botanical/preview.md",
+    "design": "templates/safe-presets/dark-botanical/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+  },
+  "supported_layouts": [
+    "centered title",
+    "quote"
+  ],
+  "maturity": "preset",
+  "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+  "assets": {
+    "fonts": [
+      "Cormorant",
+      "IBM Plex Sans"
+    ],
+    "font_delivery": "external",
+    "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+  }
+}

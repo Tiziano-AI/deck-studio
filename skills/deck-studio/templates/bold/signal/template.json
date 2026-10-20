@@ -1,0 +1,54 @@
+{
+  "slug": "signal",
+  "name": "Signal",
+  "family": "bold",
+  "tone": [
+    "intelligence-briefing",
+    "literary",
+    "restrained"
+  ],
+  "formality": "high",
+  "density": "low-medium",
+  "scheme": "mixed",
+  "best_for": [
+    "Intelligence briefings and quarterly reviews",
+    "Quiet editorial narratives with concise evidence"
+  ],
+  "avoid_for": [
+    "Contexts that should feel hot, fast, or intentionally playful — the navy + gold restraint commits to a sober voice"
+  ],
+  "weak_cases": [
+    "Edge-to-edge detail conflicts with breathing space; low-opacity chrome needs real legibility checks."
+  ],
+  "visual_signature": "Navy/cream dual surfaces, serif roman/italic contrast, precise gold and hairlines.",
+  "paths": {
+    "metadata": "templates/bold/signal/template.json",
+    "preview": "templates/bold/signal/preview.md",
+    "design": "templates/bold/signal/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "editorial split",
+    "sparse metric",
+    "comparison",
+    "fullbleed image"
+  ],
+  "language_posture": "Roman/italic distinction needs a script-appropriate emphasis role; mixed-script line metrics need inspection.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Source Serif 4",
+      "DM Sans",
+      "IBM Plex Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

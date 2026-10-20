@@ -1,0 +1,55 @@
+{
+  "slug": "stencil-tablet",
+  "name": "Stencil & Tablet",
+  "family": "bold",
+  "tone": [
+    "industrial-poster",
+    "loud"
+  ],
+  "formality": "medium-high",
+  "density": "high",
+  "scheme": "light",
+  "best_for": [
+    "Industrial and retro-print launches",
+    "Loud metric and process presentations"
+  ],
+  "avoid_for": [
+    "Contexts that demand digital-native polish or playful pop — the stencil-cut display and earth-tone palette commit to a deliberate analog feel"
+  ],
+  "weak_cases": [
+    "Long prose competes with giant numerals; busy tablets can obscure distinctions between metrics."
+  ],
+  "visual_signature": "Stencil-scale type and saturated rounded tablets make color blocks the layout.",
+  "paths": {
+    "metadata": "templates/bold/stencil-tablet/template.json",
+    "preview": "templates/bold/stencil-tablet/preview.md",
+    "design": "templates/bold/stencil-tablet/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "tablet stat grid",
+    "process nodes",
+    "timeline",
+    "matrix",
+    "giant section numeral"
+  ],
+  "language_posture": "Stencil breaks and condensed uppercase are Latin-specific identity cues; substitution changes the voice and needs preview.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Stardos Stencil",
+      "Bowlby One",
+      "Barlow Condensed",
+      "Inter"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}

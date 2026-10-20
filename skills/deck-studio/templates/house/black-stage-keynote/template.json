@@ -1,0 +1,59 @@
+{
+  "slug": "black-stage-keynote",
+  "name": "Black Stage Keynote",
+  "family": "house",
+  "tone": [
+    "confident",
+    "dramatic",
+    "quiet"
+  ],
+  "formality": "medium-high",
+  "density": "low",
+  "scheme": "dark",
+  "best_for": [
+    "keynotes",
+    "launch reveals",
+    "founder narratives",
+    "big ideas"
+  ],
+  "avoid_for": [
+    "dense appendices",
+    "table-heavy reports"
+  ],
+  "weak_cases": [
+    "multi-column detail",
+    "Starter tokens and layout seeds only; specialized layouts need composition and rendered evaluation."
+  ],
+  "visual_signature": "black theatre space, oversized white type, one precise color beam, cinematic pacing",
+  "paths": {
+    "metadata": "templates/house/black-stage-keynote/template.json",
+    "preview": "templates/house/black-stage-keynote/preview.md",
+    "preview_html": "templates/house/black-stage-keynote/preview.html",
+    "design": "templates/house/black-stage-keynote/design.md",
+    "tokens": "templates/house/black-stage-keynote/tokens.css",
+    "layouts": "templates/house/black-stage-keynote/layouts.md"
+  },
+  "provenance": {
+    "source": "decks house template",
+    "license": "MIT",
+    "copyright": "2026 Tiziano AI",
+    "adaptation": "original owned template created for gaps in inherited template coverage"
+  },
+  "maturity": "starter",
+  "supported_layouts": [
+    "title",
+    "statement",
+    "two-column",
+    "claim with evidence"
+  ],
+  "language_posture": "Font names express intended roles, not verified language coverage. Re-fit the starter with the actual audience text.",
+  "assets": {
+    "fonts": [
+      "Satoshi",
+      "Fraunces",
+      "IBM Plex Mono"
+    ],
+    "font_delivery": "external",
+    "images": "No image required for the starter; source meaningful images if the content calls for them."
+  }
+}

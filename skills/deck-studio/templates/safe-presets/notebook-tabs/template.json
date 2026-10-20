@@ -1,0 +1,50 @@
+{
+  "slug": "notebook-tabs",
+  "name": "Notebook Tabs",
+  "family": "safe-presets",
+  "tone": [
+    "editorial",
+    "organized",
+    "tactile"
+  ],
+  "formality": "medium",
+  "density": "medium-high",
+  "scheme": "light",
+  "best_for": [
+    "workshops",
+    "education",
+    "research synthesis"
+  ],
+  "avoid_for": [
+    "severe keynote minimalism"
+  ],
+  "weak_cases": [
+    "Tabs reduce body width; long section labels and dense evidence require re-fit."
+  ],
+  "visual_signature": "cream page with colorful tab system and binder details",
+  "paths": {
+    "metadata": "templates/safe-presets/notebook-tabs/template.json",
+    "preview": "templates/safe-presets/notebook-tabs/preview.md",
+    "design": "templates/safe-presets/notebook-tabs/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides STYLE_PRESETS.md",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "safe preset split into normalized template folder with Decks selection metadata"
+  },
+  "supported_layouts": [
+    "tabbed paper panel"
+  ],
+  "maturity": "preset",
+  "language_posture": "Named font choices are design intent, not verified glyph coverage. Test the actual language, punctuation and line breaks; adapt display emphasis where it depends on Latin forms.",
+  "assets": {
+    "fonts": [
+      "Bodoni Moda",
+      "DM Sans"
+    ],
+    "font_delivery": "external",
+    "images": "No image required by the preset; CSS geometry and typography supply its visual seed."
+  }
+}

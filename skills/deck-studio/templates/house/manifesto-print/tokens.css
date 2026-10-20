@@ -1,0 +1,10 @@
+:root {
+  --ws-paper: #F7F1E3;
+  --ws-ink: #101010;
+  --ws-red: #D7352A;
+  --ws-gray: #D9D2C4;
+  --ws-muted: #5C564D;
+  --ws-font-display: "Oswald", system-ui, sans-serif;
+  --ws-font-body: "Source Serif 4", Georgia, serif;
+  --ws-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}

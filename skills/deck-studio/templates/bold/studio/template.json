@@ -1,0 +1,53 @@
+{
+  "slug": "studio",
+  "name": "Studio",
+  "family": "bold",
+  "tone": [
+    "design-studio",
+    "manifesto",
+    "severe"
+  ],
+  "formality": "medium",
+  "density": "low",
+  "scheme": "dark",
+  "best_for": [
+    "Design-studio and agency presentations",
+    "Sparse manifestos and dramatic reveals"
+  ],
+  "avoid_for": [
+    "Contexts that should feel quiet or institutional — the black-and-electric-yellow palette is the loudest in the library"
+  ],
+  "weak_cases": [
+    "Paragraph-heavy slides and many competing objects defeat the single massive headline."
+  ],
+  "visual_signature": "Barlow graphic mass, acid-yellow/near-black inversion and flat hairlines.",
+  "paths": {
+    "metadata": "templates/bold/studio/template.json",
+    "preview": "templates/bold/studio/preview.md",
+    "design": "templates/bold/studio/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "type-led statement",
+    "image cover",
+    "paired comparison",
+    "sparse metrics"
+  ],
+  "language_posture": "Uppercase graphic mass does not transfer unchanged to caseless scripts; choose actual text and weight before fitting.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Barlow",
+      "IBM Plex Mono"
+    ],
+    "font_delivery": "external",
+    "images": "Optional cover imagery supports one dominant headline; no decorative asset is required."
+  }
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Deck Studio"
+  short_description: "Create, revise and publish communication decks"
+  default_prompt: "Use $deck-studio to turn my material into a clear, well-designed deck for its audience."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,54 @@
+{
+  "slug": "monochrome",
+  "name": "Monochrome",
+  "family": "bold",
+  "tone": [
+    "analytical-editorial",
+    "literary",
+    "quiet"
+  ],
+  "formality": "high",
+  "density": "low-medium",
+  "scheme": "light",
+  "best_for": [
+    "Quiet analytical and research narratives",
+    "Literary presentations with simple evidence"
+  ],
+  "avoid_for": [
+    "Decks that need visual personality or color-led storytelling — the all-ink palette is intentionally austere"
+  ],
+  "weak_cases": [
+    "Many categorical series cannot rely on color; small light text needs intended-size inspection."
+  ],
+  "visual_signature": "Light Jost, Lora insight/quote voice, mono metadata and hairlines instead of color.",
+  "paths": {
+    "metadata": "templates/bold/monochrome/template.json",
+    "preview": "templates/bold/monochrome/preview.md",
+    "design": "templates/bold/monochrome/design.md"
+  },
+  "provenance": {
+    "source": "zarazhangrui/frontend-slides bold-template-pack",
+    "source_repo": "zarazhangrui/frontend-slides",
+    "source_commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+    "license": "MIT",
+    "copyright": "2025 Zara Zhang",
+    "adaptation": "Recipe retained and curated for Deck Studio; selector describes source-supported structures, not rendered acceptance."
+  },
+  "supported_layouts": [
+    "insight cards",
+    "quote",
+    "vertical timeline",
+    "simple statistics"
+  ],
+  "language_posture": "Maintain sans/serif/mono role contrast with tested script-appropriate fonts; avoid assuming matching light weights.",
+  "maturity": "recipe",
+  "assets": {
+    "fonts": [
+      "Jost",
+      "JetBrains Mono",
+      "Lora"
+    ],
+    "font_delivery": "external",
+    "images": "No image required; type, shapes and surface treatments can carry the system."
+  }
+}
