@@ -51,8 +51,30 @@ class DistributionMetadataTests(unittest.TestCase):
         self.edit(".claude-plugin/plugin.json", lambda value: value.update(version="0.0.0"))
         self.assert_rejected()
 
-    def test_workspace_lock_version_is_checked(self):
-        self.edit("package-lock.json", lambda value: value["packages"]["skills/deck-studio"].update(version="0.0.0"))
+    def test_skill_lock_version_is_checked(self):
+        self.edit("skills/deck-studio/package-lock.json", lambda value: value["packages"][""].update(version="0.0.0"))
+        self.assert_rejected()
+
+    def test_root_cannot_own_producer_workspaces_or_dependencies(self):
+        path = self.root / "package.json"
+        original = path.read_bytes()
+        for field, value in (("workspaces", ["skills/deck-studio"]),
+                             ("dependencies", {"@tiziano-ai/deck-studio": "file:skills/deck-studio"})):
+            with self.subTest(field=field):
+                path.write_bytes(original)
+                self.edit("package.json", lambda manifest: manifest.update({field: value}))
+                self.assert_rejected()
+
+    def test_root_lock_cannot_retain_workspace_metadata(self):
+        self.edit("package-lock.json", lambda value: value["packages"][""].update(workspaces=["skills/deck-studio"]))
+        self.assert_rejected()
+
+    def test_root_lock_cannot_link_or_bundle_the_producer(self):
+        producer = json.loads((self.root / "skills/deck-studio/package.json").read_text())
+        self.edit("package-lock.json", lambda value: value["packages"].update({
+            "node_modules/@tiziano-ai/deck-studio": {"resolved": "skills/deck-studio", "link": True},
+            "skills/deck-studio": producer,
+        }))
         self.assert_rejected()
 
     def test_preinstall_website_is_required(self):

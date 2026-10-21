@@ -87,7 +87,8 @@ node "/absolute/installed/package/skills/deck-studio/scripts/setup_runtime.mjs" 
 
 `--install` runs `npm ci` with lifecycle scripts disabled and prepares hermetic
 Playwright Chromium inside the selected package. It does not borrow another
-installation's Playwright or browser cache.
+installation's Playwright or browser cache. The plugin root is dependency-free;
+the producer's manifest and lockfile live in `skills/deck-studio`.
 
 `--check` validates the locked dependencies and package-local browser, launches
 Chromium, renders a probe and creates an in-memory PDF. It does not check Python

@@ -189,14 +189,19 @@ def validate_distribution_metadata() -> dict[str, object]:
     for name, package in packages.items():
         if package.get("version") != version or package.get("private") is not True:
             fail(f"{name} must share the plugin version and remain npm-private")
+    dependency_fields = ("workspaces", "dependencies", "devDependencies", "optionalDependencies", "peerDependencies")
+    if any(packages["package.json"].get(field) for field in dependency_fields):
+        fail("plugin root must remain dependency-free; producer dependencies belong to skills/deck-studio")
     for name in ("package-lock.json", "skills/deck-studio/package-lock.json"):
         lock = load_json(REPO_ROOT / name)
         package = packages[name.replace("package-lock.json", "package.json")]
         if (lock.get("version") != version or lock.get("name") != package.get("name")
                 or lock.get("packages", {}).get("", {}).get("version") != version):
             fail(f"{name} root metadata differs from its package")
-        if name == "package-lock.json" and lock.get("packages", {}).get("skills/deck-studio", {}).get("version") != version:
-            fail("root lockfile skill workspace version mismatch")
+        if name == "package-lock.json":
+            entries = lock.get("packages", {})
+            if set(entries) != {""} or any(entries[""].get(field) for field in dependency_fields):
+                fail("root lockfile must remain dependency-free, without workspace links or bundled producer packages")
     return {"name": "deck-studio", "version": version, "repository": PUBLIC_REPOSITORY}
 
 

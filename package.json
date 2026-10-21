@@ -10,6 +10,5 @@
     "runtime:check": "node skills/deck-studio/scripts/setup_runtime.mjs --check",
     "runtime:setup": "node skills/deck-studio/scripts/setup_runtime.mjs --install",
     "test:setup": "node --test scripts/test_setup_runtime.mjs"
-  },
-  "workspaces": ["skills/deck-studio"]
+  }
 }
