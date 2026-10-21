@@ -261,7 +261,7 @@ The orange register has no third color. When emphasis is needed on an orange sli
 ## Typography
 
 ### Font Family
-The system is monolingual on **Barlow** (with Noto Sans SC as the CJK fallback for identical role coverage). Every display, heading, lead, body, and caption token uses Barlow. The only secondary face is **IBM Plex Mono**, which is reserved entirely for chrome: slide numbers, kickers, tags, labels, captions in chart axes, bullet-list markers, image captions, and source notes. The contrast between Barlow's tight grotesque density and IBM Plex Mono's even monospace is the system's secondary typographic rhythm; the primary rhythm is Barlow's own weight and size axis.
+**Barlow** carries display, headings, leads, body and captions. **IBM Plex Mono** is reserved for chrome: slide numbers, kickers, tags, labels, chart axes, bullet-list markers, image captions and source notes. For other scripts, select and verify the role-specific alternatives described below; a fallback does not guarantee identical metrics or glyph coverage. The contrast between Barlow's tight grotesque density and IBM Plex Mono's even monospace is the system's secondary typographic rhythm; the primary rhythm is Barlow's own weight and size axis.
 
 Italic is not used. Underline is not used. The only emphasis mechanisms are weight, size, and color (orange accent on dark, or weight-only on orange).
 

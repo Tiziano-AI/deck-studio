@@ -15,8 +15,8 @@
   audience-path contract imported by capture and gateway; its complete bytes
   identify the profile bound by library QA and PDF reports.
 - `publisher/static-server`: audience gateway, policy, management API and CLI.
-- `scripts/export_public_source.py`: tool-source projection excluding the
-  development repository's private library, history and installation notes.
+- `scripts/export_public_source.py`: clean source snapshots for build and
+  distribution, excluding Git metadata, dependencies and runtime data.
 
 One implementation serves local production and optional hosting. The plugin
 does not need an MCP server, a hosted account or a second publishing engine.

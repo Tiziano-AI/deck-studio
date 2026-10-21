@@ -5,32 +5,27 @@ HTML/render/PDF producer. Local files are a complete result. The optional
 audience gateway is a separate service that you configure and operate; installing
 the plugin neither deploys it nor publishes your content.
 
-## Distribution status and identity
-
-The installation commands below apply only after the authorized public release
-exists and the shared catalog points to it. They are not evidence that those
-destinations are available. A local test installation does not establish public
-Git transport or submission to a host's public directory.
+## Package identity
 
 | Item | Identity |
 | --- | --- |
 | Product / publisher | Deck Studio / Tiziano AI |
-| Plugin name / candidate version | `deck-studio` / `0.1.1` |
-| Independent source | `https://github.com/Tiziano-AI/deck-studio` |
+| Plugin name | `deck-studio` |
+| Source repository | [`Tiziano-AI/deck-studio`](https://github.com/Tiziano-AI/deck-studio) |
 | Shared discovery catalog | [`Tiziano-AI/plugins`](https://github.com/Tiziano-AI/plugins), named `tiziano-ai` |
-| Intended installed plugin ID | `deck-studio@tiziano-ai` |
+| Installed plugin ID | `deck-studio@tiziano-ai` |
 
-The public release is intended to place the plugin at the repository root, with
-portable `plugin.json`, native `.claude-plugin/plugin.json` and `skills/`.
+The plugin lives at the repository root, with portable `plugin.json`, native
+`.claude-plugin/plugin.json` and `skills/`.
 The shared catalog owns host-specific discovery entries and pins the selected
-release. This product does not contain another marketplace. Its `package.json`
-files are marked private; native Git installation does not require npm publication.
+release. The `package.json` files are marked private; native Git installation
+does not require npm publication.
 
 ## Requirements
 
 Local authoring needs a host with native plugin support and a local executor,
 Node.js 20+, npm, Python 3.9+ and write access to the selected plugin package.
-The proposed Git-based installation also needs Git and access to the catalog
+Git-based installation also needs Git and access to the catalog
 and product repositories. Explicit runtime preparation downloads the locked npm
 dependencies and Chromium. No API key, hosted account or gateway is required.
 
@@ -39,8 +34,7 @@ tool when you need searchable text, editable slides or semantic accessibility.
 
 ## Codex
 
-After the release and shared catalog entry are available, add the catalog if it
-is not already registered, then install:
+Add the catalog if it is not already registered, then install:
 
 ```bash
 codex plugin marketplace add Tiziano-AI/plugins
@@ -61,8 +55,7 @@ package root if another marketplace or standalone skill supplies Deck Studio.
 
 ## Claude Code
 
-After the release and shared catalog entry are available, add the catalog if it
-is not already registered, then install:
+Add the catalog if it is not already registered, then install:
 
 ```bash
 claude plugin marketplace add Tiziano-AI/plugins --scope user
@@ -94,9 +87,7 @@ node "/absolute/installed/package/skills/deck-studio/scripts/setup_runtime.mjs" 
 
 `--install` runs `npm ci` with lifecycle scripts disabled and prepares hermetic
 Playwright Chromium inside the selected package. It does not borrow another
-installation's Playwright or browser cache. It prunes dependency `SKILL.md` files
-so dependencies cannot become discoverable skills, including after a partial
-installation failure. Linked or non-directory `node_modules` is refused.
+installation's Playwright or browser cache.
 
 `--check` validates the locked dependencies and package-local browser, launches
 Chromium, renders a probe and creates an in-memory PDF. It does not check Python
@@ -150,23 +141,13 @@ Another installation scope can remain enabled. Do not remove the shared
 libraries, policy stores and independently running gateways remain. Stopping a
 service or revoking audience keys is a separate operation.
 
-## Moving from an existing local installation
+## Competing installations
 
-An existing `deck-studio@decks-local` installation is not automatically migrated
-by the new catalog entry. When its owner authorizes the migration:
-
-1. Install `deck-studio@tiziano-ai` in the intended native profile and scope.
-2. Verify its plugin ID, version and package root; prepare that package's runtime.
-3. Remove or disable the exact older `deck-studio@decks-local` installation
-   through its host, preserving unrelated plugins and marketplace entries.
-4. Verify fresh discovery selects the new plugin ID and package root, with no
-   competing standalone projection or old plugin enabled.
-
-Both plugins expose the same skill namespace. The explicit Codex or Claude
-invocation alone cannot distinguish their marketplaces while both are enabled.
-Fresh discovery also does not prove that every already-open chat has reloaded
-its instructions. Do not delete historical installation recovery state or
-recreate an old standalone projection as part of this migration.
+If another marketplace or standalone skill also supplies Deck Studio, inspect
+the plugin ID and package root selected by the host. The skill invocation alone
+cannot distinguish two enabled plugins with the same namespace. Disable or
+remove only the installation you intend to replace, through its native host,
+then check discovery in a new chat. Already-open chats may retain older guidance.
 
 ## Optional gateway
 

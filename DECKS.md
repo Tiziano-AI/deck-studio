@@ -1,805 +1,805 @@
-# Dottrina dei deck e dei documenti in slide
+# Deck and slide-document principles
 
-Il modo corretto di leggere questo sistema non è “tipi di slide”, ma **tipi di deck/documenti in slide**.
-Le variabili decisive sono:
+Read this system as **types of decks and slide documents**, not “types of slides”.
+The decisive variables are:
 
-1. **Pubblico**: investitori, clienti, board, team interno, executive, pubblico esterno.
-2. **Obiettivo**: ottenere meeting, vendere, decidere, allineare, formare, riportare.
-3. **Modalità**: presentato dal vivo oppure letto da solo.
-4. **Densità**: poche parole e molta narrazione orale, oppure documento autosufficiente.
-5. **Stakes**: più alta è la decisione economica o politica, più servono dati, alternative, rischi e appendix.
-6. **Registro**: esplicativo o tra pari, secondo cosa il pubblico sa già, quale parte del materiale ha scritto o deciso e che rapporto ha con chi scrive. Chi ha scritto il materiale, o conosce il campo meglio di chi scrive, non riceve lo stesso testo di chi è nuovo al tema.
+1. **Audience**: investors, customers, board, internal team, executives, external audiences.
+2. **Objective**: secure a meeting, sell, decide, align, teach or report.
+3. **Mode**: presented live or read independently.
+4. **Density**: few words supported by spoken narration, or a self-contained document.
+5. **Stakes**: the greater the financial or political stakes, the more the decision needs data, alternatives, risks and an appendix.
+6. **Register**: explanatory or peer, depending on what the audience already knows, which material they wrote or decided, and their relationship with the writer. Someone who wrote the material, or knows the field better than the writer, should not receive the same text as someone new to the subject.
 
-Distinzioni fondamentali:
+Fundamental distinctions:
 
-* **Teaser** e **one-pager** non sono la stessa cosa: il teaser è spesso 3–7 slide; il one-pager è letteralmente una pagina.
-* **Leave-behind / reading deck** non è un tipo di deck autonomo: è una **modalità** applicabile a quasi tutti i deck.
-* **Appendix / backup** non è un deck primario: è una **sezione di supporto**.
-* **GTM** e **roadmap** vanno separati: il GTM riguarda il mercato; la roadmap riguarda prodotto, sequenza e priorità.
-* **Sales deck** e **proposal** sono diversi: il primo persuade; il secondo formalizza soluzione, scope, pricing e condizioni.
-* **Executive summary** non è solo “convincimento esterno”: può essere esterno o interno.
-* **Capabilities / company intro** sta meglio in “convincimento esterno / sviluppo business”, non in “educativo/operativo”.
+* **Teaser** and **one-pager** are not the same: a teaser is often 3–7 slides; a one-pager is literally one page.
+* **Leave-behind / reading deck** is not a separate deck type: it is a **mode** that applies to almost any deck.
+* **Appendix / backup** is not a primary deck: it is a **supporting section**.
+* **GTM** and **roadmap** should be separate: GTM concerns the market; a roadmap concerns product, sequence and priorities.
+* **Sales deck** and **proposal** are different: the first persuades; the second formalizes the solution, scope, pricing and terms.
+* **Executive summary** is not only for “external persuasion”: it can serve internal or external audiences.
+* **Capabilities / company intro** belongs under “external persuasion / business development”, not “education and operations”.
 
-## Principi trasversali di comunicazione
+## Communication principles across deck types
 
-Questo documento non va usato come catalogo meccanico. Va usato come sistema
-diagnostico: prima si identifica il cambiamento desiderato nell’audience, poi
-si sceglie il tipo di deck/documento, la densità, la prova e il formato.
+Do not use this document as a mechanical catalog. Use it as a diagnostic
+system: first identify the desired change in the audience, then choose the
+deck or slide-document type, density, evidence and format.
 
-Principi trasversali:
+Cross-cutting principles:
 
-1. **Audience prima del formato.** La domanda iniziale non è “quante slide?”,
-   ma “chi deve fare cosa dopo aver visto questo materiale?”.
-2. **Ogni deck serio è un percorso verso una decisione, un’azione o un cambio
-   di convinzione.** Se non esiste un next step chiaro, il deck è prematuro.
-3. **La densità è una scelta di contesto, non un valore estetico assoluto.**
-   Un pitch live può essere scarno; un business case asincrono deve essere
-   autosufficiente.
-4. **Ogni slide dovrebbe avere una tesi, non solo un argomento.** “Mercato”,
-   “Roadmap” o “Metriche” sono etichette; una headline utile dice cosa il
-   pubblico deve capire da quella slide.
-5. **La prova va calibrata sullo scetticismo dell’audience.** Board,
-   investitori, procurement, executive e clienti enterprise richiedono evidenze
-   diverse.
-6. **Presenting deck e reading deck sono prodotti diversi.** Una versione live
-   può appoggiarsi allo speaker; una versione da leggere deve contenere
-   il contesto, la logica, i caveat e le prove che il lettore non ha già.
-7. **Appendix e backup non devono salvare un corpo principale debole.** Il deck
-   principale deve stare in piedi; l’appendix serve per profondità, non per
-   comprensione di base.
-8. **Accessibilità e leggibilità sono qualità di comunicazione.** Contrasto,
-   dimensione testo, font leggibili, descrizione dei contenuti visuali e
-   alternative per media/audio non sono dettagli secondari quando il materiale
-   viene presentato o distribuito.
-9. **Per fundraising, chiarezza e concisione battono completezza apparente.**
-   Il materiale deve rendere ovvi problema, soluzione, perché ora, prova,
-   mercato, modello, team e ask quando pertinenti allo stadio.
-10. **Template e design vengono dopo la tesi.** Una struttura visiva elegante
-    non corregge pubblico sbagliato, ask vago, prove insufficienti o contenuti
-    da appendix messi nel corpo principale.
+1. **Audience before format.** The first question is not “how many slides?”
+   but “who needs to do what after seeing this material?”
+2. **Every serious deck leads toward a decision, an action or a change in
+   belief.** Without a clear next step, the deck is premature.
+3. **Density is a contextual choice, not an absolute aesthetic value.**
+   A live pitch may be sparse; an asynchronous business case must be
+   self-contained.
+4. **Each slide should have a claim, not just a topic.** “Market”, “Roadmap”
+   and “Metrics” are labels; a useful headline says what the audience should
+   understand from that slide.
+5. **Calibrate the evidence to the audience's skepticism.** Boards,
+   investors, procurement teams, executives and enterprise customers need
+   different evidence.
+6. **Presenting decks and reading decks are different products.** A live
+   version may rely on the speaker; a reading version must contain the
+   context, reasoning, qualifications and evidence the reader does not already have.
+7. **Appendices and backup should not rescue a weak main argument.** The
+   main deck must stand on its own; the appendix adds depth, not the
+   understanding needed to follow the argument.
+8. **Accessibility and readability are communication qualities.** Contrast,
+   text size, legible fonts, descriptions of visual content and alternatives
+   for media/audio are not secondary details when material is presented
+   or distributed.
+9. **For fundraising, clarity and concision beat apparent completeness.**
+   Make the problem, solution, why now, evidence, market, model, team and ask
+   clear wherever they are relevant to the company's stage.
+10. **Templates and design follow the thesis.** An elegant visual structure
+    cannot fix the wrong audience, a vague ask, insufficient evidence or
+    appendix material placed in the main argument.
 
-Riferimenti concettuali di comunicazione; verificare la fonte corrente quando
-le sue prescrizioni precise incidono sul lavoro:
+Conceptual communication references; check the current source when its
+precise advice affects the work:
 
 * Sequoia, “Writing a Business Plan”
-  (`https://www.sequoiacap.com/article/writing-a-business-plan/`): per una storia investor/company,
-  considerare purpose, problem, solution, why now, market potential,
-  competition/alternatives, business model, team, financials e vision.
+  (`https://www.sequoiacap.com/article/writing-a-business-plan/`): for an investor/company story,
+  consider purpose, problem, solution, why now, market potential,
+  competition/alternatives, business model, team, financials and vision.
 * Y Combinator, seed deck / pitch deck guidance
-  (`https://www.ycombinator.com/library/2u-how-to-build-your-seed-round-pitch-deck`): nei seed deck privilegiare
-  chiarezza, concisione, narrativa, problema, soluzione, traction/metriche
-  quando presenti e slide che rendono l’idea immediatamente comprensibile.
+  (`https://www.ycombinator.com/library/2u-how-to-build-your-seed-round-pitch-deck`): in seed decks, prioritize
+  clarity, concision, narrative, problem, solution, traction/metrics
+  where available, and slides that make the idea immediately understandable.
 * W3C WAI accessibility checklist
-  (`https://www.w3.org/WAI/teach-advocate/accessible-presentations/`): pianificare presentazioni inclusive,
-  leggibili e accessibili per audience con bisogni diversi.
+  (`https://www.w3.org/WAI/teach-advocate/accessible-presentations/`): plan inclusive,
+  readable and accessible presentations for audiences with different needs.
 
 ---
 
-# Sistema dei deck in slide
+# A system of slide decks
 
-## 1. Convincimento esterno
+## 1. External persuasion
 
-Deck usati per ottenere attenzione, fiducia, meeting, investimento, vendita, partnership o consenso da soggetti esterni.
+Decks used to earn attention, trust, meetings, investment, sales, partnerships or support from external parties.
 
 ---
 
 ### Teaser
 
-* **Lunghezza tipica**: 3–7 slide.
-* **Densità**: bassa.
-* **Focus principale**: hook, opportunità, promessa, credibilità minima.
-* **Uso primario**: ottenere un primo meeting o far nascere interesse.
-* **Nota**: non deve spiegare tutto. Deve generare curiosità qualificata.
-* **Errore comune**: trasformarlo in un mini pitch deck troppo denso.
+* **Typical length**: 3–7 slides.
+* **Density**: low.
+* **Main focus**: hook, opportunity, promise, minimum credibility.
+* **Primary use**: secure a first meeting or generate interest.
+* **Note**: it should not explain everything. It should generate qualified curiosity.
+* **Common mistake**: turning it into an overly dense mini pitch deck.
 
 ---
 
 ### One-pager
 
-* **Lunghezza tipica**: 1 pagina, non 1–5 slide.
-* **Densità**: medio-alta.
-* **Focus principale**: sintesi completa in una pagina.
-* **Uso primario**: condivisione rapida, primo filtro, inoltro interno.
-* **Nota**: spesso contiene problema, soluzione, traction, target, modello, ask e contatti.
-* **Errore comune**: renderlo bello ma poco informativo.
+* **Typical length**: 1 page, not 1–5 slides.
+* **Density**: medium-high.
+* **Main focus**: a complete summary on one page.
+* **Primary use**: quick sharing, initial screening, internal forwarding.
+* **Note**: often includes the problem, solution, traction, target audience, model, ask and contact details.
+* **Common mistake**: making it attractive but uninformative.
 
 ---
 
 ### Pitch Deck — Investor
 
-* **Lunghezza tipica**: 10–15 slide per presentazione live; 15–25 se deve essere letto da solo.
-* **Densità**: bassa se presentato; media se inviato.
-* **Focus principale**: storia, problema, soluzione, mercato, traction, modello, team, ask.
-* **Uso primario**: fundraising.
-* **Nota**: deve vendere una tesi di crescita, non solo descrivere l’azienda.
-* **Errore comune**: iniziare dal prodotto invece che dal problema, dal mercato o dalla trazione.
+* **Typical length**: 10–15 slides for a live presentation; 15–25 if read independently.
+* **Density**: low when presented; medium when sent.
+* **Main focus**: story, problem, solution, market, traction, model, team, ask.
+* **Primary use**: fundraising.
+* **Note**: it must sell a growth thesis, not merely describe the company.
+* **Common mistake**: starting with the product rather than the problem, market or traction.
 
 ---
 
 ### Fundraising Reading Deck
 
-* **Lunghezza tipica**: 15–30 slide.
-* **Densità**: media-alta.
-* **Focus principale**: investor story autosufficiente.
-* **Uso primario**: invio dopo call, processo fundraising, data room leggera.
-* **Nota**: è più esplicito del pitch live. Deve essere comprensibile senza voce narrante.
-* **Errore comune**: usare lo stesso identico deck sia per live pitch sia come leave-behind.
+* **Typical length**: 15–30 slides.
+* **Density**: medium-high.
+* **Main focus**: a self-contained investor story.
+* **Primary use**: follow-up after a call, fundraising process, lightweight data room.
+* **Note**: more explicit than a live pitch. It must be understandable without narration.
+* **Common mistake**: using exactly the same deck for a live pitch and a leave-behind.
 
 ---
 
 ### Sales Deck
 
-* **Lunghezza tipica**: 8–20 slide.
-* **Densità**: media.
-* **Focus principale**: problema cliente, impatto economico, soluzione, prova, differenziazione.
-* **Uso primario**: avanzare una vendita.
-* **Nota**: deve parlare più del cliente che dell’azienda venditrice.
-* **Errore comune**: fare una brochure aziendale invece di costruire un caso specifico per il cliente.
+* **Typical length**: 8–20 slides.
+* **Density**: medium.
+* **Main focus**: customer problem, economic impact, solution, evidence, differentiation.
+* **Primary use**: advance a sale.
+* **Note**: it should say more about the customer than the seller.
+* **Common mistake**: making a company brochure instead of building a customer-specific case.
 
 ---
 
 ### Proposal Deck / Commercial Proposal
 
-* **Lunghezza tipica**: 10–40 slide o pagine.
-* **Densità**: alta.
-* **Focus principale**: scope, deliverable, approccio, timeline, pricing, team, rischi, condizioni.
-* **Uso primario**: chiudere vendita o formalizzare un’offerta.
-* **Nota**: è più contrattuale e operativo del sales deck.
-* **Errore comune**: restare troppo generici quando il cliente sta già valutando prezzo, rischio e implementazione.
+* **Typical length**: 10–40 slides or pages.
+* **Density**: high.
+* **Main focus**: scope, deliverables, approach, timeline, pricing, team, risks, terms.
+* **Primary use**: close a sale or formalize an offer.
+* **Note**: more contractual and operational than a sales deck.
+* **Common mistake**: remaining too generic when the customer is already assessing price, risk and implementation.
 
 ---
 
 ### RFP / Tender Response Deck
 
-* **Lunghezza tipica**: 20–100+ slide/pagine.
-* **Densità**: alta o altissima.
-* **Focus principale**: risposte ai requisiti, compliance, proposta tecnica, proposta economica, proof points.
-* **Uso primario**: gare, procurement, selezione fornitori.
-* **Nota**: qui vince spesso la completezza verificabile, non solo la narrativa.
-* **Errore comune**: ignorare la struttura richiesta dal buyer.
+* **Typical length**: 20–100+ slides/pages.
+* **Density**: high or very high.
+* **Main focus**: responses to requirements, compliance, technical proposal, commercial proposal, proof points.
+* **Primary use**: tenders, procurement, supplier selection.
+* **Note**: verifiable completeness often matters more here than narrative alone.
+* **Common mistake**: ignoring the buyer's required structure.
 
 ---
 
 ### Capabilities Deck / Company Intro
 
-* **Lunghezza tipica**: 10–20 slide.
-* **Densità**: media.
-* **Focus principale**: credibilità, competenze, casi, team, asset, metodo.
-* **Uso primario**: partnership, sales intro, hiring senior, sviluppo business.
-* **Nota**: non deve sembrare una brochure generica. Deve dimostrare perché siete credibili per quello specifico interlocutore.
-* **Collocazione**: convincimento esterno e sviluppo business; diverso dalla formazione operativa.
+* **Typical length**: 10–20 slides.
+* **Density**: medium.
+* **Main focus**: credibility, capabilities, case studies, team, assets, method.
+* **Primary use**: partnerships, sales introductions, senior hiring, business development.
+* **Note**: it should not read like a generic brochure. Show why you are credible for this particular audience.
+* **Placement**: external persuasion and business development; distinct from operational training.
 
 ---
 
 ### Partnership Deck
 
-* **Lunghezza tipica**: 8–20 slide.
-* **Densità**: media.
-* **Focus principale**: valore reciproco, complementarità, modello operativo, next step.
-* **Uso primario**: alleanze, co-marketing, distribuzione, integrazioni.
-* **Nota**: deve rispondere alla domanda: “perché questa partnership crea più valore di due azioni separate?”
-* **Errore comune**: parlare solo del proprio bisogno, non dell’incentivo dell’altra parte.
+* **Typical length**: 8–20 slides.
+* **Density**: medium.
+* **Main focus**: mutual value, complementary strengths, operating model, next step.
+* **Primary use**: alliances, co-marketing, distribution, integrations.
+* **Note**: answer the question: “why does this partnership create more value than two separate efforts?”
+* **Common mistake**: discussing only your own needs, not the other party's incentive.
 
 ---
 
 ### Product Demo Deck
 
-* **Lunghezza tipica**: 5–15 slide, spesso integrato con demo live.
-* **Densità**: bassa-media.
-* **Focus principale**: use case, workflow, valore prodotto, differenziazione.
-* **Uso primario**: vendita, onboarding commerciale, eventi, product marketing.
-* **Nota**: le slide devono preparare e incorniciare la demo, non sostituirla.
-* **Errore comune**: mostrare feature senza legarle a un problema concreto.
+* **Typical length**: 5–15 slides, often combined with a live demo.
+* **Density**: low-medium.
+* **Main focus**: use case, workflow, product value, differentiation.
+* **Primary use**: sales, sales-led onboarding, events, product marketing.
+* **Note**: the slides should prepare and frame the demo, not replace it.
+* **Common mistake**: showing features without connecting them to a concrete problem.
 
 ---
 
 ### Case Study Deck
 
-* **Lunghezza tipica**: 5–12 slide.
-* **Densità**: media.
-* **Focus principale**: situazione iniziale, intervento, risultati, prova.
-* **Uso primario**: sales enablement, trust building, proposta commerciale.
-* **Nota**: funziona solo se i risultati sono specifici e credibili.
-* **Errore comune**: usare claim vaghi tipo “abbiamo migliorato l’efficienza” senza baseline, metrica o contesto.
+* **Typical length**: 5–12 slides.
+* **Density**: medium.
+* **Main focus**: starting situation, intervention, results, evidence.
+* **Primary use**: sales enablement, building trust, commercial proposals.
+* **Note**: works only when the results are specific and credible.
+* **Common mistake**: vague claims such as “we improved efficiency” without a baseline, metric or context.
 
 ---
 
-## 2. Governance e reporting
+## 2. Governance and reporting
 
-Deck usati per controllare andamento, rischi, performance, responsabilità e decisioni ricorrenti.
+Decks used to oversee progress, risks, performance, accountability and recurring decisions.
 
 ---
 
 ### Board Deck
 
-* **Lunghezza tipica**: 20–50 slide più appendix.
-* **Densità**: medio-alta o alta.
-* **Focus principale**: actuals vs plan, metriche, rischi, decisioni, bad news owned.
-* **Uso primario**: board meeting.
-* **Nota**: il board deck non deve essere solo reporting. Deve evidenziare dove serve giudizio del board.
-* **Variabilità**: 15–40 slide è possibile, ma spesso con appendix si va oltre.
-* **Errore comune**: nascondere problemi o sommergere il board con dati non interpretati.
+* **Typical length**: 20–50 slides plus an appendix.
+* **Density**: medium-high or high.
+* **Main focus**: actuals versus plan, metrics, risks, decisions, bad news with clear accountability.
+* **Primary use**: board meetings.
+* **Note**: a board deck should not be reporting alone. Highlight where the board's judgment is needed.
+* **Variation**: 15–40 slides is possible, but the appendix often takes it beyond that range.
+* **Common mistake**: hiding problems or overwhelming the board with uninterpreted data.
 
 ---
 
 ### Investor Update
 
-* **Lunghezza tipica**: 3–10 slide o email strutturata.
-* **Densità**: media.
-* **Focus principale**: progressi, metriche, problemi, hiring, ask.
-* **Uso primario**: aggiornare investitori tra board meeting o tra round.
-* **Nota**: deve essere regolare, chiaro e onesto.
-* **Errore comune**: mandarlo solo quando le cose vanno bene.
+* **Typical length**: 3–10 slides or a structured email.
+* **Density**: medium.
+* **Main focus**: progress, metrics, problems, hiring, asks.
+* **Primary use**: update investors between board meetings or funding rounds.
+* **Note**: keep it regular, clear and honest.
+* **Common mistake**: sending it only when things are going well.
 
 ---
 
 ### Monthly Business Review — MBR
 
-* **Lunghezza tipica**: 10–30 slide.
-* **Densità**: medio-alta.
-* **Focus principale**: performance mensile, trend, gap, azioni correttive.
-* **Uso primario**: gestione operativa interna.
-* **Nota**: più frequente e operativo del board deck.
-* **Errore comune**: fare reporting senza owner, decisioni o azioni.
+* **Typical length**: 10–30 slides.
+* **Density**: medium-high.
+* **Main focus**: monthly performance, trends, gaps, corrective actions.
+* **Primary use**: internal operational management.
+* **Note**: more frequent and operational than a board deck.
+* **Common mistake**: reporting without owners, decisions or actions.
 
 ---
 
-### Quarterly Business Review — QBR interno
+### Quarterly Business Review — Internal QBR
 
-* **Lunghezza tipica**: 10–30 slide.
-* **Densità**: medio-alta.
-* **Focus principale**: KPI, progressi trimestrali, rischi, priorità successive.
-* **Uso primario**: allineamento interno senior.
-* **Nota**: diverso dal QBR cliente.
-* **Errore comune**: trattarlo come una retrospettiva, quando dovrebbe anche riallocare attenzione e risorse.
+* **Typical length**: 10–30 slides.
+* **Density**: medium-high.
+* **Main focus**: KPIs, quarterly progress, risks, subsequent priorities.
+* **Primary use**: senior internal alignment.
+* **Note**: distinct from a customer QBR.
+* **Common mistake**: treating it as a retrospective when it should also reallocate attention and resources.
 
 ---
 
-### QBR cliente / Account Review
+### Customer QBR / Account Review
 
-* **Lunghezza tipica**: 10–25 slide.
-* **Densità**: media.
-* **Focus principale**: valore generato, adozione, risultati, problemi, opportunità.
-* **Uso primario**: retention, renewal, expansion.
-* **Nota**: deve mostrare ROI o valore percepito dal cliente.
-* **Errore comune**: presentare attività svolte invece di risultati ottenuti.
+* **Typical length**: 10–25 slides.
+* **Density**: medium.
+* **Main focus**: value created, adoption, results, problems, opportunities.
+* **Primary use**: retention, renewal, expansion.
+* **Note**: show ROI or the value the customer perceives.
+* **Common mistake**: presenting activities performed instead of results achieved.
 
 ---
 
 ### Status Update / Project Update
 
-* **Lunghezza tipica**: 5–15 slide.
-* **Densità**: media.
-* **Focus principale**: stato, milestone, rischi, blocchi, prossime azioni.
-* **Uso primario**: allineamento su progetto.
-* **Nota**: il cuore è: cosa è cambiato, cosa è a rischio, cosa serve decidere.
-* **Errore comune**: aggiornare tutto invece di isolare deviazioni e decisioni.
+* **Typical length**: 5–15 slides.
+* **Density**: medium.
+* **Main focus**: status, milestones, risks, blockers, next actions.
+* **Primary use**: project alignment.
+* **Note**: the core is what changed, what is at risk and what needs a decision.
+* **Common mistake**: updating everything instead of isolating deviations and decisions.
 
 ---
 
 ### Executive Briefing
 
-* **Lunghezza tipica**: 5–12 slide.
-* **Densità**: alta.
-* **Focus principale**: decisioni da prendere, opzioni, raccomandazione.
-* **Uso primario**: C-level, senior leadership, steering committee.
-* **Nota**: deve arrivare rapidamente al punto. Poco contesto, molta implicazione.
-* **Errore comune**: trattarlo come un report descrittivo invece che come supporto decisionale.
+* **Typical length**: 5–12 slides.
+* **Density**: high.
+* **Main focus**: decisions to make, options, recommendation.
+* **Primary use**: C-suite, senior leadership, steering committees.
+* **Note**: get to the point quickly. Little context, substantial implications.
+* **Common mistake**: treating it as a descriptive report rather than decision support.
 
 ---
 
 ### KPI Dashboard Deck
 
-* **Lunghezza tipica**: 5–20 slide.
-* **Densità**: alta.
-* **Focus principale**: metriche, trend, soglie, varianze, owner.
-* **Uso primario**: controllo operativo.
-* **Nota**: non basta mostrare numeri. Ogni metrica importante deve avere interpretazione.
-* **Errore comune**: dashboard senza narrative, cioè senza risposta a “quindi cosa facciamo?”
+* **Typical length**: 5–20 slides.
+* **Density**: high.
+* **Main focus**: metrics, trends, thresholds, variances, owners.
+* **Primary use**: operational oversight.
+* **Note**: numbers alone are not enough. Every important metric needs interpretation.
+* **Common mistake**: a dashboard without a narrative: no answer to “so what do we do?”
 
 ---
 
 ### Risk Review
 
-* **Lunghezza tipica**: 5–20 slide.
-* **Densità**: alta.
-* **Focus principale**: rischi, probabilità, impatto, mitigazioni, decisioni.
-* **Uso primario**: governance, compliance, programmi critici.
-* **Nota**: utile quando il costo di errore è alto.
-* **Errore comune**: elencare rischi senza priorità o trigger operativi.
+* **Typical length**: 5–20 slides.
+* **Density**: high.
+* **Main focus**: risks, likelihood, impact, mitigations, decisions.
+* **Primary use**: governance, compliance, critical programs.
+* **Note**: useful when the cost of error is high.
+* **Common mistake**: listing risks without priorities or operational triggers.
 
 ---
 
 ### Postmortem / Incident Review
 
-* **Lunghezza tipica**: 5–15 slide.
-* **Densità**: alta.
-* **Focus principale**: fatti, timeline, root cause, impatto, azioni preventive.
-* **Uso primario**: apprendimento operativo e governance.
-* **Nota**: deve separare causa, sintomo e responsabilità sistemica.
-* **Errore comune**: cercare colpevoli invece di correggere il sistema.
+* **Typical length**: 5–15 slides.
+* **Density**: high.
+* **Main focus**: facts, timeline, root cause, impact, preventive actions.
+* **Primary use**: operational learning and governance.
+* **Note**: separate causes, symptoms and systemic responsibility.
+* **Common mistake**: looking for someone to blame instead of correcting the system.
 
 ---
 
-## 3. Strategia e pianificazione
+## 3. Strategy and planning
 
-Deck usati per definire direzione, priorità, allocazione di risorse, mercati, prodotti e piani di crescita.
+Decks used to define direction, priorities, resource allocation, markets, products and growth plans.
 
 ---
 
 ### Strategy Deck / Strategic Plan
 
-* **Lunghezza tipica**: 25–80+ slide.
-* **Densità**: alta, spesso reading deck.
-* **Focus principale**: diagnosi, insight, scelte, trade-off, piano.
-* **Uso primario**: allineamento lungo termine e decisioni strategiche.
-* **Nota**: una vera strategia dice anche cosa non fare.
-* **Variabilità**: 20–60+ slide è una base possibile, ma per contesti corporate il deck può essere molto più lungo.
-* **Errore comune**: confondere strategia con lista di iniziative.
+* **Typical length**: 25–80+ slides.
+* **Density**: high, often a reading deck.
+* **Main focus**: diagnosis, insights, choices, trade-offs, plan.
+* **Primary use**: long-term alignment and strategic decisions.
+* **Note**: a real strategy also says what not to do.
+* **Variation**: 20–60+ slides is a possible baseline, but a corporate deck may be much longer.
+* **Common mistake**: confusing strategy with a list of initiatives.
 
 ---
 
 ### Business Plan Deck
 
-* **Lunghezza tipica**: 20–60+ slide.
-* **Densità**: alta.
-* **Focus principale**: mercato, modello operativo, economics, piano finanziario, execution.
-* **Uso primario**: nuova business unit, startup, espansione, finanziamento.
-* **Nota**: più operativo-finanziario dello strategy deck.
-* **Errore comune**: avere ambizione strategica senza numeri, milestones e vincoli.
+* **Typical length**: 20–60+ slides.
+* **Density**: high.
+* **Main focus**: market, operating model, economics, financial plan, execution.
+* **Primary use**: new business units, startups, expansion, financing.
+* **Note**: more operational and financial than a strategy deck.
+* **Common mistake**: strategic ambition without numbers, milestones and constraints.
 
 ---
 
 ### Annual Operating Plan — AOP
 
-* **Lunghezza tipica**: 20–60+ slide.
-* **Densità**: alta.
-* **Focus principale**: target annuali, budget, headcount, priorità, metriche.
-* **Uso primario**: pianificazione annuale.
-* **Nota**: collega strategia e operatività.
-* **Errore comune**: fare un budget mascherato da piano, senza vere scelte di priorità.
+* **Typical length**: 20–60+ slides.
+* **Density**: high.
+* **Main focus**: annual targets, budget, headcount, priorities, metrics.
+* **Primary use**: annual planning.
+* **Note**: connects strategy and operations.
+* **Common mistake**: a budget disguised as a plan, without real choices about priorities.
 
 ---
 
 ### Go-to-Market Plan — GTM
 
-* **Lunghezza tipica**: 15–35 slide.
-* **Densità**: medio-alta.
-* **Focus principale**: ICP, segmenti, positioning, canali, funnel, pricing, metriche.
-* **Uso primario**: lancio prodotto, ingresso mercato, crescita commerciale.
-* **Distinzione**: GTM e roadmap vanno separati: mercato e distribuzione nel primo, priorità e sequenza prodotto nella seconda.
-* **Errore comune**: parlare di canali prima di avere chiaro ICP e positioning.
+* **Typical length**: 15–35 slides.
+* **Density**: medium-high.
+* **Main focus**: ICP, segments, positioning, channels, funnel, pricing, metrics.
+* **Primary use**: product launches, market entry, commercial growth.
+* **Distinction**: keep GTM and roadmap separate: market and distribution in the first, product priorities and sequence in the second.
+* **Common mistake**: discussing channels before clarifying the ICP and positioning.
 
 ---
 
 ### Product Roadmap Deck
 
-* **Lunghezza tipica**: 10–25 slide.
-* **Densità**: media.
-* **Focus principale**: outcome, priorità prodotto, sequenza, trade-off, dipendenze.
-* **Uso primario**: allineamento prodotto, engineering, leadership, clienti enterprise.
-* **Nota**: non è una lista di feature. È una spiegazione di priorità.
-* **Errore comune**: promettere date e feature senza esplicitare incertezza e dipendenze.
+* **Typical length**: 10–25 slides.
+* **Density**: medium.
+* **Main focus**: outcomes, product priorities, sequence, trade-offs, dependencies.
+* **Primary use**: alignment across product, engineering, leadership and enterprise customers.
+* **Note**: not a feature list. It explains priorities.
+* **Common mistake**: promising dates and features without stating uncertainty and dependencies.
 
 ---
 
 ### Product Strategy Deck
 
-* **Lunghezza tipica**: 15–40 slide.
-* **Densità**: medio-alta.
-* **Focus principale**: utenti, bisogni, mercato, vantaggio, principi di prodotto, priorità.
-* **Uso primario**: decidere direzione prodotto.
-* **Nota**: sta sopra la roadmap. La roadmap deriva dalla product strategy.
-* **Errore comune**: partire dalle feature invece che dai problemi utente e dagli obiettivi business.
+* **Typical length**: 15–40 slides.
+* **Density**: medium-high.
+* **Main focus**: users, needs, market, advantage, product principles, priorities.
+* **Primary use**: decide product direction.
+* **Note**: sits above the roadmap. The roadmap follows from product strategy.
+* **Common mistake**: starting with features rather than user problems and business objectives.
 
 ---
 
 ### Market / Competitive Analysis Deck
 
-* **Lunghezza tipica**: 15–40 slide.
-* **Densità**: alta.
-* **Focus principale**: mercato, concorrenti, trend, segmenti, posizionamento, implicazioni.
-* **Uso primario**: strategia, investimento, GTM, M&A.
-* **Nota**: non deve solo descrivere il mercato; deve dire cosa cambia per la decisione.
-* **Errore comune**: raccogliere dati senza arrivare a una tesi.
+* **Typical length**: 15–40 slides.
+* **Density**: high.
+* **Main focus**: market, competitors, trends, segments, positioning, implications.
+* **Primary use**: strategy, investment, GTM, M&A.
+* **Note**: do not merely describe the market; explain what it changes for the decision.
+* **Common mistake**: collecting data without arriving at a thesis.
 
 ---
 
 ### Strategic Options Deck
 
-* **Lunghezza tipica**: 10–25 slide.
-* **Densità**: alta.
-* **Focus principale**: opzioni, criteri, trade-off, raccomandazione.
-* **Uso primario**: decisioni senior.
-* **Nota**: molto utile quando non c’è una scelta ovvia.
-* **Errore comune**: presentare opzioni finte, dove una è chiaramente già scelta.
+* **Typical length**: 10–25 slides.
+* **Density**: high.
+* **Main focus**: options, criteria, trade-offs, recommendation.
+* **Primary use**: senior decisions.
+* **Note**: especially useful when there is no obvious choice.
+* **Common mistake**: presenting false alternatives when one has clearly already been chosen.
 
 ---
 
 ### Transformation / Change Plan Deck
 
-* **Lunghezza tipica**: 15–40 slide.
-* **Densità**: alta.
-* **Focus principale**: stato attuale, target state, gap, iniziative, governance, timeline.
-* **Uso primario**: trasformazioni organizzative, digitali, operative.
-* **Nota**: deve combinare visione e meccanismo di esecuzione.
-* **Errore comune**: vendere una trasformazione senza spiegare chi cambia cosa, quando e con quali incentivi.
+* **Typical length**: 15–40 slides.
+* **Density**: high.
+* **Main focus**: current state, target state, gaps, initiatives, governance, timeline.
+* **Primary use**: organizational, digital and operational transformations.
+* **Note**: combine a vision with a way to execute it.
+* **Common mistake**: selling a transformation without explaining who changes what, when and with which incentives.
 
 ---
 
-## 4. Decisione, investimento e approvazione
+## 4. Decisions, investment and approval
 
-Deck usati per ottenere una decisione specifica: budget, investimento, acquisizione, pricing, progetto, assunzioni, allocazione risorse.
+Decks used to obtain a specific decision on a budget, investment, acquisition, pricing, project, hiring or resource allocation.
 
 ---
 
 ### Business Case
 
-* **Lunghezza tipica**: 10–30 slide.
-* **Densità**: alta.
-* **Focus principale**: problema, opzioni, costi, benefici, ROI, rischi, raccomandazione.
-* **Uso primario**: approvazione investimento o progetto.
-* **Variabilità**: 15–30 slide è una base possibile, ma il deck può essere più breve se la decisione è limitata.
-* **Errore comune**: presentare solo il caso favorevole senza alternative, downside e sensitivities.
+* **Typical length**: 10–30 slides.
+* **Density**: high.
+* **Main focus**: problem, options, costs, benefits, ROI, risks, recommendation.
+* **Primary use**: investment or project approval.
+* **Variation**: 15–30 slides is a possible baseline, but the deck can be shorter for a narrower decision.
+* **Common mistake**: presenting only the favorable case without alternatives, downside and sensitivity analysis.
 
 ---
 
 ### Investment Committee Deck — IC Deck
 
-* **Lunghezza tipica**: 15–40 slide più appendix.
-* **Densità**: alta o altissima.
-* **Focus principale**: tesi d’investimento, ritorno atteso, rischi, termini, sensitivities.
-* **Uso primario**: approvazione investimento, M&A, private equity, venture, corporate development.
-* **Nota**: è simile al business case ma più finanziario e risk-oriented.
-* **Errore comune**: sottovalutare downside case e assunzioni chiave.
+* **Typical length**: 15–40 slides plus an appendix.
+* **Density**: high or very high.
+* **Main focus**: investment thesis, expected return, risks, terms, sensitivity analysis.
+* **Primary use**: investment approval, M&A, private equity, venture capital, corporate development.
+* **Note**: similar to a business case, but more focused on finance and risk.
+* **Common mistake**: underestimating the downside case and key assumptions.
 
 ---
 
 ### Budget Request Deck
 
-* **Lunghezza tipica**: 5–20 slide.
-* **Densità**: alta.
-* **Focus principale**: richiesta economica, uso fondi, impatto atteso, alternative, rischio del non fare.
-* **Uso primario**: ottenere budget o risorse.
-* **Nota**: deve chiarire il costo dell’inazione.
-* **Errore comune**: chiedere fondi senza legarli a outcome misurabili.
+* **Typical length**: 5–20 slides.
+* **Density**: high.
+* **Main focus**: funding request, use of funds, expected impact, alternatives, risk of inaction.
+* **Primary use**: secure a budget or resources.
+* **Note**: make the cost of inaction clear.
+* **Common mistake**: asking for funds without connecting them to measurable outcomes.
 
 ---
 
 ### Headcount / Hiring Plan Deck
 
-* **Lunghezza tipica**: 5–20 slide.
-* **Densità**: medio-alta.
-* **Focus principale**: ruoli richiesti, capacità attuale, gap, impatto, timing.
-* **Uso primario**: approvazione assunzioni.
-* **Nota**: spesso più convincente se mostra il collo di bottiglia operativo.
-* **Errore comune**: chiedere persone perché “il team è sovraccarico” senza mostrare impatto su output o ricavi.
+* **Typical length**: 5–20 slides.
+* **Density**: medium-high.
+* **Main focus**: roles needed, current capacity, gaps, impact, timing.
+* **Primary use**: hiring approval.
+* **Note**: often more persuasive when it shows the operational bottleneck.
+* **Common mistake**: asking for people because “the team is overloaded” without showing the impact on output or revenue.
 
 ---
 
 ### Pricing / Packaging Deck
 
-* **Lunghezza tipica**: 10–25 slide.
-* **Densità**: alta.
-* **Focus principale**: willingness to pay, segmenti, scenari, impatto su ricavi, rischio churn.
-* **Uso primario**: decidere prezzo, packaging, monetizzazione.
-* **Nota**: richiede forti assunzioni e spesso test.
-* **Errore comune**: decidere pricing solo guardando i concorrenti.
+* **Typical length**: 10–25 slides.
+* **Density**: high.
+* **Main focus**: willingness to pay, segments, scenarios, revenue impact, churn risk.
+* **Primary use**: decide pricing, packaging and monetization.
+* **Note**: requires well-supported assumptions and often testing.
+* **Common mistake**: deciding pricing by looking only at competitors.
 
 ---
 
 ### Make-or-Buy Deck
 
-* **Lunghezza tipica**: 8–20 slide.
-* **Densità**: alta.
-* **Focus principale**: costruire internamente vs comprare, costi, tempi, rischio, controllo.
-* **Uso primario**: decisioni tecnologiche, operative, procurement.
-* **Nota**: utile quando ci sono trade-off tra velocità, costo e differenziazione.
-* **Errore comune**: ignorare costi nascosti di integrazione, manutenzione e lock-in.
+* **Typical length**: 8–20 slides.
+* **Density**: high.
+* **Main focus**: build internally versus buy, costs, time, risk, control.
+* **Primary use**: technology, operations and procurement decisions.
+* **Note**: useful when speed, cost and differentiation involve trade-offs.
+* **Common mistake**: ignoring hidden integration, maintenance and lock-in costs.
 
 ---
 
-## 5. Educativo e operativo
+## 5. Education and operations
 
-Deck usati per insegnare, abilitare, facilitare workshop, standardizzare processi o guidare esecuzione.
+Decks used to teach, enable, facilitate workshops, standardize processes or guide execution.
 
 ---
 
 ### Training Deck
 
-* **Lunghezza tipica**: 20–80 slide.
-* **Densità**: media.
-* **Focus principale**: obiettivi didattici, concetti, esempi, esercizi, verifica.
-* **Uso primario**: formazione.
-* **Variabilità**: 15–40 slide è una base per training brevi; corsi completi spesso superano 40 slide.
-* **Errore comune**: mettere troppe informazioni senza attività o applicazione pratica.
+* **Typical length**: 20–80 slides.
+* **Density**: medium.
+* **Main focus**: learning objectives, concepts, examples, exercises, assessment.
+* **Primary use**: training.
+* **Variation**: 15–40 slides is a baseline for short training sessions; full courses often exceed 40 slides.
+* **Common mistake**: too much information without activities or practical application.
 
 ---
 
 ### Workshop Deck / Facilitation Deck
 
-* **Lunghezza tipica**: 10–50 slide.
-* **Densità**: bassa-media.
-* **Focus principale**: agenda, istruzioni, prompt, esercizi, output attesi.
-* **Uso primario**: facilitare lavoro di gruppo.
-* **Nota**: non deve contenere tutto il sapere; deve guidare il processo.
-* **Errore comune**: trattarlo come una lezione frontale.
+* **Typical length**: 10–50 slides.
+* **Density**: low-medium.
+* **Main focus**: agenda, instructions, prompts, exercises, expected outputs.
+* **Primary use**: facilitate group work.
+* **Note**: it need not contain all the knowledge; it should guide the process.
+* **Common mistake**: treating it as a lecture.
 
 ---
 
 ### Playbook Deck
 
-* **Lunghezza tipica**: 10–50 slide.
-* **Densità**: alta.
-* **Focus principale**: processo replicabile, ruoli, step, standard, esempi.
-* **Uso primario**: execution, enablement, standardizzazione.
-* **Nota**: deve rendere ripetibile un comportamento.
-* **Errore comune**: essere teorico invece che operativo.
+* **Typical length**: 10–50 slides.
+* **Density**: high.
+* **Main focus**: repeatable process, roles, steps, standards, examples.
+* **Primary use**: execution, enablement, standardization.
+* **Note**: make a behavior repeatable.
+* **Common mistake**: being theoretical rather than operational.
 
 ---
 
 ### SOP / Process Deck
 
-* **Lunghezza tipica**: 10–40 slide.
-* **Densità**: alta.
-* **Focus principale**: procedura, responsabilità, input, output, eccezioni.
-* **Uso primario**: operazioni interne.
-* **Nota**: più rigido e procedurale del playbook.
-* **Errore comune**: non distinguere processo normale, eccezioni e escalation.
+* **Typical length**: 10–40 slides.
+* **Density**: high.
+* **Main focus**: procedure, responsibilities, inputs, outputs, exceptions.
+* **Primary use**: internal operations.
+* **Note**: more rigid and procedural than a playbook.
+* **Common mistake**: failing to distinguish the normal process, exceptions and escalation.
 
 ---
 
 ### Onboarding Deck
 
-* **Lunghezza tipica**: 15–50 slide.
-* **Densità**: medio-alta.
-* **Focus principale**: contesto, strumenti, processi, aspettative, cultura operativa.
-* **Uso primario**: nuovi dipendenti, clienti, partner.
-* **Nota**: può essere interno o esterno.
-* **Errore comune**: scaricare informazioni senza sequenza di apprendimento.
+* **Typical length**: 15–50 slides.
+* **Density**: medium-high.
+* **Main focus**: context, tools, processes, expectations, operating culture.
+* **Primary use**: new employees, customers, partners.
+* **Note**: can serve internal or external audiences.
+* **Common mistake**: an information dump without a learning sequence.
 
 ---
 
 ### Sales Enablement Deck
 
-* **Lunghezza tipica**: 10–30 slide.
-* **Densità**: medio-alta.
-* **Focus principale**: messaging, ICP, objection handling, casi, talk track.
-* **Uso primario**: abilitare team sales o customer success.
-* **Nota**: diverso dal sales deck: questo è per chi vende, non per il cliente finale.
-* **Errore comune**: creare materiale che il sales team non userà perché troppo teorico.
+* **Typical length**: 10–30 slides.
+* **Density**: medium-high.
+* **Main focus**: messaging, ICP, objection handling, case studies, talk track.
+* **Primary use**: enable sales or customer success teams.
+* **Note**: distinct from a sales deck: this is for the seller, not the end customer.
+* **Common mistake**: material the sales team will not use because it is too theoretical.
 
 ---
 
 ### Internal Rollout Deck
 
-* **Lunghezza tipica**: 10–25 slide.
-* **Densità**: media.
-* **Focus principale**: cosa cambia, perché cambia, cosa fare, timeline, supporto.
-* **Uso primario**: lancio interno di processi, strumenti, policy.
-* **Nota**: deve ridurre ambiguità e resistenza.
-* **Errore comune**: comunicare il cambiamento senza spiegare impatti concreti per i team.
+* **Typical length**: 10–25 slides.
+* **Density**: medium.
+* **Main focus**: what changes, why it changes, what to do, timeline, support.
+* **Primary use**: internal launches of processes, tools and policies.
+* **Note**: reduce ambiguity and resistance.
+* **Common mistake**: announcing a change without explaining its concrete impact on teams.
 
 ---
 
-## 6. Ricerca, analisi e insight
+## 6. Research, analysis and insights
 
-Deck usati per presentare evidenze, dati, ricerca utente, diagnosi e raccomandazioni.
+Decks used to present evidence, data, user research, diagnoses and recommendations.
 
 ---
 
 ### Research Findings Deck
 
-* **Lunghezza tipica**: 15–50 slide.
-* **Densità**: alta.
-* **Focus principale**: domanda di ricerca, metodo, evidenze, insight, implicazioni.
-* **Uso primario**: trasformare ricerca in decisioni.
-* **Nota**: deve distinguere dati, interpretazione e raccomandazione.
-* **Errore comune**: presentare osservazioni senza sintesi decisionale.
+* **Typical length**: 15–50 slides.
+* **Density**: high.
+* **Main focus**: research question, method, evidence, insights, implications.
+* **Primary use**: turn research into decisions.
+* **Note**: distinguish data, interpretation and recommendation.
+* **Common mistake**: presenting observations without a decision-oriented synthesis.
 
 ---
 
 ### User Research Readout
 
-* **Lunghezza tipica**: 10–30 slide.
-* **Densità**: medio-alta.
-* **Focus principale**: utenti, bisogni, pain point, evidenze qualitative, raccomandazioni.
-* **Uso primario**: prodotto, design, marketing, CX.
-* **Nota**: citazioni e clip possono aiutare, ma non sostituiscono l’analisi.
-* **Errore comune**: confondere aneddoti con pattern.
+* **Typical length**: 10–30 slides.
+* **Density**: medium-high.
+* **Main focus**: users, needs, pain points, qualitative evidence, recommendations.
+* **Primary use**: product, design, marketing, CX.
+* **Note**: quotes and clips can help, but do not replace analysis.
+* **Common mistake**: confusing anecdotes with patterns.
 
 ---
 
 ### Data Analysis / Diagnostic Deck
 
-* **Lunghezza tipica**: 10–40 slide.
-* **Densità**: alta.
-* **Focus principale**: domanda, metodologia, analisi, finding, azione raccomandata.
-* **Uso primario**: capire un problema o scegliere una leva.
-* **Nota**: ogni chart dovrebbe avere una frase-tesi chiara.
-* **Errore comune**: mostrare grafici senza implicazione.
+* **Typical length**: 10–40 slides.
+* **Density**: high.
+* **Main focus**: question, methodology, analysis, findings, recommended action.
+* **Primary use**: understand a problem or choose where to intervene.
+* **Note**: each chart should have a clear statement of its point.
+* **Common mistake**: charts without implications.
 
 ---
 
 ### Benchmark Deck
 
-* **Lunghezza tipica**: 10–30 slide.
-* **Densità**: alta.
-* **Focus principale**: confronto con peer, standard, competitor, best practice.
-* **Uso primario**: diagnosi, strategia, business case.
-* **Nota**: utile solo se i comparabili sono scelti bene.
-* **Errore comune**: usare benchmark non comparabili e trarne conclusioni forti.
+* **Typical length**: 10–30 slides.
+* **Density**: high.
+* **Main focus**: comparison with peers, standards, competitors, best practices.
+* **Primary use**: diagnosis, strategy, business cases.
+* **Note**: useful only when the comparators are well chosen.
+* **Common mistake**: using incomparable benchmarks and drawing strong conclusions from them.
 
 ---
 
-## 7. Comunicazione pubblica e interna ampia
+## 7. Public and broad internal communication
 
-Deck usati per comunicare a molte persone, non necessariamente per prendere una decisione immediata.
+Decks used to communicate with many people, not necessarily to obtain an immediate decision.
 
 ---
 
 ### Keynote / Conference Deck
 
-* **Lunghezza tipica**: 20–80 slide.
-* **Densità**: bassa.
-* **Focus principale**: narrazione, memorabilità, idea centrale.
-* **Uso primario**: conferenze, eventi, leadership, thought leadership.
-* **Nota**: spesso una slide = una singola idea.
-* **Errore comune**: usare uno strategy deck denso davanti a un pubblico da evento.
+* **Typical length**: 20–80 slides.
+* **Density**: low.
+* **Main focus**: narrative, memorability, central idea.
+* **Primary use**: conferences, events, leadership, thought leadership.
+* **Note**: often one slide = one idea.
+* **Common mistake**: using a dense strategy deck before an event audience.
 
 ---
 
 ### Webinar Deck
 
-* **Lunghezza tipica**: 20–60 slide.
-* **Densità**: media.
-* **Focus principale**: educazione, problema, esempi, soluzione, CTA.
-* **Uso primario**: lead generation, formazione pubblica, nurturing.
-* **Nota**: più informativo di una keynote, meno denso di un reading deck.
-* **Errore comune**: trasformarlo in una demo commerciale troppo presto.
+* **Typical length**: 20–60 slides.
+* **Density**: medium.
+* **Main focus**: education, problem, examples, solution, CTA.
+* **Primary use**: lead generation, public training, nurturing.
+* **Note**: more informative than a keynote, less dense than a reading deck.
+* **Common mistake**: turning it into a sales demo too early.
 
 ---
 
 ### Town Hall / All-Hands Deck
 
-* **Lunghezza tipica**: 10–30 slide.
-* **Densità**: bassa-media.
-* **Focus principale**: narrativa aziendale, priorità, risultati, cambiamenti.
-* **Uso primario**: comunicazione interna ampia.
-* **Nota**: deve chiarire cosa conta ora.
-* **Errore comune**: mettere troppe metriche e poca direzione.
+* **Typical length**: 10–30 slides.
+* **Density**: low-medium.
+* **Main focus**: company narrative, priorities, results, changes.
+* **Primary use**: broad internal communication.
+* **Note**: make clear what matters now.
+* **Common mistake**: too many metrics and too little direction.
 
 ---
 
 ### Earnings / Investor Relations Deck
 
-* **Lunghezza tipica**: 15–40 slide.
-* **Densità**: alta.
-* **Focus principale**: performance finanziaria, guidance, segmenti, messaggi regolati.
-* **Uso primario**: comunicazione a investitori pubblici o stakeholder finanziari.
-* **Nota**: richiede precisione, coerenza e controllo del linguaggio.
-* **Errore comune**: usare storytelling aggressivo dove servono rigore e compliance.
+* **Typical length**: 15–40 slides.
+* **Density**: high.
+* **Main focus**: financial performance, guidance, segments, regulated messaging.
+* **Primary use**: communication with public-market investors or financial stakeholders.
+* **Note**: requires precision, consistency and careful control of language.
+* **Common mistake**: aggressive storytelling where rigor and compliance are needed.
 
 ---
 
 ### Press / Media Briefing Deck
 
-* **Lunghezza tipica**: 5–15 slide.
-* **Densità**: media.
-* **Focus principale**: messaggio, contesto, fatti chiave, Q&A prep.
-* **Uso primario**: stampa, PR, annunci.
-* **Nota**: deve ridurre il rischio di interpretazioni sbagliate.
-* **Errore comune**: dare troppi dettagli non necessari e perdere il messaggio principale.
+* **Typical length**: 5–15 slides.
+* **Density**: medium.
+* **Main focus**: message, context, key facts, Q&A preparation.
+* **Primary use**: press, PR, announcements.
+* **Note**: reduce the risk of misinterpretation.
+* **Common mistake**: unnecessary detail that obscures the main message.
 
 ---
 
-# Varianti universali
+# Universal variants
 
-Queste non sono categorie primarie. Sono modalità o componenti che puoi applicare a quasi ogni deck.
+These are not primary categories. They are modes or components that apply to almost any deck.
 
 ---
 
 ### Presenting Deck
 
-* **Lunghezza tipica**: dipende dal tipo di deck.
-* **Densità**: bassa-media.
-* **Focus principale**: supportare chi parla.
-* **Uso primario**: presentazione live.
-* **Regola pratica**: meno testo, più gerarchia visiva, una tesi per slide.
-* **Nota**: non deve essere perfettamente comprensibile senza speaker.
-* **Errore comune**: leggere le slide invece di usarle come supporto.
+* **Typical length**: depends on the deck type.
+* **Density**: low-medium.
+* **Main focus**: support the speaker.
+* **Primary use**: live presentations.
+* **Rule of thumb**: less text, stronger visual hierarchy, one claim per slide.
+* **Note**: it need not be fully understandable without the speaker.
+* **Common mistake**: reading the slides instead of using them as support.
 
 ---
 
 ### Reading Deck / Leave-behind
 
-* **Lunghezza tipica**: spesso +30–100% testo rispetto alla versione presentata.
-* **Densità**: alta.
-* **Focus principale**: documento autosufficiente.
-* **Uso primario**: follow-up, inoltro interno, decisione asincrona.
-* **Struttura**: “+30–50% testo” è una stima minima indicativa; spesso serve anche più struttura, non solo più testo.
-* **Nota**: deve spiegare senza narratore ciò che il lettore non sa già.
-* **Errore comune**: aggiungere testo alle slide live senza ripensare la struttura.
+* **Typical length**: often 30–100% more text than the presented version.
+* **Density**: high.
+* **Main focus**: a self-contained document.
+* **Primary use**: follow-up, internal forwarding, asynchronous decisions.
+* **Structure**: “30–50% more text” is only an indicative lower estimate; more structure is often needed too, not just more text.
+* **Note**: explain, without a narrator, what the reader does not already know.
+* **Common mistake**: adding text to live slides without rethinking the structure.
 
 ---
 
-### Registro esplicativo
+### Explanatory register
 
-* **Uso primario**: chi non ha il contesto: leave-behind inoltrato a chi non era presente, chi arriva nuovo, formazione, onboarding, un cliente nuovo al tema.
-* **Focus principale**: un ragionamento che stia in piedi da solo.
-* **Regola pratica**: contesto, termini e passaggi forniti; titoli-tesi e segnaletica orientano la lettura.
-* **Errore comune**: usarlo con chi ha scritto il materiale, ha preso la decisione o conosce il campo meglio di chi scrive.
+* **Primary use**: readers without the context: a forwarded leave-behind for someone who was not present, a newcomer, training, onboarding, a customer new to the subject.
+* **Main focus**: reasoning that stands on its own.
+* **Rule of thumb**: supply context, terms and steps; claim headlines and signposting orient the reading.
+* **Common mistake**: using it for someone who wrote the material, made the decision or knows the field better than the writer.
 
 ---
 
-### Registro tra pari
+### Peer register
 
-* **Uso primario**: colleghi, partner, clienti ed esperti che condividono il contesto, hanno scritto il materiale o conoscono il campo meglio di chi scrive.
-* **Focus principale**: ciò che per loro è nuovo e ciò che serve da loro.
-* **Regola pratica**: la voce di chi scrive (“io”, “noi”), affermazioni e domande; il loro materiale e il loro campo non si rispiegano; niente etichette che dicono come leggere un paragrafo, e dove il corpo è già il punto un’etichetta semplice vale più di un titolo che ne conta le voci o lo ripete; ogni limite detto una volta, dove cambia ciò che il lettore fa.
-* **Nota**: autosufficiente rispetto a ciò che il lettore non sa, non rispetto a ciò che sa. I titoli-tesi restano dove una slide argomenta. Cortese, senza corteggiare.
-* **Errore comune**: dare per noto ciò che il lettore non ha, o togliere un limite reale invece di dirlo una volta.
+* **Primary use**: colleagues, partners, customers and experts who share the context, wrote the material or know the field better than the writer.
+* **Main focus**: what is new to them and what is needed from them.
+* **Rule of thumb**: use the writer's own voice (“I”, “we”), statements and questions; do not explain the reader's own material or field back to them; avoid labels that tell them how to take a paragraph, and when the body already makes the point, prefer a plain label to a headline that counts or restates it; state each limitation once, where it changes what the reader does.
+* **Note**: self-contained for what the reader does not know, not for what they already know. Keep claim headlines where a slide develops an argument. Be courteous without courting.
+* **Common mistake**: assuming knowledge the reader lacks, or removing a real limitation instead of stating it once.
 
-Il registro si decide prima di scrivere, da chi riceve il testo, da cosa sa già, da cosa ha scritto o deciso e dal rapporto con chi scrive, e si nomina in ogni brief per chi scriverà. Un deck può mescolarli: un leave-behind per pari che potrebbe essere inoltrato resta autosufficiente per ciò che manca a chi lo riceverà inoltrato. Il resoconto del lavoro a chi l’ha commissionato e i brief tra agenti sono nel registro di lavoro: prima la risposta, supporto e stato del lavoro espliciti, classi di evidenza e incertezza attaccate a ciò che qualificano. È il registro del backstage, non delle slide.
+Choose the register before writing, from who receives the text, what they already know, what they wrote or decided, and their relationship with the writer. Name it in every brief for someone who will write. A deck can mix registers: a leave-behind for peers that may be forwarded remains self-contained for what a forwarded reader lacks. The account of work to the person who commissioned it and briefs between agents use the working register: answer first, explicit support and work status, with evidence classes and uncertainty attached to the claims they qualify. This is the backstage register, not slide copy.
 
-In ogni registro restano fuori dal testo per il pubblico le note per chi scrive (regole su cosa non implicare, correzioni, motivi di un taglio, classi di evidenza del brief, l’autore in terza persona in un testo che firma lui), la negazione di una regola interna (“non ti chiediamo di decidere”: una regola su cosa non implicare si rispetta non implicandolo), le rassicurazioni su dubbi che il lettore non ha sollevato, i commenti sul deck stesso (a cosa serve, com’è nato; la segnaletica del ragionamento non è un commento) e lo stesso limite rispiegato slide dopo slide. Un breve marcatore può ripetersi dove un elemento può circolare da solo, come uno screenshot.
+In every register, keep notes for the writer out of audience-facing copy: rules about what not to imply, corrections, reasons for a cut, the brief's evidence classes, or referring to the author in the third person in a text they sign themselves. Also leave out the negation of an internal rule (“we are not asking you to decide”: honor a rule about what not to imply by not implying it), reassurance about doubts the reader has not raised, comments on the deck itself (what it is for or how it came to be; signposting the argument is not such a comment), and the same limitation re-explained slide after slide. A short marker may repeat where an item can circulate on its own, such as a screenshot.
 
 ---
 
 ### Appendix / Backup
 
-* **Lunghezza tipica**: illimitata, ma deve essere organizzata.
-* **Densità**: altissima.
-* **Focus principale**: dettaglio, prove, analisi, sensitivities, dati tecnici.
-* **Uso primario**: rispondere a domande profonde senza appesantire il corpo principale.
-* **Collocazione**: è una sezione di supporto, non un deck primario autonomo.
-* **Nota**: il corpo principale deve stare in piedi anche senza appendix.
-* **Errore comune**: mettere nell’appendix cose necessarie per capire la raccomandazione.
+* **Typical length**: unlimited, but organized.
+* **Density**: very high.
+* **Main focus**: detail, evidence, analysis, sensitivities, technical data.
+* **Primary use**: answer deeper questions without weighing down the main argument.
+* **Placement**: a supporting section, not a standalone primary deck.
+* **Note**: the main argument must stand without the appendix.
+* **Common mistake**: putting information needed to understand the recommendation in the appendix.
 
 ---
 
 ### Executive Summary
 
-* **Lunghezza tipica**: 1 slide oppure 1–2 pagine.
-* **Densità**: alta.
-* **Focus principale**: tutto in sintesi: contesto, finding, raccomandazione, ask.
-* **Uso primario**: decisione rapida o orientamento iniziale.
-* **Collocazione**: può introdurre board deck, business case, strategy deck, proposal e research deck, per audience interne o esterne.
-* **Nota**: deve essere leggibile da chi non aprirà il resto.
-* **Errore comune**: fare un’introduzione vaga invece di una vera sintesi decisionale.
+* **Typical length**: 1 slide or 1–2 pages.
+* **Density**: high.
+* **Main focus**: a complete summary of context, findings, recommendation and ask.
+* **Primary use**: a quick decision or initial orientation.
+* **Placement**: can introduce board decks, business cases, strategy decks, proposals and research decks, for internal or external audiences.
+* **Note**: it must be readable by someone who will not open the rest.
+* **Common mistake**: a vague introduction instead of a real decision summary.
 
 ---
 
 ### Data Room / Backup Pack
 
-* **Lunghezza tipica**: decine o centinaia di documenti/slide/file.
-* **Densità**: altissima.
-* **Focus principale**: diligence, documentazione, prove, modelli, contratti, dati.
-* **Uso primario**: fundraising avanzato, M&A, procurement, audit.
-* **Nota**: non è una presentazione; è un repository strutturato.
-* **Errore comune**: confondere il deck narrativo con il materiale di diligence.
+* **Typical length**: dozens or hundreds of documents/slides/files.
+* **Density**: very high.
+* **Main focus**: diligence, documentation, evidence, models, contracts, data.
+* **Primary use**: advanced fundraising, M&A, procurement, audits.
+* **Note**: not a presentation; a structured repository.
+* **Common mistake**: confusing the narrative deck with diligence material.
 
 ---
 
-# Come scegliere il tipo giusto
+# How to choose the right type
 
-## Se devi ottenere attenzione
+## When you need attention
 
-Usa:
+Use:
 
 * teaser;
 * one-pager;
 * short intro deck;
-* keynote breve;
+* short keynote;
 * investor teaser.
 
-La densità deve essere bassa o media. L’obiettivo non è spiegare tutto, ma ottenere il prossimo step.
+Keep density low or medium. The goal is not to explain everything but to earn the next step.
 
 ---
 
-## Se devi convincere qualcuno a comprare
+## When you need to persuade someone to buy
 
-Usa:
+Use:
 
 * sales deck;
 * case study deck;
@@ -807,27 +807,27 @@ Usa:
 * proposal deck;
 * RFP response.
 
-La struttura deve partire dal problema del cliente, non dalla tua azienda.
+Start the structure with the customer's problem, not your company.
 
 ---
 
-## Se devi convincere qualcuno a investire
+## When you need to persuade someone to invest
 
-Usa:
+Use:
 
 * investor pitch deck;
 * fundraising reading deck;
 * business plan;
-* IC-style deck per round o investimenti più strutturati;
-* data room come supporto.
+* IC-style deck for more structured rounds or investments;
+* data room as support.
 
-La domanda centrale è: “perché questa opportunità può crescere molto, perché ora, perché questo team?”
+The central question is: “why can this opportunity grow substantially, why now, and why this team?”
 
 ---
 
-## Se devi far decidere un executive
+## When you need an executive decision
 
-Usa:
+Use:
 
 * executive briefing;
 * business case;
@@ -835,28 +835,28 @@ Usa:
 * budget request;
 * make-or-buy deck.
 
-La struttura deve essere: contesto minimo, opzioni, trade-off, raccomandazione, decisione richiesta.
+Use this structure: minimum context, options, trade-offs, recommendation, requested decision.
 
 ---
 
-## Se devi governare performance
+## When you need to oversee performance
 
-Usa:
+Use:
 
 * board deck;
 * MBR;
-* QBR interno;
+* internal QBR;
 * KPI dashboard;
 * risk review;
 * project update.
 
-La struttura deve mostrare varianza rispetto al piano, cause, rischi e azioni.
+Show variance against plan, causes, risks and actions.
 
 ---
 
-## Se devi allineare strategia
+## When you need strategic alignment
 
-Usa:
+Use:
 
 * strategy deck;
 * business plan;
@@ -866,13 +866,13 @@ Usa:
 * product roadmap;
 * market analysis.
 
-La domanda centrale è: “quali scelte facciamo e cosa smettiamo di fare?”
+The central question is: “what choices are we making, and what will we stop doing?”
 
 ---
 
-## Se devi insegnare o far lavorare persone
+## When you need to teach or enable people to work
 
-Usa:
+Use:
 
 * training deck;
 * workshop deck;
@@ -881,104 +881,104 @@ Usa:
 * SOP/process deck;
 * enablement deck.
 
-Qui la qualità non è solo informativa: conta se le persone sapranno fare qualcosa dopo.
+Quality here is not just informational: what matters is whether people will be able to do something afterward.
 
 ---
 
-# Regole pratiche sulla densità
+# Rules of thumb for density
 
-## Densità bassa
+## Low density
 
-Adatta a:
+Suitable for:
 
-* keynote;
-* pitch live;
-* teaser;
-* demo;
-* town hall.
+* keynotes;
+* live pitches;
+* teasers;
+* demos;
+* town halls.
 
-Caratteristiche:
+Characteristics:
 
-* una tesi per slide;
-* poco testo;
-* forte dipendenza dallo speaker;
-* uso di immagini, diagrammi, headline forti.
-
----
-
-## Densità media
-
-Adatta a:
-
-* sales deck;
-* QBR;
-* workshop;
-* webinar;
-* product roadmap;
-* capabilities deck.
-
-Caratteristiche:
-
-* slide comprensibile anche da sola, ma migliore con spiegazione;
-* qualche bullet;
-* chart semplici;
-* messaggio chiaro in headline.
+* one claim per slide;
+* little text;
+* strong reliance on the speaker;
+* images, diagrams and strong headlines.
 
 ---
 
-## Densità alta
+## Medium density
 
-Adatta a:
+Suitable for:
 
-* business case;
-* strategy deck;
-* board deck;
-* executive briefing;
+* sales decks;
+* QBRs;
+* workshops;
+* webinars;
+* product roadmaps;
+* capabilities decks.
+
+Characteristics:
+
+* a slide understandable on its own, but better with explanation;
+* a few bullets;
+* simple charts;
+* a clear message in the headline.
+
+---
+
+## High density
+
+Suitable for:
+
+* business cases;
+* strategy decks;
+* board decks;
+* executive briefings;
 * research findings;
-* proposal;
-* reading deck.
+* proposals;
+* reading decks.
 
-Caratteristiche:
+Characteristics:
 
-* ogni slide contiene tesi ed evidenza, e l’implicazione quando il lettore non la trarrebbe da solo;
-* grafici annotati;
-* assunzioni esplicite;
-* struttura logica forte.
+* each slide contains a claim and its evidence, plus the implication when the reader would not draw it independently;
+* annotated charts;
+* explicit assumptions;
+* a strong logical structure.
 
 ---
 
-## Densità altissima
+## Very high density
 
-Adatta a:
+Suitable for:
 
-* appendix;
+* appendices;
 * backup;
 * diligence;
 * financial model outputs;
 * technical detail;
 * risk analysis.
 
-Caratteristiche:
+Characteristics:
 
-* tabelle;
-* sensitivities;
-* metodologie;
-* dettagli legali, tecnici o finanziari;
-* non ideale per presentazione live.
+* tables;
+* sensitivity analyses;
+* methodologies;
+* legal, technical or financial detail;
+* not ideal for live presentations.
 
 ---
 
-# Formula mentale per costruire qualsiasi deck
+# A mental model for building any deck
 
-Ogni deck serio dovrebbe rispondere a queste domande:
+Every serious deck should answer these questions:
 
-1. **Chi deve essere convinto o allineato?**
-2. **Che decisione o azione voglio ottenere?**
-3. **Lo leggeranno da soli o lo presenterò io?**
-4. **Quanto già sanno, e quale parte del materiale hanno scritto o deciso?**
-5. **Qual è la tensione principale: rischio, opportunità, urgenza, ROI, fiducia, chiarezza?**
-6. **Quale prova serve per rendere credibile la tesi?**
-7. **Quale next step deve essere ovvio alla fine?**
+1. **Who needs to be persuaded or aligned?**
+2. **What decision or action do I want to obtain?**
+3. **Will they read it independently, or will I present it?**
+4. **How much do they already know, and which material did they write or decide?**
+5. **What is the main tension: risk, opportunity, urgency, ROI, trust, clarity?**
+6. **What evidence would make the thesis credible?**
+7. **What next step should be obvious at the end?**
 
-Questa è la distinzione più importante:
-**un deck non è una raccolta di slide; è un percorso verso una decisione, un’azione o un cambiamento di convinzione.**
+This is the most important distinction:
+**a deck is not a collection of slides; it is a path toward a decision, an action or a change in belief.**

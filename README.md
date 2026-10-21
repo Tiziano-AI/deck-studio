@@ -1,33 +1,49 @@
+<img src="skills/deck-studio/assets/deck-studio.png" width="72" height="72" alt="">
+
 # Deck Studio
 
-Turn an idea, notes or an existing deck into something an audience can follow,
-read and use. Deck Studio combines communication judgment, 56 visual systems,
-a fixed-stage HTML runtime, rendered inspection and PDF export. A finished local
-deck is a complete result; hosting is optional.
+Turn an idea, notes or an existing deck into a presentation an audience can
+follow, read and use. Deck Studio helps an agent shape the argument, choose a
+visual system, build an HTML deck, inspect every rendered slide and export a PDF.
+A finished local deck is a complete result; hosting is optional.
 
 > Turn these notes into a decision deck for leadership. Resolve what is missing,
 > build it, and give me the checked local HTML and PDF. Do not publish it.
 
-Approved content, revisions and accepted releases enter at their useful point,
-without restarting an interview. Editable slides and documents route to the
-appropriate artifact capability. The HTML producer's PDF contains slide images:
-it is not searchable text, editable slides or a semantically accessible document.
+Start with rough notes, approved content or a deck to revise. The package
+includes 56 visual systems, from compact style recipes to developed layouts,
+and a fixed-stage HTML runtime with keyboard and touch navigation.
+
+**Choose the output before building.** HTML decks scale uniformly to the screen;
+they do not reflow into a mobile reading layout. PDF pages are slide images,
+not searchable text, editable slides or a semantically accessible document.
+For those needs, the skill routes the work to an appropriate artifact tool.
 
 ## Install and prepare the producer
 
-Deck Studio is a native plugin for Codex and Claude Code, maintained by Tiziano AI.
-The public-source package uses `Tiziano-AI/deck-studio`; discovery belongs to the
-shared [`Tiziano-AI/plugins` catalog](https://github.com/Tiziano-AI/plugins), not a
-second marketplace in this product. Catalog installation requires both a public
-release and a published catalog entry. Once that entry is available, install
-`deck-studio@tiziano-ai` with the host-specific commands in
-[Installation and distribution](docs/DISTRIBUTION.md).
+Install `deck-studio@tiziano-ai` from the shared
+[Tiziano AI plugin catalog](https://github.com/Tiziano-AI/plugins).
+Choose your host:
 
-The package contains the skill, doctrine, 56 visual systems and producer scripts.
-Installation does not start a service, publish a deck or create a hosted account.
+```bash
+# Codex
+codex plugin marketplace add Tiziano-AI/plugins
+codex plugin add deck-studio@tiziano-ai --json
+```
+
+```bash
+# Claude Code
+claude plugin marketplace add Tiziano-AI/plugins --scope user
+claude plugin install deck-studio@tiziano-ai --scope user
+```
+
+If the catalog is already registered, refresh it rather than adding it again.
+See [Installation and distribution](docs/DISTRIBUTION.md) for package discovery,
+updates and removal. Installation does not start a service, publish a deck or
+create a hosted account.
 
 Local production requires a local executor, Node.js 20+, npm and Python 3.9+.
-Resolve the actual installed package from the host, then use its
+Resolve the installed package from the host, then run from its
 `skills/deck-studio` directory, or the same directory in a source checkout:
 
 ```bash
@@ -36,27 +52,27 @@ node scripts/setup_runtime.mjs --check
 node scripts/setup_runtime.mjs --install
 ```
 
-Dependencies and Chromium belong to that package, not a shared browser cache.
-Setup prepares the producer only: it neither copies global skills nor removes
-other installations. Missing runtime dependencies are a setup failure, not a
-reason to silently borrow the caller's Playwright or browser.
+Dependencies and Chromium stay inside the selected package. Setup neither
+copies global skills nor changes other installations.
 
-Native removal stops that installation from supplying guidance; the host manages
-its package cache and runtime. Another installation scope can remain enabled.
-Decks, PDFs, external artifact libraries, independently running gateways and
-policy stores remain with their owners. Stop services and revoke keys separately
-when wanted.
+Refresh the host's plugin discovery and start a new chat. Invoke
+`$deck-studio:deck-studio` in Codex or `/deck-studio:deck-studio` in Claude Code,
+then describe the audience, the result you want and the material you have.
 
 ## Produce and inspect
 
-Use the skill's workflow to settle the audience, argument and evidence, then
-preserve that meaning during visual execution. `DECKS.md` carries the full
-communication doctrine; template metadata helps select a visual system rather
-than forcing the story into a cover.
+The skill carries the work from audience, argument and evidence through visual
+composition and inspection. You do not need to choose a template or complete a
+questionnaire before asking for a deck. It asks only for missing decisions that
+change the result.
 
-From the deck folder, with `S` set to the resolved package's `scripts` directory:
+For direct script use, follow the [packaged skill](skills/deck-studio/SKILL.md)
+and [rendered QA guide](skills/deck-studio/references/rendered-qa.md).
+
+From the deck folder, set `S` to the skill's scripts directory:
 
 ```bash
+S="/absolute/installed/package/skills/deck-studio/scripts"
 python3 "$S/validate_deck.py" deck.html
 node "$S/render_qa.mjs" deck.html --out proof
 # Inspect every slide, reading size and navigation; record the actual review.
@@ -67,7 +83,7 @@ node "$S/export_pdf.mjs" deck.html deck.pdf --proof proof/pdf-report.json
 
 Mechanical checks do not establish good communication or visual acceptance.
 Changed HTML, resources, screenshots or PDF invalidate the proof they affect.
-Keep proof backstage, not as badges in the audience's slides.
+Keep review records outside the audience's slides.
 
 ## Optional library
 
@@ -84,46 +100,18 @@ selected decks but cannot administer them. Viewer keys are bearer secrets, not
 verified identities: recipients can forward them, and revocation cannot recall
 downloaded copies.
 
-The gateway requires **Node.js 24.x, at least 24.21, and Python 3.9+**, an explicit artifact library, a SQLite
-policy file outside that library, and a separate management bearer. Production
-also requires HTTPS, durable storage and a single gateway writer. See
-[architecture](ARCH.md) and the skill's [publishing guide](skills/deck-studio/references/publishing.md)
-for setup, command examples and audience verification.
+Self-hosting requires **Node.js 24.x, at least 24.21, and Python 3.9+**, an
+external artifact library, a separate SQLite policy file and an independent
+management bearer. Production also needs HTTPS, durable storage and a single
+gateway writer. Only trusted operators may publish: deck HTML is active
+same-origin content, not sandboxed uploads from untrusted authors.
 
-Packaging and access are separate:
-
-Release packaging runs from a Git source checkout with a committed `HEAD`,
-recorded as source lineage. A Git-free archive can author/render local decks,
-but must become a reviewed, committed source repository before packaging.
-
-```bash
-python3 scripts/package_deck_release.py --spec /absolute/spec.json \
-  --library-root /absolute/library --preserve-existing-catalog
-python3 scripts/validate_product.py --release /absolute/library/decks/example/release-id
-```
-
-New selection requires an immutable schema v3 release bound to its rendered,
-visual-review and PDF evidence. Packaging alone grants nobody access. The
-catalog is operator metadata, not the source of audience policy.
-
-For library delivery, capture both QA and PDF with `--delivery library` before
-recording the review. This applies the gateway's exact MIME, CSP and nested
-bundle-path contract. Relative JavaScript modules and inline data work; JSON
-fetches, unknown resource types and dependencies outside the bundle do not.
-The default local capture remains available and does not claim library fitness.
-The gateway runs the same Python admission core as the packager and validator
-before selecting a release; no browser runs in the gateway.
-
-Packaging admits copied bytes outside `decks/`, then promotes the complete
-directory under a stable library lock and atomically replaces the derived
-catalog. Automatic IDs include the complete bundle and lineage. Retrying the
-same bundle is a no-op; an occupied ID with different or incomplete bytes is a
-conflict, not permission to overwrite. Release listing reports invalid neighbours
-without hiding complete candidates.
-
-The default gallery identity is neutral Decks. `DECKS_SITE_BRAND=smoothoperator`
-selects the installation-specific SO treatment; it is not a requirement for
-authoring or self-hosting, and individual decks keep their own design.
+Start with the [publishing guide](skills/deck-studio/references/publishing.md)
+for release packaging and audience commands. It requires a committed source
+checkout and library-specific render/PDF proof; a local render alone does not
+qualify a release for hosting. [Hosted deployment](docs/HOSTED_DEPLOYMENT.md)
+covers the gateway image and storage. [Architecture](ARCH.md) explains the
+release and access boundaries.
 
 ## Development
 
@@ -146,16 +134,9 @@ to the product validator to check a specific catalog and historical releases;
 source validation by itself makes no claim about any library, installation or
 hosted deployment.
 
-## Public source boundary
+## License
 
-Public tool releases contain a clean source snapshot, never a private development
-repository's history or library. When preparing that boundary,
-`scripts/export_public_source.py --out /absolute/new-directory` copies only the
-reviewable tool source, without `.git`, releases, operational notes, dependencies
-or runtime state. It is a projection of one engine, not another implementation.
-Review the exact export before creating a public destination; the exporter is
-not historical secret or copyright clearance. Do not publish a private checkout
-or an archive of it instead.
-
-Original source is MIT. Retain the [template notices](skills/deck-studio/templates/THIRD_PARTY_NOTICES.md)
-and the separate font notices.
+Original source is [MIT](LICENSE). Adapted templates and bundled fonts have
+[their own notices](skills/deck-studio/templates/THIRD_PARTY_NOTICES.md).
+Retain the relevant notices when reusing them. Bundled brand assets do not
+grant rights to use a third party's identity.

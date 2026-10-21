@@ -21,7 +21,7 @@ node <skill>/scripts/export_pdf.mjs deck.html deck.pdf --proof proof/pdf-report.
 Use `--compact` for 1280x720 screenshots when file size matters.
 
 For a local deliverable, the output may use a caller-selected name such as
-`scambio-libri.pdf`. The report's `pdf` and `artifact.path` fields record that
+`strategy-review.pdf`. The report's `pdf` and `artifact.path` fields record that
 actual basename; keep the file and its proof together without renaming either
 identity. For a library release, export directly to `deck.pdf` as shown above.
 The packager requires that canonical source filename and never rewrites the

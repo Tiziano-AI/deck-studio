@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>Deck Studio</title>
+  <desc>Editable vector artwork for the Tiziano AI plugin family. The adjacent PNG is rendered from this source at 512 by 512 pixels.</desc>
+  <rect width="128" height="128" rx="28" fill="#2D526D"/>
+  <path d="M39 25h69v47H97V36H39z" fill="#F0B06E"/>
+  <path d="M29 38h69v47H87V49H29z" fill="#8BB2B8"/>
+  <path d="M19 51h69v50H19z" fill="#F8F0DE"/>
+  <path d="M29 61h9v30h-9zM47 62h31v8H47zm0 15h24v6H47z" fill="#2D526D"/>
+</svg>

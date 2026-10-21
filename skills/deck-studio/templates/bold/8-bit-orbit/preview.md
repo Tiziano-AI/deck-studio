@@ -29,7 +29,7 @@ A retro-futuristic pixel-art presentation system that fuses 16-bit arcade nostal
 
 - Palette: dark-void #0A0E27; deep-navy #0F1B3D; neon-cyan #5EDCF4; neon-pink #F0A6CA; neon-yellow #F4D03F; soft-lavender #E2D5F2; white #FFFFFF
 - Typography: See full design doc after selection.
-- Signature move: Three-font stack: Tektur (display), Chakra Petch (body), Space Mono (HUD/labels) — never substitute, never mix outside their roles.
+- Signature move: Three-font stack: Tektur (display), Chakra Petch (body), Space Mono (HUD/labels). Preserve these roles; use verified script-appropriate alternatives when the original fonts lack coverage.
 - Signature move: Navy ground ({colors.dark-void} / {colors.deep-navy}) alternates with colored-grid surfaces (pink, cyan, lavender) — both carry the 40px etched grid.
 - Signature move: Three neons (cyan, pink, yellow) reserved for display, stats, rules, and label fills — never for body text.
 - Signature move: All measurements snap to the 4px pixel unit: borders 2-4px, shadow offsets 4px / 8px, corner brackets 24×24 with 4px stroke.
@@ -50,6 +50,5 @@ A retro-futuristic pixel-art presentation system that fuses 16-bit arcade nostal
 - Never place the template name or slug on the slide itself; mention it only in the chat message.
 - Never place user requirement notes such as desired vibe, audience, or internal-use labels on the slide unless the user explicitly wants those exact words in the deck.
 - Use only real deck content for visible chrome: deck title, real section title, date, author, company, page number, or genuine content phrases from the user material.
-- Do not read `template.html` for preview generation.
 - Use this system's recipe for this candidate. Read other candidate recipes proportionately when comparison or unresolved fit requires it; do not blend unrelated template signatures or borrow another system's runtime or demo copy.
 - Once the user or agent selects this system for the full deck, read its full design doc before generating final slides.

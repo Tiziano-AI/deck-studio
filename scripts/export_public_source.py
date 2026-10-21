@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export tool source, never this private repository's library or Git history."""
+"""Export a clean tool-source snapshot without Git metadata or runtime data."""
 from __future__ import annotations
 
 import argparse
@@ -44,7 +44,7 @@ def export_source(root: Path, output: Path) -> dict[str, object]:
     if output.exists() or output.is_symlink():
         raise ValueError("Output must be a new directory; an existing tree is never replaced.")
     if output.resolve().is_relative_to(root.resolve()):
-        raise ValueError("Export outside the development checkout, not inside its private tree.")
+        raise ValueError("Export outside the source checkout, not inside it.")
     # Select and validate the complete input set before creating anything.
     files = source_files(root)
     output.mkdir(parents=True)
@@ -53,7 +53,7 @@ def export_source(root: Path, output: Path) -> dict[str, object]:
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, target)
     return {"ok": True, "output": str(output), "files": len(files),
-            "scope": "tool source only; no Git history, private library, installation notes or dependencies",
+            "scope": "tool source only; no Git metadata, artifact libraries, runtime data or dependencies",
             "next": "Review this exact tree before publishing. Run its source validator and publisher tests."}
 
 

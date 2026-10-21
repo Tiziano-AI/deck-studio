@@ -1,6 +1,9 @@
 interface:
   display_name: "Deck Studio"
   short_description: "Create, revise and publish communication decks"
+  icon_small: "./assets/deck-studio.svg"
+  icon_large: "./assets/deck-studio.png"
+  brand_color: "#2D526D"
   default_prompt: "Use $deck-studio to turn my material into a clear, well-designed deck for its audience."
 policy:
   allow_implicit_invocation: true

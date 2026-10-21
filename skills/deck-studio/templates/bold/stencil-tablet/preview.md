@@ -50,6 +50,5 @@ Stencil & Tablet is a poster-loud, type-led presentation system. The premise is 
 - Never place the template name or slug on the slide itself; mention it only in the chat message.
 - Never place user requirement notes such as desired vibe, audience, or internal-use labels on the slide unless the user explicitly wants those exact words in the deck.
 - Visible labels, annotations, bylines, numbers and status marks must come from approved content or actual slide numbering. Leave an optional slot empty rather than inventing words to complete the look.
-- Do not read `template.html` for preview generation.
 - Use this system's recipe for this candidate. Read other candidate recipes proportionately when comparison or unresolved fit requires it; do not blend unrelated template signatures or borrow another system's runtime or demo copy.
 - Once the user or agent selects this system for the full deck, read its full design doc before generating final slides.

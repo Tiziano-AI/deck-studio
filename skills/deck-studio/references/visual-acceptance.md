@@ -1,4 +1,4 @@
-# Visual Acceptance Gate
+# Visual acceptance
 
 Use this after `render_qa.mjs` and before delivery, PDF export claims, release
 packaging, or publication. This is the producing agent's acceptance of Deck
@@ -12,7 +12,7 @@ source. A deck is not accepted until both are true:
 
 1. `proof/report.json` is mechanically passing for the current `deck.html`.
 2. The producing agent has inspected the rendered screenshots or browser output
-   de visu, repaired visible defects, rerun proof, and recorded
+   visually, repaired visible defects, rerun proof, and recorded
    `proof/visual-review.json` with a passing validator result.
 
 If the agent cannot inspect the rendered output, the correct status is

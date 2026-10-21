@@ -343,7 +343,7 @@ Depth is **soft and tinted**, never offset or shadowed. Cards are 4% cobalt tint
 **Key Characteristics:**
 - Warm cream ground (`{colors.bg}`) on every surface — never pure white, never gray.
 - Single saturated cobalt (`{colors.primary}`) as the principal accent — used for every eyebrow, metric, CTA, chart fill, and progress indicator.
-- Space Grotesk (display + chrome) + Inter (body) — never substitute either.
+- Space Grotesk (display + chrome) + Inter (body). Preserve these roles; use verified script-appropriate alternatives when the original fonts lack coverage.
 - Cards are 4% cobalt tints with 1.5px cobalt-at-20% borders and 10-14px rounded corners.
 - Soft pill-shaped chrome (`{components.tag-pill}`, `{components.cta-button}`) with full `100px` border-radius.
 - Headlines use Space Grotesk weight 600-700 with -0.02em tracking on a near-black text color.

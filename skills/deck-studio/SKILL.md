@@ -120,9 +120,9 @@ or hosted availability.
 
 Read [publishing.md](references/publishing.md) for the complete library procedure
 and [release-bundle.md](references/release-bundle.md) for byte-bound admission.
-Publishing uses a resolved Decks checkout; the installed skill and a supplied
-release bundle are not deployable workspaces. New publication requires an
-immutable schema v3 release admitted by the canonical Python core. Capture
+Publishing uses a resolved Deck Studio source checkout; the installed skill and
+a supplied release bundle are not deployable workspaces. New publication
+requires an immutable schema v3 release admitted by the canonical Python core. Capture
 both QA and PDF with `--delivery library` before recording acceptance: the
 profile applies the gateway's actual MIME, CSP and nested bundle-path rules.
 Local capture remains valid for local delivery but is not proof of library

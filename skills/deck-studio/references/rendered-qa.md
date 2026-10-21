@@ -39,7 +39,7 @@ proof/
   on an axis whose CSS overflow can actually clip content.
 - No direct text run falls below the hard microtype threshold.
 - The report exposes warnings for near-microtype, suspicious text overlap,
-  dense slides, and unloaded fonts so the agent can judge them de visu.
+  dense slides, and unloaded fonts for visual inspection.
 - `contact-sheet.html` renders every captured slide screenshot for fast visual
   inspection.
 

@@ -31,7 +31,7 @@ Blue Professional is a consulting-grade presentation system designed for executi
 - Typography: See full design doc after selection.
 - Signature move: Warm cream ground ({colors.bg}) on every surface — never pure white, never gray.
 - Signature move: Single saturated cobalt ({colors.primary}) as the only accent — used for every eyebrow, metric, CTA, chart fill, and progress indicator.
-- Signature move: Space Grotesk (display + chrome) + Inter (body) — never substitute either.
+- Signature move: Space Grotesk (display + chrome) + Inter (body). Preserve these roles; use verified script-appropriate alternatives when the original fonts lack coverage.
 - Signature move: Cards are 4% cobalt tints with 1.5px cobalt-at-20% borders and 10-14px rounded corners.
 - Signature move: Soft pill-shaped chrome ({components.tag-pill}, {components.cta-button}) with full 100px border-radius.
 
@@ -50,6 +50,5 @@ Blue Professional is a consulting-grade presentation system designed for executi
 - Never place the template name or slug on the slide itself; mention it only in the chat message.
 - Never place user requirement notes such as desired vibe, audience, or internal-use labels on the slide unless the user explicitly wants those exact words in the deck.
 - Use only real deck content for visible chrome: deck title, real section title, date, author, company, page number, or genuine content phrases from the user material.
-- Do not read `template.html` for preview generation.
 - Use this system's recipe for this candidate. Read other candidate recipes proportionately when comparison or unresolved fit requires it; do not blend unrelated template signatures or borrow another system's runtime or demo copy.
 - Once the user or agent selects this system for the full deck, read its full design doc before generating final slides.

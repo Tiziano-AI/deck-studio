@@ -1,11 +1,11 @@
 # Hosted gateway deployment
 
-This guide covers the gateway image, persistent storage and a controlled hosted
-transition. Authoring, release admission and audience commands remain in the
+This guide covers building and operating the optional gateway with persistent
+storage. Authoring, release admission and audience commands remain in the
 [publishing guide](../skills/deck-studio/references/publishing.md). A local deck
 is complete without this deployment. Building or pushing source deploys nothing.
 
-## Image and source boundary
+## Image and build context
 
 The Dockerfile contains Node 24 (at least 24.21), Python 3 with its standard
 library, gateway/UI source, the canonical admission modules and the shared
@@ -14,11 +14,12 @@ render or perform visual review. There is no npm dependency installation,
 Playwright, Chromium, template collection, Git checkout, policy or artifact
 library in the image. The process runs as `node`, UID/GID 1000.
 
-Build from a reviewed export of an accepted source commit, **never the private
-development checkout**. The exporter reads its source tree, so use an immutable
-source snapshot while other writers are active. Run the source/export checks
-and review the exact export before sending it to any builder. Do not export or
-archive private Git history or the historical library.
+Build from a reviewed source commit. The source exporter creates a clean build
+context without Git metadata, installed dependencies or runtime data. It reads
+the working tree, so use a stable source snapshot rather than exporting while
+another writer changes it. Run the source/export checks and review the exact
+context before sending it to a builder. Keep artifact libraries, policy and
+secrets outside it.
 
 From that accepted source snapshot, choose a new absolute export path:
 
@@ -31,11 +32,11 @@ docker build --platform linux/amd64 \
   -t decks-gateway:candidate "$EXPORT"
 ```
 
-`EXPORT` must name a new directory outside the private checkout. The context is
+`EXPORT` must name a new directory outside the source checkout. The context is
 the **export root**, not `publisher/static-server`: the gateway imports canonical
 modules from the skill. Docker ignores a subdirectory `.dockerignore` for a root
 context, hence the explicit copy. The allowlist filter further restricts image
-inputs; it is not permission to upload a private checkout to Railway. Keep the
+inputs; review the context before uploading it to Railway. Keep the
 accepted source commit, base-image digest and resulting image ID with release
 evidence. A later rebuild of the moving Node 24 tag is a new artifact to qualify.
 
@@ -128,7 +129,7 @@ Runtime configuration:
 | `PORT` | Provider-assigned port, or image default 3000 |
 | `DECKS_SITE_TITLE`, `DECKS_SITE_BRAND` | Optional installation identity |
 
-Do not reuse a legacy site password as management or viewer credentials. Pass
+Use distinct credentials for management and viewers. Pass
 secrets through private environment/secret input, not arguments, source, image
 build arguments, URLs, screenshots or logs. No startup step creates viewer keys.
 
@@ -180,41 +181,20 @@ previous selection and grants. Selection of a new deck starts private and
 unassigned; replacement preserves that deck's existing audience. Packaging and
 catalog reconstruction do not change either.
 
-## First cutover from a legacy service
+## Replacing an existing service
 
-Before any live mutation, settle the disposition of existing links and viewers,
-the exact storage destination and the source/image to deploy. Legacy shared
-password access is not evidence of named recipients or permission to make
-content public. Historical v1/v2 bundles stay immutable; they are not selected by
-relabeling old proof. Content revision belongs to the content owner.
+Before changing a live service, resolve its existing links, viewers, storage,
+policy and deployed image. Preserve the intended audience through the change;
+existing access is not permission to make content public. Historical v1/v2
+bundles remain immutable and cannot be selected by relabeling old proof. New
+selection requires admitted v3 bundles. There is no automatic library, password
+or grant import from another service.
 
-When replacing a legacy image that does not use `/data`, mounting new storage is
-still a deployment-affecting change and requires authority. Prefer retaining the
-recorded image digest. If the provider instead rebuilds the original deployment,
-treat the result as a new image: compare the complete application-file set and
-exact bytes with the original, verify its actual runtime and effective command,
-and verify that the legacy gate still denies uncredentialed audience access.
-Record the new digest rather than claiming the original image was preserved.
-Do not use that runtime for transport until these checks and the live mount
-observation pass. A verified legacy runtime is only a transport path, not
-acceptance of the new gateway.
-
-Prepare the new policy offline using the new CLI, transfer it while closed,
-verify bytes and set final ownership without starting the new gateway. Deploy
-the new gateway image qualified locally with that empty policy, then promote
-any authorized v3 releases through its canonical lock protocol and select them
-through management. Do not assume the legacy image has Python or the new
-admission modules. Do not import the old library or password automatically,
-and do not add a permanent bootstrap service.
-
-Railway volumes prevent concurrent deployments mounting the same storage and
-do not support replicas: expect an unavailable handoff rather than a claim of
-zero-interruption deployment. Keep one replica. The configured `/healthz` checks
-policy identity and read integrity; it does not continuously verify write
-readiness. Startup verifies database and journal writability through a
-rollback-only SQLite write. A successful provider healthcheck is not audience
-acceptance or continuous monitoring. Test its Host independently of the
-exact public-origin checks; do not broaden audience origin to make it pass.
+Retain the exact previous image identity for recovery. A provider rebuild of
+the same source is a new image to qualify, not the previous artifact. Mount and
+verify storage with the new image before treating it as ready. Railway volumes
+do not support replicas or concurrent deployments mounting the same storage;
+keep one replica and do not promise an uninterrupted handoff.
 
 ## Qualification and recovery
 
@@ -224,6 +204,10 @@ admission; interrupted staging, idempotent retry and immutable collision;
 replacement/restart with selections and revocations retained. Missing storage,
 unreadable, unwritable or corrupt policy must refuse startup. An unavailable
 admission helper must refuse selection without changing existing access.
+Startup verifies database and journal writability with a rollback-only SQLite
+write; `/healthz` checks policy identity and read integrity, not continuous write
+readiness. Test its provider Host separately from the exact public-origin checks.
+Do not broaden audience origin to make a health probe pass.
 
 Use real browser audience paths for anonymous public access, separate A/B
 collections and owner viewing. Test login, invalid key, change-key, sign-out,
@@ -237,13 +221,12 @@ observed audience behavior before calling a cutover complete. Stop task-owned
 local containers after QA. A source push or local image is not hosted delivery.
 
 Contain a failing gateway and repair forward when no compatible safe image
-exists. Do not automatically restore the old shared-password service: that can
-reopen access already withdrawn. Application rollback does not roll back the
-volume. Restoring old policy can reactivate revoked keys, so reconcile subsequent
+exists. Application rollback does not roll back the volume or audience policy.
+Restoring old policy can reactivate revoked keys, so reconcile subsequent
 revocations before serving it. Never copy a live SQLite file alone with `cp`;
 use SQLite's coherent backup API or a closed database. Persistence is not backup;
 any provider-volume checkpoint policy needs its own agreed scope, not a second
-permanent library or a precautionary archive of the private checkout.
+permanent library or an archive of the source checkout.
 
 Provider references: [Dockerfiles](https://docs.railway.com/builds/dockerfiles),
 [restart policy](https://docs.railway.com/deployments/restart-policy),

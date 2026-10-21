@@ -50,6 +50,5 @@ Playful is a hand-crafted editorial system anchored by a single warm canvas — 
 - Never place the template name or slug on the slide itself; mention it only in the chat message.
 - Never place user requirement notes such as desired vibe, audience, or internal-use labels on the slide unless the user explicitly wants those exact words in the deck.
 - Use only locked deck content for visible chrome. Omit a byline, status, date, kicker or brand slot when no real value is supplied; do not fill it with decorative words or invented facts. Keep the same title, subtitle and qualifications across style previews.
-- Do not read `template.html` for preview generation.
 - Use this system's recipe for this candidate. Read other candidate recipes proportionately when comparison or unresolved fit requires it; do not blend unrelated template signatures or borrow another system's runtime or demo copy.
 - Once the user or agent selects this system for the full deck, read its full design doc before generating final slides.

@@ -246,7 +246,7 @@ Depth is the system's signature trick: **stacked hard offset shadows in the pixe
 **Density philosophy: moderately dense, atmospherically loaded.** The etched grid and stepped shadows supply the primary arcade context. Use restrained grain, vignette or star squares where they improve that context without dirtying text. Within content regions, however, breathing room matters: cards are widely spaced (24-32px gaps), stat tiles get heavy internal padding, and hero text is allowed to dominate. A typical slide carries one display moment + a small constellation of supporting elements (badges, labels, a chart, or a small grid), all sitting on a fully decorated atmospheric background.
 
 **Key Characteristics:**
-- Three-font stack: Tektur (display), Chakra Petch (body), Space Mono (HUD/labels) — never substitute, never mix outside their roles.
+- Three-font stack: Tektur (display), Chakra Petch (body), Space Mono (HUD/labels). Preserve these roles; use verified script-appropriate alternatives when the original fonts lack coverage.
 - Navy ground (`{colors.dark-void}` / `{colors.deep-navy}`) alternates with colored-grid surfaces (pink, cyan, lavender) — both carry the 40px etched grid.
 - Three neons (cyan, pink, yellow) reserved for display, stats, rules, and label fills — never for body text.
 - The dominant 4px rhythm includes explicit optical exceptions: borders 2-4px, shadow offsets 4px / 8px, corner brackets 24×24 with 4px stroke.

@@ -51,6 +51,5 @@ Grove is a quiet, editorial-serif presentation system in the register of a liter
 - Never place the template name or slug on the slide itself; mention it only in the chat message.
 - Never place user requirement notes such as desired vibe, audience, or internal-use labels on the slide unless the user explicitly wants those exact words in the deck.
 - Use only real deck content for visible chrome: deck title, real section title, date, author, company, page number, or genuine content phrases from the user material.
-- Do not read `template.html` for preview generation.
 - Use this system's recipe for this candidate. Read other candidate recipes proportionately when comparison or unresolved fit requires it; do not blend unrelated template signatures or borrow another system's runtime or demo copy.
 - Once the user or agent selects this system for the full deck, read its full design doc before generating final slides.
