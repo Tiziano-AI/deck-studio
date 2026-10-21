@@ -148,11 +148,21 @@ def validate_package_resources() -> dict[str, object]:
         fail(f"public skill set differs from product contract: {names}")
     root = skills / "deck-studio"
     checked = 0
+    # Reject known obsolete imperatives, not approval limited to an explicit user lock.
+    obsolete_routes = (
+        "do not delete content for fit; return meaning changes to content approval",
+        "recompose or split crowded material without dropping content; return meaning-changing edits to content approval",
+        "if adaptation would change audience-visible meaning, return to content approval outside the slide frame",
+    )
     # Check authored Markdown links, not incidental mentions or fenced examples.
     for path in sorted(root.rglob("*.md")):
         if "node_modules" in path.parts:
             continue
         text = re.sub(r"```.*?```", "", path.read_text(), flags=re.DOTALL)
+        if path.name == "design.md" and (root / "templates") in path.parents:
+            instructions = " ".join(text.casefold().split())
+            if any(route in instructions for route in obsolete_routes):
+                fail(f"{label(path)} has an obsolete content-approval route; follow the skill's user-lock/authority boundary")
         for raw in re.findall(r"\[[^\]]*\]\(([^\s)]+)\)", text):
             url = urlsplit(raw.strip("<>"))
             if url.scheme or url.netloc or not url.path:

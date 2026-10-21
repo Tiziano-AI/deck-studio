@@ -1,4 +1,4 @@
-"""Release metadata must not send native consumers to a different product/version."""
+"""Validate native distribution identity and distributed instruction boundaries."""
 import contextlib
 import importlib.util
 import io
@@ -80,6 +80,53 @@ class DistributionMetadataTests(unittest.TestCase):
     def test_preinstall_website_is_required(self):
         self.edit("plugin.json", lambda value: value["extensions"]["com.openai"]["interface"].pop("websiteURL"))
         self.assert_rejected()
+
+
+class TemplateGuidanceTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        skill = self.root / "skills/deck-studio"
+        skill.mkdir(parents=True)
+        (skill / "SKILL.md").write_text("# Deck Studio\n")
+        self.design = skill / "templates/house/example/design.md"
+        self.design.parent.mkdir(parents=True)
+        self.patch = patch.object(validator, "REPO_ROOT", self.root)
+        self.patch.start()
+        self.addCleanup(self.patch.stop)
+
+    def test_generic_content_approval_routes_are_rejected(self):
+        old_routes = (
+            "Do not delete content for fit; return meaning changes to content approval.",
+            "Recompose or split crowded material without dropping content; return meaning-changing edits to content approval.",
+            "If adaptation would change audience-visible meaning, return to content approval outside the slide frame.",
+        )
+        for text in old_routes:
+            with self.subTest(text=text):
+                self.design.write_text("Respect explicitly user-locked meaning.\n" + text)
+                output = io.StringIO()
+                with contextlib.redirect_stdout(output), self.assertRaises(SystemExit):
+                    validator.validate_package_resources()
+                self.assertIn("obsolete content-approval route", output.getvalue())
+
+    def test_semantic_revision_with_user_lock_boundary_is_allowed(self):
+        self.design.write_text(
+            "Keep visual variants identical in meaning; do not change claims or numbers for fit. "
+            "If a semantic revision is needed, reopen the source within the mandate and carry "
+            "the change through the artifact. Ask only before changing explicitly user-locked "
+            "meaning or exceeding authority; keep that discussion outside the slide frame."
+        )
+        result = validator.validate_package_resources()
+        self.assertEqual(result["public_skills"], ["deck-studio"])
+
+    def test_content_approval_limited_to_explicit_user_lock_is_allowed(self):
+        self.design.write_text(
+            "If this changes explicitly user-locked meaning, return to content approval "
+            "outside the slide frame."
+        )
+        result = validator.validate_package_resources()
+        self.assertEqual(result["public_skills"], ["deck-studio"])
 
 
 if __name__ == "__main__":
