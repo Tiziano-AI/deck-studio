@@ -4,7 +4,8 @@
 
 Turn an idea, notes or an existing deck into a presentation an audience can
 follow, read and use. Deck Studio helps an agent shape the argument, choose a
-visual system, build an HTML deck, inspect every rendered slide and export a PDF.
+visual system, build a browser deck or native editable PowerPoint, and inspect
+every rendered slide. Browser decks have a PDF companion.
 A finished local deck is a complete result; hosting is optional.
 
 > Turn these notes into a decision deck for leadership. Resolve what is missing,
@@ -17,7 +18,15 @@ and a fixed-stage HTML runtime with keyboard and touch navigation.
 **Choose the output before building.** HTML decks scale uniformly to the screen;
 they do not reflow into a mobile reading layout. PDF pages are slide images,
 not searchable text, editable slides or a semantically accessible document.
-For those needs, the skill routes the work to an appropriate artifact tool.
+Native PowerPoint uses editable text, shapes, tables and charts, rather than
+slide screenshots. It is authored directly, not converted from arbitrary HTML.
+Other document and accessibility needs still route to their proper artifact tool.
+
+**One product, two output paths.** HTML and PPTX compositions share the approved
+meaning source; each format has its own layout and acceptance. A PPTX file does
+not prove that its HTML companion matches, or vice versa. The 56 visual systems
+are composition resources, not a claim that every design is a prebuilt PowerPoint
+template.
 
 ## Install and prepare the producer
 
@@ -54,6 +63,12 @@ node scripts/setup_runtime.mjs --install
 
 Dependencies and Chromium stay inside the selected package. Setup neither
 copies global skills nor changes other installations.
+
+Native PPTX generation uses the same package's locked PptxGenJS dependency.
+Rendering its output also requires an available LibreOffice and Poppler
+(`soffice`, `pdftoppm`, `pdffonts`); setup does not install these system applications.
+Follow the [native PowerPoint guide](skills/deck-studio/references/native-pptx.md)
+for authoring, font requirements and inspection.
 
 Refresh the host's plugin discovery and start a new chat. Invoke
 `$deck-studio:deck-studio` in Codex or `/deck-studio:deck-studio` in Claude Code,

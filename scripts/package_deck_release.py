@@ -22,7 +22,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "skills/deck-studio/scripts"))
 from proof_identity import verify_evidence_file, verify_files, verify_source
 from release_admission import (
-    SECRET_WORDS, load_object, local_review_evidence, referenced_local_assets,
+    NATIVE_PPTX, SECRET_WORDS, load_object, local_review_evidence, native_pptx_artifacts, referenced_local_assets,
 )
 from release_store import (
     ReleaseStoreError, automatic_release_id, discover_releases, promote_release,
@@ -109,7 +109,9 @@ def copy_referenced_assets(source_dir: Path, release_dir: Path, html_text: str) 
     pending = referenced_local_assets(html_text, str(source_dir / "deck.html"), PurePosixPath())
     while pending:
         relative = pending.pop(0)
-        if relative in copied:
+        # Native companions are copied only through their accepted proof path.
+        # Admission still checks that any authored PPTX link actually resolves.
+        if relative in copied or relative == "deck.pptx":
             continue
         source = source_dir / relative
         if not source.is_file() or not source.resolve().is_relative_to(source_dir.resolve()):
@@ -162,11 +164,15 @@ def package_release(source_dir: Path, deck_id: str, title: str | None, audience:
         evidence_paths = local_review_evidence(source_dir, load_object(visual_review))
         proof_artifacts = sorted({"proof/report.json", "proof/visual-review.json", "proof/pdf-report.json"}
                                  | {f"proof/{relative}" for relative in proof_paths} | set(evidence_paths))
+        native_artifacts = native_pptx_artifacts(source_dir, expected_slides)
+        proof_artifacts = sorted(set(proof_artifacts) | (native_artifacts - {"deck.pptx"}))
         for relative in proof_artifacts:
             verify_evidence_file(source_dir / relative, SECRET_WORDS)
         with staging_directory(PUBLIC_ROOT) as stage:
             copy_file(deck_html, stage / "deck.html")
             copy_file(pdf, stage / "deck.pdf")
+            if native_artifacts:
+                copy_file(source_dir / "deck.pptx", stage / "deck.pptx")
             asset_paths = set(copy_referenced_assets(source_dir, stage, html_text))
             for relative in sorted(source_paths - {"deck.html"}):
                 copy_file(source_dir / relative, stage / relative)
@@ -180,7 +186,7 @@ def package_release(source_dir: Path, deck_id: str, title: str | None, audience:
                 copy_file(source_dir / "proof" / covers[0], stage / "cover.png")
                 asset_paths.add("cover.png")
             resolved_title = title or extract_title(html_text, deck_id.replace("-", " ").title())
-            artifacts = sorted({"deck.html", "deck.pdf", *proof_artifacts, *asset_paths})
+            artifacts = sorted({"deck.html", "deck.pdf", *proof_artifacts, *asset_paths, *native_artifacts})
             manifest = {
                 "schema_version": 3, "deck_id": deck_id,
                 "title": resolved_title, "audience": audience, "desired_action": desired_action,
@@ -193,6 +199,8 @@ def package_release(source_dir: Path, deck_id: str, title: str | None, audience:
                 "proof": {"validate_deck": "pass", "rendered_qa": "pass", "visual_acceptance": "pass",
                           "content_fidelity": "pass", "pdf_export": "pass", "path_leak_scan": "pass"},
             }
+            if native_artifacts:
+                manifest["pptx"] = dict(NATIVE_PPTX)
             manifest["release_id"] = release_id or automatic_release_id(manifest)
             write_json(stage / "deck-manifest.json", manifest)
             try:

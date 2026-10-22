@@ -18,6 +18,14 @@ test('the public entrance links to the actual deck, PDF and cover', () => {
   assert.match(page, /7 slides/);
   assert.match(page, /href="\/login">Enter access key/);
   assert.doesNotMatch(page, /dialog|demo|preview|SMOOTHOPERATOR/);
+  assert.doesNotMatch(page, />PPTX|PowerPoint:/);
+});
+
+test('only available native companions expose a PowerPoint download', () => {
+  const page = renderGallery({ decks: [{ ...deck, pptx: '/decks/sample/release/deck.pptx' }] });
+  assert.match(page, /href="\/decks\/sample\/release\/deck.pptx" download aria-label="PowerPoint: Sample deck"/);
+  assert.match(page, />PPTX /);
+  assert.match(page, /href="\/decks\/sample\/release\/deck.pdf"/);
 });
 
 test('public browsing and the keyed collection remain distinct navigation', () => {
@@ -46,8 +54,8 @@ test('text and attribute values are escaped without rendering backstage metadata
 
 test('nonlocal and traversal presentation URLs never become active links', () => {
   for (const path of ['https://evil.invalid/a', '//evil.invalid/a', 'javascript:alert(1)', '/decks/a/../private', '/decks/a/%2e%2e/private', '/decks/a%5cb', '/decks/a?secret=yes', '/decks/a#x', '/decks/%00', '/decks/%zz']) {
-    const page = renderGallery({ decks: [{ ...deck, html: path, pdf: path, cover: path }] });
-    assert.doesNotMatch(page, /<a class="cover"|<img src=|aria-label="PDF:/, path);
+    const page = renderGallery({ decks: [{ ...deck, html: path, pdf: path, pptx: path, cover: path }] });
+    assert.doesNotMatch(page, /<a class="cover"|<img src=|aria-label="PDF:|aria-label="PowerPoint:/, path);
     assert.match(page, /class="cover-fallback"/, path);
   }
 });

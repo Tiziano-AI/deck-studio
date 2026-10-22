@@ -8,13 +8,17 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 import posixpath
 import re
+import stat
 from collections.abc import Mapping
 from html.parser import HTMLParser
 from pathlib import Path, PurePosixPath
 from urllib.parse import unquote, urlsplit
+import xml.etree.ElementTree as ET
+import zipfile
 
 try:
     from proof_identity import (TEXT_EVIDENCE_SUFFIXES, digest, load_object, safe_relative,
@@ -33,6 +37,7 @@ REQUIRED_TEXT_FIELDS = ("visual_thesis", "template_fit", "density_fit", "weaknes
 CSS_URL_RE = re.compile(r"url\(\s*(['\"]?)(.*?)\1\s*\)", re.IGNORECASE)
 ID_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]{0,127}")
 GIT_COMMIT_RE = re.compile(r"(?:[0-9a-f]{40}|[0-9a-f]{64})")
+NATIVE_PPTX = {"artifact": "deck.pptx", "report": "proof/pptx-report.json", "review": "proof/pptx-visual-review.json"}
 
 
 class AdmissionError(ValueError):
@@ -174,6 +179,138 @@ def validate_visual_review(path: Path, report_path: Path | None, expect_slides: 
         fail("visual review cites a viewport missing from render proof")
     return {"ok": True, "visual_review": str(path), "inspected_viewports": viewports,
             "evidence": evidence, "report": summary}
+
+
+def scan_native_pptx_text(path: Path, *, max_entries: int, max_expanded: int, max_part: int) -> None:
+    """Apply publication text policy to bounded Office XML and chart workbooks.
+
+    Structural inspection owns the outer PPTX. A chart's embedded XLSX is an
+    independent ZIP: its expansion must share the outer package's scan budget.
+    Other embedded payloads have no supported publication scan and fail closed.
+    """
+    budget = {"entries": 0, "expanded": 0}
+
+    class PolicyTreeBuilder(ET.TreeBuilder):
+        def doctype(self, name, public_id, system_id):
+            fail("native Office XML declarations are not allowed")
+
+    def scan(archive, label: str, depth: int) -> None:
+        entries = archive.infolist()
+        budget["entries"] += len(entries)
+        budget["expanded"] += sum(row.file_size for row in entries)
+        if budget["entries"] > max_entries or budget["expanded"] > max_expanded:
+            fail("native Office text scan exceeds cumulative package limits")
+        names = set()
+        for row in entries:
+            name = safe_relative(row.filename.rstrip("/") if row.is_dir() else row.filename)
+            if name in names:
+                fail("duplicate native Office package member")
+            names.add(name)
+            if (row.file_size > max_part or row.flag_bits & 1 or stat.S_ISLNK(row.external_attr >> 16)
+                    or row.compress_type not in {zipfile.ZIP_STORED, zipfile.ZIP_DEFLATED}):
+                fail("unsupported or oversized native Office package member")
+        for row in entries:
+            if row.is_dir():
+                continue
+            name = row.filename
+            part_label = f"{label}:{name}"
+            if "/embeddings/" in name and not name.endswith(".xlsx"):
+                fail("native publication supports embedded chart XLSX workbooks, not opaque embedded payloads")
+            if name.endswith(".xlsx"):
+                if depth:
+                    fail("nested embedded Office workbooks are not supported")
+                with zipfile.ZipFile(io.BytesIO(archive.read(row))) as workbook:
+                    scan(workbook, part_label, depth + 1)
+            elif name.endswith((".xml", ".rels")):
+                parser = ET.XMLParser(target=PolicyTreeBuilder(insert_comments=True, insert_pis=True))
+                document = ET.fromstring(archive.read(row), parser=parser)
+                for node in document.iter():
+                    for text in (node.text, node.tail, *node.attrib.values()):
+                        if text:
+                            ensure_clean_text(text, part_label)
+
+    try:
+        with zipfile.ZipFile(path) as archive:
+            scan(archive, "native PPTX", 0)
+    except (zipfile.BadZipFile, ET.ParseError, RuntimeError):
+        fail("native Office package changed or is not readable XML/ZIP")
+
+
+def native_pptx_artifacts(source_dir: Path, expect_slides: int) -> set[str]:
+    """Validate the optional native companion, returning every byte-bound file.
+
+    This is the shared proof authority for packaging and immutable admission.
+    Native inspection proves structure; the separate review records a human or
+    agent's inspection of these exact rendered frames, not that inspection's
+    aesthetic truth. No author module or semantic brief is audience material.
+    """
+    present = any((source_dir / value).exists() or (source_dir / value).is_symlink() for value in NATIVE_PPTX.values())
+    present = present or (source_dir / "proof/pptx").exists()
+    if not present:
+        return set()
+    for name in NATIVE_PPTX.values():
+        if not (source_dir / name).is_file():
+            fail(f"native PPTX companion missing {name}")
+    try:
+        from pptx_inspection import MAX_ENTRIES, MAX_EXPANDED, MAX_PART, inspect_pptx
+    except (ImportError, OSError, SyntaxError):
+        fail("canonical native PPTX inspector is unavailable", "validator_unavailable")
+    report_path = source_dir / NATIVE_PPTX["report"]
+    review_path = source_dir / NATIVE_PPTX["review"]
+    for path in (report_path, review_path):
+        ensure_clean_text(path.read_text(encoding="utf-8"), path.name)
+    report, review = load_object(report_path), load_object(review_path)
+    if (type(report.get("schema_version")) is not int or report["schema_version"] != 1
+            or report.get("kind") != "native-pptx" or report.get("ok") is not True or report.get("errors") != []):
+        fail("missing successful native PPTX render report")
+    if type(report.get("slideCount")) is not int or report["slideCount"] != expect_slides:
+        fail("native PPTX report slide count mismatch")
+    if verify_source(source_dir, report, "deck.pptx") != {"deck.pptx"}:
+        fail("native PPTX render source must bind only deck.pptx")
+    if verify_files(source_dir, [report.get("artifact")]) != {"deck.pptx"}:
+        fail("native PPTX artifact must be deck.pptx")
+    native = inspect_pptx(source_dir / "deck.pptx", expected_slides=expect_slides)
+    scan_native_pptx_text(source_dir / "deck.pptx", max_entries=MAX_ENTRIES, max_expanded=MAX_EXPANDED, max_part=MAX_PART)
+    if report.get("native") != native:
+        fail("stale native PPTX structural inspection")
+    renderer = report.get("renderer")
+    if (not isinstance(renderer, dict) or renderer.get("name") != "LibreOffice"
+            or not isinstance(renderer.get("version"), str) or not renderer["version"].strip()
+            or type(renderer.get("dpi")) is not int or renderer["dpi"] < 1):
+        fail("native PPTX report requires the actual LibreOffice render identity")
+    slides = report.get("slides")
+    if not isinstance(slides, list) or len(slides) != expect_slides:
+        fail("native PPTX render report must include every slide")
+    frames = []
+    for index, slide in enumerate(slides, 1):
+        if (not isinstance(slide, dict) or type(slide.get("slide")) is not int or slide["slide"] != index
+                or type(slide.get("width")) is not int or type(slide.get("height")) is not int
+                or slide["width"] < 1 or slide["height"] < 1):
+            fail("native PPTX render slides must be complete, ordered and dimensioned")
+        frame = slide.get("screenshot")
+        if (not isinstance(frame, dict) or not isinstance(frame.get("path"), str)
+                or not frame["path"].startswith("proof/pptx/") or not frame["path"].endswith(".png")):
+            fail("native PPTX screenshot must be a PNG under proof/pptx/")
+        frames.append(frame)
+    paths = verify_files(source_dir, frames)
+    for slide in slides:
+        image = source_dir / slide["screenshot"]["path"]
+        verify_evidence_file(image, SECRET_WORDS)
+        header = image.read_bytes()[:24]
+        if (len(header) != 24 or header[12:16] != b"IHDR"
+                or int.from_bytes(header[16:20], "big") != slide["width"]
+                or int.from_bytes(header[20:24], "big") != slide["height"]):
+            fail("native PPTX screenshot dimensions differ from render report")
+    if (type(review.get("schema_version")) is not int or review["schema_version"] != 1
+            or review.get("kind") != "native-pptx-review" or review.get("verdict") != "accepted"
+            or not isinstance(review.get("reviewer"), str) or not review["reviewer"].strip()
+            or not isinstance(review.get("notes"), str) or not review["notes"].strip()
+            or review.get("reviewedSlides") != list(range(1, expect_slides + 1))
+            or any(type(value) is not int for value in review.get("reviewedSlides", []))):
+        fail("native PPTX visual review must accept every rendered slide with reviewer and notes")
+    if verify_files(source_dir, [review.get("report")]) != {NATIVE_PPTX["report"]}:
+        fail("native PPTX review must bind its exact render report")
+    return {*NATIVE_PPTX.values(), *paths}
 
 
 class AssetReferenceParser(HTMLParser):
@@ -324,6 +461,17 @@ def validate_manifest(release_dir: Path, manifest: dict, *, target: str = "local
         fail("manifest cannot list itself as an artifact")
     if schema == 3 and files - {"deck-manifest.json"} != paths:
         fail("release contains unmanifested files")
+    native_paths = {name for name in paths if name.lower().endswith(".pptx")}
+    if native_paths - {"deck.pptx"}:
+        fail("PPTX audience artifacts must be the declared native deck.pptx companion")
+    has_native = native_paths or any(name in files for name in NATIVE_PPTX.values()) or any(name.startswith("proof/pptx/") for name in files)
+    if has_native or "pptx" in manifest:
+        if schema != 3 or manifest.get("pptx") != NATIVE_PPTX:
+            fail("native PPTX requires the complete declared v3 pptx companion contract")
+        if not set(NATIVE_PPTX.values()) <= files:
+            fail("native PPTX companion is declared but incomplete")
+        if not native_pptx_artifacts(release_dir, manifest["slide_count"]) <= paths:
+            fail("native PPTX proof identities missing from manifest artifacts")
     if schema in {2, 3}:
         if "proof/visual-review.json" not in paths:
             fail("manifest missing proof/visual-review.json artifact")

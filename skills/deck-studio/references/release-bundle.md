@@ -14,6 +14,26 @@ hashed screenshots/contact-sheet files, and local render resources. PDF is
 required for a release, optional for a local deck. Localize or inline mutable
 remote render resources before admission.
 
+An optional native companion adds `deck.pptx`, `proof/pptx-report.json`,
+`proof/pptx-visual-review.json` and its bound render images under `proof/pptx/`.
+The manifest declares
+`pptx: {artifact: "deck.pptx", report: "proof/pptx-report.json", review: "proof/pptx-visual-review.json"}`.
+All three identities are part of `artifacts[]`. A declaration with missing,
+stale or unaccepted proof fails admission; an undeclared PowerPoint is not an
+ordinary render resource. Existing HTML/PDF-only releases remain supported,
+and already selected releases continue serving unchanged. Fresh library
+publication, including reselection, requires proof bound to the current
+delivery profile. Do not patch immutable releases: recapture and package a new
+release before publishing under the updated profile.
+
+The native report uses schema version 1 and kind `native-pptx`. It binds exact
+PPTX bytes, slide count, the canonical native-object inspection and every
+rendered slide image. The separate schema-version-1 `native-pptx-review` binds
+that report's exact identity, names the reviewer, records an accepted verdict
+and covers every slide in `reviewedSlides`. Capture success cannot author its
+own visual acceptance. Follow [native-pptx.md](native-pptx.md) for production.
+Native proof and authoring sources never become gallery downloads.
+
 Schema v3 manifests carry identity/title/audience/desired action, slide count,
 source lineage, `artifacts[]` with path/bytes/SHA-256, and the structural,
 rendered, visual, fidelity, PDF and leak-check results. `visibility: unassigned`

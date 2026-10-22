@@ -1,7 +1,7 @@
 # Installation and distribution
 
 Deck Studio packages communication guidance, 56 visual systems and a local
-HTML/render/PDF producer. Local files are a complete result. The optional
+HTML/render/PDF and native editable PowerPoint producer. Local files are a complete result. The optional
 audience gateway is a separate service that you configure and operate; installing
 the plugin neither deploys it nor publishes your content.
 
@@ -29,8 +29,13 @@ Git-based installation also needs Git and access to the catalog
 and product repositories. Explicit runtime preparation downloads the locked npm
 dependencies and Chromium. No API key, hosted account or gateway is required.
 
-The PDF producer renders slides as images. Use an appropriate document or slide
-tool when you need searchable text, editable slides or semantic accessibility.
+The HTML PDF producer renders slides as images. Native PowerPoint generation
+uses locked PptxGenJS in the same package, without an OpenAI-only artifact runtime
+or a PowerPoint installation. Its render inspection needs separately available
+LibreOffice and Poppler; setup does not install system applications. Fonts must
+be available in the renderer and on recipients' machines unless the file embeds
+them. The producer does not promise font embedding or arbitrary HTML/PPTX import.
+Use the appropriate document capability for semantically accessible documents.
 
 ## Codex
 

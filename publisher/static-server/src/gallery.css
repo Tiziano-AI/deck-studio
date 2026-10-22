@@ -72,6 +72,7 @@ a.cover:hover img { transform: scale(1.025); }
 .deck-meta { font: 10px/1.5 'Victor Mono', monospace; color: var(--cyan); letter-spacing: .025em; margin: 15px 0 7px; display: flex; justify-content: space-between; gap: 16px; }
 .deck-meta a { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); padding: 3px 0; margin-top: -3px; }
 .deck-meta a:hover { color: var(--ink); }
+.deck-downloads { display: inline-flex; flex-wrap: wrap; justify-content: flex-end; gap: 14px; }
 .deck-meta svg { width: 12px; height: 12px; }
 .deck h2 { font-size: 20px; line-height: 1.35; letter-spacing: -.025em; font-weight: 600; margin: 0; overflow-wrap: anywhere; }
 .deck h2 a:hover { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }

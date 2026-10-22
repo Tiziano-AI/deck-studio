@@ -9,7 +9,8 @@ export const DECK_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline'; 
 const PRESENTATION_TYPES = new Map([
   [".html", "text/html; charset=utf-8"], [".css", "text/css; charset=utf-8"],
   [".js", "text/javascript; charset=utf-8"], [".mjs", "text/javascript; charset=utf-8"],
-  [".pdf", "application/pdf"], [".png", "image/png"], [".jpg", "image/jpeg"],
+  [".pdf", "application/pdf"], [".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation"],
+  [".png", "image/png"], [".jpg", "image/jpeg"],
   [".jpeg", "image/jpeg"], [".svg", "image/svg+xml"], [".webp", "image/webp"],
   [".gif", "image/gif"], [".avif", "image/avif"], [".woff", "font/woff"], [".woff2", "font/woff2"],
   [".ttf", "font/ttf"], [".otf", "font/otf"], [".mp4", "video/mp4"], [".webm", "video/webm"],
@@ -26,7 +27,8 @@ export function presentationType(path) {
 }
 
 export function audienceArtifact(value) {
-  return artifactPath(value) && value !== "deck-manifest.json" && value.split("/")[0] !== "proof" && Boolean(presentationType(value));
+  return artifactPath(value) && value !== "deck-manifest.json" && value.split("/")[0] !== "proof" &&
+    (extname(value).toLowerCase() !== ".pptx" || value === "deck.pptx") && Boolean(presentationType(value));
 }
 
 export function presentationBase(deckId, releaseId) {

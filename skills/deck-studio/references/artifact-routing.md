@@ -8,7 +8,8 @@ only for the distinct artifact work it owns.
 | Actual need | Production route |
 | --- | --- |
 | Fixed-stage browser presentation, live or reading deck | Continue in Deck Studio with its runtime. |
-| Editable PowerPoint or Google Slides | Use the available presentation skill, such as `presentations:Presentations`; preserve the semantic source and let that owner produce and inspect the editable artifact. |
+| Native editable PowerPoint from notes, approved content or Deck Studio source | Continue in Deck Studio with [native-pptx.md](native-pptx.md), its package-owned producer and separate PPTX inspection. |
+| Imported PowerPoint requiring existing masters, complex objects or review history to survive; native Google Slides | Use the available presentation capability for that destination; preserve the semantic source and let that owner inspect the imported artifact. Deck Studio does not claim arbitrary PPTX import or lossless HTML conversion. |
 | Memo, one-pager, proposal document or Google Docs-targeted material | Use the available document skill, such as `documents:documents`, when a document better serves the communication. |
 | Searchable/selectable or semantically accessible PDF | Choose a text-bearing document/presentation/PDF producer before rendering; use `pdf:pdf` or `charter-document-fidelity` for the actual fidelity requirements. Deck Studio's screenshot export cannot supply these properties. |
 | Workbook model, financial scenarios, metrics or chart calculation | Use `spreadsheets:Spreadsheets` or the actual data owner before relying on the results in slides. |

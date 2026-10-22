@@ -23,6 +23,10 @@ class ExportTests(unittest.TestCase):
             path = self.root / name
             path.mkdir(parents=True, exist_ok=True)
             (path / "example.txt").write_text("authored source")
+        for name in ("release_admission.py", "proof_identity.py", "pptx_inspection.py", "validate_deck.py", "delivery_profile.mjs"):
+            path = self.root / "skills/deck-studio/scripts" / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("canonical runtime source")
         for name in (".git/private", "publisher/static-server/public/decks/private/deck.pdf",
                      "PLAN.md", "AGENTS.md", "docs/maintenance/private.md",
                      "railway.json", "publisher/static-server/railway.json",
@@ -42,6 +46,8 @@ class ExportTests(unittest.TestCase):
         for name in ("publisher/static-server/Dockerfile", "publisher/static-server/.dockerignore",
                      "docs/HOSTED_DEPLOYMENT.md", "docs/DISTRIBUTION.md"):
             self.assertEqual((self.out / name).read_text(), "source")
+        for name in ("release_admission.py", "proof_identity.py", "pptx_inspection.py", "validate_deck.py", "delivery_profile.mjs"):
+            self.assertEqual((self.out / "skills/deck-studio/scripts" / name).read_text(), "canonical runtime source")
 
     def test_existing_output_is_untouched(self):
         self.out.mkdir()

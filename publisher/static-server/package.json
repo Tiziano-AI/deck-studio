@@ -1,6 +1,6 @@
 {
   "name": "@tiziano-ai/decks-static",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "description": "Decks audience gateway and agent access CLI, with explicit per-deck policy.",

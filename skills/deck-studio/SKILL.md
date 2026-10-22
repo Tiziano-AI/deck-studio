@@ -1,6 +1,6 @@
 ---
 name: "deck-studio"
-description: "Decks: create, revise and publish communication decks. Start from a vague request, approved content, an existing deck or an accepted Decks release. Shape narrative and evidence; produce fixed-stage HTML/PDF or use the appropriate artifact skill for editable slides and documents. Publication targets the Decks library; not generic websites, format-only document edits or unrelated hosting."
+description: "Decks: create, revise and publish communication decks. Start from a vague request, approved content, an existing deck or an accepted Decks release. Shape narrative and evidence; produce fixed-stage HTML/PDF or native editable PowerPoint. Publication targets the Decks library; not generic websites, format-only document edits or unrelated hosting."
 ---
 
 # Deck Studio
@@ -83,10 +83,16 @@ Inline runtime and assets for a standalone file when practical; otherwise
 deliver a self-contained folder with relative resources. Phone letterboxing is
 not mobile-native reading layout.
 
+For editable PowerPoint, read [native-pptx.md](references/native-pptx.md).
+Build native slide objects with this package's producer, not slide images in a
+PowerPoint container or an unpromised arbitrary HTML/CSS conversion. Carry the
+same meaning source into format-specific composition. Revision changes that
+source and every requested output; do not maintain competing content briefs.
+
 ## Inspect, repair, deliver
 
 Run the installed package's structural validator and renderer from the deck
-folder, using the resolved package path in place of `<skill>`:
+folder for HTML, using the resolved package path in place of `<skill>`:
 
 ```bash
 python3 <skill>/scripts/validate_deck.py deck.html
@@ -105,6 +111,11 @@ Render reports bind exact deck/resources and screenshot bytes; visual review
 binds the exact report digest. Changed source or evidence invalidates affected
 proof. Keep these records outside the audience's slides. If inspection is
 unavailable, identify the artifact as an unaccepted candidate rather than ready.
+
+The native PowerPoint guide owns its separate structural/editability check,
+render capture and visual review. Inspect the exported PPTX, not only the
+authoring canvas. State the renderer used; a LibreOffice render is not an
+inspection in Microsoft PowerPoint. Preserve editability when repairing fit.
 
 Export PDF when requested, or for a release, using
 [pdf-export.md](references/pdf-export.md). This export contains slide images:

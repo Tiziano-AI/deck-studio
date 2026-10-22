@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import os
 import shutil
@@ -9,13 +10,17 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / "skills/deck-studio/scripts"
+sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(SCRIPTS))
 import release_admission as admission
+from native_pptx_test_fixture import add_native_pptx, synthetic_workbook
+import pptx_inspection
 
 
 def write_json(path, value):
@@ -96,10 +101,234 @@ class ReleaseAdmissionTests(unittest.TestCase):
             write_json(self.root / "proof/visual-review.json", review)
             self.rehash("proof/visual-review.json")
 
+    def native_parts(self, original: bytes, replacements: dict):
+        with zipfile.ZipFile(io.BytesIO(original)) as source, zipfile.ZipFile(self.root / "deck.pptx", "w") as target:
+            for info in source.infolist():
+                if info.filename not in replacements:
+                    target.writestr(info, source.read(info.filename))
+            for name, data in replacements.items():
+                target.writestr(name, data)
+        self.rehash("deck.pptx")
+        report = json.loads((self.root / "proof/pptx-report.json").read_text())
+        report["source"]["files"] = [row(self.root, "deck.pptx")]
+        report["artifact"] = row(self.root, "deck.pptx")
+        report["native"] = pptx_inspection.inspect_pptx(self.root / "deck.pptx", self.manifest["slide_count"])
+        write_json(self.root / "proof/pptx-report.json", report)
+        self.rehash("proof/pptx-report.json")
+        review = json.loads((self.root / "proof/pptx-visual-review.json").read_text())
+        review["report"] = row(self.root, "proof/pptx-report.json")
+        write_json(self.root / "proof/pptx-visual-review.json", review)
+        self.rehash("proof/pptx-visual-review.json")
+
     def test_complete_bundle_admitted_without_browser_or_git(self):
         result = admission.admit_release(self.root, deck_id="fixture", release_id="r1")
         self.assertEqual(result["manifest_sha256"], admission.digest(self.root / "deck-manifest.json"))
         self.assertEqual(result["delivery_profile"], admission.library_delivery_profile())
+
+    def test_native_companion_is_structurally_inspected_and_fully_byte_bound(self):
+        self.manifest = add_native_pptx(self.root, self.manifest)
+        self.assertTrue(admission.admit_release(self.root)["ok"])
+        report = json.loads((self.root / "proof/pptx-report.json").read_text())
+        self.assertEqual(report["native"]["totals"]["textShapes"], 1)
+        self.assertEqual(admission.native_pptx_artifacts(self.root, 1), {
+            "deck.pptx", "proof/pptx-report.json", "proof/pptx-visual-review.json", "proof/pptx/slide-01.png"})
+
+    def test_native_partial_or_undeclared_companion_is_rejected(self):
+        self.manifest = add_native_pptx(self.root, self.manifest)
+        for name in (*admission.NATIVE_PPTX.values(), "proof/pptx/slide-01.png"):
+            path = self.root / name
+            saved = path.read_bytes()
+            path.unlink()
+            self.manifest["artifacts"] = [item for item in self.manifest["artifacts"] if item["path"] != name]
+            self.rewrite_manifest()
+            with self.subTest(name=name), self.assertRaises(admission.AdmissionError):
+                admission.admit_release(self.root)
+            path.write_bytes(saved)
+            self.rehash(name)
+        for contract in (None, {}, {**admission.NATIVE_PPTX, "artifact": "other.pptx"}, {**admission.NATIVE_PPTX, "extra": True}):
+            if contract is None:
+                self.manifest.pop("pptx", None)
+            else:
+                self.manifest["pptx"] = contract
+            self.rewrite_manifest()
+            with self.subTest(contract=contract), self.assertRaises(admission.AdmissionError):
+                admission.admit_release(self.root)
+
+    def test_native_artifact_and_screenshot_changes_fail_after_manifest_rehash(self):
+        self.manifest = add_native_pptx(self.root, self.manifest)
+        for name in ("deck.pptx", "proof/pptx/slide-01.png"):
+            path = self.root / name
+            saved = path.read_bytes()
+            path.write_bytes(saved + b"changed")
+            self.rehash(name)
+            with self.subTest(name=name), self.assertRaises(admission.AdmissionError):
+                admission.admit_release(self.root)
+            path.write_bytes(saved)
+            self.rehash(name)
+
+    def test_native_report_checks_survive_rebound_review_and_manifest(self):
+        self.manifest = add_native_pptx(self.root, self.manifest)
+        original = (self.root / "proof/pptx-report.json").read_bytes()
+        cases = {
+            "failed render": lambda report: report.update(ok=False),
+            "render errors": lambda report: report.update(errors=["Synthetic failure"]),
+            "slide count": lambda report: report.update(slideCount=2),
+            "changed inspection": lambda report: report["native"]["totals"].update(textShapes=2),
+            "missing renderer": lambda report: report.pop("renderer"),
+            "wrong renderer": lambda report: report["renderer"].update(name="not LibreOffice"),
+            "boolean DPI": lambda report: report["renderer"].update(dpi=True),
+            "incomplete slides": lambda report: report.update(slides=[]),
+            "unordered slide": lambda report: report["slides"][0].update(slide=2),
+            "changed dimensions": lambda report: report["slides"][0].update(width=2),
+            "source not only PPTX": lambda report: report["source"]["files"].append(row(self.root, "deck.html")),
+            "wrong artifact": lambda report: report.update(artifact=row(self.root, "deck.pdf")),
+            "private report": lambda report: report.update(notes="/Users/private/author"),
+        }
+        for name, change in cases.items():
+            report = json.loads(original)
+            change(report)
+            write_json(self.root / "proof/pptx-report.json", report)
+            self.rehash("proof/pptx-report.json")
+            review = json.loads((self.root / "proof/pptx-visual-review.json").read_text())
+            review["report"] = row(self.root, "proof/pptx-report.json")
+            write_json(self.root / "proof/pptx-visual-review.json", review)
+            self.rehash("proof/pptx-visual-review.json")
+            with self.subTest(name=name), self.assertRaises(admission.AdmissionError):
+                admission.admit_release(self.root)
+
+    def test_native_review_must_bind_report_and_accept_every_actual_slide(self):
+        self.manifest = add_native_pptx(self.root, self.manifest)
+        original = (self.root / "proof/pptx-visual-review.json").read_bytes()
+        for change in (lambda review: review.update(verdict="rejected"),
+                       lambda review: review.update(reviewedSlides=[]),
+                       lambda review: review.update(reviewedSlides=[True]),
+                       lambda review: review.update(reviewer=" "),
+                       lambda review: review.update(notes=" "),
+                       lambda review: review["report"].update(sha256="0" * 64)):
+            review = json.loads(original)
+            change(review)
+            write_json(self.root / "proof/pptx-visual-review.json", review)
+            self.rehash("proof/pptx-visual-review.json")
+            with self.subTest(review=review), self.assertRaises(admission.AdmissionError):
+                admission.admit_release(self.root)
+
+    def test_native_publication_policy_scans_parsed_xml_text_attributes_and_comments(self):
+        self.manifest = add_native_pptx(self.root, self.manifest)
+        original = (self.root / "deck.pptx").read_bytes()
+        transforms = {
+            "escaped text": lambda text: text.replace("Synthetic native fixture 1", "&#47;Users&#47;private"),
+            "escaped attribute": lambda text: text.replace('name="Synthetic text"', 'name="file:&#47;&#47;private"'),
+            "XML comment": lambda text: text.replace("</p:sld>", "<!-- /Users/private --></p:sld>"),
+            "secret variable name": lambda text: text.replace("Synthetic native fixture 1", "OPENAI_API_KEY"),
+            "UTF16 XML": lambda text: text.replace("Synthetic native fixture 1", "/Users/private").encode("utf-16"),
+        }
+        for name, transform in transforms.items():
+            with zipfile.ZipFile(io.BytesIO(original)) as source, zipfile.ZipFile(self.root / "deck.pptx", "w") as target:
+                for info in source.infolist():
+                    data = source.read(info.filename)
+                    if info.filename == "ppt/slides/slide1.xml":
+                        data = transform(data.decode("utf-8"))
+                    target.writestr(info, data)
+            self.rehash("deck.pptx")
+            report = json.loads((self.root / "proof/pptx-report.json").read_text())
+            report["source"]["files"] = [row(self.root, "deck.pptx")]
+            report["artifact"] = row(self.root, "deck.pptx")
+            write_json(self.root / "proof/pptx-report.json", report)
+            self.rehash("proof/pptx-report.json")
+            review = json.loads((self.root / "proof/pptx-visual-review.json").read_text())
+            review["report"] = row(self.root, "proof/pptx-report.json")
+            write_json(self.root / "proof/pptx-visual-review.json", review)
+            self.rehash("proof/pptx-visual-review.json")
+            with self.subTest(name=name), self.assertRaises(admission.AdmissionError) as raised:
+                admission.admit_release(self.root)
+            self.assertEqual(raised.exception.code, "unsafe_content")
+
+    def test_embedded_chart_workbook_text_and_metadata_cannot_bypass_publication_policy(self):
+        self.manifest = add_native_pptx(self.root, self.manifest)
+        original = (self.root / "deck.pptx").read_bytes()
+        name = "ppt/embeddings/Microsoft_Excel_Worksheet1.xlsx"
+        self.native_parts(original, {name: synthetic_workbook()})
+        self.assertTrue(admission.admit_release(self.root)["ok"])
+        cases = {
+            "hidden workbook string": {"xl/sharedStrings.xml": '<sst><si><t>&#47;Users&#47;private/source.csv</t></si></sst>'},
+            "workbook metadata": {"docProps/core.xml": '<core><source>file://private/source.csv</source></core>'},
+            "workbook attribute": {"xl/workbook.xml": '<workbook source="OPENAI_API_KEY"/>'},
+            "workbook comment": {"docProps/core.xml": '<core><!-- /Users/private/source.csv --></core>'},
+            "UTF16 workbook string": {"xl/sharedStrings.xml": '<sst><si><t>/Users/private/source.csv</t></si></sst>'.encode("utf-16")},
+        }
+        for label, parts in cases.items():
+            self.native_parts(original, {name: synthetic_workbook(parts)})
+            with self.subTest(label=label), self.assertRaises(admission.AdmissionError) as raised:
+                admission.admit_release(self.root)
+            self.assertEqual(raised.exception.code, "unsafe_content")
+
+    def test_embedded_workbook_expansion_and_unsafe_archives_fail_closed(self):
+        self.manifest = add_native_pptx(self.root, self.manifest)
+        original = (self.root / "deck.pptx").read_bytes()
+        name = "ppt/embeddings/chart.xlsx"
+        for label, parts in {
+            "unsafe nested member": {"../private.xml": "<root/>"},
+            "nested workbook": {"xl/embeddings/inner.xlsx": synthetic_workbook()},
+            "opaque workbook payload": {"xl/embeddings/source.bin": b"private payload"},
+            "XML entity declaration": {"xl/sharedStrings.xml": '<!DOCTYPE sst [<!ENTITY source "safe">]><sst>&source;</sst>'},
+        }.items():
+            self.native_parts(original, {name: synthetic_workbook(parts)})
+            with self.subTest(label=label), self.assertRaises(admission.AdmissionError):
+                admission.admit_release(self.root)
+        self.native_parts(original, {"ppt/embeddings/source.bin": b"opaque unsupported payload"})
+        with self.assertRaisesRegex(admission.AdmissionError, "opaque embedded payloads"):
+            admission.admit_release(self.root)
+        workbook = synthetic_workbook({"xl/sharedStrings.xml": "<sst>" + "x" * 20000 + "</sst>"})
+        self.native_parts(original, {name: workbook})
+        with patch.object(pptx_inspection, "MAX_PART", 4096), self.assertRaisesRegex(admission.AdmissionError, "oversized"):
+            admission.admit_release(self.root)
+        with zipfile.ZipFile(self.root / "deck.pptx") as outer, zipfile.ZipFile(io.BytesIO(workbook)) as inner:
+            entries = len(outer.infolist()) + len(inner.infolist())
+            expanded = sum(info.file_size for info in (*outer.infolist(), *inner.infolist()))
+        for key, limit in (("MAX_ENTRIES", entries - 1), ("MAX_EXPANDED", expanded - 1)):
+            with self.subTest(limit=key), patch.object(pptx_inspection, key, limit), self.assertRaisesRegex(admission.AdmissionError, "cumulative"):
+                admission.admit_release(self.root)
+
+    def test_authored_native_link_requires_the_optional_companion(self):
+        path = self.root / "deck.html"
+        path.write_text(path.read_text().replace("</section>", '<a href="deck.pptx">PowerPoint</a></section>'))
+        self.rehash("deck.html")
+        for report in ("proof/report.json", "proof/pdf-report.json"):
+            self.modify_json(report, lambda value: value["source"].update(files=[row(self.root, "deck.html")]))
+        with self.assertRaisesRegex(admission.AdmissionError, "missing local asset deck.pptx"):
+            admission.admit_release(self.root)
+        self.manifest = add_native_pptx(self.root, self.manifest)
+        self.assertTrue(admission.admit_release(self.root)["ok"])
+
+    def test_arbitrary_pptx_asset_and_false_empty_declaration_are_rejected(self):
+        (self.root / "other.pptx").write_bytes(b"not an admitted companion")
+        self.rehash("other.pptx")
+        with self.assertRaisesRegex(admission.AdmissionError, "declared native deck.pptx"):
+            admission.admit_release(self.root)
+        (self.root / "other.pptx").unlink()
+        self.manifest["artifacts"] = [item for item in self.manifest["artifacts"] if item["path"] != "other.pptx"]
+        self.manifest["pptx"] = dict(admission.NATIVE_PPTX)
+        self.rewrite_manifest()
+        with self.assertRaisesRegex(admission.AdmissionError, "declared but incomplete"):
+            admission.admit_release(self.root)
+
+    def test_native_standalone_import_closure_and_missing_inspector_fail_closed(self):
+        self.manifest = add_native_pptx(self.root, self.manifest)
+        package = Path(self.tmp.name) / "native-isolated"
+        package.mkdir()
+        names = ("release_admission.py", "proof_identity.py", "validate_deck.py", "delivery_profile.mjs")
+        for name in names:
+            shutil.copy2(SCRIPTS / name, package / name)
+        args = [sys.executable, "-B", "-E", "-s", str(package / "release_admission.py"), str(self.root)]
+        result = subprocess.run(args, cwd="/", env={"PATH": os.environ["PATH"]}, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(json.loads(result.stdout)["code"], "validator_unavailable")
+        self.assertEqual(result.stderr, "")
+        shutil.copy2(SCRIPTS / "pptx_inspection.py", package / "pptx_inspection.py")
+        result = subprocess.run(args, cwd="/", env={"PATH": os.environ["PATH"]}, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertTrue(json.loads(result.stdout)["ok"])
+        self.assertEqual(result.stderr, "")
 
     def test_required_catalog_metadata_missing_empty_or_wrong_type_fails(self):
         for field in ("title", "audience", "desired_action", "visibility"):

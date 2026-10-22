@@ -1,8 +1,8 @@
 {
   "name": "deck-studio",
   "displayName": "Deck Studio",
-  "version": "0.1.2",
-  "description": "Shape, create, revise and publish audience-ready communication decks.",
+  "version": "0.2.0",
+  "description": "Shape, create, revise and publish communication decks in HTML, PDF and editable PowerPoint.",
   "icon": "./skills/deck-studio/assets/deck-studio.png",
   "author": {
     "name": "Tiziano AI",
@@ -11,5 +11,5 @@
   "homepage": "https://github.com/Tiziano-AI/deck-studio",
   "repository": "https://github.com/Tiziano-AI/deck-studio",
   "license": "MIT",
-  "keywords": ["decks", "presentations", "communication", "html", "pdf"]
+  "keywords": ["decks", "presentations", "communication", "html", "pdf", "pptx", "powerpoint"]
 }

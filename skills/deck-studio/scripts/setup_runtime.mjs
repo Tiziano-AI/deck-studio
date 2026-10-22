@@ -101,8 +101,13 @@ export async function checkRuntime(root) {
   const modules = join(realpathSync(root), "node_modules");
   const versions = {};
   for (const name of [...Object.keys(manifest.dependencies), "playwright-core"]) {
-    const path = realpathSync(require.resolve(`${name}/package.json`));
-    if (!inside(modules, path)) throw new Error(`Dependency is not package-local: ${name}`);
+    // Some upstream packages deliberately do not export package.json. Verify
+    // the installed metadata AND the actual resolved executable entry instead.
+    if (!existsSync(join(modules, name, "package.json"))) throw new Error(`Dependency is not package-local: ${name}`);
+    const packageRoot = realpathSync(join(modules, name));
+    const path = realpathSync(join(packageRoot, "package.json"));
+    const entry = realpathSync(require.resolve(name));
+    if (!inside(modules, path) || !inside(packageRoot, entry)) throw new Error(`Dependency is not package-local: ${name}`);
     const actual = JSON.parse(readFileSync(path, "utf8")).version;
     const expected = lock.packages[`node_modules/${name}`]?.version;
     if (actual !== expected) throw new Error(`Dependency version mismatch: ${name} (${actual}, expected ${expected})`);
@@ -125,7 +130,12 @@ export async function checkRuntime(root) {
   const pdf = await PDFDocument.create();
   pdf.addPage([1920, 1080]);
   await pdf.save();
-  return { ready: true, package: realpathSync(root), versions, chromium: executable, probes: { chromium: "rendered", pdf: "created" } };
+  const PptxGenJS = require("pptxgenjs");
+  const native = new PptxGenJS();
+  native.addSlide().addText("Deck Studio runtime check", { x: 1, y: 1, w: 8, h: 1 });
+  await native.write({ outputType: "nodebuffer" });
+  return { ready: true, package: realpathSync(root), versions, chromium: executable,
+    probes: { chromium: "rendered", pdf: "created", nativePptx: "created" } };
 }
 
 async function main(args) {
@@ -133,7 +143,9 @@ async function main(args) {
     console.log(`Usage: node setup_runtime.mjs --check | --install
 
 --check    Verify this package's locked local dependencies, launch its Chromium,
-           render an in-memory screenshot, and create an in-memory PDF. No downloads.
+           render an in-memory screenshot, and create in-memory PDF and editable
+           PPTX files. No downloads. Native render QA separately needs LibreOffice
+           and Poppler; check those with python3 scripts/render_pptx.py --check.
 --install  Replace this package's node_modules using npm ci (lifecycle scripts off),
            download package-local Chromium, remove dependency SKILL.md files,
            then run the same check. Requires npm and network access.

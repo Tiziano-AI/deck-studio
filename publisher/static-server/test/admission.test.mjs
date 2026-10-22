@@ -5,6 +5,7 @@ import { chmodSync, existsSync, mkdirSync, readFileSync, realpathSync, rmSync, s
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { LIBRARY_DELIVERY } from "../../../skills/deck-studio/scripts/delivery_profile.mjs";
+import { PolicyStore } from "../src/policy.mjs";
 import { fileIdentity, fixture, rewriteArtifact, writeRelease } from "./fixtures.mjs";
 
 const admission = fileURLToPath(new URL("../../../skills/deck-studio/scripts/release_admission.py", import.meta.url));
@@ -28,7 +29,7 @@ function changeReport(release, change) {
   writeJson(release, "proof/visual-review.json", review);
 }
 
-async function selectedFixture(t) {
+async function selectedFixture(t, { native = false } = {}) {
   const f = await fixture(t);
   writeRelease(f.libraryRoot, "sample", "r1");
   assert.equal((await f.api("decks/sample/publish", { release_id: "r1" })).status, 200);
@@ -38,7 +39,7 @@ async function selectedFixture(t) {
   const session = await f.login(key.secret);
   assert.equal(session.status, 303);
   const before = (await f.api("decks/sample/access")).json.data;
-  return { ...f, before, session, next: writeRelease(f.libraryRoot, "sample", "r2") };
+  return { ...f, before, session, next: writeRelease(f.libraryRoot, "sample", "r2", { native }) };
 }
 
 async function unchanged(f) {
@@ -70,6 +71,70 @@ test("gateway fixture independently passes the standalone canonical admission CL
   assert.equal(admitted.manifest_sha256, fileIdentity("deck-manifest.json", readFileSync(join(release.directory, "deck-manifest.json"))).sha256);
   assert.deepEqual(admitted.delivery_profile, LIBRARY_DELIVERY);
   assert.equal(readJson(release, "proof/visual-review.json").synthetic, true);
+});
+
+test("persisted pre-PPTX selection serves after restart but old-profile publication and reselection fail", async t => {
+  const f = await fixture(t);
+  // Actual delivery_profile.mjs bytes at the pre-PPTX owner commit
+  // 0837b4a24faf68f515ddb1dfdf9a9146bace7665, not an arbitrary stale digest.
+  // Pin the historical identity so this test does not need Git at runtime.
+  const previousProfile = { id: "decks-library", sha256: "9411c22b12ab20ca6e102b5797845b59bf437d0dce1396021015852945414e02" };
+  assert.notDeepEqual(previousProfile, LIBRARY_DELIVERY);
+  const releases = [writeRelease(f.libraryRoot, "sample", "r1"), writeRelease(f.libraryRoot, "sample", "r2")];
+  for (const release of releases) {
+    assert.equal(release.manifest.schema_version, 3);
+    assert.equal(release.manifest.pptx, undefined);
+    assert.ok(!release.manifest.artifacts.some(row => row.path.endsWith(".pptx")));
+    changeReport(release, report => { report.delivery_profile = previousProfile; });
+    const pdfReport = readJson(release, "proof/pdf-report.json");
+    pdfReport.delivery_profile = previousProfile;
+    writeJson(release, "proof/pdf-report.json", pdfReport);
+
+    // Rebound report, review and manifest hashes must remain otherwise valid;
+    // the new publication refusal must concern the destination profile alone.
+    const local = spawnSync(python, ["-B", "-E", "-s", admission, release.directory, "--target", "local"], { encoding: "utf8" });
+    assert.equal(local.status, 0, local.stdout + local.stderr);
+    assert.equal(JSON.parse(local.stdout).ok, true);
+    const library = spawnSync(python, ["-B", "-E", "-s", admission, release.directory, "--target", "library"], { encoding: "utf8" });
+    assert.equal(library.status, 1, library.stdout + library.stderr);
+    assert.equal(JSON.parse(library.stdout).code, "delivery_profile_mismatch");
+  }
+
+  await f.stop();
+  // Model already-persisted prior selection, not a bypass for new publication.
+  // The current gateway must reopen these real SQLite rows without re-admission.
+  const previousPolicy = new PolicyStore(f.policyPath, f.libraryRoot);
+  try {
+    previousPolicy.transaction(() => {
+      previousPolicy.publish("sample", "r1");
+      previousPolicy.setPublic("sample", true);
+    });
+  } finally { previousPolicy.close(); }
+  await f.start();
+  const before = (await f.api("decks/sample/access")).json.data;
+  assert.equal(before.release_id, "r1");
+  assert.equal(before.is_public, true);
+
+  async function assertSelectedStillServes() {
+    assert.deepEqual((await f.api("decks/sample/access")).json.data, before);
+    for (const path of ["deck.html", "deck.pdf", "assets/deck.css", "assets/deck.js"]) {
+      const response = await f.request(`/decks/sample/r1/${path}`);
+      assert.equal(response.status, 200, path);
+      assert.equal(response.text, readFileSync(join(releases[0].directory, path), "utf8"), path);
+    }
+    assert.equal((await f.request("/decks/sample/r2/")).status, 404);
+    const gallery = await f.request("/");
+    assert.equal(gallery.status, 200);
+    assert.ok(gallery.text.includes("/decks/sample/r1/deck.pdf"));
+    assert.ok(!gallery.text.includes("deck.pptx"));
+  }
+  await assertSelectedStillServes();
+  for (const releaseId of ["r1", "r2"]) {
+    const rejected = await f.api("decks/sample/publish", { release_id: releaseId });
+    assert.equal(rejected.status, 409, rejected.text);
+    assert.equal(rejected.json.error.code, "release_not_admitted");
+    await assertSelectedStillServes();
+  }
 });
 
 test("direct HTTP publication checks the complete proof chain even after manifest hashes are refreshed", async t => {
@@ -121,6 +186,49 @@ test("direct HTTP publication checks the complete proof chain even after manifes
   };
   for (const [name, mutate] of Object.entries(cases)) await t.test(name, async t => {
     const f = await selectedFixture(t);
+    mutate(f.next);
+    const rejected = await f.api("decks/sample/publish", { release_id: "r2" });
+    assert.equal(rejected.status, 409, rejected.text);
+    assert.equal(rejected.json.ok, false);
+    await unchanged(f);
+  });
+});
+
+test("native publication checks its independent proof chain before changing selection", async t => {
+  function changeNativeReport(release, change, { rebind = true } = {}) {
+    const report = readJson(release, "proof/pptx-report.json");
+    change(report);
+    writeJson(release, "proof/pptx-report.json", report);
+    if (rebind) {
+      const review = readJson(release, "proof/pptx-visual-review.json");
+      review.report = fileIdentity("proof/pptx-report.json", readFileSync(join(release.directory, "proof/pptx-report.json")));
+      writeJson(release, "proof/pptx-visual-review.json", review);
+    }
+  }
+  const cases = {
+    "missing native artifact": release => removeArtifact(release, "deck.pptx"),
+    "missing render report": release => removeArtifact(release, "proof/pptx-report.json"),
+    "missing native review": release => removeArtifact(release, "proof/pptx-visual-review.json"),
+    "missing bound frame": release => removeArtifact(release, "proof/pptx/slide-01.png"),
+    "changed native bytes": release => rewriteArtifact(release, "deck.pptx", Buffer.concat([readFileSync(join(release.directory, "deck.pptx")), Buffer.from("changed")])),
+    "changed native frame": release => rewriteArtifact(release, "proof/pptx/slide-01.png", Buffer.from("changed")),
+    "stale review binding": release => changeNativeReport(release, report => { report.notes = "Synthetic revision"; }, { rebind: false }),
+    "failed renderer": release => changeNativeReport(release, report => { report.ok = false; }),
+    "forged native structure": release => changeNativeReport(release, report => { report.native.totals.tables += 1; }),
+    "missing rendered slide": release => changeNativeReport(release, report => { report.slides.pop(); }),
+    "wrong frame dimensions": release => changeNativeReport(release, report => { report.slides[0].width += 1; }),
+    "wrong inspected slides": release => {
+      const review = readJson(release, "proof/pptx-visual-review.json"); review.reviewedSlides = [1, 2]; writeJson(release, "proof/pptx-visual-review.json", review);
+    },
+    "rejected native review": release => {
+      const review = readJson(release, "proof/pptx-visual-review.json"); review.verdict = "rejected"; writeJson(release, "proof/pptx-visual-review.json", review);
+    },
+    "undeclared native companion": release => { delete release.manifest.pptx; saveManifest(release); },
+    "wrong native declaration": release => { release.manifest.pptx.report = "proof/report.json"; saveManifest(release); },
+    "arbitrary PPTX asset": release => rewriteArtifact(release, "assets/hidden.pptx", "not an accepted companion"),
+  };
+  for (const [name, mutate] of Object.entries(cases)) await t.test(name, async t => {
+    const f = await selectedFixture(t, { native: true });
     mutate(f.next);
     const rejected = await f.api("decks/sample/publish", { release_id: "r2" });
     assert.equal(rejected.status, 409, rejected.text);

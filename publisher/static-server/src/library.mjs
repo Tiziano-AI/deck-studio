@@ -7,6 +7,7 @@ import { GatewayError, identifier } from "./policy.mjs";
 import { artifactPath, audienceArtifact, presentationType, presentationBase, LIBRARY_DELIVERY } from "../../../skills/deck-studio/scripts/delivery_profile.mjs";
 
 const ADMISSION = fileURLToPath(new URL("../../../skills/deck-studio/scripts/release_admission.py", import.meta.url));
+const PPTX = Object.freeze({ artifact: "deck.pptx", report: "proof/pptx-report.json", review: "proof/pptx-visual-review.json" });
 
 function within(root, path) {
   const rest = relative(root, path);
@@ -100,6 +101,13 @@ export class ArtifactLibrary {
       artifacts.set(row.path, row);
     }
     if (!artifacts.has("deck.html") || !artifacts.has("deck.pdf")) throw new GatewayError("invalid_release", "Release requires deck.html and deck.pdf.", 409);
+    const hasPptx = artifacts.has("deck.pptx");
+    const declaredPptx = manifest.pptx && typeof manifest.pptx === "object" && !Array.isArray(manifest.pptx) &&
+      Object.keys(manifest.pptx).length === Object.keys(PPTX).length && Object.entries(PPTX).every(([key, value]) => manifest.pptx[key] === value);
+    if ([...artifacts.keys()].some(path => path.toLowerCase().endsWith(".pptx") && path !== "deck.pptx") ||
+      ((hasPptx || manifest.pptx !== undefined) && (manifest.schema_version !== 3 || !declaredPptx || !Object.values(PPTX).every(path => artifacts.has(path))))) {
+      throw new GatewayError("invalid_release", "Native PPTX requires its complete declared artifact and proof contract.", 409);
+    }
     return { manifest, prefix, artifacts };
   }
 
@@ -150,7 +158,8 @@ export class ArtifactLibrary {
     const base = presentationBase(deck.deck_id, deck.release_id);
     const cover = [...release.artifacts.keys()].find(path => /^cover\.(png|webp|jpe?g|avif)$/i.test(path));
     return { deck_id: deck.deck_id, title: release.manifest.title, slide_count: release.manifest.slide_count,
-      html: base, pdf: `${base}deck.pdf`, cover: cover ? `${base}${cover}` : null };
+      html: base, pdf: `${base}deck.pdf`, pptx: release.artifacts.has("deck.pptx") ? `${base}deck.pptx` : null,
+      cover: cover ? `${base}${cover}` : null };
   }
 
   openArtifact(deckId, releaseId, path, management = false) {
@@ -162,7 +171,8 @@ export class ArtifactLibrary {
       closeSync(file.fd);
       throw new GatewayError("invalid_release", "Artifact bytes differ from their immutable manifest.", 503);
     }
-    return { ...file, contentType: presentationType(path) ?? "application/octet-stream" };
+    return { ...file, contentType: presentationType(path) ?? "application/octet-stream",
+      downloadName: path === "deck.pptx" ? "deck.pptx" : null };
   }
 
   listReleases() {

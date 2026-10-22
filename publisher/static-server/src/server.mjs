@@ -91,7 +91,8 @@ function html(response, status, value, headers = {}) {
 }
 
 function stream(response, file, head = false, headers = {}) {
-  response.writeHead(200, { "content-type": file.contentType, "content-length": file.size, ...headers });
+  response.writeHead(200, { "content-type": file.contentType, "content-length": file.size,
+    ...(file.downloadName === "deck.pptx" ? { "content-disposition": 'attachment; filename="deck.pptx"' } : {}), ...headers });
   const source = createReadStream(null, { fd: file.fd, autoClose: true });
   source.on("error", () => response.destroy());
   if (head) { source.destroy(); response.end(); }

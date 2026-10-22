@@ -3,6 +3,8 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { once } from "node:events";
+import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
 import { createGateway } from "../src/server.mjs";
 import { initializePolicy } from "../src/policy.mjs";
 import { LIBRARY_DELIVERY } from "../../../skills/deck-studio/scripts/delivery_profile.mjs";
@@ -25,7 +27,7 @@ export function rewriteArtifact(release, path, value) {
   writeFileSync(join(release.directory, "deck-manifest.json"), JSON.stringify(release.manifest));
 }
 
-export function writeRelease(root, deckId, releaseId = "r1", { schema = 3, title = `Title-${deckId}` } = {}) {
+export function writeRelease(root, deckId, releaseId = "r1", { schema = 3, title = `Title-${deckId}`, native = false } = {}) {
   const directory = join(root, "decks", deckId, releaseId);
   mkdirSync(join(directory, "assets"), { recursive: true });
   mkdirSync(join(directory, "proof", "screenshots"), { recursive: true });
@@ -68,6 +70,14 @@ export function writeRelease(root, deckId, releaseId = "r1", { schema = 3, title
     audience, desired_action: desiredAction, source: { generator: "deck-studio", decks_commit: "0".repeat(40),
       brief_sha256: createHash("sha256").update(`${title}\n${audience}\n${desiredAction}\n`).digest("hex"), private_lineage: "do-not-show-viewers" } };
   writeFileSync(join(directory, "deck-manifest.json"), JSON.stringify(manifest));
+  if (native) {
+    // The shared stdlib fixture creates real native XML structures and explicit
+    // synthetic receipts, not a claim that LibreOffice ran or a reviewer looked.
+    const helper = fileURLToPath(new URL("../../../scripts/native_pptx_test_fixture.py", import.meta.url));
+    const made = spawnSync(process.env.DECKS_TEST_PYTHON ?? "python3", ["-B", helper, directory], { encoding: "utf8" });
+    if (made.status !== 0) throw new Error(`Native fixture failed: ${made.stdout}${made.stderr}`);
+    return { directory, manifest: JSON.parse(readFileSync(join(directory, "deck-manifest.json"), "utf8")) };
+  }
   return { directory, manifest };
 }
 

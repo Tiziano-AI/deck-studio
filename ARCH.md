@@ -4,7 +4,8 @@
 
 - `skills/deck-studio`: proportional communication discovery, semantic source,
   visual composition, 56 systems, 1920×1080 HTML runtime, render inspection and
-  screenshot PDF. Its doctrine copy is byte-identical to root `DECKS.md`.
+  screenshot PDF, plus native editable PowerPoint authoring and inspection.
+  Its doctrine copy is byte-identical to root `DECKS.md`.
 - `scripts/package_deck_release.py`: immutable byte-bound bundles and the
   operator catalog in an explicitly selected library.
 - `skills/deck-studio/scripts/release_admission.py`: the single read-only
@@ -22,6 +23,10 @@ One implementation serves local production and optional hosting. The plugin
 does not need an MCP server, a hosted account or a second publishing engine.
 Native plugin installation owns discovery; explicit runtime setup installs only
 locked dependencies and hermetic Chromium inside the selected skill package.
+The native producer uses that package's pinned PptxGenJS, not a host-private
+artifact SDK or a second slide DSL. Its author module calls the upstream API
+directly. Rendering uses available LibreOffice and Poppler with an isolated
+profile; setup does not install these system applications.
 
 ## Intake/render boundary
 
@@ -36,14 +41,21 @@ Internal proof limits, production status and drafting guardrails stay backstage.
 Audience-needed limitations stay attached to their claims in the audience's
 language. Templates aid composition; they do not decide the story. Other formats
 route to their proper artifact capability with the semantic source intact.
+Native PowerPoint stays here: format-specific compositions consume the same
+approved meaning source. There is no universal HTML/CSS converter or arbitrary
+PPTX importer. Native text, tables, charts and diagrams retain the structures
+needed for editing; exported PPTX bytes get separate render and visual review.
 
 ## Release bytes and policy are different owners
 
 An external library has `decks/<deck_id>/<release_id>/` folders containing
-`deck.html`, `deck.pdf`, `deck-manifest.json`, local presentation resources and
+`deck.html`, `deck.pdf`, optional `deck.pptx`, `deck-manifest.json`, local presentation resources and
 `proof/`. New manifests use schema v3; render, review and PDF records bind exact
 bytes. A dedicated `cover.png` may copy the already-bound first-slide screenshot
 byte for byte. Audience delivery never exposes `proof/` to obtain a cover.
+The optional native companion has an explicit manifest field and separate
+byte-bound native inspection/render/review. It cannot enter as an unreviewed
+generic HTML asset. Native source modules remain at the authoring owner.
 
 Library capture mounts the bundle at `/decks/qa/candidate/`, applies that same
 delivery profile, and records its identity in render v3 and PDF v2 reports
@@ -55,7 +67,8 @@ of arbitrary JavaScript. Relative modules or inline data replace JSON fetches;
 no new data-fetch permission is granted.
 
 The admission core is stdlib-only. Its standalone import closure is
-`release_admission.py`, `proof_identity.py`, `validate_deck.py` and the profile
+`release_admission.py`, `proof_identity.py`, `validate_deck.py`,
+`pptx_inspection.py` and the profile
 module read as bytes. The gateway asynchronously runs that fixed core without
 a shell, with a minimal token-free environment, bounded concurrency, output
 and process lifetime. It matches returned release/manifest/profile identities
@@ -105,7 +118,7 @@ used as a viewer key. Key issue/rotation returns the secret once; list and
 diagnostics never return it. An uncertain issue result must be resolved by key
 listing and explicit rotation/revocation, not blind reissuance.
 
-Authorization is evaluated on every HTML, PDF, cover, font, image and other
+Authorization is evaluated on every HTML, PDF, PPTX, cover, font, image and other
 presentation-resource request, including already-open viewer sessions. Revoking
 a key or removing an assignment takes effect without waiting for session expiry.
 Only the current release is audience-readable. Old releases, the full catalog,

@@ -24,6 +24,7 @@ sys.path.insert(0, str(ROOT / "skills/deck-studio/scripts"))
 import release_admission as admission
 import release_store as store
 from test_release_admission import make_release, write_json
+from native_pptx_test_fixture import add_native_pptx
 
 
 def load_packager():
@@ -100,15 +101,38 @@ class AtomicPackagingTests(unittest.TestCase):
     def test_destination_cli_works_without_checkout_browser_git_or_producer(self):
         runtime = self.root / "runtime"
         runtime.mkdir()
-        for name in ("release_store.py", "release_admission.py", "proof_identity.py", "validate_deck.py", "delivery_profile.mjs"):
+        for name in ("release_store.py", "release_admission.py", "proof_identity.py", "pptx_inspection.py", "validate_deck.py", "delivery_profile.mjs"):
             shutil.copy2(ROOT / "skills/deck-studio/scripts" / name, runtime / name)
-        candidate, _ = self.stage()
+        candidate, manifest = self.stage()
+        add_native_pptx(candidate, manifest)
         result = subprocess.run([sys.executable, "-B", str(runtime / "release_store.py"), "promote", str(candidate),
                                  "--library-root", str(self.library), "--deck-id", "fixture", "--release-id", "r1"],
                                 cwd="/", env={"PATH": os.environ["PATH"]}, capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertEqual(json.loads(result.stdout)["status"], "promoted")
         self.assertEqual(result.stderr, "")
+
+    def test_optional_native_pptx_is_packaged_with_exact_proof_and_no_author_source(self):
+        add_native_pptx(self.source)
+        (self.source / "author.mjs").write_text("private authoring module, never release material")
+        first = self.package()
+        release = self.library / "decks/fixture/r1"
+        self.assertTrue(admission.admit_release(release)["ok"])
+        manifest = json.loads((release / "deck-manifest.json").read_text())
+        self.assertEqual(manifest["pptx"], admission.NATIVE_PPTX)
+        for name in ("deck.pptx", "proof/pptx-report.json", "proof/pptx-visual-review.json", "proof/pptx/slide-01.png"):
+            self.assertEqual((release / name).read_bytes(), (self.source / name).read_bytes())
+        self.assertFalse((release / "author.mjs").exists())
+        before = {p.relative_to(release): (p.read_bytes(), p.stat().st_ino) for p in release.rglob("*") if p.is_file()}
+        self.assertEqual(self.package(), first)
+        self.assertEqual(before, {p.relative_to(release): (p.read_bytes(), p.stat().st_ino) for p in release.rglob("*") if p.is_file()})
+
+    def test_native_proof_failure_never_promotes_partial_release(self):
+        add_native_pptx(self.source)
+        (self.source / "proof/pptx/slide-01.png").write_bytes(b"changed")
+        with self.assertRaises(SystemExit):
+            self.package()
+        self.assertFalse((self.library / "decks/fixture/r1").exists())
 
     def test_identical_semantic_retry_does_not_rewrite_immutable_bytes(self):
         first, manifest = self.stage("first")

@@ -78,6 +78,58 @@ test("anonymous, North, South, owner and management have distinct real HTTP acce
   assert.equal(readFileSync(f.policyPath).includes(Buffer.from(north.secret)), false);
 });
 
+test("native PPTX downloads preserve exact bytes and the selected deck's audience policy", async t => {
+  const f = await fixture(t);
+  const native = writeRelease(f.libraryRoot, "native", "r1", { native: true });
+  writeRelease(f.libraryRoot, "unselected-native", "r1", { native: true });
+  writeRelease(f.libraryRoot, "without-native", "r1");
+  assert.equal((await f.api("decks/native/publish", { release_id: "r1" })).status, 200);
+  assert.equal((await f.api("decks/without-native/publish", { release_id: "r1" })).status, 200);
+  const allowed = (await f.api("keys", { label: "Native assigned", scope: "collection" })).json.data;
+  const wrong = (await f.api("keys", { label: "Not assigned", scope: "collection" })).json.data;
+  await f.api("decks/native/grant", { key_id: allowed.key_id });
+  const member = await f.login(allowed.secret);
+  const outsider = await f.login(wrong.secret);
+  const path = "/decks/native/r1/deck.pptx";
+  assert.equal((await f.request(path)).status, 401);
+  assert.equal((await f.request(path, { cookie: outsider.cookie })).status, 403);
+  const download = await fetch(`${f.base}${path}`, { headers: { cookie: member.cookie }, redirect: "manual" });
+  assert.equal(download.status, 200);
+  assert.equal(download.headers.get("content-type"), "application/vnd.openxmlformats-officedocument.presentationml.presentation");
+  assert.equal(download.headers.get("content-disposition"), 'attachment; filename="deck.pptx"');
+  assert.deepEqual(Buffer.from(await download.arrayBuffer()), readFileSync(join(native.directory, "deck.pptx")));
+  const gallery = await f.request("/collection", { cookie: member.cookie });
+  assert.match(gallery.text, /href="\/decks\/native\/r1\/deck.pptx" download/);
+  for (const cookie of [undefined, member.cookie, outsider.cookie]) {
+    for (const leaf of ["proof/pptx-report.json", "proof/pptx-visual-review.json", "proof/pptx/slide-01.png"]) {
+      assert.equal((await f.request(`/decks/native/r1/${leaf}`, { cookie })).status, 404, leaf);
+    }
+    for (const source of ["author.mjs", "SOURCE.md"]) {
+      assert.ok([401, 403, 404].includes((await f.request(`/decks/native/r1/${source}`, { cookie })).status));
+    }
+    assert.equal((await f.request("/decks/unselected-native/r1/deck.pptx", { cookie })).status, 404);
+  }
+  await f.api("decks/native/public", { public: true });
+  await f.api("decks/without-native/public", { public: true });
+  assert.equal((await f.request(path)).status, 200);
+  const publicGallery = await f.request("/");
+  assert.match(publicGallery.text, /\/decks\/native\/r1\/deck.pptx/);
+  assert.doesNotMatch(publicGallery.text, /\/decks\/without-native\/r1\/deck.pptx/);
+  assert.equal((await f.request("/decks/without-native/r1/deck.pptx")).status, 404);
+  writeRelease(f.libraryRoot, "native", "r2", { native: true });
+  assert.equal((await f.api("decks/native/publish", { release_id: "r2" })).status, 200);
+  for (const cookie of [undefined, member.cookie]) assert.equal((await f.request(path, { cookie })).status, 404);
+  await f.api("decks/native/public", { public: false });
+  assert.equal((await f.request("/decks/native/r2/deck.pptx")).status, 401);
+  await f.api("decks/native/revoke", { key_id: allowed.key_id });
+  assert.equal((await f.request("/decks/native/r2/deck.pptx", { cookie: member.cookie })).status, 403);
+  const current = join(f.libraryRoot, "decks/native/r2/deck.pptx");
+  const changed = readFileSync(current);
+  changed[changed.length - 1] ^= 1;
+  writeFileSync(current, changed);
+  assert.equal((await f.request("/decks/native/r2/deck.pptx", { headers: { authorization: `Bearer ${f.managementToken}` } })).status, 503);
+});
+
 test("fresh authorization covers assignment removal, key rotation/revocation and public reversal", async t => {
   const f = await fixture(t);
   const { north } = await seed(f);

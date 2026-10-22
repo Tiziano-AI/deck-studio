@@ -1,6 +1,6 @@
 interface:
   display_name: "Deck Studio"
-  short_description: "Create, revise and publish communication decks"
+  short_description: "Create HTML, PDF and editable PowerPoint decks"
   icon_small: "./assets/deck-studio.svg"
   icon_large: "./assets/deck-studio.png"
   brand_color: "#2D526D"

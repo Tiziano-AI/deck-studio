@@ -92,6 +92,7 @@ function shell({ site = {}, authenticated = false, csrf = '', page, title, body 
 function deckCard(deck, index) {
   const html = resourcePath(deck.html);
   const pdf = resourcePath(deck.pdf);
+  const pptx = resourcePath(deck.pptx);
   const cover = resourcePath(deck.cover);
   const title = escapeHtml(deck.title || 'Untitled deck');
   const slides = Number.isSafeInteger(deck.slide_count) && deck.slide_count > 0
@@ -103,7 +104,11 @@ function deckCard(deck, index) {
   const visual = html
     ? `<a class="cover" href="${escapeHtml(html)}" aria-label="${escapeHtml(openLabel)}">${image}<span class="open-arrow">${icon('arrow')}</span></a>`
     : `<div class="cover">${image}</div>`;
-  return `<li class="deck"><article>${visual}<div class="deck-copy"><div class="deck-meta">${slides ? `<span>${slides}</span>` : '<span></span>'}${pdf ? `<a href="${escapeHtml(pdf)}" aria-label="${escapeHtml(`PDF: ${deck.title || 'Untitled deck'}`)}">PDF ${icon('arrow')}</a>` : ''}</div><h2>${html ? `<a href="${escapeHtml(html)}">${title}</a>` : title}</h2></div></article></li>`;
+  const downloads = [
+    pdf ? `<a href="${escapeHtml(pdf)}" aria-label="${escapeHtml(`PDF: ${deck.title || 'Untitled deck'}`)}">PDF ${icon('arrow')}</a>` : '',
+    pptx ? `<a href="${escapeHtml(pptx)}" download aria-label="${escapeHtml(`PowerPoint: ${deck.title || 'Untitled deck'}`)}">PPTX ${icon('arrow')}</a>` : '',
+  ].filter(Boolean).join('');
+  return `<li class="deck"><article>${visual}<div class="deck-copy"><div class="deck-meta">${slides ? `<span>${slides}</span>` : '<span></span>'}<span class="deck-downloads">${downloads}</span></div><h2>${html ? `<a href="${escapeHtml(html)}">${title}</a>` : title}</h2></div></article></li>`;
 }
 
 export function renderGallery({ decks = [], collection = null, authenticated = false, site = {}, error = '', returnTo = '', csrf = '' } = {}) {

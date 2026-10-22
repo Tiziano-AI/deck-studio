@@ -16,6 +16,7 @@ COPY publisher/static-server/src/ publisher/static-server/src/
 COPY publisher/static-server/ui/ publisher/static-server/ui/
 COPY skills/deck-studio/scripts/release_admission.py \
      skills/deck-studio/scripts/proof_identity.py \
+     skills/deck-studio/scripts/pptx_inspection.py \
      skills/deck-studio/scripts/validate_deck.py \
      skills/deck-studio/scripts/release_store.py \
      skills/deck-studio/scripts/delivery_profile.mjs \
