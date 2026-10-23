@@ -7,7 +7,7 @@ is complete without this deployment. Building or pushing source deploys nothing.
 
 ## Image and build context
 
-The Dockerfile contains Node 24 (at least 24.21), Python 3 with its standard
+The Dockerfile contains Node 24 (at least 24.22.1), Python 3 with its standard
 library, gateway/UI source, the canonical admission modules and the shared
 delivery profile. Python verifies proof produced elsewhere; the server does not
 render or perform visual review. There is no npm dependency installation,

@@ -24,10 +24,12 @@ does not require npm publication.
 ## Requirements
 
 Local authoring needs a host with native plugin support and a local executor,
-Node.js 20+, npm, Python 3.9+ and write access to the selected plugin package.
+Node.js 24.22.1+, npm, Python 3.9+ and write access to the selected plugin package.
 Git-based installation also needs Git and access to the catalog
 and product repositories. Explicit runtime preparation downloads the locked npm
 dependencies and Chromium. No API key, hosted account or gateway is required.
+This release is qualified on Node.js 24.22.1; later major runtimes are not
+independently qualified. Setup refuses an older runtime before installing.
 
 The HTML PDF producer renders slides as images. Native PowerPoint generation
 uses locked PptxGenJS in the same package, without an OpenAI-only artifact runtime
@@ -95,6 +97,13 @@ Playwright Chromium inside the selected package. It does not borrow another
 installation's Playwright or browser cache. The plugin root is dependency-free;
 the producer's manifest and lockfile live in `skills/deck-studio`.
 
+The producer locks Playwright, pdf-lib and PptxGenJS. Its scoped npm override
+keeps PptxGenJS 4.0.1 while replacing that release's `image-size` 1.x dependency
+with 2.0.4, which includes the fixes for GHSA-5p2g-fcmc-qvqq and
+GHSA-w3rx-r6r6-pgpr. PptxGenJS's published JavaScript does not call that helper;
+native image embedding is nevertheless covered by the producer integration test.
+Reassess the override when PptxGenJS updates its own dependency declaration.
+
 `--check` validates the locked dependencies and package-local browser, launches
 Chromium, renders a probe and creates an in-memory PDF. It does not check Python
 availability; verify Python 3.9+ separately. Setup does not install or copy global
@@ -157,7 +166,7 @@ then check discovery in a new chat. Already-open chats may retain older guidance
 
 ## Optional gateway
 
-Self-hosting additionally requires Node.js 24.x at least 24.21, Python 3.9+, an
+Self-hosting additionally requires Node.js 24.x at least 24.22.1, Python 3.9+, an
 explicit external artifact library, a separate SQLite policy path and an
 independent management bearer. Production needs HTTPS, durable storage and one
 gateway writer. Plugin setup does not prepare these destinations or grant audience

@@ -18,6 +18,13 @@ function inside(root, path) {
   return value !== ".." && !value.startsWith(`..${sep}`) && !isAbsolute(value);
 }
 
+export function requireSupportedNode(version = process.versions.node) {
+  const parts = /^(\d+)\.(\d+)\.(\d+)$/.exec(version)?.slice(1).map(Number);
+  if (!parts || parts[0] < 24 || (parts[0] === 24 && (parts[1] < 22 || (parts[1] === 22 && parts[2] < 1)))) {
+    throw new Error(`Node.js 24.22.1 or newer is required (found ${version})`);
+  }
+}
+
 export function packageConfiguration(root) {
   const manifest = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
   const lock = JSON.parse(readFileSync(join(root, "package-lock.json"), "utf8"));
@@ -35,7 +42,7 @@ export function packageConfiguration(root) {
       throw new Error(`Dependency must have an exact matching lock: ${name}`);
     }
   }
-  if (Number(process.versions.node.split(".")[0]) < 20) throw new Error("Node.js 20 or newer is required");
+  requireSupportedNode();
   const modules = join(root, "node_modules");
   let entry;
   try { entry = lstatSync(modules); } catch (error) { if (error.code !== "ENOENT") throw error; }

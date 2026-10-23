@@ -6,7 +6,7 @@ import { spawnSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { bundledSkillFiles, checkRuntime, installRuntime, packageConfiguration, pruneBundledSkillFiles } from "../skills/deck-studio/scripts/setup_runtime.mjs";
+import { bundledSkillFiles, checkRuntime, installRuntime, packageConfiguration, pruneBundledSkillFiles, requireSupportedNode } from "../skills/deck-studio/scripts/setup_runtime.mjs";
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const setup = join(repo, "skills/deck-studio/scripts/setup_runtime.mjs");
@@ -31,6 +31,31 @@ function dependencySkill(root) {
   writeFileSync(join(dir, "index.js"), "runtime code");
   return dir;
 }
+
+test("the security runtime floor rejects older and prerelease versions at the patch boundary", () => {
+  for (const version of ["20.20.2", "22.22.0", "24.21.9", "24.22.0", "24.22.1-rc.1"]) {
+    assert.throws(() => requireSupportedNode(version), /Node.js 24\.22\.1 or newer is required/);
+  }
+  for (const version of ["24.22.1", "24.22.2", "24.23.0", "26.0.0"]) {
+    // The floor is not an exact patch pin or a qualification of later majors.
+    assert.doesNotThrow(() => requireSupportedNode(version));
+  }
+});
+
+test("an older-runtime fixture refuses setup before installing any dependency", (t) => {
+  const { root } = fixture(t);
+  const descriptor = Object.getOwnPropertyDescriptor(process.versions, "node");
+  let called = false;
+  try {
+    // Exercise the real setup gate on this executable, not an installed old Node.
+    Object.defineProperty(process.versions, "node", { ...descriptor, value: "24.22.0" });
+    assert.throws(() => installRuntime(root, () => { called = true; }), /found 24\.22\.0/);
+  } finally {
+    Object.defineProperty(process.versions, "node", descriptor);
+  }
+  assert.equal(called, false);
+  assert.equal(existsSync(join(root, "node_modules")), false);
+});
 
 test("configuration requires a matching package lock before any install effect", (t) => {
   const { root, lock } = fixture(t);

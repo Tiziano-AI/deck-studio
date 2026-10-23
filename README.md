@@ -51,7 +51,7 @@ See [Installation and distribution](docs/DISTRIBUTION.md) for package discovery,
 updates and removal. Installation does not start a service, publish a deck or
 create a hosted account.
 
-Local production requires a local executor, Node.js 20+, npm and Python 3.9+.
+Local production requires a local executor, Node.js 24.22.1+, npm and Python 3.9+.
 Resolve the installed package from the host, then run from its
 `skills/deck-studio` directory, or the same directory in a source checkout:
 
@@ -115,7 +115,7 @@ selected decks but cannot administer them. Viewer keys are bearer secrets, not
 verified identities: recipients can forward them, and revocation cannot recall
 downloaded copies.
 
-Self-hosting requires **Node.js 24.x, at least 24.21, and Python 3.9+**, an
+Self-hosting requires **Node.js 24.x, at least 24.22.1, and Python 3.9+**, an
 external artifact library, a separate SQLite policy file and an independent
 management bearer. Production also needs HTTPS, durable storage and a single
 gateway writer. Only trusted operators may publish: deck HTML is active

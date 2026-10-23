@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { chmodSync, existsSync, mkdirSync, readFileSync, realpathSync, rmSync, symlinkSync, unlinkSync, watch, writeFileSync } from "node:fs";
+import { chmodSync, existsSync, mkdirSync, readFileSync, realpathSync, rmSync, symlinkSync, unlinkSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { LIBRARY_DELIVERY } from "../../../skills/deck-studio/scripts/delivery_profile.mjs";
@@ -353,11 +353,17 @@ const timer = setInterval(() => {
   let outcomes;
   try {
     await new Promise((resolve, reject) => {
-      const watcher = watch(f.directory, check);
-      const timeout = setTimeout(() => { watcher.close(); reject(new Error("Admission children did not reach the controlled fixture boundary")); }, 10000);
+      // Directory watch events can be coalesced or omitted even after both
+      // children wrote their PIDs. Observe the barrier itself, not its notifier.
+      const poll = setInterval(check, 10);
+      const timeout = setTimeout(() => {
+        clearInterval(poll);
+        const observed = existsSync(started) ? readFileSync(started, "utf8") : "missing";
+        reject(new Error(`Admission children did not reach the controlled fixture boundary (${JSON.stringify(observed)})`));
+      }, 10000);
       function check() {
         if (existsSync(started) && readFileSync(started, "utf8").trim().split("\n").length === 2) {
-          clearTimeout(timeout); watcher.close(); resolve();
+          clearTimeout(timeout); clearInterval(poll); resolve();
         }
       }
       check();

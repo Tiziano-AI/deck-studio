@@ -61,7 +61,7 @@ gateway policy. Releases are immutable: changed bytes require a new release id.
 
 ## Initialize a new gateway
 
-Requires Node.js 24.x (24.21+) and Python 3.9+. Use a persistent library and SQLite file **outside**
+Requires Node.js 24.x (24.22.1+) and Python 3.9+. Use a persistent library and SQLite file **outside**
 that library. Initialization creates an empty policy; it does not expose any
 existing release. Never initialize over an existing or damaged policy as a repair.
 

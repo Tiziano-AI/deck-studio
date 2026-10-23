@@ -153,6 +153,27 @@ class NativeProducerIntegrationTests(unittest.TestCase):
         self.assertEqual(native["rasterOnlySlides"], [])
         self.assertEqual(native["totals"]["pictures"], 0)
 
+    def test_native_image_export_embeds_original_png_bytes(self):
+        image = SKILL / "assets/deck-studio.png"
+        author = self.root / "image-deck.mjs"
+        author.write_text("export default function build(pptx) {\n"
+                          "  pptx.layout = 'LAYOUT_WIDE';\n"
+                          "  const slide = pptx.addSlide();\n"
+                          "  slide.addText('An editable title with an embedded image', "
+                          "{x: 0.7, y: 0.7, w: 11.9, h: 0.8, fontFace: 'Arial', fontSize: 28});\n"
+                          f"  slide.addImage({{path: {json.dumps(str(image))}, x: 0.7, y: 2, w: 3, h: 3}});\n"
+                          "}\n")
+        output = self.root / "image-deck.pptx"
+        self.command(shutil.which("node") or "node", str(SCRIPTS / "build_pptx.mjs"), str(author), str(output))
+        native = inspection.inspect_pptx(output, 1)
+        self.assertEqual(native["totals"]["pictures"], 1)
+        self.assertEqual(native["totals"]["textShapes"], 1)
+        self.assertEqual(native["rasterOnlySlides"], [])
+        with zipfile.ZipFile(output) as archive:
+            pictures = [name for name in archive.namelist() if name.startswith("ppt/media/") and name.endswith(".png")]
+            self.assertEqual(len(pictures), 1)
+            self.assertEqual(archive.read(pictures[0]), image.read_bytes())
+
     @unittest.skipUnless(os.environ.get("DECKS_TEST_NATIVE_RENDER") == "1", "set DECKS_TEST_NATIVE_RENDER=1 for actual LibreOffice/Poppler rendering")
     def test_real_render_binds_artifact_and_every_native_slide(self):
         output = self.root / "deck.pptx"

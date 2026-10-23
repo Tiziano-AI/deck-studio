@@ -1,12 +1,17 @@
 {
   "name": "@tiziano-ai/deck-studio",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": { "node": ">=24.22.1" },
   "dependencies": {
     "pdf-lib": "1.17.1",
-    "playwright": "1.61.1",
+    "playwright": "1.64.1",
     "pptxgenjs": "4.0.1"
+  },
+  "overrides": {
+    "pptxgenjs": {
+      "image-size": "2.0.4"
+    }
   }
 }

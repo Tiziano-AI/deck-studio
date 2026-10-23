@@ -30,7 +30,7 @@ ENV NODE_ENV=production \
     PYTHONDONTWRITEBYTECODE=1
 
 # No dependency install, browser, producer, library, policy or secret enters here.
-RUN node --input-type=module -e 'const [major, minor] = process.versions.node.split(".").map(Number); if (major !== 24 || minor < 21) throw new Error("Node >=24.21 <25 required"); await import("./publisher/static-server/src/server.mjs");' \
+RUN node --input-type=module -e 'const [major, minor, patch] = process.versions.node.split(".").map(Number); if (major !== 24 || minor < 22 || (minor === 22 && patch < 1)) throw new Error("Node >=24.22.1 <25 required"); await import("./publisher/static-server/src/server.mjs");' \
     && python3 -c 'import sys; sys.path.insert(0, "/app/skills/deck-studio/scripts"); import release_admission, release_store'
 
 USER node
