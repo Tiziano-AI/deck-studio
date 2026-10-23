@@ -1,6 +1,7 @@
 # PDF export
 
-PDF export is optional and screenshot-based. It captures the rendered browser
+PDF is part of every ordinary Decks delivery. Its export is screenshot-based:
+it captures the rendered browser
 state for each slide and embeds the screenshots into a PDF so the PDF matches
 the HTML deck's visual surface. Text is rasterized, not selectable, searchable
 or semantically accessible. This is not editable slide output. If the user's

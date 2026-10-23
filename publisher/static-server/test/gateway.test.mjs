@@ -82,9 +82,11 @@ test("native PPTX downloads preserve exact bytes and the selected deck's audienc
   const f = await fixture(t);
   const native = writeRelease(f.libraryRoot, "native", "r1", { native: true });
   writeRelease(f.libraryRoot, "unselected-native", "r1", { native: true });
-  writeRelease(f.libraryRoot, "without-native", "r1");
+  writeRelease(f.libraryRoot, "without-native", "r1", { native: false });
   assert.equal((await f.api("decks/native/publish", { release_id: "r1" })).status, 200);
-  assert.equal((await f.api("decks/without-native/publish", { release_id: "r1" })).status, 200);
+  const incomplete = await f.api("decks/without-native/publish", { release_id: "r1" });
+  assert.equal(incomplete.status, 409);
+  assert.equal(incomplete.json.error.code, "release_not_admitted");
   const allowed = (await f.api("keys", { label: "Native assigned", scope: "collection" })).json.data;
   const wrong = (await f.api("keys", { label: "Not assigned", scope: "collection" })).json.data;
   await f.api("decks/native/grant", { key_id: allowed.key_id });
@@ -110,7 +112,6 @@ test("native PPTX downloads preserve exact bytes and the selected deck's audienc
     assert.equal((await f.request("/decks/unselected-native/r1/deck.pptx", { cookie })).status, 404);
   }
   await f.api("decks/native/public", { public: true });
-  await f.api("decks/without-native/public", { public: true });
   assert.equal((await f.request(path)).status, 200);
   const publicGallery = await f.request("/");
   assert.match(publicGallery.text, /\/decks\/native\/r1\/deck.pptx/);

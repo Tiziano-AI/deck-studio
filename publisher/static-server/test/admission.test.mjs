@@ -29,7 +29,7 @@ function changeReport(release, change) {
   writeJson(release, "proof/visual-review.json", review);
 }
 
-async function selectedFixture(t, { native = false } = {}) {
+async function selectedFixture(t, { native = true } = {}) {
   const f = await fixture(t);
   writeRelease(f.libraryRoot, "sample", "r1");
   assert.equal((await f.api("decks/sample/publish", { release_id: "r1" })).status, 200);
@@ -73,6 +73,33 @@ test("gateway fixture independently passes the standalone canonical admission CL
   assert.equal(readJson(release, "proof/visual-review.json").synthetic, true);
 });
 
+test("current-profile HTML/PDF history stays readable but cannot be newly selected", async t => {
+  const f = await fixture(t);
+  const release = writeRelease(f.libraryRoot, "historical", "r1", { native: false });
+  const check = spawnSync(python, ["-B", "-E", "-s", admission, release.directory, "--target", "library"], { encoding: "utf8" });
+  assert.equal(check.status, 1, check.stdout + check.stderr);
+  assert.equal(JSON.parse(check.stdout).code, "missing_deliverable");
+  assert.equal((await f.api("decks/historical/publish", { release_id: "r1" })).status, 409);
+  assert.deepEqual((await f.api("decks")).json.data.decks, []);
+  await f.stop();
+  // Persisted prior selection is historical state, not new-publication authority.
+  const policy = new PolicyStore(f.policyPath, f.libraryRoot);
+  try {
+    policy.transaction(() => {
+      policy.publish("historical", "r1");
+      policy.setPublic("historical", true);
+    });
+  } finally { policy.close(); }
+  await f.start();
+  assert.equal((await f.request("/decks/historical/r1/")).status, 200);
+  assert.equal((await f.request("/decks/historical/r1/deck.pdf")).status, 200);
+  assert.equal((await f.request("/decks/historical/r1/deck.pptx")).status, 404);
+  const before = (await f.api("decks/historical/access")).json.data;
+  assert.equal((await f.api("decks/historical/publish", { release_id: "r1" })).status, 409);
+  assert.deepEqual((await f.api("decks/historical/access")).json.data, before);
+  assert.equal((await f.request("/decks/historical/r1/")).status, 200);
+});
+
 test("persisted pre-PPTX selection serves after restart but old-profile publication and reselection fail", async t => {
   const f = await fixture(t);
   // Actual delivery_profile.mjs bytes at the pre-PPTX owner commit
@@ -80,7 +107,7 @@ test("persisted pre-PPTX selection serves after restart but old-profile publicat
   // Pin the historical identity so this test does not need Git at runtime.
   const previousProfile = { id: "decks-library", sha256: "9411c22b12ab20ca6e102b5797845b59bf437d0dce1396021015852945414e02" };
   assert.notDeepEqual(previousProfile, LIBRARY_DELIVERY);
-  const releases = [writeRelease(f.libraryRoot, "sample", "r1"), writeRelease(f.libraryRoot, "sample", "r2")];
+  const releases = [writeRelease(f.libraryRoot, "sample", "r1", { native: false }), writeRelease(f.libraryRoot, "sample", "r2", { native: false })];
   for (const release of releases) {
     assert.equal(release.manifest.schema_version, 3);
     assert.equal(release.manifest.pptx, undefined);

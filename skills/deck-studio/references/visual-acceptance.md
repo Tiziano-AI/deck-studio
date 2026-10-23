@@ -8,12 +8,16 @@ Studio artifacts, not a mandatory human approval checkpoint.
 
 Rendered QA is mechanical evidence. Visual acceptance is the agent's judgment
 that the rendered artifact is usable for the stated audience and semantic
-source. A deck is not accepted until both are true:
+source. The HTML composition is not accepted until both are true:
 
 1. `proof/report.json` is mechanically passing for the current `deck.html`.
 2. The producing agent has inspected the rendered screenshots or browser output
    visually, repaired visible defects, rerun proof, and recorded
    `proof/visual-review.json` with a passing validator result.
+
+This accepts the HTML, not the complete delivery. Ordinary Decks delivery also
+needs the PDF export check and the native editable PPTX's separate structural,
+render and visual inspection in [native-pptx.md](native-pptx.md).
 
 If the agent cannot inspect the rendered output, the correct status is
 `not observed` / `deferred`, not pass. Do not ask the user to be the first QA

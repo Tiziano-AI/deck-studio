@@ -18,7 +18,8 @@ a provider operation. A local result can be complete while hosting awaits author
 
 ## Prepare accepted bytes
 
-Read [release-bundle.md](release-bundle.md). New selection requires schema v3,
+Read [release-bundle.md](release-bundle.md). New selection requires the complete
+HTML/PDF/native editable PPTX trio in schema v3,
 not merely a valid historical manifest.
 
 ```bash

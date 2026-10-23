@@ -211,7 +211,10 @@ Do not broaden audience origin to make a health probe pass.
 
 Use real browser audience paths for anonymous public access, separate A/B
 collections and owner viewing. Test login, invalid key, change-key, sign-out,
-Back, direct HTML/PDF/cover/resources, and revocation in an already-open session.
+Back, direct HTML/PDF/PPTX/cover/resources, and revocation in an already-open
+session. Verify that the gallery offers both PDF and editable PPTX downloads,
+the downloaded bytes match the admitted files, and all three formats obey the
+same selected-release and audience policy.
 Old releases, catalog, manifests, proof and management must remain inaccessible
 to every viewer. Inspect all slides and navigation for the first real release;
 synthetic review fixtures qualify mechanics, not communication quality.

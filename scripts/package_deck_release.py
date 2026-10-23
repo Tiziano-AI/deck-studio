@@ -165,6 +165,8 @@ def package_release(source_dir: Path, deck_id: str, title: str | None, audience:
         proof_artifacts = sorted({"proof/report.json", "proof/visual-review.json", "proof/pdf-report.json"}
                                  | {f"proof/{relative}" for relative in proof_paths} | set(evidence_paths))
         native_artifacts = native_pptx_artifacts(source_dir, expected_slides)
+        if not native_artifacts:
+            fail("new publication requires deck.pptx and its accepted native render/review proof; Decks delivers HTML, PDF and native editable PPTX")
         proof_artifacts = sorted(set(proof_artifacts) | (native_artifacts - {"deck.pptx"}))
         for relative in proof_artifacts:
             verify_evidence_file(source_dir / relative, SECRET_WORDS)

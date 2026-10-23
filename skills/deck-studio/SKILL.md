@@ -1,6 +1,6 @@
 ---
 name: "deck-studio"
-description: "Decks: create, revise and publish communication decks. Start from a vague request, approved content, an existing deck or an accepted Decks release. Shape narrative and evidence; produce fixed-stage HTML/PDF or native editable PowerPoint. Publication targets the Decks library; not generic websites, format-only document edits or unrelated hosting."
+description: "Decks: create, revise and publish communication decks as HTML, PDF and native editable PowerPoint. Start from a vague request, approved content, an existing deck or an accepted release. Shape narrative and evidence. Publication targets the Decks library; not generic websites, format-only document edits or unrelated hosting."
 ---
 
 # Deck Studio
@@ -10,6 +10,14 @@ argument, a reader can understand it without a narrator, and either can see the
 intended next step. Carry the request from its actual starting point to the
 requested artifact or Decks-library publication. A finished local deck is a
 complete outcome when publication was not requested.
+
+**Decks emits the trifecta: HTML, PDF and native editable PPTX.** Produce and
+deliver all three for an ordinary deck request; the user does not need to name
+PowerPoint or ask for an export. A live editable canvas is not the PPTX file.
+Only an explicit narrower user instruction changes the local deliverables.
+New library publication always requires the complete trio with its accepted
+proof. A missing producer or renderer leaves that output unfinished; do not
+silently substitute another format or call an incomplete delivery complete.
 
 ## Start at the useful point
 
@@ -31,8 +39,8 @@ the requested result; otherwise create the artifact.
 For narrative uncertainty use [communication.md](references/communication.md)
 and the diagnostic sections of [DECKS.md](DECKS.md). Its archetypes, density
 ranges, variants and failure modes are judgment aids, not mandatory outlines.
-Choose the medium early: editable slides, text accessibility, searchable PDF
-and documents can change the production route. See
+Plan the three output compositions together. Text accessibility, searchable
+PDF and document needs can change the production route. See
 [artifact-routing.md](references/artifact-routing.md) for those cases.
 
 ## Keep one semantic source
@@ -87,7 +95,7 @@ For editable PowerPoint, read [native-pptx.md](references/native-pptx.md).
 Build native slide objects with this package's producer, not slide images in a
 PowerPoint container or an unpromised arbitrary HTML/CSS conversion. Carry the
 same meaning source into format-specific composition. Revision changes that
-source and every requested output; do not maintain competing content briefs.
+source and all three outputs; do not maintain competing content briefs.
 
 ## Inspect, repair, deliver
 
@@ -117,12 +125,12 @@ render capture and visual review. Inspect the exported PPTX, not only the
 authoring canvas. State the renderer used; a LibreOffice render is not an
 inspection in Microsoft PowerPoint. Preserve editability when repairing fit.
 
-Export PDF when requested, or for a release, using
+Export the PDF companion for ordinary local delivery and every release using
 [pdf-export.md](references/pdf-export.md). This export contains slide images:
 text is not selectable or semantically accessible, and interactions become
 static frames. Do not promise searchable, editable or accessible PDF from it.
 
-Deliver usable artifact links, brief navigation guidance and material remaining
+Deliver usable links to HTML, PDF and editable PPTX, brief navigation guidance and material remaining
 limitations. Keep proof detail proportionate to the request, with proof files
 reachable. Do not equate local acceptance with installation, runtime selection
 or hosted availability.

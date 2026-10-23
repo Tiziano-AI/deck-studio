@@ -9,9 +9,11 @@ still missing, keeps meaning stable through visual composition, inspects the
 result and delivers usable files. No mandatory interview, three-cover exercise
 or repeated approval ceremony substitutes for judgment.
 
-A local HTML deck and, when wanted, a screenshot PDF are complete outcomes.
-Editable and accessibility-first formats belong to their appropriate artifact
-tools. Hosting is an optional continuation, not a prerequisite for creation.
+A local deck is delivered as HTML, PDF and native editable PPTX. The three
+formats carry one meaning source, with composition and inspection appropriate
+to each. Accessibility-first documents and other destinations belong to their
+appropriate artifact tools. Hosting is an optional continuation, not a
+prerequisite for creation.
 
 For hosting, agents manage and humans view. Public decks are the front door;
 an optional key opens a selective collection. The gallery makes decks and their

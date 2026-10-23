@@ -1,7 +1,7 @@
 {
   "name": "deck-studio",
   "displayName": "Deck Studio",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Shape, create, revise and publish communication decks in HTML, PDF and editable PowerPoint.",
   "icon": "./skills/deck-studio/assets/deck-studio.png",
   "author": {

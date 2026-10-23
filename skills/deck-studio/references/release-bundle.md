@@ -8,22 +8,24 @@ The packager requires a Git source checkout with a committed `HEAD` for its
 lineage field. A Git-free source export supports local authoring and rendering,
 not release packaging until its reviewed source has been committed.
 
-Each new release contains `deck.html`, `deck.pdf`, `deck-manifest.json`,
+Each new release contains `deck.html`, `deck.pdf`, native editable `deck.pptx`, `deck-manifest.json`,
 `proof/report.json`, `proof/visual-review.json`, `proof/pdf-report.json`, all
-hashed screenshots/contact-sheet files, and local render resources. PDF is
-required for a release, optional for a local deck. Localize or inline mutable
+hashed screenshots/contact-sheet files, and local render resources. The same
+HTML/PDF/PPTX trio is the ordinary local delivery contract. Localize or inline mutable
 remote render resources before admission.
 
-An optional native companion adds `deck.pptx`, `proof/pptx-report.json`,
+The required native companion adds `proof/pptx-report.json`,
 `proof/pptx-visual-review.json` and its bound render images under `proof/pptx/`.
 The manifest declares
 `pptx: {artifact: "deck.pptx", report: "proof/pptx-report.json", review: "proof/pptx-visual-review.json"}`.
 All three identities are part of `artifacts[]`. A declaration with missing,
 stale or unaccepted proof fails admission; an undeclared PowerPoint is not an
-ordinary render resource. Existing HTML/PDF-only releases remain supported,
-and already selected releases continue serving unchanged. Fresh library
-publication, including reselection, requires proof bound to the current
-delivery profile. Do not patch immutable releases: recapture and package a new
+ordinary render resource. Existing HTML/PDF-only releases remain readable and
+already selected releases continue serving unchanged; local consistency
+validation does not grant renewed publication. Fresh library publication,
+including reselection, requires all three formats and proof bound to the current
+delivery profile. Do not patch immutable releases: produce the missing format,
+recapture affected proof and package a new
 release before publishing under the updated profile.
 
 The native report uses schema version 1 and kind `native-pptx`. It binds exact

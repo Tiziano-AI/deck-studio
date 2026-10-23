@@ -27,7 +27,7 @@ export function rewriteArtifact(release, path, value) {
   writeFileSync(join(release.directory, "deck-manifest.json"), JSON.stringify(release.manifest));
 }
 
-export function writeRelease(root, deckId, releaseId = "r1", { schema = 3, title = `Title-${deckId}`, native = false } = {}) {
+export function writeRelease(root, deckId, releaseId = "r1", { schema = 3, title = `Title-${deckId}`, native = schema === 3 } = {}) {
   const directory = join(root, "decks", deckId, releaseId);
   mkdirSync(join(directory, "assets"), { recursive: true });
   mkdirSync(join(directory, "proof", "screenshots"), { recursive: true });

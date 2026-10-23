@@ -72,9 +72,9 @@ class AtomicPackagingTests(unittest.TestCase):
         self.packager.PUBLIC_ROOT = path
         self.packager.RELEASE_ROOT = path / "decks"
 
-    def stage(self, name="candidate", **changes):
+    def stage(self, name="candidate", *, native=True, **changes):
         path = self.root / name
-        manifest = make_release(path)
+        manifest = make_release(path, native=native)
         manifest.update(changes)
         manifest["source"]["brief_sha256"] = hashlib.sha256(
             f"{manifest['title']}\n{manifest['audience']}\n{manifest['desired_action']}\n".encode("utf-8")
@@ -112,7 +112,7 @@ class AtomicPackagingTests(unittest.TestCase):
         self.assertEqual(json.loads(result.stdout)["status"], "promoted")
         self.assertEqual(result.stderr, "")
 
-    def test_optional_native_pptx_is_packaged_with_exact_proof_and_no_author_source(self):
+    def test_required_native_pptx_is_packaged_with_exact_proof_and_no_author_source(self):
         add_native_pptx(self.source)
         (self.source / "author.mjs").write_text("private authoring module, never release material")
         first = self.package()
@@ -126,6 +126,27 @@ class AtomicPackagingTests(unittest.TestCase):
         before = {p.relative_to(release): (p.read_bytes(), p.stat().st_ino) for p in release.rglob("*") if p.is_file()}
         self.assertEqual(self.package(), first)
         self.assertEqual(before, {p.relative_to(release): (p.read_bytes(), p.stat().st_ino) for p in release.rglob("*") if p.is_file()})
+
+    def test_missing_native_output_refuses_packaging_before_any_promotion(self):
+        self.source = self.root / "html-pdf-only-source"
+        make_release(self.source, native=False)
+        with self.assertRaisesRegex(SystemExit, "requires deck.pptx"):
+            self.package()
+        self.assertFalse((self.library / "decks").exists())
+
+    def test_catalog_preservation_and_consistency_reads_keep_html_pdf_history(self):
+        historical, _ = self.stage("historical", native=False, release_id="old")
+        destination = self.library / "decks/fixture/old"
+        destination.parent.mkdir(parents=True)
+        os.rename(historical, destination)
+        self.assertTrue(admission.admit_release(destination, target="local")["ok"])
+        self.package()
+        self.assertEqual(self.catalog_keys(), {("fixture", "old"), ("fixture", "r1")})
+        self.assertFalse((destination / "deck.pptx").exists())
+        spec = importlib.util.spec_from_file_location("catalog_validator", ROOT / "scripts/validate_product.py")
+        validator = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(validator)
+        self.assertEqual(validator.validate_catalog(self.library)["deck_count"], 2)
 
     def test_native_proof_failure_never_promotes_partial_release(self):
         add_native_pptx(self.source)
@@ -346,13 +367,13 @@ class AtomicPackagingTests(unittest.TestCase):
                    {"source": {}}, {"proof": []})
         for index, fields in enumerate(changes):
             name = f"invalid-{index}"
-            candidate, manifest = self.stage(name, release_id=name)
+            candidate, manifest = self.stage(name, release_id=name, native=False)
             manifest.update(fields)
             write_json(candidate / "deck-manifest.json", manifest)
             os.rename(candidate, self.library / "decks/fixture" / name)
         for schema in (1, 2):
             name = f"historical-{schema}"
-            candidate, manifest = self.stage(name, release_id=name)
+            candidate, manifest = self.stage(name, release_id=name, native=False)
             manifest.update(schema_version=schema, visibility="public", source={"original_lineage": True})
             write_json(candidate / "deck-manifest.json", manifest)
             os.rename(candidate, self.library / "decks/fixture" / name)

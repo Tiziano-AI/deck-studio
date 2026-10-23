@@ -1,6 +1,7 @@
 # Native editable PowerPoint
 
-Use this path when the requested result is an editable `.pptx`. Deck Studio
+Use this path for the native editable `.pptx` in every ordinary Decks delivery.
+PowerPoint is not an opt-in export. Deck Studio
 authors native Office slide objects through its locked PptxGenJS dependency;
 it does not put screenshots of entire slides into a PowerPoint container.
 The producer runs in Codex, Claude Code or another local executor without an
@@ -9,9 +10,9 @@ OpenAI artifact runtime, hosted account or Microsoft Office installation.
 ## Author from the meaning source
 
 Keep the approved audience, argument, claims, evidence and qualifications in
-the existing semantic source. Compose the native deck from that source. If
-HTML is also requested, share the meaning and adapt the composition to each
-format, then inspect both. Do not promise lossless conversion of arbitrary
+the existing semantic source. Compose the HTML and native decks from that
+source, adapt the composition to each format, then inspect both. Do not
+promise lossless conversion of arbitrary
 HTML/CSS or an imported PowerPoint's masters, animations or review history.
 
 Author a JavaScript module that default-exports
@@ -116,9 +117,10 @@ release admission validates it during packaging and selection.
 
 ## Local delivery and the library
 
-A checked local `.pptx` is a complete result. It need not be published. If
-publication is requested, a release can carry `deck.pptx` as an optional native
-companion to its HTML/PDF, with its own byte-bound render and review evidence.
+A checked local trifecta—HTML, PDF and native editable `.pptx`—is a complete
+result. It need not be published. An explicitly PPTX-only local request can
+narrow that result. Every new library release carries `deck.pptx` alongside
+HTML/PDF, with its own byte-bound render and review evidence.
 The gallery exposes it only for the same authorized audience and selected
 release as the browser deck. An existing immutable release is not patched to
 add a PowerPoint; package a new release under the publication authority.

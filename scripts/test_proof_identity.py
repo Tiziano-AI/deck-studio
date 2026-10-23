@@ -19,7 +19,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "skills/deck-studio/scripts"))
+sys.path.insert(0, str(ROOT / "scripts"))
 from proof_identity import verify_pdf
+from native_pptx_test_fixture import add_native_pptx
 
 # The same suite can exercise an explicitly selected installed producer while
 # source admission remains the consumer. Default is the source package.
@@ -82,6 +84,11 @@ class ProofIdentityTests(unittest.TestCase):
         print(result.stdout, end="", flush=True)
         if result.returncode:
             raise AssertionError(result.stdout + result.stderr)
+
+        # These tests use the real HTML/PDF producers and a deliberately
+        # synthetic native companion to exercise immutable byte contracts.
+        # Actual native production/rendering is covered by test_pptx_producer.
+        add_native_pptx(cls.base, {"slide_count": 1})
 
     def setUp(self):
         self.case = Path(self.workspace.name) / self._testMethodName

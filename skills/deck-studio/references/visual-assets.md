@@ -62,5 +62,6 @@ route to a text-bearing accessible deliverable when the audience requires it.
 
 Before release-bound rendering, localize or inline allowed assets and fonts so
 the exact bytes can be bound by QA. A remote URL may change after inspection.
-Use relative paths for folder deliverables. Regenerate affected render and PDF
-proof after any image, font, crop or source-byte change.
+Use relative paths for folder deliverables. After an image, font, crop or
+source-byte change, regenerate affected HTML/PDF proof and native PPTX output,
+render and review wherever that asset is shared.

@@ -3,7 +3,10 @@
 Use this when the destination, editability or reading needs can change the
 medium. Resolve capabilities against the current inventory; these names are
 recognition aids, not guaranteed installed dependencies. Load another skill
-only for the distinct artifact work it owns.
+only for the distinct artifact work it owns. Ordinary Decks creation emits
+HTML, PDF and native editable PPTX from one meaning source, not a choice among
+those formats. Choose another owner only for an actual destination requirement
+the Deck Studio producer does not meet.
 
 | Actual need | Production route |
 | --- | --- |
@@ -17,15 +20,17 @@ only for the distinct artifact work it owns.
 | Generic website, dashboard, application or unrelated hosting | Route to its product/website/provider owner. The Decks library is the only publication destination owned here. |
 | Format-only edit to an existing document/PPTX/PDF | Route directly to its artifact owner, without a communication interview. |
 
-When the user requests an editable deck, do not substitute a rasterized PDF,
-HTML deck or images placed in PowerPoint. A proposal may be a deck or a
+The editable PPTX is part of ordinary Decks delivery. Do not substitute an
+editable canvas, rasterized PDF, HTML deck or images placed in PowerPoint.
+A proposal may be a deck or a
 document; decide from the requested use, not the word "proposal".
 
 For a live deck plus a leave-behind, produce the requested pair with shared
 facts and different explanatory density. A board deck may need backup analysis;
 a research readout may need a methodology appendix; an RFP may need a required
-response structure plus a short executive deck. Do not create companion
-artifacts without a real need in the task.
+response structure plus a short executive deck. Those are additional
+communication artifacts, distinct from the HTML/PDF/PPTX format trio; do not
+invent them without a real need in the task.
 
 Carry the existing semantic source, audience, register, next action, modality,
 evidence, constraints and user locks to the artifact owner. Avoid regenerating

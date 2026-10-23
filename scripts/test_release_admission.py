@@ -33,7 +33,7 @@ def row(root, name):
     return {"path": name, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "bytes": path.stat().st_size}
 
 
-def make_release(root: Path, *, profile: bool = True) -> dict:
+def make_release(root: Path, *, profile: bool = True, native: bool = True) -> dict:
     """Complete but synthetic bundle for testing mechanics, not acceptance."""
     root.mkdir(parents=True, exist_ok=True)
     (root / "deck.html").write_text('''<!doctype html><html><head><meta charset="utf-8"><title>Synthetic admission</title>
@@ -71,7 +71,7 @@ def make_release(root: Path, *, profile: bool = True) -> dict:
     manifest["source"]["brief_sha256"] = hashlib.sha256(b"Synthetic admission\ntest\ntest\n").hexdigest()
     manifest["artifacts"] = [row(root, path.relative_to(root).as_posix()) for path in sorted(root.rglob("*")) if path.is_file()]
     write_json(root / "deck-manifest.json", manifest)
-    return manifest
+    return add_native_pptx(root, manifest) if native else manifest
 
 
 class ReleaseAdmissionTests(unittest.TestCase):
@@ -124,6 +124,16 @@ class ReleaseAdmissionTests(unittest.TestCase):
         result = admission.admit_release(self.root, deck_id="fixture", release_id="r1")
         self.assertEqual(result["manifest_sha256"], admission.digest(self.root / "deck-manifest.json"))
         self.assertEqual(result["delivery_profile"], admission.library_delivery_profile())
+
+    def test_html_pdf_only_is_historical_consistency_not_new_publication(self):
+        historical = Path(self.tmp.name) / "historical"
+        make_release(historical, native=False)
+        before = {path.relative_to(historical): path.read_bytes() for path in historical.rglob("*") if path.is_file()}
+        self.assertTrue(admission.admit_release(historical, target="local")["ok"])
+        with self.assertRaises(admission.AdmissionError) as raised:
+            admission.admit_release(historical)
+        self.assertEqual(raised.exception.code, "missing_deliverable")
+        self.assertEqual(before, {path.relative_to(historical): path.read_bytes() for path in historical.rglob("*") if path.is_file()})
 
     def test_native_companion_is_structurally_inspected_and_fully_byte_bound(self):
         self.manifest = add_native_pptx(self.root, self.manifest)
@@ -289,18 +299,24 @@ class ReleaseAdmissionTests(unittest.TestCase):
             with self.subTest(limit=key), patch.object(pptx_inspection, key, limit), self.assertRaisesRegex(admission.AdmissionError, "cumulative"):
                 admission.admit_release(self.root)
 
-    def test_authored_native_link_requires_the_optional_companion(self):
+    def test_authored_native_link_requires_the_native_companion(self):
+        self.root = Path(self.tmp.name) / "linked-without-native"
+        self.manifest = make_release(self.root, native=False)
         path = self.root / "deck.html"
         path.write_text(path.read_text().replace("</section>", '<a href="deck.pptx">PowerPoint</a></section>'))
         self.rehash("deck.html")
         for report in ("proof/report.json", "proof/pdf-report.json"):
             self.modify_json(report, lambda value: value["source"].update(files=[row(self.root, "deck.html")]))
         with self.assertRaisesRegex(admission.AdmissionError, "missing local asset deck.pptx"):
+            admission.admit_release(self.root, target="local")
+        with self.assertRaisesRegex(admission.AdmissionError, "new publication requires HTML, PDF and native editable PPTX"):
             admission.admit_release(self.root)
         self.manifest = add_native_pptx(self.root, self.manifest)
         self.assertTrue(admission.admit_release(self.root)["ok"])
 
     def test_arbitrary_pptx_asset_and_false_empty_declaration_are_rejected(self):
+        self.root = Path(self.tmp.name) / "arbitrary-native"
+        self.manifest = make_release(self.root, native=False)
         (self.root / "other.pptx").write_bytes(b"not an admitted companion")
         self.rehash("other.pptx")
         with self.assertRaisesRegex(admission.AdmissionError, "declared native deck.pptx"):
@@ -384,7 +400,7 @@ class ReleaseAdmissionTests(unittest.TestCase):
     def test_standalone_import_closure_copied_outside_repository(self):
         package = Path(self.tmp.name) / "isolated"
         package.mkdir()
-        for name in ("release_admission.py", "proof_identity.py", "validate_deck.py", "delivery_profile.mjs"):
+        for name in ("release_admission.py", "proof_identity.py", "validate_deck.py", "delivery_profile.mjs", "pptx_inspection.py"):
             shutil.copy2(SCRIPTS / name, package / name)
         result = subprocess.run([sys.executable, str(package / "release_admission.py"), str(self.root), "--target", "library",
                                  "--deck-id", "fixture", "--release-id", "r1"], cwd="/", env={"PATH": os.environ["PATH"]},
@@ -547,6 +563,8 @@ class ReleaseAdmissionTests(unittest.TestCase):
             admission.admit_release(self.root)
 
     def test_historical_is_consistency_only(self):
+        self.root = Path(self.tmp.name) / "historical-v1"
+        self.manifest = make_release(self.root, native=False)
         self.manifest["schema_version"] = 1
         self.manifest.pop("source")
         self.manifest["visibility"] = "historical"

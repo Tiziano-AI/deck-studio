@@ -1,7 +1,8 @@
 # Installation and distribution
 
 Deck Studio packages communication guidance, 56 visual systems and a local
-HTML/render/PDF and native editable PowerPoint producer. Local files are a complete result. The optional
+HTML/render/PDF and native editable PowerPoint producer. Ordinary deck delivery
+includes all three formats; local files are a complete result. The optional
 audience gateway is a separate service that you configure and operate; installing
 the plugin neither deploys it nor publishes your content.
 
@@ -113,7 +114,7 @@ or publish anything. Native hosts, not this setup script, own installation.
 A first request can be:
 
 > Turn these notes into a decision deck for leadership. Resolve what is missing,
-> build it, and give me the checked local HTML and PDF. Do not publish it.
+> build it, and give me the checked local deck. Do not publish it.
 
 Successful setup establishes the producer runtime, not the communication quality
 of a future deck. Follow the packaged skill to inspect every slide and navigation

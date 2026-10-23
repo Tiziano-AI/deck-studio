@@ -237,12 +237,14 @@ def scan_native_pptx_text(path: Path, *, max_entries: int, max_expanded: int, ma
 
 
 def native_pptx_artifacts(source_dir: Path, expect_slides: int) -> set[str]:
-    """Validate the optional native companion, returning every byte-bound file.
+    """Validate a present native companion, returning every byte-bound file.
 
     This is the shared proof authority for packaging and immutable admission.
     Native inspection proves structure; the separate review records a human or
     agent's inspection of these exact rendered frames, not that inspection's
-    aesthetic truth. No author module or semantic brief is audience material.
+    aesthetic truth. Its absence is valid for historical consistency checks;
+    new library admission separately requires it. No author module or semantic
+    brief is audience material.
     """
     present = any((source_dir / value).exists() or (source_dir / value).is_symlink() for value in NATIVE_PPTX.values())
     present = present or (source_dir / "proof/pptx").exists()
@@ -504,6 +506,8 @@ def validate_manifest(release_dir: Path, manifest: dict, *, target: str = "local
                 if relative.startswith("proof/"):
                     verify_evidence_file(release_dir / relative, SECRET_WORDS)
             validate_document(release_dir / "deck.html", slides)
+    if target == "library" and manifest.get("pptx") != NATIVE_PPTX:
+        fail("new publication requires HTML, PDF and native editable PPTX with accepted native proof", "missing_deliverable")
     validate_deck_local_assets(release_dir, paths)
     scan_release_text(release_dir)
     return manifest

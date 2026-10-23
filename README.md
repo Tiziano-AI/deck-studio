@@ -4,25 +4,26 @@
 
 Turn an idea, notes or an existing deck into a presentation an audience can
 follow, read and use. Deck Studio helps an agent shape the argument, choose a
-visual system, build a browser deck or native editable PowerPoint, and inspect
-every rendered slide. Browser decks have a PDF companion.
+visual system, produce HTML, PDF and native editable PowerPoint, and inspect
+every rendered slide. **Decks emits all three formats**, without requiring an
+extra PowerPoint request.
 A finished local deck is a complete result; hosting is optional.
 
 > Turn these notes into a decision deck for leadership. Resolve what is missing,
-> build it, and give me the checked local HTML and PDF. Do not publish it.
+> build it, and give me the checked local deck. Do not publish it.
 
 Start with rough notes, approved content or a deck to revise. The package
 includes 56 visual systems, from compact style recipes to developed layouts,
 and a fixed-stage HTML runtime with keyboard and touch navigation.
 
-**Choose the output before building.** HTML decks scale uniformly to the screen;
+**One deck, three deliverables.** HTML decks scale uniformly to the screen;
 they do not reflow into a mobile reading layout. PDF pages are slide images,
 not searchable text, editable slides or a semantically accessible document.
 Native PowerPoint uses editable text, shapes, tables and charts, rather than
 slide screenshots. It is authored directly, not converted from arbitrary HTML.
 Other document and accessibility needs still route to their proper artifact tool.
 
-**One product, two output paths.** HTML and PPTX compositions share the approved
+**One meaning source, format-specific composition.** HTML and PPTX compositions share the approved
 meaning source; each format has its own layout and acceptance. A PPTX file does
 not prove that its HTML companion matches, or vice versa. The 56 visual systems
 are composition resources, not a claim that every design is a prebuilt PowerPoint

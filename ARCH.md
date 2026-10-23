@@ -49,11 +49,11 @@ needed for editing; exported PPTX bytes get separate render and visual review.
 ## Release bytes and policy are different owners
 
 An external library has `decks/<deck_id>/<release_id>/` folders containing
-`deck.html`, `deck.pdf`, optional `deck.pptx`, `deck-manifest.json`, local presentation resources and
+`deck.html`, `deck.pdf`, native editable `deck.pptx`, `deck-manifest.json`, local presentation resources and
 `proof/`. New manifests use schema v3; render, review and PDF records bind exact
 bytes. A dedicated `cover.png` may copy the already-bound first-slide screenshot
 byte for byte. Audience delivery never exposes `proof/` to obtain a cover.
-The optional native companion has an explicit manifest field and separate
+The required native companion has an explicit manifest field and separate
 byte-bound native inspection/render/review. It cannot enter as an unreviewed
 generic HTML asset. Native source modules remain at the authoring owner.
 
@@ -89,8 +89,9 @@ visibility, not universal power-loss durability. Residues are reported rather
 than automatically deleted; staging is never enumerated or served. A partially
 successful multi-release run preserves promoted bundles and reports them.
 
-Historical v1/v2 bundles remain immutable. Explicit library validation can check
-their consistency, but new selection requires v3; there is no automatic import,
+Historical bundles, including HTML/PDF-only v3 releases, remain immutable and
+readable. Explicit library validation can check their consistency, but new
+selection requires v3 with the complete HTML/PDF/PPTX trio; there is no automatic import,
 audience grant or retrofit of old acceptance. Packaging writes `visibility:
 unassigned` as descriptive metadata. Actual public visibility, current release
 and key assignments live only in the policy database.
