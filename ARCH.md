@@ -113,6 +113,26 @@ open directly after login. `GET/POST /login` creates an opaque server-side
 session; `POST /logout` ends it. Public and keyed galleries stay distinct.
 `/ui/` contains only the fixed gallery resources and licensed fonts.
 
+The canonical trailing-slash `/decks/<deck_id>/<release_id>/` entry is a
+gateway-owned viewer, with a persistent **Back to collection** link outside the
+slide canvas. It embeds the release's unchanged `deck.html`; both the viewer
+request and the embedded artifact request are independently authorized. Exact
+`deck.html` and other artifact paths remain raw byte-verified delivery for
+standalone use, capture and downloads. This chrome changes no release bytes or
+delivery-profile identity and applies to already selected releases without
+republishing them.
+
+Anonymous public viewers return to `/`; signed-in viewers default to
+`/collection`. Public-gallery links explicitly select `return_to=/`, so they
+return to the public gallery even when signed in. Only `/` and `/collection`
+are permitted return destinations. An initial `#slide-N` reaches the embedded
+deck, and its current slide hash is synchronized to the viewer URL with
+`replaceState`. The viewer adds no Escape shortcut and does not rewrite the
+deck's slide-history behavior.
+Ordinary slide links navigate the top-level page rather than trying to frame
+their destinations; in-deck fragments, explicit new-window targets, modified
+clicks and downloads keep their native behavior.
+
 Viewer sessions and keys cannot manage. The separate management bearer accesses
 `/api/v1`; the CLI exposes the same policy and release operations. It cannot be
 used as a viewer key. Key issue/rotation returns the secret once; list and

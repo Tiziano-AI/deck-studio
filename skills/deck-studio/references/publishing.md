@@ -128,20 +128,44 @@ retrying other mutations.
 key assignment. Keys are bearer secrets that can be forwarded, not verified
 recipient identities. Neither action recalls downloaded copies.
 
+## Share the hosted viewer
+
+Use `/decks/<deck_id>/<release_id>/` as the audience's HTML link. This canonical
+entry is the gateway viewer: its persistent **Back to collection** link sits
+outside the slide canvas, while an embedded frame loads the unchanged,
+independently authorized `deck.html`. Exact `deck.html`, PDF, PPTX and other
+artifact paths remain raw. Do not inject hosting navigation into an authored
+deck or repackage an accepted release to add the link. Deploying the viewer
+also supplies it to already selected releases without republishing them.
+
+The return destination defaults to `/` for anonymous public viewers and
+`/collection` for signed-in viewers. Public-gallery cards explicitly use
+`return_to=/` to retain their public-gallery context. The only allowed
+destinations are `/` and `/collection`; use `return_to=/collection` when an
+explicit collection return is needed. Initial `#slide-N` links reach the deck,
+and the current slide hash remains visible in the viewer URL. There is no new
+Escape shortcut or promise that browser Back skips slide-history entries.
+
 ## Verify the actual audience path
 
 Use separate anonymous, collection and owner-viewer sessions, plus management:
 
 1. Public gallery and public deck links work without a key.
 2. A collection includes only its assigned decks; public decks are separate.
-3. A one-deck collection opens directly and browser Back remains usable.
-4. Another collection's HTML, PDF, cover and local assets cannot be read.
-5. Revoked keys and removed assignments lose access in already-open sessions.
-6. Viewers, including owner viewers, cannot read old releases, full catalogs,
+3. A one-deck collection opens directly in the viewer. Its visible return link
+   reaches the collection; public-gallery entries return to `/`, including when
+   signed in. Check the link by pointer and keyboard at desktop and narrow sizes.
+4. Open a viewer directly with `#slide-N`, navigate slides in its frame, and
+   confirm the viewer URL reflects the current slide. Verify raw `deck.html`
+   still matches its admitted bytes and is not wrapped or rewritten.
+5. Another collection's viewer, HTML, PDF, cover and local assets cannot be read;
+   an authorized viewer never bypasses authorization of its embedded artifact.
+6. Revoked keys and removed assignments lose access in already-open sessions.
+7. Viewers, including owner viewers, cannot read old releases, full catalogs,
    manifests, proof, lineage or management APIs.
-7. Login, change-key and sign-out work in a real browser; inspect desktop and
+8. Login, change-key and sign-out work in a real browser; inspect desktop and
    narrow layouts, light/dark themes and empty/error states.
-8. Read provider health, exact deployment identity and admitted byte digests
+9. Read provider health, exact deployment identity and admitted byte digests
    through management. Check bounded logs without printing secrets.
 
 Do not call a successful deploy receipt usable delivery. On an interruption,

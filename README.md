@@ -107,6 +107,12 @@ The gateway gives audiences a public gallery and, optionally, a collection
 opened with an access key. Agents manage releases, public visibility, keys and
 assignments through the CLI/API. There is no web admin console or slide editor.
 
+Hosted deck links open a gateway viewer with a persistent **Back to collection**
+link above the slide canvas. The gateway supplies this navigation automatically,
+including for existing releases; authors do not add it to their slides. Share
+the canonical `/decks/<deck_id>/<release_id>/` viewer URL. The explicit
+`deck.html` path remains the unchanged standalone presentation.
+
 A deck may be public, assigned to several keys, both, or neither. Selecting a
 new deck starts private and unassigned; selecting a later release of an existing
 deck preserves its public flag and assignments. Inspect that audience before

@@ -12,7 +12,7 @@ function icon(name) {
   return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">${icons[name]}</svg>`;
 }
 
-function escapeHtml(value) {
+export function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, character => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
   })[character]);
@@ -89,8 +89,9 @@ function shell({ site = {}, authenticated = false, csrf = '', page, title, body 
 </html>`;
 }
 
-function deckCard(deck, index) {
-  const html = resourcePath(deck.html);
+function deckCard(deck, index, keyed) {
+  const resource = resourcePath(deck.html);
+  const html = resource && !keyed ? `${resource}?return_to=%2F` : resource;
   const pdf = resourcePath(deck.pdf);
   const pptx = resourcePath(deck.pptx);
   const cover = resourcePath(deck.cover);
@@ -126,7 +127,7 @@ export function renderGallery({ decks = [], collection = null, authenticated = f
     <div class="gallery-top"><h1 id="gallery-title">${title}</h1><span class="count">${String(selected.length).padStart(2, '0')} ${selected.length === 1 ? 'DECK' : 'DECKS'}</span></div>
     <div class="tools"><span class="collection"><span class="dot" aria-hidden="true"></span>${escapeHtml(keyed ? label || 'Private collection' : 'Open to everyone')}</span>${layoutControls}</div>
     ${error ? `<p class="error" role="alert">${escapeHtml(error)}</p>` : ''}
-    ${selected.length ? `<ul class="cards" data-deck-gallery>${selected.map(deckCard).join('')}</ul>` : `<div class="empty-state">${empty}</div>`}
+    ${selected.length ? `<ul class="cards" data-deck-gallery>${selected.map((deck, index) => deckCard(deck, index, keyed)).join('')}</ul>` : `<div class="empty-state">${empty}</div>`}
   </section>`;
   return shell({ site, authenticated, csrf, page: keyed ? 'collection' : 'public', title: title.slice(0, -1), body });
 }

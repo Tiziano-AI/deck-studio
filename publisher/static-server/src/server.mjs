@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { createReadStream, readFileSync, realpathSync, statSync } from "node:fs";
+import { closeSync, createReadStream, readFileSync, realpathSync, statSync } from "node:fs";
 import { createServer } from "node:http";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -8,6 +8,7 @@ import { ArtifactLibrary } from "./library.mjs";
 import { artifactPath, DECK_CSP } from "../../../skills/deck-studio/scripts/delivery_profile.mjs";
 import { GatewayError, PolicyStore, verifier } from "./policy.mjs";
 import { renderGallery, renderLogin } from "./gallery.mjs";
+import { renderViewer } from "./viewer.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const COOKIE_NAME = "decks_session";
@@ -274,7 +275,8 @@ export function createGateway({ libraryRoot, policyPath, managementToken, origin
     if (!["GET", "HEAD"].includes(request.method)) throw new GatewayError("method_not_allowed", "This route is read-only.", 405);
     if (pathname === "/favicon.ico") { response.writeHead(204); response.end(); return; }
     if (pathname.startsWith("/ui/")) {
-      const mapping = new Map([["/ui/gallery.css", ["src/gallery.css", "text/css; charset=utf-8"]], ["/ui/gallery-client.mjs", ["src/gallery-client.mjs", "text/javascript; charset=utf-8"]]]);
+      const mapping = new Map([["/ui/gallery.css", ["src/gallery.css", "text/css; charset=utf-8"]], ["/ui/gallery-client.mjs", ["src/gallery-client.mjs", "text/javascript; charset=utf-8"]],
+        ["/ui/viewer.css", ["src/viewer.css", "text/css; charset=utf-8"]], ["/ui/viewer-client.mjs", ["src/viewer-client.mjs", "text/javascript; charset=utf-8"]]]);
       let file = mapping.get(pathname);
       if (!file && /^\/ui\/fonts\/[A-Za-z0-9_-]+\.woff2$/.test(pathname)) file = [pathname.slice(1), "font/woff2"];
       if (!file) throw new GatewayError("not_found", "UI resource not found.", 404);
@@ -314,6 +316,15 @@ export function createGateway({ libraryRoot, policyPath, managementToken, origin
       if (!policy.canRead(deck, state.session)) {
         if (!state.session?.key_id) { loginForm(request, response, 401, "", pathname); return; }
         throw new GatewayError("forbidden", "This key does not grant access to that deck.", 403);
+      }
+      if (!leaf) {
+        // Preserve root-route byte integrity before exposing a title or viewer.
+        const file = library.openArtifact(deckId, releaseId, "deck.html");
+        closeSync(file.fd);
+        const query = new URL(request.url, actualOrigin()).searchParams;
+        const page = renderViewer({ deck: library.audience(deck), authenticated: Boolean(state.session?.key_id),
+          returnTo: query.get("return_to"), site: siteInfo });
+        html(response, 200, request.method === "HEAD" ? "" : page); return;
       }
       stream(response, library.openArtifact(deckId, releaseId, path), request.method === "HEAD", { "content-security-policy": DECK_CSP }); return;
     }

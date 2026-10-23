@@ -148,6 +148,12 @@ Local capture remains valid for local delivery but is not proof of library
 fitness. Use relative modules or inline data, not JSON fetches or dependencies
 outside the bundle. See the publishing guide for retry and promotion rules.
 
+Share the canonical `/decks/<deck_id>/<release_id>/` viewer URL, not its raw
+`deck.html` artifact. The hosted gateway automatically supplies a persistent
+**Back to collection** link outside the slide canvas, including for existing
+releases. Do not add collection navigation to authored slides or alter accepted
+release bytes to obtain it; standalone HTML remains independent of hosting.
+
 Obtain explicit authorization for the exact library and audience before a
 provider mutation, public grant or key delivery. Mutate only the authorized
 service and its Decks-owned configuration. The local deck may be complete while this step

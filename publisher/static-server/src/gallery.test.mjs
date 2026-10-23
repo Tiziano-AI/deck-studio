@@ -4,7 +4,7 @@ import { renderGallery, renderLogin } from './gallery.mjs';
 
 const deck = {
   deck_id: 'sample', title: 'Sample deck', slide_count: 7,
-  html: '/decks/sample/release/deck.html', pdf: '/decks/sample/release/deck.pdf',
+  html: '/decks/sample/release/', pdf: '/decks/sample/release/deck.pdf',
   cover: '/decks/sample/release/assets/cover.jpg',
 };
 
@@ -12,7 +12,7 @@ test('the public entrance links to the actual deck, PDF and cover', () => {
   const page = renderGallery({ decks: [deck] });
   assert.match(page, /<html lang="en" data-brand="neutral">/);
   assert.match(page, /<h1 id="gallery-title">Public decks\.<\/h1>/);
-  assert.match(page, /href="\/decks\/sample\/release\/deck.html"/);
+  assert.match(page, /href="\/decks\/sample\/release\/\?return_to=%2F"/);
   assert.match(page, /href="\/decks\/sample\/release\/deck.pdf"/);
   assert.match(page, /src="\/decks\/sample\/release\/assets\/cover.jpg"/);
   assert.match(page, /7 slides/);
@@ -38,6 +38,8 @@ test('public browsing and the keyed collection remain distinct navigation', () =
   assert.match(collection, /Your collection\.<\/h1>/);
   assert.match(collection, />Research<\/span>/);
   assert.match(collection, /href="\/collection" aria-current="page"/);
+  assert.match(collection, /href="\/decks\/sample\/release\/"/);
+  assert.doesNotMatch(collection, /return_to=/);
 });
 
 test('text and attribute values are escaped without rendering backstage metadata', () => {

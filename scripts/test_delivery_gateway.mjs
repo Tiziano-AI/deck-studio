@@ -94,7 +94,7 @@ test("actual library capture and audience gateway agree; selection rejects local
   const authorizations = [];
   page.on("request", request => { if (request.headers().authorization) authorizations.push(request.url()); });
   const check = observeErrors(page);
-  await prepareDeck(page, `${f.base}/decks/relative/r1/`, check);
+  await prepareDeck(page, `${f.base}/decks/relative/r1/deck.html`, check);
   assert.equal(await page.locator("#result").textContent(), "42");
   assert.equal(await page.locator("#inline").textContent(), "7");
   assert.ok((await captureSlide(page, 0, "qa", check)).length > 0);
@@ -109,7 +109,7 @@ test("actual library capture and audience gateway agree; selection rejects local
   assert.deepEqual(authorizations, [], "browser must use the audience path, never the management bypass");
   await page.close();
 
-  const html = await f.request("/decks/relative/r1/");
+  const html = await f.request("/decks/relative/r1/deck.html");
   assert.equal(html.headers.get("content-security-policy"), DECK_CSP);
   for (const path of ["assets/chart.mjs", "assets/data.mjs", "assets/deck.css", "deck.pdf"]) {
     const response = await f.request(`/decks/relative/r1/${path}`);
@@ -169,7 +169,7 @@ test("actual library capture and audience gateway agree; selection rejects local
   negative.on("request", request => { if (request.headers().authorization) negativeAuth.push(request.url()); });
   const negativeCheck = observeErrors(negative);
   await assert.rejects(async () => {
-    await prepareDeck(negative, `${f.base}/decks/localfetch/r1/`, negativeCheck);
+    await prepareDeck(negative, `${f.base}/decks/localfetch/r1/deck.html`, negativeCheck);
     await captureSlide(negative, 0, "qa", negativeCheck);
   });
   await negative.waitForFunction(() => document.querySelector("#result")?.textContent === "BLOCKED");
