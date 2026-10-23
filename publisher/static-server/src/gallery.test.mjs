@@ -35,7 +35,8 @@ test('public browsing and the keyed collection remain distinct navigation', () =
   assert.match(publicPage, /action="\/logout" method="post"/);
   assert.match(publicPage, /name="csrf" value="csrf-value"/);
   const collection = renderGallery({ decks: [deck], collection: { label: 'Research', scope: 'collection' }, authenticated: true });
-  assert.match(collection, /Your collection\.<\/h1>/);
+  assert.match(collection, /<h1 id="gallery-title">Research<\/h1>/);
+  assert.match(collection, /<title>Research · Decks<\/title>/);
   assert.match(collection, />Research<\/span>/);
   assert.match(collection, /href="\/collection" aria-current="page"/);
   assert.match(collection, /href="\/decks\/sample\/release\/"/);
@@ -51,7 +52,22 @@ test('text and attribute values are escaped without rendering backstage metadata
   assert.doesNotMatch(page, /<script>bad|<img src=x|<svg\/onload|hidden-proof|hidden-secret/);
   assert.match(page, /&lt;img src=x onerror=&quot;alert\(1\)&quot;&gt;/);
   assert.match(page, /name="csrf" value="&quot; onfocus=&quot;x"/);
-  assert.match(page, /<title>Your collection · A &amp; B<\/title>/);
+  assert.match(page, /<h1 id="gallery-title">&lt;script&gt;bad\(\)&lt;\/script&gt;<\/h1>/);
+  assert.match(page, /<title>&lt;script&gt;bad\(\)&lt;\/script&gt; · A &amp; B<\/title>/);
+});
+
+test('collection names preserve their text and use a safe fallback when metadata is missing', () => {
+  const named = renderGallery({ collection: { label: '  Acme R&D.  ' }, authenticated: true });
+  assert.match(named, /<h1 id="gallery-title">Acme R&amp;D\.<\/h1>/);
+  assert.match(named, /<title>Acme R&amp;D\. · Decks<\/title>/);
+  const stringName = renderGallery({ collection: 'A named collection' });
+  assert.match(stringName, /<h1 id="gallery-title">A named collection<\/h1>/);
+  for (const collection of [{}, { label: null }, { label: '' }, { label: '   ' }, { label: 42 }]) {
+    const page = renderGallery({ collection, authenticated: true });
+    assert.match(page, /<h1 id="gallery-title">Your collection\.<\/h1>/);
+    assert.match(page, /<title>Your collection · Decks<\/title>/);
+    assert.match(page, /Private collection<\/span>/);
+  }
 });
 
 test('nonlocal and traversal presentation URLs never become active links', () => {

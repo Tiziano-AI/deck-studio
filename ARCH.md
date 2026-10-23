@@ -114,13 +114,19 @@ session; `POST /logout` ends it. Public and keyed galleries stay distinct.
 `/ui/` contains only the fixed gallery resources and licensed fonts.
 
 The canonical trailing-slash `/decks/<deck_id>/<release_id>/` entry is a
-gateway-owned viewer, with a persistent **Back to collection** link outside the
-slide canvas. It embeds the release's unchanged `deck.html`; both the viewer
+gateway-owned, presentation-first viewer. Its frame fills the viewport without
+a top bar or reserved navigation band. The gateway extends the deck runtime's
+existing auto-hiding bottom control pill with a home-icon return control and
+the **B** shortcut. The restart control uses an SVG refresh icon and retains
+the **R** shortcut; previous/next arrows and slide count stay in the same pill.
+The viewer embeds the release's unchanged `deck.html`; both the viewer
 request and the embedded artifact request are independently authorized. Exact
 `deck.html` and other artifact paths remain raw byte-verified delivery for
-standalone use, capture and downloads. This chrome changes no release bytes or
-delivery-profile identity and applies to already selected releases without
-republishing them.
+standalone use, capture and downloads. Integration happens in the viewer at
+runtime, outside the immutable release bytes, and applies to already selected
+releases without republishing them. It changes no delivery-profile identity.
+The standalone runtime supplies slide navigation and its refresh-icon restart,
+but no collection return control or **B** shortcut.
 
 Anonymous public viewers return to `/`; signed-in viewers default to
 `/collection`. Public-gallery links explicitly select `return_to=/`, so they

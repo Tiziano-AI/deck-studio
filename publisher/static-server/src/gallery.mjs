@@ -115,7 +115,9 @@ function deckCard(deck, index, keyed) {
 export function renderGallery({ decks = [], collection = null, authenticated = false, site = {}, error = '', returnTo = '', csrf = '' } = {}) {
   const keyed = collection !== null && collection !== undefined;
   const label = typeof collection === 'string' ? collection : collection?.label;
-  const title = keyed ? 'Your collection.' : 'Public decks.';
+  const name = typeof label === 'string' ? label.trim() : '';
+  const title = keyed ? name || 'Your collection' : 'Public decks';
+  const heading = keyed && name ? name : `${title}.`;
   const selected = Array.isArray(decks) ? decks : [];
   const layoutControls = selected.length > 2
     ? `<div class="layouts" role="group" aria-label="Gallery layout" data-enhance hidden><button class="icon-button" type="button" aria-label="Editorial layout" aria-pressed="false" data-layout="editorial">${icon('editorial')}</button><button class="icon-button" type="button" aria-label="Uniform grid" aria-pressed="true" data-layout="grid">${icon('grid')}</button></div>`
@@ -124,12 +126,12 @@ export function renderGallery({ decks = [], collection = null, authenticated = f
     ? '<h2>No decks in this collection.</h2><p>You can try another key or browse the public gallery.</p><div class="empty-actions"><a class="button primary" href="/login">Change key</a><a class="text-link" href="/">Public decks <span aria-hidden="true">→</span></a></div>'
     : `<h2>No public decks yet.</h2><a class="text-link" href="${keyLink(returnTo)}">Enter an access key <span aria-hidden="true">→</span></a>`;
   const body = `<section class="gallery" aria-labelledby="gallery-title">
-    <div class="gallery-top"><h1 id="gallery-title">${title}</h1><span class="count">${String(selected.length).padStart(2, '0')} ${selected.length === 1 ? 'DECK' : 'DECKS'}</span></div>
-    <div class="tools"><span class="collection"><span class="dot" aria-hidden="true"></span>${escapeHtml(keyed ? label || 'Private collection' : 'Open to everyone')}</span>${layoutControls}</div>
+    <div class="gallery-top"><h1 id="gallery-title">${escapeHtml(heading)}</h1><span class="count">${String(selected.length).padStart(2, '0')} ${selected.length === 1 ? 'DECK' : 'DECKS'}</span></div>
+    <div class="tools"><span class="collection"><span class="dot" aria-hidden="true"></span>${escapeHtml(keyed ? name || 'Private collection' : 'Open to everyone')}</span>${layoutControls}</div>
     ${error ? `<p class="error" role="alert">${escapeHtml(error)}</p>` : ''}
     ${selected.length ? `<ul class="cards" data-deck-gallery>${selected.map((deck, index) => deckCard(deck, index, keyed)).join('')}</ul>` : `<div class="empty-state">${empty}</div>`}
   </section>`;
-  return shell({ site, authenticated, csrf, page: keyed ? 'collection' : 'public', title: title.slice(0, -1), body });
+  return shell({ site, authenticated, csrf, page: keyed ? 'collection' : 'public', title, body });
 }
 
 export function renderLogin({ collection = null, authenticated = false, site = {}, error = '', returnTo = '', csrf = '' } = {}) {

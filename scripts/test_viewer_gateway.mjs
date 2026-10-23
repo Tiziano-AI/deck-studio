@@ -5,17 +5,42 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
-import { fixture, writeRelease } from "../publisher/static-server/test/fixtures.mjs";
+import { fixture, fileIdentity, rewriteArtifact, writeRelease } from "../publisher/static-server/test/fixtures.mjs";
 
 if (!process.env.DECKS_TEST_SKILL_ROOT) throw new Error("Set DECKS_TEST_SKILL_ROOT to a complete prepared Deck Studio package");
 const producer = resolve(process.env.DECKS_TEST_SKILL_ROOT);
 const { chromium } = await import(pathToFileURL(join(producer, "scripts/browser_runtime.mjs")));
 
-async function selected(f, id) {
+async function selected(f, id, { legacyReset = false } = {}) {
   const release = writeRelease(f.libraryRoot, id);
+  if (legacyReset) {
+    // A previously accepted runtime must gain the home and restart icons without
+    // republishing. Rebind this synthetic fixture, never real acceptance proof.
+    const path = "assets/deck.js";
+    const current = readFileSync(join(release.directory, path), "utf8");
+    const legacy = current.replace(/<button\b[^>]*\bdata-action="reset"[^>]*>.*?<\/button>/s,
+      '<button class="deck-button" type="button" data-action="reset" aria-label="Reset to first slide">R</button>');
+    assert.notEqual(legacy, current, "the fixture must actually exercise the old literal-R control");
+    rewriteArtifact(release, path, legacy);
+    for (const reportPath of ["proof/report.json", "proof/pdf-report.json"]) {
+      const report = JSON.parse(readFileSync(join(release.directory, reportPath), "utf8"));
+      report.source.files = report.source.files.map(row => row.path === path ? fileIdentity(path, legacy) : row);
+      rewriteArtifact(release, reportPath, JSON.stringify(report));
+    }
+    const reviewPath = "proof/visual-review.json";
+    const review = JSON.parse(readFileSync(join(release.directory, reviewPath), "utf8"));
+    review.render_report_sha256 = fileIdentity("proof/report.json", readFileSync(join(release.directory, "proof/report.json"))).sha256;
+    rewriteArtifact(release, reviewPath, JSON.stringify(review));
+  }
   const response = await f.api(`decks/${id}/publish`, { release_id: "r1" });
   assert.equal(response.status, 200, response.text);
   return release;
+}
+
+function deckFrame(page) {
+  const frame = page.frames().find(candidate => candidate !== page.mainFrame());
+  assert.ok(frame, "the canonical viewer has loaded its presentation frame");
+  return frame;
 }
 
 async function currentSlide(page, number) {
@@ -27,26 +52,47 @@ async function currentSlide(page, number) {
 
 async function assertViewerBounds(page, viewport) {
   const bounds = await page.evaluate(() => {
-    const rect = selector => {
-      const { x, y, width, height, right, bottom } = document.querySelector(selector).getBoundingClientRect();
-      return { x, y, width, height, right, bottom };
-    };
-    return { bar: rect(".viewer-bar"), frame: rect("[data-deck-frame]"), link: rect("[data-viewer-return]"),
+    const element = document.querySelector("[data-deck-frame]");
+    const { x, y, width, height, right, bottom } = element.getBoundingClientRect();
+    const child = element.contentWindow;
+    return { frame: { x, y, width, height, right, bottom }, child: { width: child.innerWidth, height: child.innerHeight },
       scrollWidth: document.documentElement.scrollWidth, clientWidth: document.documentElement.clientWidth };
   });
-  assert.ok(bounds.bar.height > 0);
-  assert.ok(bounds.link.width > 0 && bounds.link.height > 0);
-  assert.ok(bounds.link.x >= 0 && bounds.link.right <= viewport.width + 1, "return link stays in the viewport");
-  assert.ok(bounds.frame.y >= bounds.bar.bottom - 1, "the library bar must not overlay the slide frame");
-  assert.ok(bounds.frame.width > 0 && bounds.frame.height > 0);
-  assert.ok(bounds.frame.x >= 0 && bounds.frame.right <= viewport.width + 1);
-  assert.ok(bounds.frame.bottom <= viewport.height + 1);
+  assert.deepEqual(bounds.frame, { x: 0, y: 0, width: viewport.width, height: viewport.height,
+    right: viewport.width, bottom: viewport.height }, "the presentation fills the viewport without reserved navigation space");
+  assert.deepEqual(bounds.child, viewport, "the presentation's own viewport is not reduced by hosted navigation");
   assert.equal(bounds.scrollWidth, bounds.clientWidth, "no horizontal viewport overflow");
+  assert.equal(await page.locator("header,.viewer-bar,[data-viewer-reveal],[data-viewer-fullscreen],[data-viewer-return]").count(), 0,
+    "the gateway adds no second navigation surface outside the existing slide controls");
+  return bounds;
 }
 
-test("real viewers retain slide navigation and a direct, accessible return to the correct gallery", async t => {
+async function pillShown(frame, expected) {
+  await frame.waitForFunction(expected => {
+    const controls = document.querySelector(".deck-controls");
+    if (!controls) return false;
+    const style = getComputedStyle(controls);
+    return expected ? Number(style.opacity) >= .99 && style.pointerEvents !== "none" : Number(style.opacity) <= .01;
+  }, expected);
+}
+
+async function clickReturn(page, name) {
+  const viewport = await page.evaluate(() => ({ width: innerWidth, height: innerHeight }));
+  await page.mouse.move(viewport.width / 2, viewport.height / 2);
+  const frame = deckFrame(page);
+  await pillShown(frame, true);
+  await frame.getByRole("link", { name, exact: true }).click();
+}
+
+async function unchangedAfterKey(page, key, expectedUrl) {
+  await page.keyboard.press(key);
+  await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  assert.equal(page.url(), expectedUrl, `${key} must not hijack a browser or presentation action`);
+}
+
+test("hosted viewers enhance the existing pill without reducing the viewport or hijacking other input", async t => {
   const f = await fixture(t);
-  const publicRelease = await selected(f, "public");
+  const publicRelease = await selected(f, "public", { legacyReset: true });
   await selected(f, "private");
   writeRelease(f.libraryRoot, "private", "hidden");
   await f.api("decks/public/public", { public: true });
@@ -65,40 +111,103 @@ test("real viewers retain slide navigation and a direct, accessible return to th
     await page.goto(f.base);
     await page.getByRole("link", { name: "Open Title-public", exact: true }).click();
     await currentSlide(page, 1);
-    assert.equal(new URL(await page.locator("[data-deck-frame]").getAttribute("src")).pathname, "/decks/public/r1/deck.html");
-    assert.equal(await page.locator("[data-viewer-return]").getAttribute("href"), "/");
-    assert.equal(await page.getByRole("link", { name: "Back to public decks", exact: true }).count(), 1);
-    await assertViewerBounds(page, viewport);
-    assert.equal(await page.locator("[data-deck-frame]").evaluate(frame => document.activeElement === frame), true,
-      "the initial keyboard target must be the presentation");
+    const frame = deckFrame(page);
+    assert.equal(new URL(frame.url()).pathname, "/decks/public/r1/deck.html");
+    assert.equal(await frame.locator(".deck-controls").count(), 1);
+    const home = frame.getByRole("link", { name: "Back to public decks (B)", exact: true });
+    assert.equal(await home.count(), 1);
+    assert.equal(await home.getAttribute("href"), "/");
+    assert.equal(await home.getAttribute("target"), "_top");
+    assert.equal(await home.getAttribute("aria-keyshortcuts"), "B");
+    assert.equal(await home.locator("svg").count(), 1);
+    const reset = frame.getByRole("button", { name: "Reset to first slide", exact: true });
+    assert.equal(await reset.locator("svg").count(), 1, "the accepted literal-R runtime is enhanced without republishing");
+    assert.equal(await reset.getAttribute("title"), "Reset to first slide (R)");
+    assert.equal(await reset.getAttribute("aria-keyshortcuts"), "R");
+    assert.equal(await frame.locator(".deck-controls button").count(), 3);
+    assert.equal(await frame.getByRole("button", { name: "Previous slide", exact: true }).count(), 1);
+    assert.equal(await frame.getByRole("button", { name: "Next slide", exact: true }).count(), 1);
+    assert.equal(await frame.locator(".deck-count").textContent(), "01/03");
+    assert.equal(await page.locator("[data-deck-frame]").evaluate(element => document.activeElement === element), true,
+      "the initial keyboard target is the presentation");
+    const initialBounds = await assertViewerBounds(page, viewport);
     await page.keyboard.press("ArrowRight");
     await currentSlide(page, 2);
     await page.keyboard.press("End");
     await currentSlide(page, 3);
     await page.reload();
     await currentSlide(page, 3);
-    await page.keyboard.press("Home");
+    await page.keyboard.press("r");
     await currentSlide(page, 1);
-    await page.keyboard.press("ArrowRight");
-    await currentSlide(page, 2);
-    await page.keyboard.press("Escape");
-    await currentSlide(page, 2);
-    assert.match(page.url(), /\/decks\/public\/r1\//, "Escape does not unexpectedly leave the presentation");
+    const reloadedFrame = deckFrame(page);
 
-    // Shift+Tab exits the initially focused frame to the visible preceding link;
-    // a slide change must not pull focus back from the library's navigation.
-    await page.keyboard.press("Shift+Tab");
-    await page.waitForFunction(() => document.activeElement?.matches("[data-viewer-return]"));
-    const frame = page.frames().find(candidate => candidate !== page.mainFrame());
-    await frame.evaluate(() => WebSlidesStudio.goTo(2));
-    await currentSlide(page, 3);
-    assert.equal(await page.locator("[data-viewer-return]").evaluate(link => document.activeElement === link), true);
+    if (viewport.width > 600) {
+      const viewerUrl = page.url();
+      for (const key of ["Control+b", "Meta+b", "Alt+b", "Shift+b", "Escape"]) await unchangedAfterKey(page, key, viewerUrl);
+      await reloadedFrame.evaluate(() => {
+        const input = document.createElement("input");
+        input.id = "test-input";
+        document.body.append(input);
+        input.focus();
+      });
+      await unchangedAfterKey(page, "b", viewerUrl);
+      assert.equal(await reloadedFrame.locator("#test-input").inputValue(), "b");
+      await reloadedFrame.evaluate(() => {
+        document.querySelector("#test-input").remove();
+        const stage = document.querySelector(".deck-stage");
+        stage.focus();
+        stage.dispatchEvent(new KeyboardEvent("keydown", { key: "b", bubbles: true, cancelable: true, isComposing: true }));
+      });
+      await page.evaluate(() => new Promise(resolve => requestAnimationFrame(resolve)));
+      assert.equal(page.url(), viewerUrl, "composition must not invoke the return shortcut");
+      await reloadedFrame.evaluate(() => document.querySelector(".deck-stage").addEventListener("keydown", event => event.preventDefault(), { once: true }));
+      await unchangedAfterKey(page, "b", viewerUrl);
+    }
+
+    await reloadedFrame.waitForFunction(() => document.querySelector(".deck-controls").dataset.visible === "false");
+    await pillShown(reloadedFrame, false);
+    assert.deepEqual(await assertViewerBounds(page, viewport), initialBounds, "auto-hiding the pill never resizes slides");
+    await page.keyboard.press("Tab");
+    await reloadedFrame.waitForFunction(() => document.querySelector(".deck-controls").contains(document.activeElement));
+    await pillShown(reloadedFrame, true);
+    await reloadedFrame.waitForFunction(() => document.querySelector(".deck-controls").dataset.visible === "false");
+    await pillShown(reloadedFrame, true);
+    assert.deepEqual(await assertViewerBounds(page, viewport), initialBounds, "focus keeps the existing pill visible without shifting the viewport");
+    for (let index = 0; index < 4; index++) {
+      if (await reloadedFrame.locator("[data-viewer-return]").evaluate(link => document.activeElement === link)) break;
+      await page.keyboard.press("Tab");
+    }
+    assert.equal(await reloadedFrame.locator("[data-viewer-return]").evaluate(link => document.activeElement === link), true,
+      "the home link is reachable through native tab order in the original pill");
     await page.keyboard.press("Enter");
     await page.waitForURL(`${f.base}/`);
     assert.equal(await page.getByRole("heading", { name: "Public decks.", exact: true }).count(), 1);
+    await page.goto(`${f.base}/decks/public/r1/#slide-2`);
+    await currentSlide(page, 2);
+    await page.keyboard.press("b");
+    await page.waitForURL(`${f.base}/`);
     assert.deepEqual(errors, []);
     await context.close();
   }
+
+  const touchViewport = { width: 390, height: 844 };
+  const touchContext = await browser.newContext({ viewport: touchViewport, isMobile: true, hasTouch: true });
+  const touchPage = await touchContext.newPage();
+  await touchPage.goto(`${f.base}/decks/public/r1/`);
+  await currentSlide(touchPage, 1);
+  const touchFrame = deckFrame(touchPage);
+  const touchBounds = await assertViewerBounds(touchPage, touchViewport);
+  await pillShown(touchFrame, false);
+  await touchPage.touchscreen.tap(195, 422);
+  await pillShown(touchFrame, true);
+  await currentSlide(touchPage, 1);
+  assert.deepEqual(await assertViewerBounds(touchPage, touchViewport), touchBounds);
+  const touchHome = touchFrame.getByRole("link", { name: "Back to public decks (B)", exact: true });
+  const hitTarget = await touchHome.boundingBox();
+  assert.ok(hitTarget.width >= 44 && hitTarget.height >= 44, "the home icon has a usable touch target");
+  await touchHome.tap();
+  await touchPage.waitForURL(`${f.base}/`);
+  await touchContext.close();
 
   const session = await f.login(key.secret);
   const keyed = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
@@ -107,49 +216,31 @@ test("real viewers retain slide navigation and a direct, accessible return to th
   await page.goto(`${f.base}/collection`);
   await page.getByRole("link", { name: "Open Title-private", exact: true }).click();
   await currentSlide(page, 1);
-  assert.equal(await page.locator("[data-viewer-return]").getAttribute("href"), "/collection");
+  assert.equal(await deckFrame(page).locator("[data-viewer-return]").getAttribute("href"), "/collection");
   await page.keyboard.press("End");
   await currentSlide(page, 3);
-  await page.getByRole("link", { name: "Back to collection", exact: true }).click();
+  await clickReturn(page, "Back to collection (B)");
   await page.waitForURL(`${f.base}/collection`);
-  assert.equal(await page.getByRole("heading", { name: "Your collection.", exact: true }).count(), 1);
-
-  // A copied deep link restores its slide without an arrival-history assumption.
+  assert.equal(await page.getByRole("heading", { name: "Team", exact: true }).count(), 1);
   await page.goto(`${f.base}/decks/private/r1/#slide-2`);
   await currentSlide(page, 2);
   await page.reload();
   await currentSlide(page, 2);
-  await page.getByRole("link", { name: "Back to collection", exact: true }).click();
+  await page.keyboard.press("b");
   await page.waitForURL(`${f.base}/collection`);
-  // Navigation chosen while the frame is loading remains the user's focus;
-  // a late child load must not steal it to make keyboard slide navigation work.
-  let releaseFrame;
-  let reportFrameRequest;
-  const frameHeld = new Promise(resolve => { reportFrameRequest = resolve; });
-  const frameReleased = new Promise(resolve => { releaseFrame = resolve; });
-  await page.route(`${f.base}/decks/private/r1/deck.html*`, async route => {
-    reportFrameRequest();
-    await frameReleased;
-    await route.continue();
-  });
-  await page.goto(`${f.base}/decks/private/r1/`, { waitUntil: "domcontentloaded" });
-  await frameHeld;
-  await page.locator("[data-viewer-return]").focus();
-  releaseFrame();
-  await currentSlide(page, 1);
-  assert.equal(await page.locator("[data-viewer-return]").evaluate(link => document.activeElement === link), true);
-  await page.unroute(`${f.base}/decks/private/r1/deck.html*`);
-  // An authenticated reader who starts in the public gallery returns there,
-  // rather than being silently redirected to the keyed collection.
+  // Public-gallery arrival remains explicit even for an authenticated reader.
   await page.goto(f.base);
   await page.getByRole("link", { name: "Open Title-public", exact: true }).click();
   await currentSlide(page, 1);
-  await page.getByRole("link", { name: "Back to public decks", exact: true }).click();
+  await clickReturn(page, "Back to public decks (B)");
   await page.waitForURL(`${f.base}/`);
 
-  const raw = await page.request.get(`${f.base}/decks/public/r1/deck.html`);
-  assert.equal(await raw.text(), readFileSync(join(publicRelease.directory, "deck.html"), "utf8"));
-  assert.doesNotMatch(await raw.text(), /data-viewer-return|viewer-bar/);
+  for (const leaf of ["deck.html", "assets/deck.js"]) {
+    const raw = await page.request.get(`${f.base}/decks/public/r1/${leaf}`);
+    assert.equal(await raw.text(), readFileSync(join(publicRelease.directory, leaf), "utf8"), "hosted enhancement leaves accepted artifact bytes unchanged");
+    assert.doesNotMatch(await raw.text(), /data-viewer-return|viewer-bar/);
+    if (leaf.endsWith(".js")) assert.match(await raw.text(), /aria-label="Reset to first slide">R<\/button>/);
+  }
   assert.equal((await page.goto(`${f.base}/decks/private/hidden/`)).status(), 404);
   assert.equal(await page.locator("[data-deck-frame]").count(), 0);
   await f.api(`keys/${key.key_id}/revoke`, {});
@@ -186,10 +277,10 @@ test("ordinary evidence links leave the viewer while slide, popup and download l
   async function openLinkedViewer() {
     await page.goto(viewerUrl);
     await currentSlide(page, 1);
-    const frame = page.frames().find(candidate => candidate !== page.mainFrame());
+    const frame = deckFrame(page);
     await frame.evaluate(() => {
       const nav = document.createElement("nav");
-      nav.style.cssText = "position:fixed;top:20px;left:20px;z-index:100;display:flex;gap:16px;background:white;padding:16px;font:18px sans-serif";
+      nav.style.cssText = "position:fixed;top:120px;left:20px;z-index:100;display:flex;gap:16px;background:white;padding:16px;font:18px sans-serif";
       for (const [id, href, attributes] of [
         ["fragment", "#slide-2", {}],
         ["same-origin", "/", {}],
@@ -251,7 +342,6 @@ test("ordinary evidence links leave the viewer while slide, popup and download l
   await page.waitForURL(`${f.base}/`);
   assert.equal(await page.getByRole("heading", { name: "Public decks.", exact: true }).count(), 1);
   assert.equal(await page.locator("[data-deck-frame]").count(), 0, "same-origin site navigation must not be trapped inside the frame");
-
   frame = await openLinkedViewer();
   await frame.locator("#test-self").click();
   await page.waitForURL(`${f.base}/`);
@@ -262,8 +352,8 @@ test("ordinary evidence links leave the viewer while slide, popup and download l
   assert.equal(await page.locator("[data-deck-frame]").count(), 0, "ordinary external evidence opens as a top-level page");
 
   await openLinkedViewer();
-  // A frame can still become inaccessible through author scripts or a denied
-  // response. Its load handler must leave the library's return control usable.
+  // Denied or cross-origin child loads are no longer active presentations and
+  // must not crash the canonical wrapper's same-origin integration handler.
   for (const destination of ["/", "https://evidence.invalid/framed"]) {
     await page.locator("[data-deck-frame]").evaluate((frame, destination) => new Promise(resolve => {
       frame.addEventListener("load", resolve, { once: true });
@@ -272,6 +362,4 @@ test("ordinary evidence links leave the viewer while slide, popup and download l
     assert.deepEqual(errors, [], "denied or cross-origin frames must not throw an unhandled SecurityError in the viewer");
     assert.equal(new URL(page.url()).pathname, "/decks/links/r1/");
   }
-  await page.getByRole("link", { name: "Back to public decks", exact: true }).click();
-  await page.waitForURL(`${f.base}/`);
 });

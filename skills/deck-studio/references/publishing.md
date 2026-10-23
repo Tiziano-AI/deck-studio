@@ -131,12 +131,17 @@ recipient identities. Neither action recalls downloaded copies.
 ## Share the hosted viewer
 
 Use `/decks/<deck_id>/<release_id>/` as the audience's HTML link. This canonical
-entry is the gateway viewer: its persistent **Back to collection** link sits
-outside the slide canvas, while an embedded frame loads the unchanged,
-independently authorized `deck.html`. Exact `deck.html`, PDF, PPTX and other
-artifact paths remain raw. Do not inject hosting navigation into an authored
-deck or repackage an accepted release to add the link. Deploying the viewer
-also supplies it to already selected releases without republishing them.
+entry is the presentation-first gateway viewer: slides fill the viewport,
+without a top bar or reserved navigation band. The gateway extends the existing
+auto-hiding bottom slide-control pill with a home icon for **Back to collection**
+(shortcut **B**), or **Back to public decks** for a public-gallery entry. The
+refresh icon restarts at slide one (**R**); arrows and slide count remain in the
+same pill. An embedded frame loads the unchanged, independently authorized
+`deck.html`; the gateway integration is outside those immutable bytes. Exact
+`deck.html`, PDF, PPTX and other artifact paths remain raw. Standalone HTML has
+slide navigation but no collection return control or **B** shortcut. Do not
+inject hosting navigation into an authored deck or repackage an accepted release
+to add it. Deploying the viewer supplies it to already selected releases.
 
 The return destination defaults to `/` for anonymous public viewers and
 `/collection` for signed-in viewers. Public-gallery cards explicitly use
@@ -152,12 +157,16 @@ Use separate anonymous, collection and owner-viewer sessions, plus management:
 
 1. Public gallery and public deck links work without a key.
 2. A collection includes only its assigned decks; public decks are separate.
-3. A one-deck collection opens directly in the viewer. Its visible return link
-   reaches the collection; public-gallery entries return to `/`, including when
-   signed in. Check the link by pointer and keyboard at desktop and narrow sizes.
+3. A one-deck collection opens directly in the viewer with full-viewport slides
+   and no top bar or reserved navigation band. The existing auto-hiding bottom
+   pill remains the only control group. Its home icon and **B** shortcut reach
+   the collection; public-gallery entries return to `/`, including when signed
+   in. Check pointer, keyboard and touch access at desktop and narrow sizes,
+   alongside refresh-icon restart (**R**), previous/next arrows and slide count.
 4. Open a viewer directly with `#slide-N`, navigate slides in its frame, and
    confirm the viewer URL reflects the current slide. Verify raw `deck.html`
-   still matches its admitted bytes and is not wrapped or rewritten.
+   still matches its admitted bytes, is not wrapped or rewritten, and has no
+   collection return control or **B** shortcut.
 5. Another collection's viewer, HTML, PDF, cover and local assets cannot be read;
    an authorized viewer never bypasses authorization of its embedded artifact.
 6. Revoked keys and removed assignments lose access in already-open sessions.

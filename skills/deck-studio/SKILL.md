@@ -149,10 +149,14 @@ fitness. Use relative modules or inline data, not JSON fetches or dependencies
 outside the bundle. See the publishing guide for retry and promotion rules.
 
 Share the canonical `/decks/<deck_id>/<release_id>/` viewer URL, not its raw
-`deck.html` artifact. The hosted gateway automatically supplies a persistent
-**Back to collection** link outside the slide canvas, including for existing
-releases. Do not add collection navigation to authored slides or alter accepted
-release bytes to obtain it; standalone HTML remains independent of hosting.
+`deck.html` artifact. The hosted gateway adds a home icon to the existing
+auto-hiding bottom slide-control pill: **Back to collection** (shortcut **B**),
+or **Back to public decks** for a public-gallery entry. Slides keep the full
+viewport. The refresh icon restarts at slide one (**R**); arrows and count
+remain in the same pill. Do not add hosting navigation to authored slides or
+alter accepted release bytes to obtain it; the gateway integrates it for
+existing releases. Standalone HTML retains slide navigation but no collection
+return control or **B** shortcut.
 
 Obtain explicit authorization for the exact library and audience before a
 provider mutation, public grant or key delivery. Mutate only the authorized

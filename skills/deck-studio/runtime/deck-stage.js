@@ -28,7 +28,7 @@
     <button class="deck-button" type="button" data-action="prev" aria-label="Previous slide">‹</button>
     <span class="deck-count" aria-live="polite"><span data-current>01</span>/<span data-total>${pad2(slides.length)}</span></span>
     <button class="deck-button" type="button" data-action="next" aria-label="Next slide">›</button>
-    <button class="deck-button" type="button" data-action="reset" aria-label="Reset to first slide">R</button>
+    <button class="deck-button" type="button" data-action="reset" aria-label="Reset to first slide" title="Reset to first slide (R)" aria-keyshortcuts="R"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10a9 9 0 1 1 2.7 8.4M3 4v6h6"/></svg></button>
   `;
 
   document.body.append(controls);

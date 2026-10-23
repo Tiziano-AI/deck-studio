@@ -76,7 +76,7 @@ body[data-web-slides-studio] {
 .deck-controls {
   position: fixed;
   left: 50%;
-  bottom: 22px;
+  bottom: calc(22px + env(safe-area-inset-bottom));
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -104,6 +104,12 @@ body[data-web-slides-studio] {
 }
 
 .deck-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-decoration: none;
+  vertical-align: middle;
   appearance: none;
   border: 0;
   background: transparent;
@@ -114,6 +120,12 @@ body[data-web-slides-studio] {
   border-radius: 999px;
   font: inherit;
   cursor: pointer;
+}
+
+.deck-button svg { flex: none; }
+
+@media (pointer: coarse) {
+  .deck-button { min-width: 44px; height: 44px; }
 }
 
 .deck-button:hover,

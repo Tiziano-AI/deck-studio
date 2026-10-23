@@ -11,6 +11,41 @@ function presentationWindow() {
   }
 }
 
+function integrateControls(child) {
+  const controls = child.document.querySelector('.deck-controls');
+  const reset = controls?.querySelector('[data-action="reset"]');
+  if (!controls || !reset) return;
+
+  // Selected releases keep their accepted bytes. Enhance their existing pill
+  // in the live DOM instead of creating another navigation surface or runtime.
+  reset.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10a9 9 0 1 1 2.7 8.4M3 4v6h6"/></svg>';
+  reset.title = 'Reset to first slide (R)';
+  reset.setAttribute('aria-keyshortcuts', 'R');
+
+  const link = child.document.createElement('a');
+  link.className = 'deck-button';
+  link.dataset.viewerReturn = '';
+  link.setAttribute('href', frame.dataset.returnTo);
+  link.target = '_top';
+  link.title = frame.dataset.returnLabel;
+  link.setAttribute('aria-label', frame.dataset.returnLabel);
+  link.setAttribute('aria-keyshortcuts', 'B');
+  link.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7M5 9v11h5v-6h4v6h5V9"/></svg>';
+  controls.append(link);
+
+  // Existing releases predate icon links. Keep the shared pill's geometry,
+  // focus reveal and touch access without changing its auto-hide mechanism.
+  const style = child.document.createElement('style');
+  style.textContent = '.deck-controls .deck-button{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;text-decoration:none;vertical-align:middle}.deck-controls svg{flex:none}.deck-controls{bottom:calc(22px + env(safe-area-inset-bottom))}@media(pointer:coarse){.deck-controls .deck-button{min-width:44px;height:44px}}';
+  child.document.head.append(style);
+  child.addEventListener('keydown', event => {
+    if (event.defaultPrevented || event.repeat || event.isComposing || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || event.key.toLowerCase() !== 'b') return;
+    if (event.target instanceof child.Element && event.target.closest('a,button,input,textarea,select,summary,video,audio,[contenteditable]:not([contenteditable="false"]),[tabindex]:not([tabindex="-1"]),[role="button"],[role="link"],[role="textbox"],[role="slider"],[role="menu"],[role="tablist"]')) return;
+    event.preventDefault();
+    location.assign(frame.dataset.returnTo);
+  });
+}
+
 function followLink(event) {
   if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   const link = event.target?.closest?.('a[href]');
@@ -50,6 +85,7 @@ if (frame) {
     // Expired/revoked access may load a login or denial instead of a deck.
     if (!child) return;
     restoreSlide();
+    integrateControls(child);
     child.document.addEventListener('webslides:slidechange', reflectSlide);
     child.addEventListener('hashchange', reflectSlide);
     child.document.addEventListener('click', followLink);

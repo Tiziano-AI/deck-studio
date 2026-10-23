@@ -1,6 +1,6 @@
 {
   "name": "@tiziano-ai/deck-studio",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "private": true,
   "type": "module",
   "engines": { "node": ">=24.22.1" },

@@ -40,7 +40,12 @@ remain intentional runtime interfaces; the public skill is Deck Studio.
 - Home/End jump to first/last slide.
 - Numeric entry jumps to a one-based slide number after a short delay or Enter;
   Escape cancels the pending number.
-- `R` resets to slide 1.
+- The auto-hiding bottom pill contains previous/next arrows, slide count and a
+  refresh-icon restart button. `R` resets to slide 1. Pointer movement or a
+  middle-third touch tap reveals the pill; keyboard focus keeps it visible.
+- In the canonical hosted viewer, the same pill also contains a home icon for
+  returning to the collection or public gallery, with shortcut `B`. Standalone
+  HTML has no hosting destination and therefore no return control or shortcut.
 - Keyboard shortcuts leave interactive elements, composition and modified key
   combinations alone, so links, forms and embedded controls retain their keys.
 - Touch taps on noninteractive slide areas navigate in the left/right thirds;

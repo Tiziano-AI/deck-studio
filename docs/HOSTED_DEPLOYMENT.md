@@ -191,11 +191,14 @@ selection requires admitted v3 bundles. There is no automatic library, password
 or grant import from another service.
 
 The gateway viewer is service-owned navigation, not a new release format.
-Deploying it adds the persistent return link to canonical
-`/decks/<deck_id>/<release_id>/` URLs for already selected releases without
-republishing or rewriting their accepted artifacts. Preserve the library,
-viewing keys and grants; this change does not require a policy migration or
-credential rotation. Exact `deck.html` and download paths stay raw.
+Deploying it extends the existing auto-hiding bottom slide-control pill at
+canonical `/decks/<deck_id>/<release_id>/` URLs for already selected releases without
+republishing or rewriting their accepted artifacts. Its home icon returns to
+the collection or public decks with shortcut **B**; the restart control uses a
+refresh icon with shortcut **R**. The slide frame fills the viewport, with no
+top bar or separate toolbar. Preserve the library, viewing keys and grants;
+this change does not require a policy migration or credential rotation. Exact
+`deck.html` and download paths stay raw.
 
 Retain the exact previous image identity for recovery. A provider rebuild of
 the same source is a new image to qualify, not the previous artifact. Mount and
@@ -218,15 +221,19 @@ Do not broaden audience origin to make a health probe pass.
 
 Use real browser audience paths for anonymous public access, separate A/B
 collections and owner viewing. Test login, invalid key, change-key, sign-out,
-the viewer's visible **Back to collection** link, direct
-HTML/PDF/PPTX/cover/resources, and revocation in an already-open session. Check
-the return link outside the canvas by pointer and keyboard at desktop and
-narrow sizes: collection entries return to `/collection`; public-gallery
-entries return to `/` even when signed in. Open a direct `#slide-N` link and
-navigate inside the frame, checking the viewer URL's current hash. Verify that
-the raw `deck.html` bytes still match their admitted digest and receive their
-own authorization check. The viewer must not introduce an Escape shortcut or
-claim to remove the deck's slide-history entries.
+the viewer's **Back to collection** link, direct HTML/PDF/PPTX/cover/resources,
+and revocation in an already-open session. Confirm that slides fill the viewport
+without a top bar or reserved navigation band. Check that the existing bottom
+pill is the only control group and still auto-hides. Exercise its home icon by
+pointer, keyboard and touch at desktop and narrow sizes, plus the **B** shortcut.
+Collection entries return to `/collection`; public-gallery entries return to
+`/` even when signed in. Check the refresh-icon restart and **R** shortcut,
+previous/next arrows and slide count. Raw standalone HTML must have no
+collection return control or **B** shortcut. Open a direct `#slide-N` link and
+navigate inside the frame, checking the viewer URL's current hash. Verify raw
+`deck.html` still matches its admitted digest and receives its own authorization
+check. The viewer adds no Escape shortcut and does not remove the deck's
+slide-history entries.
 
 Verify that the gallery offers both PDF and editable PPTX downloads,
 the downloaded bytes match the admitted files, and all three formats obey the

@@ -107,11 +107,18 @@ The gateway gives audiences a public gallery and, optionally, a collection
 opened with an access key. Agents manage releases, public visibility, keys and
 assignments through the CLI/API. There is no web admin console or slide editor.
 
-Hosted deck links open a gateway viewer with a persistent **Back to collection**
-link above the slide canvas. The gateway supplies this navigation automatically,
-including for existing releases; authors do not add it to their slides. Share
-the canonical `/decks/<deck_id>/<release_id>/` viewer URL. The explicit
-`deck.html` path remains the unchanged standalone presentation.
+Hosted deck links open a presentation-first viewer: slides fill the viewport,
+and the existing auto-hiding bottom control pill includes a home icon for
+**Back to collection** (shortcut **B**), or **Back to public decks** for a public
+gallery entry. The refresh icon restarts at slide one (shortcut **R**); arrows
+and slide count remain together in the same pill. The gateway supplies the
+return control, including for existing releases; authors do not add it to
+their slides. Share the canonical `/decks/<deck_id>/<release_id>/` viewer URL.
+The explicit `deck.html` path remains the unchanged standalone presentation,
+with slide navigation but no collection return control or shortcut.
+
+The collection page uses the viewing key's stored label as its heading and
+browser title, rather than a fixed generic name.
 
 A deck may be public, assigned to several keys, both, or neither. Selecting a
 new deck starts private and unassigned; selecting a later release of an existing

@@ -12,10 +12,10 @@ async function publish(f, id, options = {}) {
   return release;
 }
 
-function returnLink(text) {
-  const tag = text.match(/<a\b[^>]*\bdata-viewer-return(?:="[^"]*")?[^>]*>/)?.[0];
-  assert.ok(tag, "the hosted viewer needs a real, keyboard-reachable return link");
-  return /\bhref="([^"]+)"/.exec(tag)?.[1];
+function returnTarget(text) {
+  const tag = text.match(/<iframe\b[^>]*\bdata-deck-frame[^>]*>/)?.[0];
+  assert.ok(tag, "the hosted presentation carries its return context into the existing controls");
+  return /\bdata-return-to="([^"]+)"/.exec(tag)?.[1];
 }
 
 test("canonical audience URLs wrap an unchanged deck and preserve the entry collection", async t => {
@@ -29,14 +29,16 @@ test("canonical audience URLs wrap an unchanged deck and preserve the entry coll
 
   const viewer = await f.request("/decks/viewer/r1/");
   assert.equal(viewer.status, 200);
-  assert.match(viewer.text, /class="viewer-bar"/);
+  assert.doesNotMatch(viewer.text, /<header\b|viewer-bar|data-viewer-reveal|data-viewer-fullscreen|gallery-client|gallery\.css|data-viewer-return/);
+  assert.match(viewer.text, /href="\/ui\/viewer\.css"/);
+  assert.match(viewer.text, /src="\/ui\/viewer-client\.mjs"/);
   assert.match(viewer.text, /<iframe\b[^>]*\bdata-deck-frame/);
   assert.match(viewer.text, /\bdata-deck-src="\/decks\/viewer\/r1\/deck\.html"/);
-  assert.match(viewer.text, /data-viewer-title/);
-  assert.match(viewer.text, /A &lt;b&gt;deck&lt;\/b&gt; &amp; &quot;direction&quot;/);
+  assert.match(viewer.text, /<title>A &lt;b&gt;deck&lt;\/b&gt; &amp; &quot;direction&quot; · Decks<\/title>/);
+  assert.match(viewer.text, /\btitle="A &lt;b&gt;deck&lt;\/b&gt; &amp; &quot;direction&quot;"/);
   assert.doesNotMatch(viewer.text, /A <b>deck<\/b>/);
-  assert.equal(returnLink(viewer.text), "/");
-  assert.match(viewer.text, /Back to public decks/);
+  assert.equal(returnTarget(viewer.text), "/");
+  assert.match(viewer.text, /data-return-label="Back to public decks \(B\)"/);
   assert.equal(viewer.headers.get("cache-control"), "no-store");
   const directives = new Map(viewer.headers.get("content-security-policy").split(";").map(value => {
     const [name, ...sources] = value.trim().split(/\s+/);
@@ -47,17 +49,17 @@ test("canonical audience URLs wrap an unchanged deck and preserve the entry coll
   assert.doesNotMatch(viewer.headers.get("content-security-policy"), /unsafe-inline|unsafe-eval/);
 
   const keyed = await f.request("/decks/viewer/r1/", { cookie: session.cookie });
-  assert.equal(returnLink(keyed.text), "/collection");
-  assert.match(keyed.text, /Back to collection/);
+  assert.equal(returnTarget(keyed.text), "/collection");
+  assert.match(keyed.text, /data-return-label="Back to collection \(B\)"/);
   for (const [query, expected] of [["/", "/"], ["/collection", "/collection"]]) {
     const response = await f.request(`/decks/viewer/r1/?return_to=${encodeURIComponent(query)}`, { cookie: session.cookie });
     assert.equal(response.status, 200);
-    assert.equal(returnLink(response.text), expected);
+    assert.equal(returnTarget(response.text), expected);
   }
   for (const query of ["https://evil.invalid/", "//evil.invalid/", "/collection?other=1", "/collection#other", "/decks/viewer/r1/", "/collection/", "\\evil.invalid", " /", "/%2fexample.invalid"]) {
     const response = await f.request(`/decks/viewer/r1/?return_to=${encodeURIComponent(query)}`, { cookie: session.cookie });
     assert.equal(response.status, 200, query);
-    assert.equal(returnLink(response.text), "/collection", query);
+    assert.equal(returnTarget(response.text), "/collection", query);
     assert.ok(!response.text.includes("evil.invalid"), "untrusted return destinations must not be emitted");
   }
 
@@ -95,7 +97,7 @@ test("viewer, frame and dependencies share live audience policy without exposing
     assert.equal((await f.request(path)).status, 401, path);
     const denied = await f.request(path, { cookie: outsider.cookie });
     assert.equal(denied.status, 403, path);
-    assert.doesNotMatch(denied.text, /Title-private|data-viewer-title/);
+    assert.doesNotMatch(denied.text, /Title-private|data-return-label/);
     assert.equal((await f.request(path, { cookie: member.cookie })).status, 200, path);
     assert.equal((await f.request(`/decks/private/hidden/${leaf}`, { cookie: member.cookie })).status, 404, leaf);
   }
@@ -125,6 +127,6 @@ test("same-size HTML tampering fails before a hosted viewer or its title is emit
   for (const leaf of ["", "deck.html"]) {
     const denied = await f.request(`/decks/integrity/r1/${leaf}`);
     assert.equal(denied.status, 503, leaf);
-    assert.doesNotMatch(denied.text, /DO-NOT-LEAK-AFTER-TAMPER|data-deck-frame|data-viewer-title|viewer-bar/);
+    assert.doesNotMatch(denied.text, /DO-NOT-LEAK-AFTER-TAMPER|data-deck-frame|data-return-label|viewer-bar/);
   }
 });
