@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "deck-studio",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Shape, create, revise and publish communication decks in HTML, PDF and editable PowerPoint.",
   "author": {
     "name": "Tiziano AI",
@@ -17,7 +17,7 @@
       "interface": {
         "displayName": "Deck Studio",
         "shortDescription": "Create and refine communication decks",
-        "longDescription": "Turn notes, approved content or an existing deck into HTML, PDF and native editable PowerPoint: all three are ordinary Decks deliverables, with 56 visual systems and rendered inspection. Requires a local executor, Node.js 24.22.1+, npm, Python 3.9+ and explicit package-owned dependency setup. HTML rendering uses package-owned Chromium; PowerPoint render inspection also needs LibreOffice and Poppler. The HTML PDF export contains slide images. Optional self-hosted galleries use your own library, access policy and gateway; installation publishes nothing and includes no hosted account. Removing the plugin preserves your decks and independently running services.",
+        "longDescription": "Turn notes, approved content or an existing deck into HTML, PDF and native editable PowerPoint: all three are ordinary Decks deliverables, with 56 visual systems and rendered inspection. Requires a local executor, Node.js 24.x (24.22.1+) or 26.x (26.12.1+), npm, Python 3.9+ and explicit package-owned dependency setup. Qualified on Node 24. HTML rendering uses package-owned Chromium; PowerPoint render inspection also needs LibreOffice and Poppler. The HTML PDF export contains slide images. Optional self-hosted galleries use your own library, access policy and gateway; installation publishes nothing and includes no hosted account. Removing the plugin preserves your decks and independently running services.",
         "developerName": "Tiziano AI",
         "websiteURL": "https://github.com/Tiziano-AI/deck-studio",
         "category": "Productivity",

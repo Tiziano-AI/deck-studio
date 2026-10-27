@@ -25,12 +25,21 @@ does not require npm publication.
 ## Requirements
 
 Local authoring needs a host with native plugin support and a local executor,
-Node.js 24.22.1+, npm, Python 3.9+ and write access to the selected plugin package.
+Node.js 24.x (24.22.1+) or 26.x (26.12.1+), npm, Python 3.9+ and write access to
+the selected plugin package.
 Git-based installation also needs Git and access to the catalog
 and product repositories. Explicit runtime preparation downloads the locked npm
 dependencies and Chromium. No API key, hosted account or gateway is required.
-This release is qualified on Node.js 24.22.1; later major runtimes are not
-independently qualified. Setup refuses an older runtime before installing.
+This release is qualified on Node.js 24.22.1; Node 26 is not independently
+qualified. Setup refuses unsupported release lines, prereleases and versions
+below their line's security floor before installing. The separate floors follow
+the [Node.js October 2026 security release](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases),
+including the Brotli, TLS and DNS fixes; a higher major number alone does not
+establish that those fixes are present.
+Node 25 is [end of life](https://nodejs.org/en/about/previous-releases).
+New release lines need an explicit security-floor review rather than inheriting
+the floor of an older major. The self-hosted gateway retains its separate Node
+24-only contract.
 
 The HTML PDF producer renders slides as images. Native PowerPoint generation
 uses locked PptxGenJS in the same package, without an OpenAI-only artifact runtime

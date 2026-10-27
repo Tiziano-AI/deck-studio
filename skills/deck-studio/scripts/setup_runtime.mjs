@@ -20,8 +20,11 @@ function inside(root, path) {
 
 export function requireSupportedNode(version = process.versions.node) {
   const parts = /^(\d+)\.(\d+)\.(\d+)$/.exec(version)?.slice(1).map(Number);
-  if (!parts || parts[0] < 24 || (parts[0] === 24 && (parts[1] < 22 || (parts[1] === 22 && parts[2] < 1)))) {
-    throw new Error(`Node.js 24.22.1 or newer is required (found ${version})`);
+  // Security fixes have a separate floor on each supported release line.
+  // A numerically newer major (for example 26.0.0) can still be vulnerable.
+  const floor = parts && { 24: [22, 1], 26: [12, 1] }[parts[0]];
+  if (!floor || parts[1] < floor[0] || (parts[1] === floor[0] && parts[2] < floor[1])) {
+    throw new Error(`Node.js >=24.22.1 <25 or >=26.12.1 <27 is required (found ${version})`);
   }
 }
 

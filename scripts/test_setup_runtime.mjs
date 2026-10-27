@@ -32,24 +32,24 @@ function dependencySkill(root) {
   return dir;
 }
 
-test("the security runtime floor rejects older and prerelease versions at the patch boundary", () => {
-  for (const version of ["20.20.2", "22.22.0", "24.21.9", "24.22.0", "24.22.1-rc.1"]) {
-    assert.throws(() => requireSupportedNode(version), /Node.js 24\.22\.1 or newer is required/);
+test("the security runtime floor is specific to each supported release line", () => {
+  for (const version of ["20.20.2", "22.23.4", "24.21.9", "24.22.0", "24.22.1-rc.1", "25.0.0", "26.0.0", "26.12.0", "26.12.1-rc.1", "27.0.0"]) {
+    assert.throws(() => requireSupportedNode(version), /Node.js >=24\.22\.1 <25 or >=26\.12\.1 <27 is required/);
   }
-  for (const version of ["24.22.1", "24.22.2", "24.23.0", "26.0.0"]) {
-    // The floor is not an exact patch pin or a qualification of later majors.
+  for (const version of ["24.22.1", "24.22.2", "24.23.0", "26.12.1", "26.12.2", "26.13.0"]) {
+    // Security admission is not an exact patch pin or producer qualification.
     assert.doesNotThrow(() => requireSupportedNode(version));
   }
 });
 
-test("an older-runtime fixture refuses setup before installing any dependency", (t) => {
+test("an unpatched newer-major fixture refuses setup before installing any dependency", (t) => {
   const { root } = fixture(t);
   const descriptor = Object.getOwnPropertyDescriptor(process.versions, "node");
   let called = false;
   try {
     // Exercise the real setup gate on this executable, not an installed old Node.
-    Object.defineProperty(process.versions, "node", { ...descriptor, value: "24.22.0" });
-    assert.throws(() => installRuntime(root, () => { called = true; }), /found 24\.22\.0/);
+    Object.defineProperty(process.versions, "node", { ...descriptor, value: "26.12.0" });
+    assert.throws(() => installRuntime(root, () => { called = true; }), /found 26\.12\.0/);
   } finally {
     Object.defineProperty(process.versions, "node", descriptor);
   }
