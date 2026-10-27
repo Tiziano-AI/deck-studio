@@ -9,7 +9,7 @@ import { fixture, fileIdentity, rewriteArtifact, writeRelease } from "../publish
 
 if (!process.env.DECKS_TEST_SKILL_ROOT) throw new Error("Set DECKS_TEST_SKILL_ROOT to a complete prepared Deck Studio package");
 const producer = resolve(process.env.DECKS_TEST_SKILL_ROOT);
-const { chromium } = await import(pathToFileURL(join(producer, "scripts/browser_runtime.mjs")));
+const { launchBrowser } = await import(pathToFileURL(join(producer, "scripts/browser_runtime.mjs")));
 
 async function selected(f, id, { legacyReset = false } = {}) {
   const release = writeRelease(f.libraryRoot, id);
@@ -100,7 +100,7 @@ test("hosted viewers enhance the existing pill without reducing the viewport or 
   const wrong = (await f.api("keys", { label: "Wrong team", scope: "collection" })).json.data;
   await f.api("decks/private/grant", { key_id: key.key_id });
   await f.api("decks/public/grant", { key_id: key.key_id });
-  const browser = await chromium.launch({ headless: true });
+  const browser = await launchBrowser();
   t.after(() => browser.close());
 
   for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }]) {
@@ -261,7 +261,7 @@ test("ordinary evidence links leave the viewer while slide, popup and download l
   const f = await fixture(t);
   await selected(f, "links");
   await f.api("decks/links/public", { public: true });
-  const browser = await chromium.launch({ headless: true });
+  const browser = await launchBrowser();
   t.after(() => browser.close());
   const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, acceptDownloads: true });
   t.after(() => context.close());

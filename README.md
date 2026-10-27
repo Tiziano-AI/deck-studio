@@ -54,7 +54,9 @@ create a hosted account.
 
 Local production requires a local executor, Node.js 24.x (24.22.1+) or 26.x
 (26.12.1+), npm and Python 3.9+. Producer qualification remains on Node 24;
-setup rejects unpatched releases on either admitted line.
+setup rejects unpatched releases on either admitted line. Rendering uses exact
+package-owned Chrome for Testing 156.0.8078.47, acquired explicitly with reviewed
+official metadata rather than Playwright's older bundled browser.
 Resolve the installed package from the host, then run from its
 `skills/deck-studio` directory, or the same directory in a source checkout:
 

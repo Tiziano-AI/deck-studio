@@ -29,7 +29,12 @@ Node.js 24.x (24.22.1+) or 26.x (26.12.1+), npm, Python 3.9+ and write access to
 the selected plugin package.
 Git-based installation also needs Git and access to the catalog
 and product repositories. Explicit runtime preparation downloads the locked npm
-dependencies and Chromium. No API key, hosted account or gateway is required.
+dependencies and Chrome for Testing 156.0.8078.47. No API key, hosted account or
+gateway is required. The locked `@puppeteer/browsers` downloader acquires that
+exact official CfT version into the package-owned browser directory, not
+Playwright's older bundled build or a personal Chrome installation. Acquisition
+requires `unzip` on Linux/macOS or `tar.exe` on Windows; it does not install OS
+packages.
 This release is qualified on Node.js 24.22.1; Node 26 is not independently
 qualified. Setup refuses unsupported release lines, prereleases and versions
 below their line's security floor before installing. The separate floors follow
@@ -40,6 +45,28 @@ Node 25 is [end of life](https://nodejs.org/en/about/previous-releases).
 New release lines need an explicit security-floor review rather than inheriting
 the floor of an older major. The self-hosted gateway retains its separate Node
 24-only contract.
+
+Browser selection has one owner, `skills/deck-studio/scripts/browser_contract.mjs`.
+Explicit setup verifies the SHA-256 of its
+[versioned official metadata](https://googlechromelabs.github.io/chrome-for-testing/156.0.8078.47.json)
+before acquisition. This pins metadata identity, not an independently published
+archive SHA-256. Rendering checks the exact package-owned browser version and
+enables Chromium sandboxing. No download runs during render/export, and no
+moving `stable`/`latest` executable or personal/shared-cache fallback is used.
+The [Chrome 156 security release](https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html)
+includes fixes beyond the 156.0.8078.4 build bundled with Playwright 1.64.1;
+npm audit does not scan those browser bytes. This does not establish that every
+listed CVE affected that prerelease. Future browser changes require reviewing
+the exact metadata, updating version and digest together, and rerunning
+synthetic render/export qualification.
+
+Source qualification on 27 October 2026 used an isolated macOS arm64 package
+with Node 24.22.1. Explicit setup acquired the pinned browser and checked real
+screenshot, PDF and in-memory native PPTX production. All 14 setup regressions
+and all 14 browser/runtime, delivery-gateway and viewer-gateway tests passed,
+including the actual QA/PDF CLIs and their refusal paths. The separate gateway
+server gate passed 113 tests. These are source and synthetic consumer checks,
+not a plugin refresh, installation activation or hosted gateway deployment.
 
 The HTML PDF producer renders slides as images. Native PowerPoint generation
 uses locked PptxGenJS in the same package, without an OpenAI-only artifact runtime

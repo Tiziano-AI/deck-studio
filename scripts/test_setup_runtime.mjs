@@ -7,6 +7,7 @@ import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { bundledSkillFiles, checkRuntime, installRuntime, packageConfiguration, pruneBundledSkillFiles, requireSupportedNode } from "../skills/deck-studio/scripts/setup_runtime.mjs";
+import { browserVersion, qualifiedBrowserVersion, verifyBrowserMetadata } from "../skills/deck-studio/scripts/browser_contract.mjs";
 
 const repo = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const setup = join(repo, "skills/deck-studio/scripts/setup_runtime.mjs");
@@ -40,6 +41,23 @@ test("the security runtime floor is specific to each supported release line", ()
     // Security admission is not an exact patch pin or producer qualification.
     assert.doesNotThrow(() => requireSupportedNode(version));
   }
+});
+
+test("browser admission requires the exact reviewed CfT version, not a substring", () => {
+  assert.equal(qualifiedBrowserVersion(`Google Chrome for Testing ${browserVersion}\n`), true);
+  for (const version of ["156.0.8078.4", "156.0.8078.470", "156.0.8078.48"]) {
+    assert.equal(qualifiedBrowserVersion(`Google Chrome for Testing ${version}`), false);
+  }
+  assert.equal(qualifiedBrowserVersion(`Google Chrome ${browserVersion}`), false);
+});
+
+test("explicit browser acquisition refuses unavailable or changed official metadata", async () => {
+  await assert.rejects(verifyBrowserMetadata(async () => new Response("not found", { status: 404 })), /BROWSER_METADATA_UNAVAILABLE/);
+  await assert.rejects(verifyBrowserMetadata(async (url, options) => {
+    assert.match(url, /\/156\.0\.8078\.47\.json$/);
+    assert.equal(options.redirect, "error");
+    return new Response(JSON.stringify({ version: browserVersion, downloads: { chrome: [] } }));
+  }), /BROWSER_METADATA_CHANGED/);
 });
 
 test("an unpatched newer-major fixture refuses setup before installing any dependency", (t) => {
@@ -76,7 +94,7 @@ test("manifest and lock dependency order is immaterial, version drift is not", (
   assert.throws(() => packageConfiguration(root), /disagree/);
 });
 
-test("install delegates only locked dependencies and hermetic Chromium to upstream tools", (t) => {
+test("install delegates locked dependencies and the explicit pinned CfT acquisition helper", (t) => {
   const { root } = fixture(t);
   const calls = [];
   const removed = installRuntime(root, (command, args, options) => {
@@ -88,7 +106,7 @@ test("install delegates only locked dependencies and hermetic Chromium to upstre
   assert.equal(calls[0].command, "npm");
   assert.deepEqual(calls[0].args, ["ci", "--ignore-scripts", "--omit=dev", "--workspaces=false", "--no-audit", "--no-fund"]);
   assert.equal(calls[1].command, process.execPath);
-  assert.deepEqual(calls[1].args, ["node_modules/playwright/cli.js", "install", "chromium"]);
+  assert.deepEqual(calls[1].args, ["scripts/install_browser.mjs"]);
   for (const call of calls) {
     assert.equal(call.options.cwd, root);
     assert.equal(call.options.env.PLAYWRIGHT_BROWSERS_PATH, "0");

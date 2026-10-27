@@ -7,10 +7,11 @@ import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const scriptPath = realpathSync(fileURLToPath(import.meta.url));
+const { browserVersion } = await import(pathToFileURL(join(dirname(scriptPath), "browser_contract.mjs")));
 const skillRoot = resolve(dirname(scriptPath), "..");
 const installCommands = [
   ["npm", ["ci", "--ignore-scripts", "--omit=dev", "--workspaces=false", "--no-audit", "--no-fund"]],
-  [process.execPath, ["node_modules/playwright/cli.js", "install", "chromium"]],
+  [process.execPath, ["scripts/install_browser.mjs"]],
 ];
 
 function inside(root, path) {
@@ -123,12 +124,12 @@ export async function checkRuntime(root) {
     if (actual !== expected) throw new Error(`Dependency version mismatch: ${name} (${actual}, expected ${expected})`);
     versions[name] = actual;
   }
-  const { chromium } = await import(pathToFileURL(join(root, "scripts/browser_runtime.mjs")));
-  const executable = realpathSync(chromium.executablePath());
+  const { browserExecutable, launchBrowser } = await import(pathToFileURL(join(root, "scripts/browser_runtime.mjs")));
+  const executable = browserExecutable();
   const browserRoot = join(modules, "playwright-core", ".local-browsers");
   if (!inside(browserRoot, executable)) throw new Error("Chromium is not package-local");
   accessSync(executable, constants.X_OK);
-  const browser = await chromium.launch({ headless: true });
+  const browser = await launchBrowser();
   try {
     const page = await browser.newPage({ viewport: { width: 320, height: 180 } });
     await page.setContent("<!doctype html><title>Deck Studio runtime check</title><p>Ready</p>");
@@ -157,7 +158,7 @@ async function main(args) {
            PPTX files. No downloads. Native render QA separately needs LibreOffice
            and Poppler; check those with python3 scripts/render_pptx.py --check.
 --install  Replace this package's node_modules using npm ci (lifecycle scripts off),
-           download package-local Chromium, remove dependency SKILL.md files,
+           download package-local Chrome for Testing ${browserVersion}, remove dependency SKILL.md files,
            then run the same check. Requires npm and network access.
 
 JSON results go to stdout; install progress goes to stderr. Exit 0 means ready.

@@ -9,7 +9,7 @@
 
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import { join, resolve, basename, dirname } from "node:path";
-import { chromium } from "./browser_runtime.mjs";
+import { launchBrowser } from "./browser_runtime.mjs";
 import { identity, sourceCapture } from "./proof_identity.mjs";
 import { createStaticServer, observeErrors, prepareDeck, captureSlide, safeError } from "./capture_runtime.mjs";
 import { LIBRARY_DELIVERY } from "./delivery_profile.mjs";
@@ -297,7 +297,7 @@ async function run() {
     const serving = await createStaticServer(root, htmlName, capture, { delivery });
     server = serving.server;
     const { url } = serving;
-    browser = await chromium.launch({ headless: true });
+    browser = await launchBrowser();
     report.ok = true;
     report.errors = [];
     for (const viewport of viewports) {

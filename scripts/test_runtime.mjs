@@ -13,7 +13,7 @@ import { pathToFileURL } from "node:url";
 const installed = process.env.DECKS_TEST_SKILL_ROOT;
 if (!installed) throw new Error("Set DECKS_TEST_SKILL_ROOT to an installed Deck Studio package with Chromium");
 const producer = resolve(installed);
-const { chromium } = await import(pathToFileURL(join(producer, "scripts/browser_runtime.mjs")));
+const { launchBrowser } = await import(pathToFileURL(join(producer, "scripts/browser_runtime.mjs")));
 const { createStaticServer, observeErrors, prepareDeck, captureSlide } = await import(pathToFileURL(join(producer, "scripts/capture_runtime.mjs")));
 const { sourceCapture } = await import(pathToFileURL(join(producer, "scripts/proof_identity.mjs")));
 const { LIBRARY_DELIVERY, DECK_CSP, presentationType } = await import(pathToFileURL(join(producer, "scripts/delivery_profile.mjs")));
@@ -43,7 +43,7 @@ async function fixture(t, { extra = "", script = "", slow = false, local = false
     return original(file);
   };
   const { server, url } = await createStaticServer(root, "deck.html", capture, { delivery });
-  const browser = await chromium.launch({ headless: true });
+  const browser = await launchBrowser();
   t.after(async () => {
     await browser.close();
     await new Promise((done) => server.close(done));

@@ -14,7 +14,7 @@ import { DECK_CSP, LIBRARY_DELIVERY } from "../skills/deck-studio/scripts/delive
 
 if (!process.env.DECKS_TEST_SKILL_ROOT) throw new Error("Set DECKS_TEST_SKILL_ROOT to a complete prepared Deck Studio package");
 const producer = resolve(process.env.DECKS_TEST_SKILL_ROOT);
-const { chromium } = await import(pathToFileURL(join(producer, "scripts/browser_runtime.mjs")));
+const { launchBrowser } = await import(pathToFileURL(join(producer, "scripts/browser_runtime.mjs")));
 const { observeErrors, prepareDeck, captureSlide } = await import(pathToFileURL(join(producer, "scripts/capture_runtime.mjs")));
 const { LIBRARY_DELIVERY: producerProfile } = await import(pathToFileURL(join(producer, "scripts/delivery_profile.mjs")));
 assert.deepEqual(producerProfile, LIBRARY_DELIVERY, "prepared producer and gateway must load the same delivery owner");
@@ -81,7 +81,7 @@ async function actualRelease(f, deckId, { delivery = "library", fetchData = fals
 
 test("actual library capture and audience gateway agree; selection rejects local proof without losing policy", async t => {
   const f = await fixture(t);
-  const browser = await chromium.launch({ headless: true });
+  const browser = await launchBrowser();
   t.after(() => browser.close());
 
   const good = await actualRelease(f, "relative");
