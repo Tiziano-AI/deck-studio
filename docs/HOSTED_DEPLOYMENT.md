@@ -133,6 +133,10 @@ Use distinct credentials for management and viewers. Pass
 secrets through private environment/secret input, not arguments, source, image
 build arguments, URLs, screenshots or logs. No startup step creates viewer keys.
 
+The gateway reads `DECKS_MANAGEMENT_TOKEN` when the process starts, so
+replacing the stored Railway variable does not revoke a running bearer until a
+deployment replaces the process.
+
 ## Transfer and immutable promotion
 
 Transfer only an already admitted v3 bundle to a unique, previously absent

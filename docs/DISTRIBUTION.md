@@ -35,7 +35,7 @@ exact official CfT version into the package-owned browser directory, not
 Playwright's older bundled build or a personal Chrome installation. Acquisition
 requires `unzip` on Linux/macOS or `tar.exe` on Windows; it does not install OS
 packages.
-This release is qualified on Node.js 24.22.1; Node 26 is not independently
+Original source qualification used Node.js 24.22.1. Node 26 is not independently
 qualified. Setup refuses unsupported release lines, prereleases and versions
 below their line's security floor before installing. The separate floors follow
 the [Node.js October 2026 security release](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases),
@@ -53,6 +53,14 @@ before acquisition. This pins metadata identity, not an independently published
 archive SHA-256. Rendering checks the exact package-owned browser version and
 enables Chromium sandboxing. No download runs during render/export, and no
 moving `stable`/`latest` executable or personal/shared-cache fallback is used.
+Linux also needs an OS policy that permits this executable to create its
+sandbox; downloading an ARM64 browser does not establish runtime readiness.
+On Ubuntu 24.04, a package-local Chrome can be outside the distribution's
+AppArmor allowance. A `No usable sandbox` refusal needs an administrator's
+diagnosis and, where required, a separately approved security-policy change;
+reinstalling dependencies or disabling sandboxing is not the resolution.
+See [Linux ARM64 runtime readiness](LINUX_ARM64.md) for consumer-environment
+checks, sandbox-policy diagnosis, runtime retention and production acceptance.
 The [Chrome 156 security release](https://chromereleases.googleblog.com/2026/10/stable-channel-update-for-desktop_02018666648.html)
 includes fixes beyond the 156.0.8078.4 build bundled with Playwright 1.64.1;
 npm audit does not scan those browser bytes. This does not establish that every
@@ -96,6 +104,10 @@ different source checkout. Continue with [Prepare the selected package](#prepare
 Refresh the desktop host as it requires and use a new chat to check discovery.
 The skill is namespaced as `$deck-studio:deck-studio`. Verify its plugin ID and
 package root if another marketplace or standalone skill supplies Deck Studio.
+Discovery alone is not runtime readiness: verify that the selected package's
+prepared runtime remains present and passes `--check` after native host
+initialization. An earlier successful setup receipt does not establish that
+the current consumer still has those dependencies or Chrome.
 
 ## Claude Code
 
@@ -129,8 +141,8 @@ node "/absolute/installed/package/skills/deck-studio/scripts/setup_runtime.mjs" 
 node "/absolute/installed/package/skills/deck-studio/scripts/setup_runtime.mjs" --check
 ```
 
-`--install` runs `npm ci` with lifecycle scripts disabled and prepares hermetic
-Playwright Chromium inside the selected package. It does not borrow another
+`--install` runs `npm ci` with lifecycle scripts disabled and acquires the exact
+package-owned Chrome for Testing version. It does not borrow another
 installation's Playwright or browser cache. The plugin root is dependency-free;
 the producer's manifest and lockfile live in `skills/deck-studio`.
 
@@ -176,7 +188,13 @@ claude plugin list --json
 
 After either update, resolve the selected package again, prepare its own runtime
 and refresh host discovery. A release must advance the plugin manifest version;
-changed source bytes alone do not establish an installed update.
+changed source bytes alone do not establish an installed update. Codex catalog
+refresh can also reinstall a same-version package cache from source, discarding
+locally prepared dependencies and Chrome. Complete authorized catalog
+reconciliation before runtime preparation, then check retention and readiness
+after native initialization. A successful check is not a guarantee against a
+later cache replacement; recovery must preserve the intended package/browser
+identity and any separately approved host-security attachment.
 
 To remove only Deck Studio from the installation above:
 
