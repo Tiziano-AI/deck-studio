@@ -5,6 +5,8 @@ This repository owns the skill, local HTML/PDF/native-PPTX producer and optional
 audience gateway. Native hosts own plugin installation; a source change is not
 an installed update or a hosted deployment.
 
+Follow the shared [release convention](https://github.com/Tiziano-AI/plugins/blob/main/AGENTS.md#release-convention).
+
 ## Product boundaries
 
 - Ordinary local deck delivery includes HTML, PDF and native editable PPTX.
